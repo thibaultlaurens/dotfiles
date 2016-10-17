@@ -1,0 +1,50 @@
+"*":
+  "activate-power-mode":
+    autoToggle: false
+  "atom-beautify":
+    _analyticsUserId: "f0a6cdfe-b90c-4584-be5b-e31967a68be0"
+  "atom-ctags": {}
+  "autoclose-html": {}
+  "autocomplete-erlang":
+    elixirPath: "/usr/local/bin/elixir"
+  "autocomplete-plus":
+    confirmCompletion: "enter"
+  core:
+    disabledPackages: [
+      "atom-beautify"
+      "filetype-color"
+      "symbols-view"
+      "activate-power-mode"
+    ]
+    themes: [
+      "one-dark-ui"
+      "seti-monokai"
+    ]
+  editor:
+    fontSize: 12
+    invisibles: {}
+    showInvisibles: true
+    tabLength: 4
+  emmet: {}
+  "erlang-build": {}
+  "exception-reporting":
+    userId: "70e3f7e6-d79f-115d-9b5c-66b3ba24a046"
+  "filetype-color":
+    enabled: "false"
+  minimap: {}
+  "one-dark-ui":
+    fontSize: 12
+    layoutMode: "Compact"
+  pigments: {}
+  "tree-view": {}
+  welcome:
+    showOnStartup: false
+".elixir.html.text":
+  editor:
+    tabLength: 4
+".elixir.source":
+  editor:
+    tabLength: 4
+".elixir.text":
+  editor:
+    tabLength: 4

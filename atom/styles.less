@@ -1,0 +1,36 @@
+/*
+ * Your Stylesheet
+ *
+ * This stylesheet is loaded when Atom starts up and is reloaded automatically
+ * when it is changed.
+ *
+ * If you are unfamiliar with LESS, you can read more about it here:
+ * http://www.lesscss.org
+ */
+
+.tree-view {
+    background-color: rgb(21,23,24);
+
+    .list-group li:not(.list-nested-item).status-modified,
+    .list-tree li:not(.list-nested-item).status-modified,
+    .list-group li.list-nested-item.status-modified > .list-item,
+    .list-tree li.list-nested-item.status-modified > .list-item {
+        color: #FD971F;
+    }
+
+    .list-group li:not(.list-nested-item).status-added,
+    .list-tree li:not(.list-nested-item).status-added,
+    .list-group li.list-nested-item.status-added > .list-item,
+    .list-tree li.list-nested-item.status-added > .list-item {
+        color: #A4E02D;
+    }
+
+}
+
+atom-text-editor::shadow .wrap-guide {
+    background-color: #242729;
+}
+
+atom-panel.top, atom-panel.bottom, atom-panel.left, atom-panel.right {
+    background-color: #1D1F21;
+}
