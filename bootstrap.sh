@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-source brew.sh
-source npm.sh
+echo "seting up ..."
 
-echo "creating bash symlink ..."
+# Instal brew and brew-cask apps
+source install/brew.sh
+source install/brew-cask.sh
 
-ln -fs $HOME/dotfiles/bash/.bash_profile $HOME/.bash_profile
-source $HOME/.bash_profile
+# Setup node env
+source install/npm.sh
 
-echo -n "creating atom and vim settings ..."
-ln -fs $HOME/dotfiles/atom ~/.atom
-ln -fs $HOME/dotfiles/bash/.vimrc $HOME/.vimrc
+# Symlink everything
+#source symlink.sh
 
 echo "all done"
