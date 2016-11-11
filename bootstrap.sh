@@ -10,6 +10,6 @@ source install/brew-cask.sh
 source install/npm.sh
 
 # Symlink everything
-#source symlink.sh
+source symlink.sh
 
 echo "all done"
