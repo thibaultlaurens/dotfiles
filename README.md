@@ -3,12 +3,13 @@ git clone https://github.com/thibaultlaurens/dotfiles.git && cd dotfiles && sour
 ```
 
 TODO:
+
     - [x] install
     - [o] shell
     - [x] iTerm
     - [x] atom
     - [ ] git
-    - [ ] .vimrc
+    - [o] vim
     - [ ] .osx
 
 
