@@ -8,6 +8,10 @@ DOTFILE_PATH="$HOME/github/thibault/dotfiles"
 # atom / proton
 ln -fs $DOTFILE_PATH/atom/.proton $HOME/.proton
 
+# vim
+ln -Fs $DOTFILE_PATH/vim/.vim $HOME
+ln -fs $DOTFILE_PATH/vim/.vimrc $HOME/.vimrc
+
 # iterm
 ln -fs $DOTFILE_PATH/iterm/com.googlecode.iterm2.plist \
 $HOME/Library/Preferences/com.googlecode.iterm2.plist
