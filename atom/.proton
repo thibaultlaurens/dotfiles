@@ -72,6 +72,7 @@
     ;; :autoupdate-packages
     ;; :about
     ;; :welcome
+    :notifications
   ]
   ;; Proton takes over your atom configuration. All settings that are not listed here will get wiped
   ;; Configurations are denoted as 2 element vector consisting of k/v
@@ -101,7 +102,9 @@
 
     ["project-plus.projectHome" "/Users/thibault/github"]
     ["project-plus.showPath" true]
-    ["project-plus.notifications" false]
+
+    ["file-icons.coloured" false]
+    ["file-icons.onChanges" true]
   ]
 
 
