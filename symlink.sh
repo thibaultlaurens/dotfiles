@@ -9,7 +9,7 @@ DOTFILE_PATH="$HOME/github/thibault/dotfiles"
 ln -fs $DOTFILE_PATH/atom/.proton $HOME/.proton
 
 # vim
-ln -Fs $DOTFILE_PATH/vim/.vim $HOME
+ln -fs $DOTFILE_PATH/vim/.plug.vim $HOME/.plug.vim
 ln -fs $DOTFILE_PATH/vim/.vimrc $HOME/.vimrc
 
 # iterm

@@ -1,6 +1,7 @@
 
 set nocompatible                " Make Vim more useful
-execute pathogen#infect()
+:source ~/.plug.vim             " Plug config
+
 
 " ================ General Config ====================
 
@@ -15,14 +16,13 @@ set scrolloff=3                 " Scroll 3 lines away from margins
 set mouse=a                     " Enable mouse in all modes
 
 
-" ================ UI Layout ======================
+" ================ UI Layout =========================
 
 syntax on                       " Turn on syntax highlighting
 set background=dark
-"colorscheme  spacegray          " Use the Spacegray theme
-
+silent! colorscheme  hybrid
 set number                      " Enable line numbers
-"set colorcolumn=90              " Add a column at 90 to the right
+set colorcolumn=90              " Add a column at 90 to the right
 set cursorline                  " Highlight current line
 set ruler                       " Show the cursor position
 set title                       " Show the filename in the window titlebar
@@ -57,7 +57,7 @@ set gdefault            " Add the g flag to search/replace
 " nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 
 
-" ================ Leader Shortcuts ====================
+" ================ Leader Shortcuts ==================
 
 " Change leader key
 let mapleader=" "
@@ -66,38 +66,20 @@ let mapleader=" "
 map <leader>s :source ~/.vimrc<CR>
 
 
-" ================ Plugins ============================
+" ================ Plugins ===========================
 
 filetype plugin on
-
-
-" Lightline configuration
-
-set noshowmode
-set laststatus=2
-
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename', 'modified' ] ]
-      \ },
-      \ 'component': {
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-      \ },
-      \ 'component_visible_condition': {
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-      \ },
-      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
-      \ }
-
 
 " Gitgutter - always on
 let g:gitgutter_sign_column_always=1
 
+
+" Vim-airline.
+
+set laststatus=2
+let g:airline_powerline_fonts = 1
+silent! let g:airline_theme='powerlineish'
+let g:airline#extensions#tabline#enabled = 1
 
 " Nerdtree
 
