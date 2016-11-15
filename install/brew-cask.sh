@@ -5,31 +5,31 @@ brew tap caskroom/cask
 brew tap caskroom/fonts
 
 apps=(
-    vlc
-    transmission
-    spectacle
-    sourcetree
-    slack
-    skype
-    robomongo
-    postman
-    keepingyouawake
-    itsycal
-    iterm2
-    font-hack
-    google-drive
-    google-chrome
-    firefox
-    evernote
-    dropbox
-    docker
-    dash
-    daisydisk
-    box-sync
-    atom
-    appcleaner
-    android-file-transfer
     adapter
+    android-file-transfer
+    appcleaner
+    atom
+    box-sync
+    daisydisk
+    dash
+    docker
+    dropbox
+    evernote
+    firefox
+    font-hack
+    google-chrome
+    google-drive
+    iterm2
+    itsycal
+    keepingyouawake
+    postman
+    robomongo
+    skype
+    slack
+    sourcetree
+    spectacle
+    transmission
+    vlc
 )
 
 echo "installing apps..."

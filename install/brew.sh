@@ -23,25 +23,25 @@ brew tap homebrew/dupes
 brew tap Homebrew/bundle
 
 apps=(
+    android-platform-tools
+    ansible
     bash
     bash-completion
-    git
-    hub
     diff-so-fancy
-    openssl
-    openssh
-    watch
-    tree
-    htop
-    emacs
-    vim
-    ansible
-    erlang
     elixir
-    rebar3
-    python
+    emacs
+    erlang-r18
+    git
     go
-    android-platform-tools
+    htop
+    hub
+    openssh
+    openssl
+    python
+    supervisor
+    tree
+    vim
+    watch
 )
 
 echo "installing packages..."
