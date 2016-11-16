@@ -1,11 +1,7 @@
 {
-  ;; This is your main proton configuration file
-  ;; While using proton, all atom related configuration has to go inside here
   ;; Everything that is not set up through this file will get wiped on start
-  ;; We gave you some cool defaults below but if you don't like it, feel free to change :)
 
-  ;; Layers you wish to have active
-  ;; To get a list of all available layers, check github.com/dvcrn/proton/tree/master/src/cljs/proton/layers
+  ;; Get more layers at github.com/dvcrn/proton/tree/master/src/cljs/proton/layers
   :layers
   [
     ;; -----------------------------------
@@ -15,19 +11,14 @@
 
 
     ;; -----------------------------------
-    ;; tools
-    ;; Get more at github.com/dvcrn/proton/tree/master/src/cljs/proton/layers/tools
+    ;; Get more tools at github.com/dvcrn/proton/tree/master/src/cljs/proton/layers/tools
     ;; -----------------------------------
     :tools/git
     :tools/minimap
 
-    ;; :tools/bookmarks
-    ;; :tools/build
-
 
     ;; -----------------------------------
-    ;; Languages
-    ;; Get more at github.com/dvcrn/proton/tree/master/src/cljs/proton/layers/lang
+    ;; Get more languages at github.com/dvcrn/proton/tree/master/src/cljs/proton/layers/lang
     ;; -----------------------------------
     :lang/clojure
     :lang/css
@@ -43,42 +34,36 @@
 
 
     ;; -----------------------------------
-    ;; Frameworks
-    ;; Get more at github.com/dvcrn/proton/tree/master/src/proton/layers/frameworks
+    ;; Get more frameworks at github.com/dvcrn/proton/tree/master/src/proton/layers/frameworks
     ;; -----------------------------------
     ;; :frameworks/django
 
+
     ;; -----------------------------------
-    ;; etc
-    ;; Get more at github.com/dvcrn/proton/tree/master/src/cljs/proton/layers/fun
+    ;; Get more fun at github.com/dvcrn/proton/tree/master/src/cljs/proton/layers/fun
     ;; -----------------------------------
     ;; :fun/power_mode
   ]
 
-  ;; Packages that are not part of a layer. List them here as keyword
-  ;; All packages will be ensured to be installed. Stuff that is not listed here
-  ;; Will get uninstalled so choose wisely!
+  ;; Packages that are not part of a layer.
   :additional-packages
   [
     :pigments
     :sublime-style-column-selection
   ]
 
-  ;; Packages that you want to disable.
-  ;; Note that packages will be removed except bundled packages.
-  ;; Bundled packages will be disabled instead.
-  ;; Use this configuration instead of atom's `core.disabledPackages`
+  ;; Bundled packages will be disabled, the others will be removed.
   :disabled-packages [
-    ;; :autoupdate-packages
-    ;; :about
-    ;; :welcome
     :notifications
   ]
-  ;; Proton takes over your atom configuration. All settings that are not listed here will get wiped
+
   ;; Configurations are denoted as 2 element vector consisting of k/v
   ;; sub-vectors inside v will get treated like javascript arrays
   :configuration
   [
+    ;; atom
+    ["projectHome" "/Users/thibault/github"]
+
     ;; editor
     ["editor.fontFamily" "Hack"]
     ["editor.fontSize" 12]
@@ -97,18 +82,15 @@
     ["proton.core.relativeLineNumbers" false]
     ["proton.core.inputProvider" :vim-mode-plus]
 
-
-    ["projectHome" "/Users/thibault/github"]
-
+    ;; project-plus
     ["project-plus.projectHome" "/Users/thibault/github"]
     ["project-plus.showPath" true]
 
+    ;; file-icon
     ["file-icons.coloured" false]
     ["file-icons.onChanges" true]
   ]
 
-
-  ;; Don't like a keybinding or want to add something yourself? Do it here
   ;; The following example adds a category `foo-category` under <SPC>z
   ;; and adds a action under `y` with the title `execute hello`.
   ;; Upon executing, proton will dispatch the action `hello` on the current view
@@ -118,12 +100,12 @@
   ;;                       :action "hello"}}}
   :keybindings {}
 
-  ;; Want some custom behavior inside a certain window?
-  ;; Add your own nifty things here!
-  :keymaps [{:selector ".tree-view" :keymap [["escape" "tree-view:toggle"]]}
-            ;; Want to rebind ESC to something else? You can do that here.
-            ;; If you are good with esc, just remove the following line.
-            {:selector "atom-text-editor.vim-mode-plus:not(.normal-mode)" :keymap [["f d" "vim-mode-plus:activate-normal-mode"]]}
-            ;; {:selector "atom-text-editor.vim-mode:not(.normal-mode)" :keymap [["f d" "vim-mode:activate-normal-mode"]]}
+  ;; custom behavior inside a certain window
+  :keymaps [
+    ;; use "j k" to activate normal mode (or "ctrl c")
+    {:selector "atom-text-editor.vim-mode-plus:not(.normal-mode)" :keymap [["j k" "vim-mode-plus:activate-normal-mode"]]}
+
+    ;; ESC cancel autocompletion (rather then activating normal-mode) if autocompletion is active && in insert-mode 
+    {:selector "atom-text-editor.vim-mode-plus.insert-mode.autocomplete-active" :keymap [["escape" "autocomplete-plus:cancel"]]}
   ]
 }
