@@ -25,6 +25,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-commentary'
 
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'shougo/unite.vim'
 Plug 'shougo/unite-session'
 Plug 'shougo/unite-outline'

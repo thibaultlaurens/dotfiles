@@ -81,23 +81,22 @@ let g:airline_powerline_fonts = 1
 silent! let g:airline_theme='powerlineish'
 let g:airline#extensions#tabline#enabled = 1
 
-" Nerdtree
 
-" Right arrow to open a node
-let NERDTreeMapActivateNode='<right>'
+" ================ Nerdtree ==========================
 
-" Display hidden files
-let NERDTreeShowHidden=1
+let NERDTreeMapActivateNode='<right>'       " Right arrow to open a node
+let NERDTreeShowHidden=1                    " Display hidden files
+nmap <leader>n :NERDTreeToggle<CR>          " Toggle Nerdtree with <Leader> + n
 
-" Toggle display of the tree with <Leader> + n
-nmap <leader>n :NERDTreeToggle<CR>
-
-" Locate the focused file in the tree with <Leader> + j
-nmap <leader>j :NERDTreeFind<CR>
-
-" Always open the tree when booting Vim, but don’t focus it
-"autocmd VimEnter * NERDTree
-"autocmd VimEnter * wincmd p
-
-" Do not display some useless files in the tree
+" Hide useless files in the tree
 let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
+
+" Open nerdtree automatically when vim starts up...
+autocmd StdinReadPre * let s:std_in=1
+" ...if no files were specified
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | wincmd p | endif
+" ...on opening a directory
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+" close vim if the only window left open is a Nerdtree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
