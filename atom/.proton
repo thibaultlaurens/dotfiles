@@ -1,25 +1,16 @@
 {
   ;; Everything that is not set up through this file will get wiped on start
 
-  ;; Get more layers at github.com/dvcrn/proton/tree/master/src/cljs/proton/layers
-  :layers
-  [
-    ;; -----------------------------------
+  ;; layers - get more at github.com/dvcrn/proton/tree/master/src/cljs/proton/layers
+  :layers [
     ;; core layer. Don't remove.
-    ;; -----------------------------------
     :core
 
-
-    ;; -----------------------------------
-    ;; Get more tools at github.com/dvcrn/proton/tree/master/src/cljs/proton/layers/tools
-    ;; -----------------------------------
+    ;; tools
     :tools/git
     :tools/minimap
 
-
-    ;; -----------------------------------
-    ;; Get more languages at github.com/dvcrn/proton/tree/master/src/cljs/proton/layers/lang
-    ;; -----------------------------------
+    ;; languages
     :lang/clojure
     :lang/css
     :lang/elixir
@@ -31,23 +22,10 @@
     :lang/json
     :lang/markdown
     :lang/python
-
-
-    ;; -----------------------------------
-    ;; Get more frameworks at github.com/dvcrn/proton/tree/master/src/proton/layers/frameworks
-    ;; -----------------------------------
-    ;; :frameworks/django
-
-
-    ;; -----------------------------------
-    ;; Get more fun at github.com/dvcrn/proton/tree/master/src/cljs/proton/layers/fun
-    ;; -----------------------------------
-    ;; :fun/power_mode
   ]
 
   ;; Packages that are not part of a layer.
-  :additional-packages
-  [
+  :additional-packages [
     :pigments
     :sublime-style-column-selection
   ]
@@ -55,6 +33,7 @@
   ;; Bundled packages will be disabled, the others will be removed.
   :disabled-packages [
     :notifications
+    :emmet
   ]
 
   ;; Configurations are denoted as 2 element vector consisting of k/v
@@ -89,23 +68,33 @@
     ;; file-icon
     ["file-icons.coloured" false]
     ["file-icons.onChanges" true]
+
+    ;; vim-mode-plus
+    ["vim-mode-plus.highlightSearch" true]
+    ["vim-mode-plus.statusBarModeStringStyle" "long"]
   ]
 
-  ;; The following example adds a category `foo-category` under <SPC>z
-  ;; and adds a action under `y` with the title `execute hello`.
-  ;; Upon executing, proton will dispatch the action `hello` on the current view
-  ;;
-  ;; :keybindings {:z {:category "foo-category"
-  ;;                   :y {:title "execute hello"
-  ;;                       :action "hello"}}}
-  :keybindings {}
+  ;; custom keybindings
+  :keybindings {
+    :p {:category "project"
+        :y {:title "copy project path"
+            :action "editor:copy-project-path",
+            :target ".editor.is-focused"}
+       }
+    :f {:category "files"
+        :t {:title "reveal in tree view"
+            :action "tree-view:reveal-active-file",
+            :target ".editor.is-focused"}
+       }
+  }
 
   ;; custom behavior inside a certain window
   :keymaps [
     ;; use "j k" to activate normal mode (or "ctrl c")
     {:selector "atom-text-editor.vim-mode-plus:not(.normal-mode)" :keymap [["j k" "vim-mode-plus:activate-normal-mode"]]}
 
-    ;; ESC cancel autocompletion (rather then activating normal-mode) if autocompletion is active && in insert-mode 
+    ;; ESC cancel autocompletion (rather then activating normal-mode) if autocompletion is active && in insert-mode
     {:selector "atom-text-editor.vim-mode-plus.insert-mode.autocomplete-active" :keymap [["escape" "autocomplete-plus:cancel"]]}
   ]
+
 }
