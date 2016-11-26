@@ -27,6 +27,7 @@ packages=(
     coffee-script
     n_
     node-dev
+    node-inspector
 )
 
 npm install -g "${packages[@]}"

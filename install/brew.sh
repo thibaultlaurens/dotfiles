@@ -19,6 +19,7 @@ brew upgrade
 # Check for potential problems
 brew doctor
 
+# Add more sources
 brew tap homebrew/dupes
 brew tap Homebrew/bundle
 

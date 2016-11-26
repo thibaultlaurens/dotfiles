@@ -1,17 +1,20 @@
 echo "creating symlink..."
 
-DOTFILE_PATH="$HOME/github/thibault/dotfiles"
+{DOTFILE}="${HOME}/github/thibault/dotfiles"
 
-#ln -fs $HOME/github/thibault/dotfiles/bash/.bash_profile $HOME/.bash_profile
-#source $HOME/.bash_profile
+ln -fs ${DOTFILE}/shell/.inputrc ${HOME}/.inputrc
+ln -fs ${DOTFILE}/shell/.bashrc ${HOME}/.bashrc
+ln -fs ${DOTFILE}/shell/.bash_profile ${HOME}/.bash_profile
+source ${HOME}/.bash_profile
 
 # atom / proton
-ln -fs $DOTFILE_PATH/atom/.proton $HOME/.proton
+ln -fs ${DOTFILE}/atom/.proton ${HOME}/.proton
+ln -fs ${DOTFILE}/atom/styles.less ${HOME}/.atom/
 
 # vim
-ln -fs $DOTFILE_PATH/vim/.plug.vim $HOME/.plug.vim
-ln -fs $DOTFILE_PATH/vim/.vimrc $HOME/.vimrc
+ln -fs ${DOTFILE}/vim/.vimrc.plug ${HOME}/.vimrc.plug
+ln -fs ${DOTFILE}/vim/.vimrc ${HOME}/.vimrc
 
 # iterm
-ln -fs $DOTFILE_PATH/iterm/com.googlecode.iterm2.plist \
-$HOME/Library/Preferences/com.googlecode.iterm2.plist
+ln -fs ${DOTFILE}/iterm/com.googlecode.iterm2.plist \
+${HOME}/Library/Preferences/com.googlecode.iterm2.plist

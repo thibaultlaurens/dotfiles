@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-echo "installing caskroom..."
+echo "installing homebrew cask..."
+
 brew tap caskroom/cask
 brew tap caskroom/fonts
 

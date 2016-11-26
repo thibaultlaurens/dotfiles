@@ -28,6 +28,9 @@
   :additional-packages [
     :pigments
     :sublime-style-column-selection
+    :minimap-git-diff
+    :minimap-highlight-selected
+    :tree-view-git-status
   ]
 
   ;; Bundled packages will be disabled, the others will be removed.
@@ -45,7 +48,7 @@
 
     ;; editor
     ["editor.fontFamily" "Hack"]
-    ["editor.fontSize" 12]
+    ["editor.fontSize" 11]
     ["editor.preferredLineLength" 90]
     ["editor.showInvisibles" true]
     ["editor.softWrap" true]
@@ -72,6 +75,10 @@
     ;; vim-mode-plus
     ["vim-mode-plus.highlightSearch" true]
     ["vim-mode-plus.statusBarModeStringStyle" "long"]
+
+    ;; minimap
+    ["minimap.plugins.git-diff" true]
+    ["minimap.plugins.highlight-selected" true]
   ]
 
   ;; custom keybindings
