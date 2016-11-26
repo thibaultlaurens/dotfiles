@@ -10,4 +10,4 @@ TODO:
     - [x] atom
     - [ ] git
     - [o] vim
-    - [ ] .osx
+    - [x] .osx

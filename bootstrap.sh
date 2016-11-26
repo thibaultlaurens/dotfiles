@@ -12,4 +12,7 @@ source install/npm.sh
 # Symlink everything
 source symlink.sh
 
+# Set custom os x defaults
+source .osx
+
 echo "all done"
