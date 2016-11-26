@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# Make vim the default editor
+export EDITOR='vim';
+
+# Ignore duplicate commands and commands that begin with a space in the history
+export HISTCONTROL='ignoreboth';
+
+# Allow 32³ lines in the history file, the default is 500
+export HISTFILESIZE='32768';
+
+# Allow 32³ commands to remember, the default is 500
+export HISTSIZE='32768';
+
+# Make Python use UTF-8 encoding for output to stdin, stdout, and stderr
+export PYTHONIOENCODING='UTF-8';
+
+# Highlight section titles in manual pages
+export LESS_TERMCAP_md="${yellow}";
+
+# Don’t clear the screen after quitting a manual page
+export MANPAGER='less -X';
+
+# Make new shells get the history lines from all previous
+# shells instead of the default "last window closed" history
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND";
