@@ -1,6 +1,12 @@
 
 set nocompatible                " Make Vim more useful
-:source ~/.plug.vim             " Plug config
+
+
+" ================ Plug ==============================
+
+if filereadable(expand("~/.vimrc.plug"))
+  source ~/.vimrc.plug
+endif
 
 
 " ================ General Config ====================
@@ -14,13 +20,15 @@ set hidden                      " Buffers can exist in the background
 set ttyfast                     " Faster redraw
 set scrolloff=3                 " Scroll 3 lines away from margins
 set mouse=a                     " Enable mouse in all modes
+set backspace=indent,eol,start  " Makes backspace key more powerful.
 
 
 " ================ UI Layout =========================
 
 syntax on                       " Turn on syntax highlighting
-set background=dark
-silent! colorscheme  hybrid
+set background=dark             " Set background to dark
+silent! colorscheme  hybrid     " Use the hybrid theme
+set guifont=Hack\ 9
 set number                      " Enable line numbers
 set colorcolumn=90              " Add a column at 90 to the right
 set cursorline                  " Highlight current line
@@ -28,7 +36,7 @@ set ruler                       " Show the cursor position
 set title                       " Show the filename in the window titlebar
 set showmatch                   " Higlight matching parenthesis
 set showcmd                     " Show command in bottom bar
-"set showmode                    " Show current mode down the bottom
+set noshowmode                  " Dont show current mode down the bottom
 set wildmode=list:longest,full
 set wildmenu
 
@@ -41,29 +49,50 @@ set autoindent
 set smartindent
 set smarttab
 set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-set expandtab
+set softtabstop=4               " 4 spaces tab
+set tabstop=4                   " 4 spaces tab
+set expandtab                   " Use spaces for tabs
 
 
 " ================ Search ============================
 
-set incsearch           " Search as characters are entered
-set hlsearch            " Highlight all matches
-set ignorecase          " Ignore case when searching
-set gdefault            " Add the g flag to search/replace
+set incsearch               " Search as characters are entered
+set hlsearch                " Highlight all matches
+set ignorecase              " Ignore case when searching
+set gdefault                " Add the g flag to search/replace
 
 " cancel a search with Escape
 " nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 
 
-" ================ Leader Shortcuts ==================
+" ================ Folding ==========================
+set foldmethod=indent       " Fold based on indent level
+set foldnestmax=10          " Max 10 depth
+set foldenable              " don't fold files by default on open
+set foldlevelstart=10       " start with fold level of 1
 
-" Change leader key
-let mapleader=" "
 
-" Reload vim config
-map <leader>s :source ~/.vimrc<CR>
+" ================ Shortcuts ========================
+
+let mapleader=" "                   " Change leader key
+
+map <leader>s :source ~/.vimrc<CR>  " Reload vim config
+
+" Quicker window movement
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Cycle through buffers
+map <leader>n :bnext<CR>
+map <leader>p :bprevious<CR>
+
+" Arrows are bad
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
 
 
 " ================ Plugins ===========================
@@ -73,6 +102,8 @@ filetype plugin on
 " Gitgutter - always on
 let g:gitgutter_sign_column_always=1
 
+" Unite"
+nnoremap <Leader>f :Unite file<CR>
 
 " Vim-airline.
 
@@ -86,7 +117,9 @@ let g:airline#extensions#tabline#enabled = 1
 
 let NERDTreeMapActivateNode='<right>'       " Right arrow to open a node
 let NERDTreeShowHidden=1                    " Display hidden files
-nmap <leader>n :NERDTreeToggle<CR>          " Toggle Nerdtree with <Leader> + n
+
+nmap <leader>t :NERDTreeToggle<CR>          " Toggle Nerdtree with <Leader> + t
+nmap <leader>j :NERDTreeFind<CR>            " Focus file in the tree
 
 " Hide useless files in the tree
 let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
