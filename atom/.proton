@@ -31,6 +31,8 @@
     :minimap-git-diff
     :minimap-highlight-selected
     :tree-view-git-status
+    :language-erlang
+    :autocomplete-erlang
   ]
 
   ;; Bundled packages will be disabled, the others will be removed.
