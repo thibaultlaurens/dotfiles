@@ -26,8 +26,8 @@ set backspace=indent,eol,start  " Makes backspace key more powerful.
 " ================ UI Layout =========================
 
 syntax on                       " Turn on syntax highlighting
-set background=dark             " Set background to dark
-silent! colorscheme  hybrid     " Use the hybrid theme
+set termguicolors
+silent! colorscheme onedark
 set guifont=Hack\ 9
 set number                      " Enable line numbers
 set colorcolumn=90              " Add a column at 90 to the right
@@ -109,7 +109,8 @@ nnoremap <Leader>f :Unite file<CR>
 
 set laststatus=2
 let g:airline_powerline_fonts = 1
-silent! let g:airline_theme='powerlineish'
+" silent! let g:airline_theme='powerlineish'
+silent! let g:airline_theme='onedark'
 let g:airline#extensions#tabline#enabled = 1
 
 

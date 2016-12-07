@@ -26,20 +26,13 @@ Plug 'tpope/vim-commentary'
 
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'shougo/.vim'
+Plug 'shougo/unite.vim'
 Plug 'shougo/unite-session'
 Plug 'shougo/unite-outline'
 Plug 'shougo/vimfiler.vim'
 
-Plug 'elzr/vim-json'
-Plug 'stephpy/vim-yaml', {'for': 'yaml'}
-
-Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
-Plug 'othree/javascript-libraries-syntax.vim'
-
-Plug 'w0ng/vim-hybrid'
+Plug 'joshdick/onedark.vim'
+Plug 'sheerun/vim-polyglot'
 Plug 'ryanoasis/vim-webdevicons'
 
 call plug#end()

@@ -29,8 +29,6 @@ sudo -v
 /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 
-# Always show scrollbars
-defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
@@ -60,8 +58,8 @@ defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 # Dock: enable the 2D Dock
 defaults write com.apple.dock no-glass -bool true
 
-# Dock: set the icon size of Dock items to 28 pixels
-defaults write com.apple.dock tilesize -int 28
+# Dock: set the icon size of Dock items to 30 pixels
+defaults write com.apple.dock tilesize -int 30
 
 # Dock: show indicator lights for open applications
 defaults write com.apple.dock show-process-indicators -bool true
