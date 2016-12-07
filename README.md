@@ -2,12 +2,13 @@
 git clone https://github.com/thibaultlaurens/dotfiles.git && cd dotfiles && source bootstrap.sh
 ```
 
-TODO:
+### features:
 
-    - [x] install
-    - [o] shell
-    - [x] iTerm
-    - [x] atom
-    - [ ] git
-    - [o] vim
-    - [x] .osx
+- [x] install
+- [x] iTerm
+- [x] atom
+- [x] osx
+- [x] htop
+- [x] vim
+- [ ] shell
+- [ ] git

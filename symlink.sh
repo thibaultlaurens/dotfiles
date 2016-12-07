@@ -18,3 +18,6 @@ ln -fs ${DOTFILE}/vim/.vimrc ${HOME}/.vimrc
 # iterm
 ln -fs ${DOTFILE}/iterm/com.googlecode.iterm2.plist \
 ${HOME}/Library/Preferences/com.googlecode.iterm2.plist
+
+# htop
+ln -fs ${DOTFILE}/.htoprc ${HOME}/.config/htop/htoprc
