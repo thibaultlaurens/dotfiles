@@ -15,9 +15,6 @@ export HISTSIZE='32768';
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr
 export PYTHONIOENCODING='UTF-8';
 
-# Highlight section titles in manual pages
-export LESS_TERMCAP_md="${yellow}";
-
 # Don’t clear the screen after quitting a manual page
 export MANPAGER='less -X';
 

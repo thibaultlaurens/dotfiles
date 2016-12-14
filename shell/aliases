@@ -16,7 +16,7 @@ alias h="history"
 
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias gh="cd ~/github/thibault"
+alias gh="cd ~/github"
 alias log="cd /var/log"
 
 # Default options
@@ -35,11 +35,12 @@ alias git=hub
 
 alias gs="git status -s"        # pretty status
 alias gp="git pull"
-alias gc="git checkout"         # switch to branch, -b to create one on the fly
+alias gco="git checkout"        # switch to branch, -b to create one on the fly
 alias ga="git add -p"           # step through each change, or hunk
 alias gc="git commit"
 alias gpu="git push origin HEAD"
 alias gpr="git pull-request"
+alias gm='git merge'
 
 alias gl="git log --all --graph --decorate --oneline --simplify-by-decoration"
 alias gd="git diff --color | diff-so-fancy | less --tabs=4 -RFX"
@@ -54,7 +55,11 @@ alias editbp="$EDITOR ~/.bash_profile"
 
 # Node, CoffeeScript and NPM shortcuts
 alias npmls="npm -g ls --depth=0"
-alias buny="coffee index.coffee | bunyan"
+alias n="coffee index.coffee | bunyan -o short"
+alias nd="node-debug -p 4444 -c true -b false coffee index.coffee | bunyan -o short"
+
+# Python
+alias pipi="sudo -H pip install -r requirements.txt"
 
 # Better tree
 alias tree="tree -aCF --dirsfirst -I '.git|node_modules'"
@@ -82,10 +87,10 @@ alias flush="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
 # Pull all the Git repositories
-alias pullall="gh && find . -maxdepth 1 -type d -exec sh -c '(cd {} && git pull)' ';'"
+alias pullall="find . -maxdepth 1 -type d -exec sh -c '(cd {} && git pull)' ';'"
 
-# Get Mac OS software updates, update Homebrew, NPM and their packages
-alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; brew doctor; npm install npm -g; npm update -g"
+# Homebrew update
+alias update="brew update; brew upgrade; brew cleanup; brew doctor"
 
 # Empty the Trash on all mounted volumes and the main HDD.
 # Also, clear Apple’s System Logs to improve shell startup speed.

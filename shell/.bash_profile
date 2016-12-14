@@ -1,20 +1,36 @@
 #!/usr/bin/env bash
 
-# Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:$PATH";
+DOTFILE="${HOME}/github/thibault/dotfiles"
+
+# Load the shell dotfiles
+
+load_files() {
+    declare -a files=(
+        $DOTFILE/shell/aliases
+        $DOTFILE/shell/exports
+        $DOTFILE/shell/extra
+        $DOTFILE/shell/functions
+        $DOTFILE/shell/options
+        $DOTFILE/shell/prompt
+    )
+
+    # if these files are readable, source them
+    for index in ${!files[*]}
+    do
+        if [[ -r ${files[$index]} ]]; then
+            source ${files[$index]}
+        fi
+    done
+}
+
+load_files
+unset load_files
 
 # bash completion
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
-# Load the shell dotfiles
-for file in ~/{aliases, exports, extra, functions, options, path, prompt}; do
-	[ -r "$file" ] && [ -f "$file" ] && source "$file";
-done;
-
 # Load nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
-unset file;
