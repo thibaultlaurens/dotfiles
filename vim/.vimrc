@@ -21,7 +21,7 @@ set ttyfast                     " Faster redraw
 set scrolloff=3                 " Scroll 3 lines away from margins
 set mouse=a                     " Enable mouse in all modes
 set backspace=indent,eol,start  " Makes backspace key more powerful.
-
+set clipboard=unnamed           " Mac os clipboard sharing
 
 " ================ UI Layout =========================
 
