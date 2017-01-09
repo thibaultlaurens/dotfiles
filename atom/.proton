@@ -26,7 +26,6 @@
 
   ;; Packages that are not part of a layer.
   :additional-packages [
-    :pigments
     :sublime-style-column-selection
     :minimap-git-diff
     :minimap-highlight-selected
@@ -37,8 +36,8 @@
 
   ;; Bundled packages will be disabled, the others will be removed.
   :disabled-packages [
-    :notifications
     :emmet
+    :environment
   ]
 
   ;; Configurations are denoted as 2 element vector consisting of k/v
@@ -69,6 +68,7 @@
     ;; project-plus
     ["project-plus.projectHome" "/Users/thibault/github"]
     ["project-plus.showPath" true]
+    ["project-plus.notifications" false]
 
     ;; file-icon
     ["file-icons.coloured" false]
@@ -81,6 +81,22 @@
     ;; minimap
     ["minimap.plugins.git-diff" true]
     ["minimap.plugins.highlight-selected" true]
+
+    ;; autocomplete
+    ["autocomplete-python.useKite" false]
+
+    ;; erlang & elixir
+    ["autocomplete-erlang.elixirPath" "/usr/local/bin/elixir"]
+    ["autocomplete-erlang.erlangHome" "/usr/local/bin"]
+
+    ;; tree-view
+    ["tree-view.alwaysOpenExisting" true]
+    ["tree-view.autoReveal" true]
+    ["tree-view.focusOnReveal" false]
+    ["tree-view.squashDirectoryNames" true]
+
+    ;; pigments
+    ["pigments.notifyReloads" false]
   ]
 
   ;; custom keybindings
