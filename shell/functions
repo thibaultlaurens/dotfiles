@@ -89,3 +89,51 @@ function cat() {
     colored=$(echo $out | pygmentize -f console -g 2>/dev/null)
     [[ -n $colored ]] && echo "$colored" || echo "$out"
 }
+
+# list git repos status
+function git_ls() {
+    for directory in `ls -d */`
+        do
+            local repo_name=${directory%%/}
+            local repo_path=$(greadlink -f $repo_name)
+
+            local branch=$(git -C $repo_path branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+
+            if [[ -n $branch ]]; then
+                local state=$(git_status $repo_path)
+
+                if [ ! -z $state ]; then
+                    local color="\033[1;31m"  # bold red
+                else
+                    local color="\033[1;37m"  # bold white
+                fi
+
+                echo -e "$repo_name: \x01$color\x02($branch$state)\x01\033[00m\x02"  # last bit resets color
+            fi
+        done
+}
+
+# Outputs a series of indicators based on the status of the working directory:
+# + changes are staged and ready to commit
+# ! unstaged changes are present
+# ? untracked files are present
+# U local branch is behind remote
+# S changes have been stashed
+# P local commits need to be pushed to the remote
+function git_status() {
+    local status="$(git -C $1 status -s -b 2>/dev/null)"
+    local output=''
+
+    [[ -n $(egrep '^[MADRC]' <<<"$status") ]] && output="$output+"
+    [[ -n $(egrep '^.[MD]' <<<"$status") ]] && output="$output!"
+    [[ -n $(egrep '^\?\?' <<<"$status") ]] && output="$output?"
+    [[ -n $(egrep 'behind' <<<"$status") ]] && output="${output}U"
+
+    # uncomment that to get stash info, it was slowing down gls_state function
+    #[[ -n $(git -C $1 stash list) ]] && output="${output}S"
+
+    [[ -n $(git -C $1 log --branches --not --remotes) ]] && output="${output}P"
+    [[ -n $output ]] && output="|$output"  # separate from branch name
+
+    echo $output
+}
