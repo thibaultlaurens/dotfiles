@@ -65,7 +65,7 @@ alias pipi="sudo -H pip install -r requirements.txt"
 alias tree="tree -aCF --dirsfirst -I '.git|node_modules'"
 
 # Print each PATH entry on a separate line
-alias path="echo -e ${PATH//:/\\n}"
+alias path='echo -e ${PATH//:/\\n}'
 
 # Always copy pwd
 alias pwd="pwd|tr -d "\n"|pbcopy"
