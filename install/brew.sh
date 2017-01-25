@@ -28,13 +28,14 @@ apps=(
     ansible
     bash
     bash-completion
+    coreutils
     diff-so-fancy
     elixir
-    emacs
     erlang-r18
     git
     go
     htop
+    httpie
     hub
     openssh
     openssl
@@ -48,5 +49,17 @@ apps=(
 echo "installing packages..."
 brew install "${apps[@]}"
 
+echo "installing spacemacs..."
+brew tap d12frosted/emacs-plus
+brew install emacs-plus
+brew linkapps emacs-plus
+
+cd ~
+mv .emacs.d .emacs.d.bak
+mv .emacs .emacs.bak
+
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+
 # Remove outdated versions from the cellar
+echo "cleaning up..."
 brew cleanup

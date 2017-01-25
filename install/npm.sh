@@ -28,6 +28,7 @@ packages=(
     n_
     node-dev
     node-inspector
+    tern
 )
 
 npm install -g "${packages[@]}"
