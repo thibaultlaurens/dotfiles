@@ -6,8 +6,10 @@ echo "seting up ..."
 source install/brew.sh
 source install/brew-cask.sh
 
-# Setup node env
+# Setup emacs, node and go environment
+source install/spacemacs.sh
 source install/npm.sh
+source install/go.sh
 
 # Symlink everything
 source symlink.sh

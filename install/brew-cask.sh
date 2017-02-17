@@ -10,11 +10,9 @@ apps=(
     android-file-transfer
     appcleaner
     atom
-    box-sync
     daisydisk
     dash
     docker
-    dropbox
     evernote
     firefox
     font-hack
