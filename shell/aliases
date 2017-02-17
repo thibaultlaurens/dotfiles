@@ -7,15 +7,14 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 # Shortcuts
-alias a="atom"
-alias e="$EDITOR"
+alias e="emacs &"
 alias g="git"
-alias v="vim"
 alias c="clear"
 alias h="history"
 
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
+alias dc="cd ~/Documents"
 alias gh="cd ~/github"
 alias log="cd /var/log"
 
