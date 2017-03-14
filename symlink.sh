@@ -11,6 +11,9 @@ source ${HOME}/.bash_profile
 ln -fs ${DOTFILE}/atom/.proton ${HOME}/.proton
 ln -fs ${DOTFILE}/atom/styles.less ${HOME}/.atom/
 
+# emacs
+ln -fs ${DOTFILE}/.spacemacs ${HOME}/.spacemacs
+
 # vim
 ln -fs ${DOTFILE}/vim/.vimrc.plug ${HOME}/.vimrc.plug
 ln -fs ${DOTFILE}/vim/.vimrc ${HOME}/.vimrc

@@ -6,7 +6,7 @@ function cd() {
 }
 
 # Makes new Dir and jumps inside
-function mk() {
+function mkc() {
     mkdir -p "$@" && cd "$@";
 }
 

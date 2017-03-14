@@ -51,3 +51,6 @@ load_files() {
 }
 
 load_files
+
+# add erlang@18 in the path
+export PATH="/usr/local/opt/erlang@18/bin:$PATH"
