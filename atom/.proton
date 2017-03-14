@@ -6,14 +6,19 @@
     ;; core layer. Don't remove.
     :core
 
+    ;; config-files
+    :config-files/docker
+
     ;; tools
     :tools/git
     :tools/minimap
+    :tools/linter
 
     ;; languages
     :lang/clojure
     :lang/css
     :lang/elixir
+    :lang/go
     :lang/handlebars
     :lang/haskell
     :lang/html
@@ -32,12 +37,19 @@
     :tree-view-git-status
     :language-erlang
     :autocomplete-erlang
+    :hyperclick
+    :go-signature-statusbar
   ]
 
   ;; Bundled packages will be disabled, the others will be removed.
   :disabled-packages [
     :emmet
     :environment
+    :go-config
+    :go-get
+    :gorename
+    :gometalinter-linter
+    :linter-jade
   ]
 
   ;; Configurations are denoted as 2 element vector consisting of k/v
@@ -50,7 +62,7 @@
     ;; editor
     ["editor.fontFamily" "Hack"]
     ["editor.fontSize" 11]
-    ["editor.preferredLineLength" 90]
+    ["editor.preferredLineLength" 100]
     ["editor.showInvisibles" true]
     ["editor.softWrap" true]
     ["editor.tabLength" 4]
@@ -97,8 +109,13 @@
 
     ;; pigments
     ["pigments.notifyReloads" false]
-  ]
 
+    ;; python linter
+    ["linter.showErrorInline" false]
+    ["linter.underlineIssues" false]
+    ["linter-flake8.maxLineLength" 100]
+    ["linter-flake8.ignoreErrorCodes" ["D100" "D103" "E501"]] 
+  ]
   ;; custom keybindings
   :keybindings {
     :p {:category "project"
