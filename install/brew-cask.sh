@@ -23,11 +23,13 @@ apps=(
     keepingyouawake
     postman
     robomongo
+    simplenote
     skype
     slack
     sourcetree
     spectacle
     transmission
+    virtualbox
     vlc
 )
 

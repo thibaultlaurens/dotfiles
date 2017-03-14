@@ -32,8 +32,10 @@ apps=(
     diff-so-fancy
     elixir
     erlang-r18
+    flake8
     git
     go
+    go-delve/delve/delve
     htop
     httpie
     hub
