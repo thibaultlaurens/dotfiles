@@ -11,7 +11,9 @@ git clone https://github.com/thibaultlaurens/dotfiles.git && cd dotfiles && sour
 ├── install/
 │   ├── brew-cask.sh                      # mac os apps
 │   ├── brew.sh                           # homebrew packages
+│   ├── go.sh                             # go and some packages
 │   └── npm.sh                            # node/nvm/npm/packages
+│   ├── spacemacs.sh                      # install spacemacs
 ├── iterm/
 │   ├── colorschemes/                     # Facebook and One Dark (atom like) themes
 │   ├── fonts/                            # Hack and Droid Sans Mono for Powerline
@@ -31,6 +33,7 @@ git clone https://github.com/thibaultlaurens/dotfiles.git && cd dotfiles && sour
 ├── .gitignore
 ├── .htoprc                               # htop config
 ├── .osx                                  # some mac os defaults settings
+├── .spacemacs                            # spacemacs config
 ├── README.md
 ├── bootstrap.sh                          # to setup a new mac
 └── symlink.sh                            # to symlink it all
