@@ -28,20 +28,21 @@
 
      ;; Completion
      helm
-     auto-completion
+     (auto-completion :variables auto-completion-enable-snippets-in-popup t)
 
      ;; Emacs
      better-defaults
      org
 
      ;; Languages
+     clojure
      elixir
      emacs-lisp
      erlang
      go
      html
      javascript
-     markdown
+     (markdown :variables markdown-live-preview-engine 'vmd)
      python
      yaml
 
@@ -51,10 +52,9 @@
      version-control
 
      ;; Tools
-     ;; ansible
-     ;; chrome
-     ;; dash
-     ;; docker
+     ansible
+     dash
+     docker
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -221,7 +221,7 @@ Spacemacs initialization before layers configuration."
 
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
 
    ;; The transparency level of a frame when it's active or selected. (0..100)
    dotspacemacs-active-transparency 97
@@ -275,26 +275,56 @@ Spacemacs initialization before layers configuration."
 
 (defun dotspacemacs/user-init ()
 
+  ;; vim search
   (setq evil-search-module 'evil-search)
-  (setq-default mac-left-option-modifier nil)
+
+  ;; unbind right `alt` key from "M"
+  (setq-default mac-right-option-modifier nil)
+
+  ;; magit status buffer in fullscreen
+  (setq-default git-magit-status-fullscreen t)
+
+  ;; frame title is file path and append a '•' when buffer has unsaved changed
+  (setq frame-title-format
+        '((:eval (if (buffer-file-name)
+                     (abbreviate-file-name (buffer-file-name))
+                   "%b"))
+          (:eval (if (buffer-modified-p)
+                     " •"))
+          )
+        )
   )
 
 (defun dotspacemacs/user-config ()
 
-  ;; enable autocomplete
-  ;; (global-company-mode t)
+  ;; wrap long lines
+  (global-visual-line-mode t)
+  (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
+
+  ;; change fancy powerline separator to cleaner ones
+  (setq powerline-default-separator 'slant)
+
+  ;; take € and # back
+  (defun init/apple-uk-keymap (map)
+    (define-key map (kbd "M-2") #'(lambda () (interactive) (insert "€")))
+    (define-key map (kbd "M-3") #'(lambda () (interactive) (insert "#"))))
+
+  (with-eval-after-load 'evil
+    (init/apple-uk-keymap evil-insert-state-map))
+
+  (with-eval-after-load 'helm
+    (init/apple-uk-keymap helm-map))
 
   ;; custom scroll margin
-  (setq scroll-margin 5)
+  (setq scroll-margin 10)
+
+  ;; replace the standard text representations globally
+  (global-prettify-symbols-mode +1)
 
   ;;; scroll one line at a time (less "jumpy" than defaults)
   ;; (setq mouse-wheel-scroll-amount '(10 ((shift) . 1))) ;; two lines at a time
   ;; (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
   ;; (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-
-  ;; (spacemacs/toggle-truncate-lines-on)
-  ;; Visual line navigation for textual modes
-  ;; (add-hook 'text-mode-hook 'spacemacs/toggle-visual-line-navigation-on)
 
   ;; tern path
   (setenv "PATH" (concat (getenv "PATH") ":/Users/thibault/.nvm/versions/node/v0.12.17/bin"))
@@ -314,7 +344,7 @@ Spacemacs initialization before layers configuration."
   (setq ns-use-srgb-colorspace nil)
 
   ;; indent-guide
-  (spacemacs/toggle-indent-guide-globally-on)
+  (indent-guide-global-mode)
   (setq indent-guide-recursive t
         indent-guide-delay nil
         indent-guide-threshold 0)
@@ -325,14 +355,32 @@ Spacemacs initialization before layers configuration."
 
   ;; neotree
   (setq neo-theme 'ascii
-        neo-smart-open  t
+        neo-smart-open t
+        neo-dont-be-alone t
+        neo-vc-integration '(face char)
         projectile-switch-project-action 'neotree-projectile-action)
+
+  ;; magit auto-complete
+  (setq magit-repository-directories '("~/github/" . 3))
+
+  ;; edit git commit message in spacemacs
+  (global-git-commit-mode t)
+
   )
 
 ;; Do not write anything past this comment: Emacs will auto-generate custom variable definitions.
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag flyspell-correct-helm ace-jump-helm-line yapfify yaml-mode web-mode tagedit slim-mode scss-mode sass-mode pyvenv pytest pyenv-mode py-isort pug-mode pip-requirements ob-elixir live-py-mode less-css-mode hy-mode haml-mode go-guru go-eldoc flycheck-mix emmet-mode cython-mode company-web web-completion-data company-go go-mode company-anaconda anaconda-mode pythonic alchemist elixir-mode xterm-color smeargle shell-pop orgit org-projectile org-present org org-pomodoro alert log4e gntp org-download mwim multi-term magit-gitflow htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help diff-hl auto-dictionary mmm-mode markdown-toc markdown-mode gh-md all-the-icons font-lock+ erlang hide-comnt reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl company-tern dash-functional tern company-statistics company auto-yasnippet ac-ispell auto-complete web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor yasnippet multiple-cursors js2-mode js-doc coffee-mode ws-butler window-numbering which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup f s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash async aggressive-indent adaptive-wrap ace-window ace-link avy quelpa package-build spacemacs-theme)))
+    (jinja2-mode helm-dash dockerfile-mode docker tablist docker-tramp dash-at-point ansible-doc ansible clojure-snippets clj-refactor inflections edn paredit peg cider-eval-sexp-fu cider seq queue clojure-mode vmd-mode helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag flyspell-correct-helm ace-jump-helm-line yapfify yaml-mode web-mode tagedit slim-mode scss-mode sass-mode pyvenv pytest pyenv-mode py-isort pug-mode pip-requirements ob-elixir live-py-mode less-css-mode hy-mode haml-mode go-guru go-eldoc flycheck-mix emmet-mode cython-mode company-web web-completion-data company-go go-mode company-anaconda anaconda-mode pythonic alchemist elixir-mode xterm-color smeargle shell-pop orgit org-projectile org-present org org-pomodoro alert log4e gntp org-download mwim multi-term magit-gitflow htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help diff-hl auto-dictionary mmm-mode markdown-toc markdown-mode gh-md all-the-icons font-lock+ erlang hide-comnt reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl company-tern dash-functional tern company-statistics company auto-yasnippet ac-ispell auto-complete web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor yasnippet multiple-cursors js2-mode js-doc coffee-mode ws-butler window-numbering which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup f s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash async aggressive-indent adaptive-wrap ace-window ace-link avy quelpa package-build spacemacs-theme)))
  '(spacemacs-theme-comment-bg nil))
-(custom-set-faces)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
