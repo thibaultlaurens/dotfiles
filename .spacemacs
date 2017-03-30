@@ -44,20 +44,25 @@
      javascript
      (markdown :variables markdown-live-preview-engine 'vmd)
      python
+     react
      yaml
 
      ;; Source-Control
      git
-     ;; github
+     github
      version-control
+
+     (colors :variables colors-colorize-identifiers 'var)
 
      ;; Tools
      ansible
      dash
      docker
+     nginx
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
+     shell-scripts
      )
 
    ;; List of additional packages that will be installed
@@ -68,7 +73,10 @@
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages
+   '(
+     vi-tilde-fringe
+     )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; (`used-only'|`used-but-keep-unused'|`all')
@@ -178,7 +186,7 @@ Spacemacs initialization before layers configuration."
    dotspacemacs-display-default-layout t
 
    ;; If non nil then the last auto saved layouts are resume automatically upon start.
-   dotspacemacs-auto-resume-layouts t
+   dotspacemacs-auto-resume-layouts nil
 
    ;; Size (in MB) above which spacemacs will prompt to open the large file
    dotspacemacs-large-file-size 1
@@ -224,10 +232,10 @@ Spacemacs initialization before layers configuration."
    dotspacemacs-maximized-at-startup t
 
    ;; The transparency level of a frame when it's active or selected. (0..100)
-   dotspacemacs-active-transparency 97
+   dotspacemacs-active-transparency 95
 
    ;; The transparency level of a frame when it's inactive or deselected. (0..100)
-   dotspacemacs-inactive-transparency 97
+   dotspacemacs-inactive-transparency 95
 
    ;; If non nil show the titles of transient states. (default t)
    dotspacemacs-show-transient-state-title t
@@ -276,7 +284,7 @@ Spacemacs initialization before layers configuration."
 (defun dotspacemacs/user-init ()
 
   ;; vim search
-  (setq evil-search-module 'evil-search)
+  (setq-default evil-search-module 'evil-search)
 
   ;; unbind right `alt` key from "M"
   (setq-default mac-right-option-modifier nil)
@@ -285,7 +293,7 @@ Spacemacs initialization before layers configuration."
   (setq-default git-magit-status-fullscreen t)
 
   ;; frame title is file path and append a '•' when buffer has unsaved changed
-  (setq frame-title-format
+  (setq-default frame-title-format
         '((:eval (if (buffer-file-name)
                      (abbreviate-file-name (buffer-file-name))
                    "%b"))
@@ -297,12 +305,20 @@ Spacemacs initialization before layers configuration."
 
 (defun dotspacemacs/user-config ()
 
+  ;; dispplay time
+  (setq display-time-24hr-format t)
+  (display-time-mode t)
+
+  ;; enable rainbow-mode by default
+  (add-hook 'prog-mode-hook 'rainbow-mode)
+
   ;; wrap long lines
   (global-visual-line-mode t)
   (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 
-  ;; change fancy powerline separator to cleaner ones
-  (setq powerline-default-separator 'slant)
+  ;; powerline settings
+  (setq powerline-default-separator 'slant
+        ns-use-srgb-colorspace nil)
 
   ;; take € and # back
   (defun init/apple-uk-keymap (map)
@@ -321,11 +337,6 @@ Spacemacs initialization before layers configuration."
   ;; replace the standard text representations globally
   (global-prettify-symbols-mode +1)
 
-  ;;; scroll one line at a time (less "jumpy" than defaults)
-  ;; (setq mouse-wheel-scroll-amount '(10 ((shift) . 1))) ;; two lines at a time
-  ;; (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-  ;; (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-
   ;; tern path
   (setenv "PATH" (concat (getenv "PATH") ":/Users/thibault/.nvm/versions/node/v0.12.17/bin"))
   (setq exec-path (append exec-path '("/Users/thibault/.nvm/versions/node/v0.12.17/bin")))
@@ -340,32 +351,34 @@ Spacemacs initialization before layers configuration."
         evil-escape-delay 0.2
         evil-escape-unordered-key-sequence t)
 
-  ;; consistent powerline separator colors
-  (setq ns-use-srgb-colorspace nil)
-
   ;; indent-guide
   (indent-guide-global-mode)
   (setq indent-guide-recursive t
         indent-guide-delay nil
         indent-guide-threshold 0)
 
-  ;; misc toggles
-  (spacemacs/toggle-transparency)
-  (spacemacs/toggle-vi-tilde-fringe-off)
-
   ;; neotree
   (setq neo-theme 'ascii
         neo-smart-open t
         neo-dont-be-alone t
+        neo-show-updir-line t
         neo-vc-integration '(face char)
         projectile-switch-project-action 'neotree-projectile-action)
 
-  ;; magit auto-complete
+  ;; git and magit
   (setq magit-repository-directories '("~/github/" . 3))
-
-  ;; edit git commit message in spacemacs
   (global-git-commit-mode t)
 
+  ;; dash intergration
+  (setq helm-dash-docset-newpath "~/Library/Application Support/Dash/DocSets")
+  (setq helm-dash-browser-func 'eww)
+
+  ;; drag stuff around
+  ;; (drag-stuff-global-mode 1)
+  ;; (drag-stuff-define-keys)
+
+  ;; blink visible cursor
+  (blink-cursor-mode 'visible-cursor)
   )
 
 ;; Do not write anything past this comment: Emacs will auto-generate custom variable definitions.
@@ -376,7 +389,7 @@ Spacemacs initialization before layers configuration."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (jinja2-mode helm-dash dockerfile-mode docker tablist docker-tramp dash-at-point ansible-doc ansible clojure-snippets clj-refactor inflections edn paredit peg cider-eval-sexp-fu cider seq queue clojure-mode vmd-mode helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag flyspell-correct-helm ace-jump-helm-line yapfify yaml-mode web-mode tagedit slim-mode scss-mode sass-mode pyvenv pytest pyenv-mode py-isort pug-mode pip-requirements ob-elixir live-py-mode less-css-mode hy-mode haml-mode go-guru go-eldoc flycheck-mix emmet-mode cython-mode company-web web-completion-data company-go go-mode company-anaconda anaconda-mode pythonic alchemist elixir-mode xterm-color smeargle shell-pop orgit org-projectile org-present org org-pomodoro alert log4e gntp org-download mwim multi-term magit-gitflow htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help diff-hl auto-dictionary mmm-mode markdown-toc markdown-mode gh-md all-the-icons font-lock+ erlang hide-comnt reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl company-tern dash-functional tern company-statistics company auto-yasnippet ac-ispell auto-complete web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor yasnippet multiple-cursors js2-mode js-doc coffee-mode ws-butler window-numbering which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup f s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash async aggressive-indent adaptive-wrap ace-window ace-link avy quelpa package-build spacemacs-theme)))
+    (sublimity insert-shebang fish-mode company-shell nginx-mode magit-gh-pulls github-search github-clone github-browse-file gist gh marshal logito pcache ht rainbow-mode rainbow-identifiers color-identifiers-mode jinja2-mode helm-dash dockerfile-mode docker tablist docker-tramp dash-at-point ansible-doc ansible clojure-snippets clj-refactor inflections edn paredit peg cider-eval-sexp-fu cider seq queue clojure-mode vmd-mode helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag flyspell-correct-helm ace-jump-helm-line yapfify yaml-mode web-mode tagedit slim-mode scss-mode sass-mode pyvenv pytest pyenv-mode py-isort pug-mode pip-requirements ob-elixir live-py-mode less-css-mode hy-mode haml-mode go-guru go-eldoc flycheck-mix emmet-mode cython-mode company-web web-completion-data company-go go-mode company-anaconda anaconda-mode pythonic alchemist elixir-mode xterm-color smeargle shell-pop orgit org-projectile org-present org org-pomodoro alert log4e gntp org-download mwim multi-term magit-gitflow htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help diff-hl auto-dictionary mmm-mode markdown-toc markdown-mode gh-md all-the-icons font-lock+ erlang hide-comnt reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl company-tern dash-functional tern company-statistics company auto-yasnippet ac-ispell auto-complete web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor yasnippet multiple-cursors js2-mode js-doc coffee-mode ws-butler window-numbering which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup f s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash async aggressive-indent adaptive-wrap ace-window ace-link avy quelpa package-build spacemacs-theme)))
  '(spacemacs-theme-comment-bg nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
