@@ -21,6 +21,7 @@ apps=(
     iterm2
     itsycal
     keepingyouawake
+    mongodb-compass
     postman
     robomongo
     simplenote

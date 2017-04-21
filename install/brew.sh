@@ -24,6 +24,7 @@ brew tap homebrew/dupes
 brew tap Homebrew/bundle
 
 apps=(
+    ag
     android-platform-tools
     ansible
     bash
