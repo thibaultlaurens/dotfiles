@@ -7,6 +7,10 @@ ln -fs ${DOTFILE}/shell/.bashrc ${HOME}/.bashrc
 ln -fs ${DOTFILE}/shell/.bash_profile ${HOME}/.bash_profile
 source ${HOME}/.bash_profile
 
+# git
+ln -fs ${DOTFILE}/git/.gitconfig ${HOME}/.gitconfig
+ln -fs ${DOTFILE}/git/.gitignore ${HOME}/.gitignore
+
 # emacs
 ln -fs ${DOTFILE}/.spacemacs ${HOME}/.spacemacs
 
