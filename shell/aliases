@@ -6,17 +6,18 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias dc="cd ~/Documents"
+alias gh="cd ~/github"
+
+alias cd-log="cd /var/log"
+
 # Shortcuts
 alias e="emacs &"
 alias g="git"
 alias c="clear"
 alias h="history"
-
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias dc="cd ~/Documents"
-alias gh="cd ~/github"
-alias log="cd /var/log"
 
 # Default options
 alias cp="cp -iv"
@@ -31,22 +32,6 @@ alias grep='grep --color=auto'
 
 # Git
 alias git=hub
-
-alias ga="git add -p"           # step through each change, or hunk
-alias gb="git branch -a -v"     # list remote-tracking and local branches, with last commit info
-alias gc="git commit"
-alias gcln="git clean -xfd"     # remove untracked files
-alias gco="git checkout"        # switch to branch, -b to create one on the fly
-alias gd="git diff --color | diff-so-fancy | less --tabs=4 -RFX"
-alias gf="git reflog"           # see every step made with git
-alias gl="git log --all --graph --decorate --oneline --simplify-by-decoration"
-alias gm='git merge'
-alias gp="git pull"
-alias gpr="git pull-request"
-alias gpu="git push origin HEAD"
-alias gs="git status -s"        # pretty status
-
-alias wip="git commit -m "wip" . && git push origin HEAD"
 
 # Edit ~/.bash_profile and /etc/hosts file
 alias edith="sudo $EDITOR /etc/hosts"
