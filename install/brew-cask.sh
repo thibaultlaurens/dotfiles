@@ -9,7 +9,6 @@ apps=(
     adapter
     android-file-transfer
     appcleaner
-    atom
     daisydisk
     dash
     docker

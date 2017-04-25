@@ -4,10 +4,6 @@ git clone https://github.com/thibaultlaurens/dotfiles.git && cd dotfiles && sour
 
 ```
 .
-├── atom/
-│   ├── .proton                           # https://github.com/dvcrn/proton
-│   ├── projects.sh                       # git repos -> atom projects
-│   └── styles.less                       # atom custom styles
 ├── install/
 │   ├── brew-cask.sh                      # mac os apps
 │   ├── brew.sh                           # homebrew packages

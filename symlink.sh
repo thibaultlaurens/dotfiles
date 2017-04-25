@@ -7,10 +7,6 @@ ln -fs ${DOTFILE}/shell/.bashrc ${HOME}/.bashrc
 ln -fs ${DOTFILE}/shell/.bash_profile ${HOME}/.bash_profile
 source ${HOME}/.bash_profile
 
-# atom / proton
-ln -fs ${DOTFILE}/atom/.proton ${HOME}/.proton
-ln -fs ${DOTFILE}/atom/styles.less ${HOME}/.atom/
-
 # emacs
 ln -fs ${DOTFILE}/.spacemacs ${HOME}/.spacemacs
 
