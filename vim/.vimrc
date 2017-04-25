@@ -88,12 +88,6 @@ nnoremap <C-H> <C-W><C-H>
 map <leader>n :bnext<CR>
 map <leader>p :bprevious<CR>
 
-" Arrows are bad
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
-
 
 " ================ Plugins ===========================
 
