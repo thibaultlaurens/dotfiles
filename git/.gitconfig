@@ -1,6 +1,3 @@
-# TODO:
-# - pull-all (from shell/aliases)
-#	- repos (from shell/functions)
 
 [user]
 	name = Thibault Laurens
@@ -11,7 +8,7 @@
 
 [status]
 	# also show individual files in untracked directories
-  showUntrackedFiles = all
+	showUntrackedFiles = all
 
 [color "branch"]
 	current = yellow reverse
@@ -31,36 +28,50 @@
 	excludesfile = ~/.gitignore
 	pager = diff-so-fancy | less --tabs=4 -RFX
 
+[diff]
+	tool = icdiff
+
+[difftool]
+	prompt = false
+
+[difftool "icdiff"]
+	cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
+
+[pager]
+	difftool = true
+
 [alias]
 	# remove any remote-tracking references that no longer exist on the remote
 	prune = fetch --prune
 
+	# TODO: check that
+	# rebase = rebase -i HEAD~15
+
 	# go back in (commit) history
 	undo = reset --soft HEAD^
+
+	# TODO: check that
 	# undo = reset HEAD~1 --mixed
 
 	# saves local updates, including un-added files
 	stash-all = stash save --include-untracked
 
 	# amend the currently staged files to the latest commit
-  amend = commit --amend --reuse-message=HEAD
-
-	# prettier git log
-	log = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	amend = commit --amend --reuse-message=HEAD
 
 	# create a pull-request and open it in the browser
 	pr = pull-request -o
 
 	# list tags, branches or remotes
-  tags = tag -l
-  branches = branch -av
-  remotes = remote -v
+	tags = tag -l
+	branches = branch -av
+	remotes = remote -v
 
 	# remove untracked files
 	clean = clean -xfdi
 
 	# switch to a branch, creating it if necessary
-  go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
 	# short status summary, but include branch info
 	status = status -sb
@@ -71,8 +82,7 @@
 	# by default, push the current branch to the same name on the remote
 	push = push origin HEAD
 
-	wtf = "! git log --pretty=tformat:\"%C(auto,yellow)%h%C(auto)%d%C(auto,reset) by %C(auto,blue)%cn%C(auto,reset), %C(auto,cyan)%ar%C(auto,reset)%n %s\" --stat"
-
+	# quick and easy wip
 	wip = "!f() { git commit -m "wip" . && git push origin HEAD; }; f"
 
 	# clone a repository including all submodules
@@ -81,22 +91,23 @@
 	# list contributors with number of commits
 	contributors = shortlog --summary --numbered
 
-	# fancy diff
-	diff= diff --patch-with-stat --color
+	# add stats summary to diffs
+	diff = diff --patch-with-stat
 
-	# fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
-	# fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+	# prettier git log
+	log = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+
+	# prettier git log, with stats
+	log-stat = "! git log --pretty=tformat:\"%C(auto,yellow)%h%C(auto)%d%C(auto,reset) by %C(auto,blue)%cn%C(auto,reset), %C(auto,cyan)%ar%C(auto,reset)%n %s\" --stat"
 
 	# Find branches containing commit
-	# fb = "!f() { git branch -a --contains $1; }; f"
+	find-branches = "!f() { git branch -a --contains $1; }; f"
 
 	# Find tags containing commit
-	# ft = "!f() { git describe --always --contains $1; }; f"
+	find-tags = "!f() { git describe --always --contains $1; }; f"
 
 	# Find commits by source code
-	# fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+	find-commits = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
 
 	# Find commits by commit message
-	# fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; };
-
-	# r = rebase -i HEAD~15
+	find-messages = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
