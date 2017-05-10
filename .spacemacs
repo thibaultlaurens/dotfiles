@@ -78,7 +78,7 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(evil-search-highlight-persist)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -149,6 +149,8 @@ values."
    dotspacemacs-themes
    '(
      spacemacs-dark
+     darktooth
+     granger
      solarized-dark
      )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -408,8 +410,22 @@ you should place your code here."
   ;; display time in modeline
   (display-time-mode t)
 
+  ;; (fancy-battery-mode t)
+
   ;; turn on 80th column indicator for all files
   (add-hook 'prog-mode-hook 'fci-mode)
+
+  ;; scroll lines directly with J and K (like C-E and C-Y)
+  ;; (define-key evil-normal-state-map (kbd "J") 'evil-scroll-line-down)
+  ;; (define-key evil-normal-state-map (kbd "K") 'evil-scroll-line-up)
+
+  ;; navigate using visual lines, even if they are wrapped
+  (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+
+  ;; same thing with the arrow keys
+  (define-key evil-normal-state-map (kbd "<down>") 'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "<up>") 'evil-previous-visual-line)
 
   ;; enable transparency
   ;; (spacemacs/enable-transparency)
@@ -423,6 +439,8 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
  '(package-selected-packages
    (quote
     (vimrc-mode dactyl-mode org-projectile org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot ibuffer-projectile helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-tern dash-functional company-statistics company-go company-anaconda clojure-snippets auto-yasnippet ac-ispell auto-complete reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl yapfify yaml-mode xterm-color web-mode web-beautify vmd-mode unfill tern tagedit smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake pyvenv pytest pyenv-mode py-isort pug-mode pip-requirements orgit ob-elixir mwim multi-term mmm-mode minitest markdown-toc markdown-mode magit-gitflow livid-mode skewer-mode simple-httpd live-py-mode less-css-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc hy-mode helm-pydoc helm-gitignore helm-css-scss haml-mode go-guru go-eldoc go-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-helm flyspell-correct flycheck-mix flycheck-credo flycheck evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help erlang emmet-mode diff-hl cython-mode coffee-mode clj-refactor inflections edn multiple-cursors paredit yasnippet peg cider-eval-sexp-fu cider seq queue clojure-mode chruby bundler inf-ruby auto-dictionary anaconda-mode pythonic alchemist company elixir-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
