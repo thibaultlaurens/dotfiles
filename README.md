@@ -4,6 +4,9 @@ git clone https://github.com/thibaultlaurens/dotfiles.git && cd dotfiles && sour
 
 ```
 .
+├── git/
+│   ├── .gitconfig                        # git config
+│   ├── .gitignore                        # global gitignore
 ├── install/
 │   ├── brew-cask.sh                      # mac os apps
 │   ├── brew.sh                           # homebrew packages
@@ -11,7 +14,7 @@ git clone https://github.com/thibaultlaurens/dotfiles.git && cd dotfiles && sour
 │   └── npm.sh                            # node/nvm/npm/packages
 │   ├── spacemacs.sh                      # install spacemacs
 ├── iterm/
-│   ├── colorschemes/                     # Facebook and One Dark (atom like) themes
+│   ├── colorschemes/                     # Facebook and One Dark themes
 │   ├── fonts/                            # Hack and Droid Sans Mono for Powerline
 │   └── com.googlecode.iterm2.plist       # iterm2 preference file
 ├── shell/
