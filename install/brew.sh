@@ -31,6 +31,8 @@ apps=(
     bash-completion
     coreutils
     diff-so-fancy
+    docker-completion
+    dvm
     elixir
     erlang-r18
     flake8
@@ -40,6 +42,7 @@ apps=(
     htop
     httpie
     hub
+    icdiff
     imagemagick
     ispell
     openssh
