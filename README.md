@@ -6,14 +6,14 @@ git clone https://github.com/thibaultlaurens/dotfiles.git && cd dotfiles && sour
 .
 ├── git/
 │   ├── .gitconfig                        # git config
-│   ├── .gitignore                        # global gitignore
+│   └── .gitignore                        # global gitignore
 ├── install/
 │   ├── brew-cask.sh                      # mac os apps
 │   ├── brew.sh                           # homebrew packages
 │   ├── go.sh                             # go and some packages
-│   └── npm.sh                            # node/nvm/npm/packages
-│   └── python.sh                         # python and pip packages
-│   ├── spacemacs.sh                      # install spacemacs
+│   ├── npm.sh                            # node/nvm/npm/packages
+│   ├── python.sh                         # python and pip packages
+│   └── spacemacs.sh                      # install spacemacs
 ├── iterm/
 │   ├── colorschemes/                     # Facebook and One Dark themes
 │   ├── fonts/                            # Hack and Droid Sans Mono for Powerline
