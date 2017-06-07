@@ -20,42 +20,42 @@ brew upgrade
 brew doctor
 
 # Add more sources
-brew tap homebrew/dupes
 brew tap Homebrew/bundle
 
+echo "installing packages..."
 apps=(
     ag
-    android-platform-tools
     ansible
     bash
     bash-completion
+    brew-cask-completion
     coreutils
     diff-so-fancy
     docker-completion
     dvm
     elixir
     erlang-r18
-    flake8
+    findutils
     git
-    go
-    go-delve/delve/delve
+    gnu-sed --with-default-names
     htop
     httpie
     hub
     icdiff
     imagemagick
     ispell
+    markdown
+    moreutils
     openssh
     openssl
-    python
     supervisor
     tree
     unrar
+    vagrant-completion
     vim
     watch
 )
 
-echo "installing packages..."
 brew install "${apps[@]}"
 
 # Remove outdated versions from the cellar
