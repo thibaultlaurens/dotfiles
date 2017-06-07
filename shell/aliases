@@ -79,7 +79,9 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias pullall="find . -maxdepth 1 -type d -exec sh -c '(cd {} && git pull)' ';'"
 
 # Homebrew update
-alias update="brew update; brew upgrade; brew cleanup; brew doctor"
+alias update-brew="brew cask list | xargs brew cask reinstall; brew cask cleanup"
+alias update-cask="brew update; brew upgrade; brew cleanup; brew doctor"
+alias update="update-brew; update-cask"
 
 # Empty the Trash on all mounted volumes and the main HDD.
 # Also, clear Apple’s System Logs to improve shell startup speed.

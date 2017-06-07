@@ -29,6 +29,10 @@ export NVM_DIR="$HOME/.nvm"
 [[ -r $DVM_DIR/bash_completion ]] && . $DVM_DIR/bash_completion
 
 
+# kubectl auto-completion
+source ~/.kubectl-completion
+
+
 # go environment variables
 
 export GOPATH=$HOME/golang
