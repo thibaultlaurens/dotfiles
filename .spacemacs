@@ -48,12 +48,17 @@ values."
      emacs-lisp
      erlang
      git
-     go
+     (go :variables
+         go-tab-width 4
+         go-use-gometalinter t
+         gofmt-command "goimports")
      helm
      html
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
-     javascript
+     (javascript :variables
+                 javascript-disable-tern-port-files nil
+                 tern-command '("node" "/Users/thibault/.nvm/versions/node/v0.12.18/bin/tern"))
      (markdown :variables
                markdown-live-preview-engine 'vmd)
      org
@@ -110,7 +115,7 @@ values."
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
    ;; whenever you start Emacs. (default nil)
-   dotspacemacs-check-for-update nil
+   dotspacemacs-check-for-update t
    ;; If non-nil, a form that evaluates to a package directory. For example, to
    ;; use different package directories for different Emacs versions, set this
    ;; to `emacs-version'.
@@ -252,7 +257,7 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup t
+   dotspacemacs-maximized-at-startup nil
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -375,6 +380,9 @@ you should place your code here."
    ;; don't create lockfiles
    create-lockfiles nil
 
+   ;; don’t move back the cursor when exiting insert mode
+   evil-move-cursor-back nil
+
    ;; neotree config
    neo-theme 'ascii
    neo-smart-open t
@@ -395,6 +403,9 @@ you should place your code here."
    evil-escape-delay 0.2
    evil-escape-unordered-key-sequence t
 
+   ;; indent js files with 4 spaces
+   js2-basic-offset 4
+   js-indent-level 4
    )
 
   ;; make evil treat an emacs symbol as a word (ex: fix cmd 'dw' with word with '_')
