@@ -10,6 +10,7 @@ source install/brew-cask.sh
 source install/spacemacs.sh
 source install/npm.sh
 source install/go.sh
+source install/python.sh
 
 # Symlink everything
 source symlink.sh
