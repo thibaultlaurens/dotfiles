@@ -11,16 +11,16 @@ brew install go
 
 echo "installing go packages..."
 packages=(
-    golang.org/x/tools/cmd/godoc
-    golang.org/x/tools/cmd/guru
-    golang.org/x/tools/cmd/gorename
-    golang.org/x/tools/cmd/goimports
-    github.com/nsf/gocode
-    github.com/k0kubun/pp
-    github.com/motemen/gore
-    github.com/rogpeppe/godef
-    github.com/alecthomas/gometalinter
-    github.com/mailgun/godebug
+    golang.org/x/tools/cmd/godoc            # extract and generate doc
+    golang.org/x/tools/cmd/guru             # navigate across go code in editors
+    golang.org/x/tools/cmd/gorename         # precise type-safe renaming
+    golang.org/x/tools/cmd/goimports        # drop in replacement for gofmt
+    github.com/nsf/gocode                   # autocompletion daemon
+    github.com/k0kubun/pp                   # pretty printer
+    github.com/motemen/gore                 # go REPL
+    github.com/rogpeppe/godef               # find symbol information in go code
+    github.com/alecthomas/gometalinter      # concurrent go linter
+    github.com/mailgun/godebug              # cross-platform debugger
 )
 
 go get -u -v "${packages[@]}"
