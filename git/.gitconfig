@@ -62,6 +62,9 @@
 	# create a pull-request and open it in the browser
 	pr = pull-request -o
 
+	# pull-request with latest commit message
+	prm = pull-request -o --browse -m "$(git log -1 --pretty=%B | grep -v ^$)"
+
 	# list tags, branches or remotes
 	tags = tag -l
 	branches = branch -av
@@ -111,3 +114,9 @@
 
 	# Find commits by commit message
 	find-messages = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
+	# remove all local branches except master
+	rm-branches = "git branch | grep -v "master" | xargs git branch -D"
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
