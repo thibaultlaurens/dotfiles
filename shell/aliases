@@ -56,8 +56,8 @@ alias tree="tree -aCF --dirsfirst -I '.git|node_modules'"
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
-# Always copy pwd
-alias pwd="pwd|tr -d "\n"|pbcopy"
+# Copy pwd
+alias pwdcopy="pwd|tr -d "\n"|pbcopy"
 
 # Reload the shell
 alias reload="exec $SHELL -l"

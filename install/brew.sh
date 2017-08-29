@@ -36,6 +36,7 @@ apps=(
     elixir
     erlang-r18
     findutils
+    fzf                                 #
     git
     gnu-sed --with-default-names
     htop
@@ -44,11 +45,14 @@ apps=(
     icdiff
     imagemagick
     ispell
+    lnav                                 # log file viewer
     markdown
     moreutils
     openssh
     openssl
+    ranger                               # console file manager
     supervisor
+    tig                                  # text-mode interface for git
     tree
     unrar
     vagrant-completion
