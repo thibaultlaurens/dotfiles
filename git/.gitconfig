@@ -116,7 +116,7 @@
 	find-messages = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 
 	# remove all local branches except master
-	rm-branches = "git branch | grep -v "master" | xargs git branch -D"
+	rm-branches = "!f() { git branch | grep -v "master" | xargs git branch -D; }; f"
 
 [url "git@github.com:"]
 	insteadOf = https://github.com/
