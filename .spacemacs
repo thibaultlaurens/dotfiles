@@ -426,6 +426,7 @@ you should place your code here."
    )
 
   (doom-themes-neotree-config)
+  (doom-neotree-file-icons)
 
   ;; disable custom scroll-margin in term-mode
   (add-hook 'term-mode-hook (lambda () (setq-local scroll-margin 0)))
