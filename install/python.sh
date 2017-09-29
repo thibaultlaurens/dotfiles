@@ -19,3 +19,6 @@ packages=(
 )
 
 pip install "${packages[@]}"
+
+echo "installing python3..."
+brew install python3
