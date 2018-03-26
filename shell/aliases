@@ -9,9 +9,16 @@ alias .....="cd ../../../.."
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias dc="cd ~/Documents"
-alias gh="cd ~/github"
 
+alias gh="cd ~/github"
 alias cd-log="cd /var/log"
+
+# git repos aliases
+TL_REPOS_PATH="${HOME}/github/thibault/"
+REPOS=`find $TL_REPOS_PATH -maxdepth 1 -type d -exec basename {} \;`
+for REPO in $REPOS; do
+    alias $REPO='cd '$TL_REPOS_PATH/$REPO
+done
 
 # Shortcuts
 alias e="emacs &"
@@ -67,10 +74,10 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 
 # Lock the screen
-alias afk="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
 
-# Flush Directory Service cache
-alias flush="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
+# Restart dns
+alias restart-dns="sudo killall -HUP mDNSResponder"
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"

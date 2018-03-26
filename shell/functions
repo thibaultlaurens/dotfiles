@@ -91,7 +91,7 @@ function cat() {
 }
 
 # list git repos status
-function git_ls() {
+function git-ls() {
     for directory in `ls -d */`
         do
             local repo_name=${directory%%/}
@@ -100,7 +100,7 @@ function git_ls() {
             local branch=$(git -C $repo_path branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
 
             if [[ -n $branch ]]; then
-                local state=$(git_status $repo_path)
+                local state=$(git-status $repo_path)
 
                 if [ ! -z $state ]; then
                     local color="\033[1;31m"  # bold red
@@ -120,7 +120,7 @@ function git_ls() {
 # U local branch is behind remote
 # S changes have been stashed
 # P local commits need to be pushed to the remote
-function git_status() {
+function git-status() {
     local status="$(git -C $1 status -s -b 2>/dev/null)"
     local output=''
 
