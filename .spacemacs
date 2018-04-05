@@ -78,6 +78,7 @@ values."
    dotspacemacs-additional-packages '(
                                       anaconda-mode
                                       doom-themes
+                                      evil-mc
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -478,6 +479,35 @@ you should place your code here."
 
   ;; enable transparency
   ;; (spacemacs/enable-transparency)
+
+  ;; Multiple cursors
+  (use-package evil-mc
+    :ensure t
+    :config
+
+    (defun evil--mc-make-cursor-at-col (startcol _endcol orig-line)
+      (move-to-column startcol)
+      (unless (= (line-number-at-pos) orig-line)
+        (evil-mc-make-cursor-here)))
+    (defun evil-mc-make-vertical-cursors (beg end)
+      (interactive (list (region-beginning) (region-end)))
+      (evil-mc-pause-cursors)
+      (apply-on-rectangle #'evil--mc-make-cursor-at-col
+                          beg end (line-number-at-pos (point)))
+      (evil-mc-resume-cursors)
+      (evil-normal-state)
+      (move-to-column (evil-mc-column-number (if (> end beg)
+                                                 beg
+                                               end)))))
+  ;; how to use:
+  ;; - select text
+  ;; - C-n to create a next cursor for the same selection forwards
+  ;; - C-p to create a next cursor for the same selection backwards
+  ;; - grn to skip a forward match
+  ;; - grp to skip a backward match
+  ;; - edit with multiple cursors
+  ;; - gru to remove all cursors
+  (global-evil-mc-mode t)
 
   )
 
