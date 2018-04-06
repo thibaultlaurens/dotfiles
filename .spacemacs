@@ -35,7 +35,6 @@ values."
      ansible
      auto-completion
      better-defaults
-     clojure
      elixir
      emacs-lisp
      erlang
@@ -154,8 +153,9 @@ values."
    dotspacemacs-themes
    '(
      doom-vibrant
+     doom-solarized-light
+     doom-spacegrey
      spacemacs-dark
-     gruvbox
      )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -439,6 +439,7 @@ you should place your code here."
    js-indent-level 4
    )
 
+  (doom-themes-visual-bell-config)
   (doom-themes-neotree-config)
   ;; (doom-neotree-file-icons)
 
@@ -508,7 +509,6 @@ you should place your code here."
   ;; - edit with multiple cursors
   ;; - gru to remove all cursors
   (global-evil-mc-mode t)
-
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
