@@ -70,6 +70,11 @@ function o() {
     fi;
 }
 
+# search and replace with ag
+function agr {
+    ag -0 -l "$1" | xargs -0 perl -pi.bak -e "s/$1/$2/g";
+}
+
 # get colors in manual pages
 function man() {
     LESS_TERMCAP_mb=$(printf "\e[1;31m") \
