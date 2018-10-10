@@ -23,6 +23,7 @@ brew doctor
 brew tap Homebrew/bundle
 
 echo "installing packages..."
+# todo: kubectl
 apps=(
     ag
     ansible
@@ -30,11 +31,10 @@ apps=(
     bash-completion
     brew-cask-completion
     coreutils
+    ctop
     diff-so-fancy
     docker-completion
     dvm
-    elixir
-    erlang-r18
     findutils
     fzf                                 #
     git
@@ -43,7 +43,6 @@ apps=(
     httpie
     hub
     icdiff
-    imagemagick
     ispell
     lnav                                 # log file viewer
     markdown
@@ -51,11 +50,9 @@ apps=(
     openssh
     openssl
     ranger                               # console file manager
-    supervisor
     tig                                  # text-mode interface for git
     tree
     unrar
-    vagrant-completion
     vim
     watch
 )

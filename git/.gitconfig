@@ -71,34 +71,34 @@
 	remotes = remote -v
 
 	# remove untracked files
-	clean = clean -xfdi
+	rm-untracked = clean -xfdi
 
 	# switch to a branch, creating it if necessary
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
 	# short status summary, but include branch info
-	status = status -sb
+	ss = status -sb
 
 	# step through each change, or hunk when adding to git
-	add = add -p
+	ap = add -p
 
 	# by default, push the current branch to the same name on the remote
-	push = push origin HEAD
+	pu = push origin HEAD
 
 	# quick and easy wip
 	wip = "!f() { git commit -m "wip" . && git push origin HEAD; }; f"
 
-	# clone a repository including all submodules
-	clone = clone --recursive
+	# cl a repository including all submodules
+	cl = clone --recursive
 
 	# list contributors with number of commits
 	contributors = shortlog --summary --numbered
 
 	# add stats summary to diffs
-	diff = diff --patch-with-stat
+	df = diff --patch-with-stat
 
 	# prettier git log
-	log = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 
 	# prettier git log, with stats
 	log-stat = "! git log --pretty=tformat:\"%C(auto,yellow)%h%C(auto)%d%C(auto,reset) by %C(auto,blue)%cn%C(auto,reset), %C(auto,cyan)%ar%C(auto,reset)%n %s\" --stat"

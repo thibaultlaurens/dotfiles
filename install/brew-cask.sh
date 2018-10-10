@@ -7,6 +7,7 @@ brew tap caskroom/fonts
 
 echo "installing apps..."
 
+# todo: lightroom cc and ps cc
 apps=(
     adapter
     android-file-transfer
@@ -15,27 +16,24 @@ apps=(
     daisydisk
     dash
     docker
-    evernote
-    firefox
+    simplenote
+    firefox-developer
     font-hack
     google-chrome
     google-drive
     iterm2
     itsycal
     keepingyouawake
-    macdown
     mongodb-compass
     postman
+    rdm
     robomongo
     simplenote
     skype
     slack
-    sourcetree
     spectacle
+    tor
     transmission
-    vagrant
-    vagrant-manager
-    virtualbox
     vlc
 )
 brew cask install "${apps[@]}"

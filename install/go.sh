@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export GOPATH=$HOME/golang
+export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 mkdir $GOPATH
