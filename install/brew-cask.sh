@@ -18,10 +18,10 @@ apps=(
     dash
     docker
     simplenote
-    firefox-developer
+    firefox-developer-edition
     font-hack
     google-chrome
-    google-drive
+    google-backup-and-sync
     iterm2
     itsycal
     keepingyouawake
@@ -29,13 +29,12 @@ apps=(
     menumeters
     mongodb-compass
     postman
-    rdm
     robo-3t
     simplenote
     skype
     slack
     spectacle
-    tor
+    torbrowser
     transmission
     vlc
     zoomus
@@ -51,7 +50,6 @@ packages=(
     quicklook-json
     qlprettypatch
     quicklook-csv
-    betterzipql
     qlimagesize
     suspicious-package
     qlvideo
