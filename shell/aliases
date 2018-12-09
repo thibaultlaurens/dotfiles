@@ -44,11 +44,6 @@ alias git=hub
 alias edith="sudo $EDITOR /etc/hosts"
 alias editbp="$EDITOR ~/.bash_profile"
 
-# Node, CoffeeScript and NPM shortcuts
-alias npmls="npm -g ls --depth=0"
-alias n="coffee index.coffee | bunyan -o short"
-alias nd="node-debug -p 4444 -c true -b false coffee index.coffee | bunyan -o short"
-
 # Docker
 alias d="docker"
 alias dc="docker-compose"

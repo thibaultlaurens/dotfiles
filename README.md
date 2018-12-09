@@ -11,8 +11,8 @@ git clone https://github.com/thibaultlaurens/dotfiles.git && cd dotfiles && sour
 │   ├── brew-cask.sh                      # mac os apps
 │   ├── brew.sh                           # homebrew packages
 │   ├── go.sh                             # go and some packages
-│   ├── npm.sh                            # node/nvm/npm/packages
 │   ├── python.sh                         # python and pip packages
+│   ├── rust.sh                           # rust packages
 │   └── spacemacs.sh                      # install spacemacs
 ├── iterm/
 │   ├── colorschemes/                     # Facebook and One Dark themes

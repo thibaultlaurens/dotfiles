@@ -8,9 +8,9 @@ source install/brew-cask.sh
 
 # Setup emacs, node and go environment
 source install/spacemacs.sh
-source install/npm.sh
 source install/go.sh
 source install/python.sh
+source install/rust.sh
 
 # Symlink everything
 source symlink.sh

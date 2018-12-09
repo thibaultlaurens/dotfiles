@@ -9,6 +9,7 @@ echo "installing apps..."
 
 # todo: lightroom cc and ps cc
 apps=(
+    adobe-creative-cloud
     adapter
     android-file-transfer
     android-platform-tools
@@ -24,10 +25,12 @@ apps=(
     iterm2
     itsycal
     keepingyouawake
+    macdown
+    menumeters
     mongodb-compass
     postman
     rdm
-    robomongo
+    robo-3t
     simplenote
     skype
     slack
@@ -35,6 +38,7 @@ apps=(
     tor
     transmission
     vlc
+    zoomus
 )
 brew cask install "${apps[@]}"
 
