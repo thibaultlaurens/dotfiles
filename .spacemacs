@@ -31,7 +31,9 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     rust
+     (rust :variables
+           rust-enable-racer t
+           rust-format-on-save t)
      ansible
      auto-completion
      better-defaults

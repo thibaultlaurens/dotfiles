@@ -42,6 +42,12 @@ export PATH=$PATH:$GOPATH/bin
 # add erlang@18 in the path
 export PATH="/usr/local/opt/erlang@18/bin:$PATH"
 
+# path for python
+export PATH=/usr/local/opt/python/libexec/bin:$PATH
+
+# path for rust
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.cargo/bin/racer:$PATH"
 
 # Load the shell dotfiles
 
