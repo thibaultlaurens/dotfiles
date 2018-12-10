@@ -20,6 +20,7 @@ apps=(
     simplenote
     firefox-developer-edition
     font-hack
+    font-source-code-pro
     google-chrome
     google-backup-and-sync
     iterm2

@@ -36,7 +36,6 @@ apps=(
     ctop
     diff-so-fancy
     docker-completion
-    dvm
     findutils
     fzf                                 #
     git
@@ -46,7 +45,9 @@ apps=(
     hub
     icdiff
     ispell
+    kubernetes-cli
     lnav                                 # log file viewer
+    librdkafka
     markdown
     moreutils
     openssh
