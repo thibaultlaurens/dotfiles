@@ -45,6 +45,7 @@ apps=(
     hub
     icdiff
     ispell
+    kops
     kubernetes-cli
     lnav                                 # log file viewer
     librdkafka
