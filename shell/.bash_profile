@@ -39,9 +39,6 @@ load_files() {
         $DOTFILE/shell/functions
         $DOTFILE/shell/options
         $DOTFILE/shell/prompt
-
-        # exta help specific to work
-        ~/Google Drive/Work/extra
     )
 
     # if these files are readable, source them
@@ -54,6 +51,9 @@ load_files() {
 }
 
 load_files
+
+# exta help specific to work
+source ~/Google\ Drive/Work/extra
 
 # FZF config
 export FZF_COMPLETION_TRIGGER='~~'
