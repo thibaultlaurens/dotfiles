@@ -50,6 +50,7 @@ apps=(
     librdkafka
     markdown
     moreutils
+    node
     openssh
     openssl
     ranger                               # console file manager
