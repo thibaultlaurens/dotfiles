@@ -60,7 +60,7 @@
 	amend = commit --amend --reuse-message=HEAD
 
 	# create a pull-request and open it in the browser
-	open-pr = pull-request -o
+	pr = "!f() { git pull-request -o; }; f"
 
 	# pull-request with latest commit message
 	prm = pull-request -o --browse -m "$(git log -1 --pretty=%B | grep -v ^$)"
