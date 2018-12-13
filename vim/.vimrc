@@ -94,7 +94,7 @@ map <leader>p :bprevious<CR>
 filetype plugin on
 
 " Gitgutter - always on
-let g:gitgutter_sign_column_always=1
+set signcolumn=yes
 
 " Unite"
 nnoremap <Leader>f :Unite file<CR>
