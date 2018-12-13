@@ -10,15 +10,8 @@ if [ -f `brew --prefix`/opt/bash-git-prompt/share/gitprompt.sh ]; then
   __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
 fi
 
-# docker version manager
-[ -f /usr/local/opt/dvm/dvm.sh ] && . /usr/local/opt/dvm/dvm.sh
-[[ -r $DVM_DIR/bash_completion ]] && . $DVM_DIR/bash_completion
-
-# kubectl auto-completion
-source ~/.kubectl-completion
-
 # go environment variables
-export GOPATH=$HOME/golang
+export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 # path for python
