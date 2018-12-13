@@ -4,6 +4,7 @@ echo "installing homebrew cask..."
 
 brew tap caskroom/cask
 brew tap caskroom/fonts
+brew tap caskroom/versions
 
 echo "installing apps..."
 
@@ -27,7 +28,7 @@ apps=(
     itsycal
     keepingyouawake
     macdown
-    menumeters
+    yujitach-menumeters
     mongodb-compass
     postman
     robo-3t
@@ -35,7 +36,7 @@ apps=(
     skype
     slack
     spectacle
-    torbrowser
+    tor-browser
     transmission
     vlc
     zoomus
@@ -51,7 +52,6 @@ packages=(
     quicklook-json
     qlprettypatch
     quicklook-csv
-    qlimagesize
     suspicious-package
     qlvideo
 )
