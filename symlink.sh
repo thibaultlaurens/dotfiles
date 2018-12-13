@@ -24,3 +24,7 @@ ${HOME}/Library/Preferences/com.googlecode.iterm2.plist
 
 # htop
 ln -fs ${DOTFILE}/.htoprc ${HOME}/.config/htop/htoprc
+
+# menumeters
+ln -fs ${DOTFILE}/menumeters/com.ragingmenace.MenuMeters.plist \
+   ${HOME}/Library/Preferences/com.ragingmenace.MenuMeters.plist
