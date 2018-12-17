@@ -14,6 +14,9 @@ fi
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
+# add the GOROOT-based install location to the PATH
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
+
 # path for python
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
 

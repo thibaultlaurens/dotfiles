@@ -9,6 +9,9 @@ mkdir -p $GOPATH/src/github.com/thibaultlaurens
 echo "installing go..."
 brew install go
 
+echo "installing dep..."
+brew install dep
+
 echo "installing go packages..."
 packages=(
     golang.org/x/tools/cmd/godoc            # extract and generate doc

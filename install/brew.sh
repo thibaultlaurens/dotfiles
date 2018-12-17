@@ -50,11 +50,14 @@ apps=(
     lnav                                 # log file viewer
     librdkafka
     markdown
+    mongodb
     moreutils
     node
     openssh
     openssl
+    pkg-config                           # needed by librdkafka
     ranger                               # console file manager
+    sshuttle
     tig                                  # text-mode interface for git
     tree
     unrar
