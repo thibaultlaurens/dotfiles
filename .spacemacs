@@ -44,7 +44,6 @@ values."
      github
      (go :variables
          go-tab-width 4
-         go-use-gometalinter t
          gofmt-command "goimports")
      helm
      html
@@ -341,8 +340,6 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-
-  ;; (setenv "WORKON_HOME" "/Users/thibault/.venv")
 
   (setq-default
 

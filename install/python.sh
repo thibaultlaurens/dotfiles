@@ -15,6 +15,8 @@ packages=(
     jedi
     json-rpc
     service-factory
+    yapf
+    isort
     ipython[all]
 )
 
