@@ -54,6 +54,9 @@
 	# TODO: check that
 	# undo = reset HEAD~1 --mixed
 
+	# shortcut for opening a pull-request in github
+	open-pr = pull-request -o
+
 	# saves local updates, including un-added files
 	stash-all = stash save --include-untracked
 
