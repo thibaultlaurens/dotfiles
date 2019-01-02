@@ -15,7 +15,10 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 # add the GOROOT-based install location to the PATH
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
+# export PATH=$PATH:/usr/local/opt/go/libexec/bin
+
+export PATH=$PATH:/usr/local/opt/go@1.10/libexec/bin
+export PATH="/usr/local/opt/go@1.10/bin:$PATH"
 
 # path for python
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
@@ -24,6 +27,8 @@ export PATH=/usr/local/opt/python/libexec/bin:$PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.cargo/bin/racer:$PATH"
 
+# path for ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # Load the shell dotfiles
 DOTFILE="${HOME}/github/thibault/dotfiles"

@@ -375,9 +375,6 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-  (require 'doom-themes)
-  (setq-default dotspacemacs-themes '(doom-city-lights))
-
   ;; Switching windows
   (global-set-key (kbd "s-0") 'winum-select-window-0)
   (global-set-key (kbd "s-1") 'winum-select-window-1)
@@ -411,9 +408,6 @@ you should place your code here."
    ;; less sensitive mouse / trackpad scrolling
    mouse-wheel-scroll-amount '(5 ((shift) . 1) ((control) . nil))
    mouse-wheel-progressive-speed nil
-
-   ;; blink visible cursor
-   blink-cursor-mode 'visible-cursor
 
    ;; trash files
    delete-by-moving-to-trash t
