@@ -40,6 +40,7 @@ apps=(
     fzf                                 #
     git
     gnu-sed --with-default-names
+    graphviz
     htop
     httpie
     hub
