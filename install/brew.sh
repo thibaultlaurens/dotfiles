@@ -24,11 +24,8 @@ brew doctor
 # Add more sources
 brew tap Homebrew/bundle
 
-echo "installing packages..."
-# todo: kubectl
-apps=(
+packages=(
     ag
-    ansible
     bash
     bash-completion
     brew-cask-completion
@@ -46,27 +43,21 @@ apps=(
     hub
     icdiff
     ispell
-    kops
-    kubernetes-cli
-    lnav                                 # log file viewer
-    librdkafka
+    jq
+    lnav
     markdown
-    mongodb
     moreutils
     node
     openssh
     openssl
-    pkg-config                           # needed by librdkafka
-    ranger                               # console file manager
-    sshuttle
-    tig                                  # text-mode interface for git
     tree
     unrar
     vim
     watch
 )
 
-brew install "${apps[@]}"
+echo "installing brew packages..."
+brew install "${packages[@]}"
 
 # Remove outdated versions from the cellar
 echo "cleaning up..."

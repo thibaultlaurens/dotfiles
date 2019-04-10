@@ -1,19 +1,12 @@
 #!/usr/bin/env bash
 
-echo "installing homebrew cask..."
-
 brew tap caskroom/cask
 brew tap caskroom/fonts
 brew tap caskroom/versions
 
-echo "installing apps..."
-
-# todo: lightroom cc and ps cc
 apps=(
     adobe-creative-cloud
     adapter
-    android-file-transfer
-    android-platform-tools
     appcleaner
     daisydisk
     dash
@@ -29,9 +22,6 @@ apps=(
     keepingyouawake
     macdown
     yujitach-menumeters
-    mongodb-compass
-    postman
-    robo-3t
     simplenote
     skype
     slack
@@ -39,11 +29,11 @@ apps=(
     tor-browser
     transmission
     vlc
-    zoomus
 )
+
+echo "installing homebrew apps..."
 brew cask install "${apps[@]}"
 
-echo "installing quick-look packages"
 
 packages=(
     qlcolorcode
@@ -55,4 +45,6 @@ packages=(
     suspicious-package
     qlvideo
 )
+
+echo "installing quick-look packages"
 brew cask install "${packages[@]}"
