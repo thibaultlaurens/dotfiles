@@ -9,7 +9,7 @@
 ├── osx/                                  # mac os preferences, installers and apps configs
 ├── shell/                                # bash config (prompt, aliases, functions, exports etc.)
 ├── ubuntu/                               # ubuntu preferences, installers and apps configs
-├── vim/                                  # vim config and plug plugings
+├── vim/                                  # vim config and plugins
 ├── .gitignore
 └── README.md
 ```
