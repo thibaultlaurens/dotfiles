@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "seting up ..."
+echo "seting up osx..."
 
 # Instal brew and brew-cask apps
 source install/brew.sh

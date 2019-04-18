@@ -15,6 +15,7 @@ apps=(
     firefox-developer-edition
     font-hack
     font-source-code-pro
+    font-source-code-pro-for-powerline
     google-chrome
     google-backup-and-sync
     iterm2

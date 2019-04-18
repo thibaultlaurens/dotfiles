@@ -1,6 +1,6 @@
 echo "creating symlink..."
 
-DOTFILE="${HOME}/github/thibault/dotfiles"
+DOTFILE="${HOME}/git/dotfiles"
 
 ln -fs ${DOTFILE}/shell/.inputrc ${HOME}/.inputrc
 ln -fs ${DOTFILE}/shell/.bashrc ${HOME}/.bashrc
@@ -12,19 +12,19 @@ ln -fs ${DOTFILE}/git/.gitconfig ${HOME}/.gitconfig
 ln -fs ${DOTFILE}/git/.gitignore ${HOME}/.gitignore
 
 # emacs
-ln -fs ${DOTFILE}/.spacemacs ${HOME}/.spacemacs
+ln -fs ${DOTFILE}/emacs/.spacemacs ${HOME}/.spacemacs
 
 # vim
 ln -fs ${DOTFILE}/vim/.vimrc.plug ${HOME}/.vimrc.plug
 ln -fs ${DOTFILE}/vim/.vimrc ${HOME}/.vimrc
 
 # iterm
-ln -fs ${DOTFILE}/iterm/com.googlecode.iterm2.plist \
+ln -fs ${DOTFILE}/osx/iterm/com.googlecode.iterm2.plist \
 ${HOME}/Library/Preferences/com.googlecode.iterm2.plist
 
 # htop
-ln -fs ${DOTFILE}/.htoprc ${HOME}/.config/htop/htoprc
+ln -fs ${DOTFILE}/osx/.htoprc ${HOME}/.config/htop/htoprc
 
 # menumeters
-ln -fs ${DOTFILE}/menumeters/com.ragingmenace.MenuMeters.plist \
+ln -fs ${DOTFILE}/osx/menumeters/com.ragingmenace.MenuMeters.plist \
    ${HOME}/Library/Preferences/com.ragingmenace.MenuMeters.plist

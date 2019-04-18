@@ -28,9 +28,10 @@ set clipboard=unnamed           " Mac os clipboard sharing
 syntax on                       " Turn on syntax highlighting
 set termguicolors
 silent! colorscheme onedark
-set guifont=Hack\ 9
+set anti enc=utf-8
+set guifont=Source\ Code\ Pro\ 11
 set number                      " Enable line numbers
-set colorcolumn=90              " Add a column at 90 to the right
+set colorcolumn=80              " Add a column at 80 to the right
 set cursorline                  " Highlight current line
 set ruler                       " Show the cursor position
 set title                       " Show the filename in the window titlebar

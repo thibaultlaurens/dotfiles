@@ -15,10 +15,13 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 # add the GOROOT-based install location to the PATH
-# export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
-export PATH=$PATH:/usr/local/opt/go@1.10/libexec/bin
-export PATH="/usr/local/opt/go@1.10/bin:$PATH"
+# enable go modules
+export GO111MODULE=on
+
+# export PATH=$PATH:/usr/local/opt/go@1.10/libexec/bin
+# export PATH="/usr/local/opt/go@1.10/bin:$PATH"
 
 # path for python
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
@@ -29,6 +32,10 @@ export PATH="$HOME/.cargo/bin/racer:$PATH"
 
 # path for ruby
 export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+# path for java
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export PATH=${JAVA_HOME}/bin:$PATH
 
 # Load the shell dotfiles
 DOTFILE="${HOME}/github/thibault/dotfiles"
@@ -54,7 +61,7 @@ load_files() {
 load_files
 
 # exta help specific to work
-source ~/Google\ Drive/Work/extra
+source ~/Google\ Drive/Work/work_profile
 
 # FZF config
 export FZF_COMPLETION_TRIGGER='~~'

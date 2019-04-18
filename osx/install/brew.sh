@@ -54,6 +54,7 @@ packages=(
     unrar
     vim
     watch
+    wget
 )
 
 echo "installing brew packages..."
