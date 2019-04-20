@@ -8,15 +8,12 @@ apps=(
     adobe-creative-cloud
     adapter
     appcleaner
-    daisydisk
-    dash
+    chromium
     docker
     simplenote
     firefox-developer-edition
-    font-hack
     font-source-code-pro
     font-source-code-pro-for-powerline
-    google-chrome
     google-backup-and-sync
     iterm2
     itsycal

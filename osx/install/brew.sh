@@ -34,9 +34,9 @@ packages=(
     diff-so-fancy
     docker-completion
     findutils
-    fzf                                 #
+    fzf                                 
     git
-    gnu-sed --with-default-names
+    gnu-sed
     graphviz
     htop
     httpie
