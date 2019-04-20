@@ -70,3 +70,26 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export PATH="/usr/local/sbin:$PATH"
+
+# bash completion
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+# add coreutils into the PATH
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+# add findutils into the PATH
+export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+
+# add getext into the PATH
+export PATH="/usr/local/opt/gettext/bin:$PATH"
+
+# add gnused into the PATH
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+
+# add openssl into the PATH
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+# add ruby into the PATH
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+
