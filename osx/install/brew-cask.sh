@@ -3,11 +3,13 @@
 brew tap caskroom/cask
 brew tap caskroom/fonts
 brew tap caskroom/versions
+brew tap theseal/blank-screensaver
 
 apps=(
     adobe-creative-cloud
     adapter
     appcleaner
+    blank-screensaver
     chromium
     docker
     simplenote

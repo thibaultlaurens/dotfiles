@@ -13,15 +13,10 @@ fi
 # go environment variables
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-
-# add the GOROOT-based install location to the PATH
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export PATH=$PATH:/usr/local/go/bin
 
 # enable go modules
 export GO111MODULE=on
-
-# export PATH=$PATH:/usr/local/opt/go@1.10/libexec/bin
-# export PATH="/usr/local/opt/go@1.10/bin:$PATH"
 
 # path for python
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
@@ -88,8 +83,4 @@ export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # add openssl into the PATH
 export PATH="/usr/local/opt/openssl/bin:$PATH"
-
-# add ruby into the PATH
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-
 

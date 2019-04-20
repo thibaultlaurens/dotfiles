@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-
-mkdir $GOPATH
-mkdir -p $GOPATH/src/github.com/thibaultlaurens
-
 echo "installing go..."
 brew install go
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/usr/local/go/bin
 
 echo "installing dep..."
 brew install dep
@@ -22,10 +20,7 @@ packages=(
     github.com/k0kubun/pp                   # pretty printer
     github.com/motemen/gore                 # go REPL
     github.com/rogpeppe/godef               # find symbol information in go code
-    github.com/alecthomas/gometalinter      # concurrent go linter
     github.com/mailgun/godebug              # cross-platform debugger
 )
 
 go get -u -v "${packages[@]}"
-
-gometalinter --install --update
