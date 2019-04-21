@@ -53,7 +53,7 @@ values."
               ibuffer-group-buffers-by 'projects)
      (javascript :variables
                  javascript-disable-tern-port-files nil
-                 tern-command '("node" "/Users/thibault/.nvm/versions/node/v0.12.18/bin/tern"))
+                 tern-command '("node" "/usr/local/bin/tern"))
      (markdown :variables
                markdown-live-preview-engine 'vmd)
      org

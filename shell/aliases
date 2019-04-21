@@ -10,11 +10,11 @@ alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias dc="cd ~/Documents"
 
-alias gh="cd ~/github"
+alias gh="cd ~/git"
 alias cd-log="cd /var/log"
 
 # git repos aliases
-TL_REPOS_PATH="${HOME}/github/thibault/"
+TL_REPOS_PATH="${HOME}/git/thibault/"
 REPOS=`find $TL_REPOS_PATH -maxdepth 1 -type d -exec basename {} \;`
 for REPO in $REPOS; do
     alias $REPO='cd '$TL_REPOS_PATH/$REPO
@@ -89,3 +89,6 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 
 # Go to useful go directory
 alias gogit="cd ${GOPATH}/src/github.com"
+
+# Google drive aliad
+alias drive="cd ~/drive"

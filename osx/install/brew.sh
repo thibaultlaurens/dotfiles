@@ -34,10 +34,14 @@ packages=(
     diff-so-fancy
     docker-completion
     findutils
-    fzf                                 
+    fzf
     git
+    gnu-indent
     gnu-sed
     graphviz
+    grep
+    gnu-tar
+    gawk
     htop
     httpie
     hub
@@ -55,10 +59,21 @@ packages=(
     vim
     watch
     wget
+    z
 )
 
 echo "installing brew packages..."
 brew install "${packages[@]}"
+
+# Install tern binary for emacs
+npm install -g tern
+
+# whitelist new bash
+ln -fs ${HOME}/git/thibault/dotfiles/shell/shells /etc/shells
+
+# set default shell for current and root user
+chsh -s /usr/local/bin/bash
+sudo chsh -s /usr/local/bin/bash
 
 # Remove outdated versions from the cellar
 echo "cleaning up..."
