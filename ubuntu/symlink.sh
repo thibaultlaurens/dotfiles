@@ -4,6 +4,7 @@ DOTFILE="${HOME}/git/thibault/dotfiles"
 
 # rxvt
 ln -fs ${DOTFILE}/ubuntu/urxvt/.Xresources ${HOME}/.Xresources
+ln -fs ${DOTFILE}/ubuntu/urxvt/rxvt-unicode.desktop ${HOME}/.local/share/applications
 
 # bash
 ln -fs ${DOTFILE}/shell/.inputrc ${HOME}/.inputrc

@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=Rxvt Terminal
+Comment=Use the command line
+TryExec=urxvt
+Exec=urxvt
+Icon=/home/thibault/git/thibault/dotfiles/ubuntu/urxvt/icon.png
+Type=Application
+Categories=Utility;TerminalEmulator;
+StartupNotify=true
+Keywords=Run;
+Actions=New
+
+[Desktop Action New]
+Name=New Rxvt Color Unicode Terminal
+Exec=urxvt
+OnlyShowIn=Unity
