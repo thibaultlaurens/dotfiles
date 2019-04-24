@@ -17,5 +17,21 @@
 ## OSX setup
 
 ```
-git clone https://github.com/thibaultlaurens/dotfiles.git && cd dotfiles/osx && source bootstrap.sh
+mkdir git/thibault
+cd git/thibault
+git clone https://github.com/thibaultlaurens/dotfiles.git
+cd dotfiles/osx
+. ./bootstrap.sh
+```
+
+
+## ubuntu setup
+
+```
+sudo apt install git
+mkdir git/thibault
+cd git/thibault
+git clone https://github.com/thibaultlaurens/dotfiles.git
+cd dotfiles/ubuntu
+. ./bootstrap.sh
 ```
