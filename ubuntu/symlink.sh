@@ -2,6 +2,10 @@ echo "creating symlink..."
 
 DOTFILE="${HOME}/git/thibault/dotfiles"
 
+# rxvt
+ln -fs ${DOTFILE}/ubuntu/urxvt/.Xresources ${HOME}/.Xresources
+
+# bash
 ln -fs ${DOTFILE}/shell/.inputrc ${HOME}/.inputrc
 ln -fs ${DOTFILE}/shell/.bashrc ${HOME}/.bashrc
 ln -fs ${DOTFILE}/shell/.bash_profile ${HOME}/.bash_profile

@@ -1,0 +1,91 @@
+! after editing this file do:
+! xrdb ~/.Xresources
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+! change font
+URxvt.font: xft:monospace:size=10
+
+! add internal margin
+URxvt.internalBorder:  10
+
+! reduce letter spacing
+URxvt.letterSpace: -1
+
+! disable printing the terminal contents when pressing PrintScreen.
+URxvt.print-pipe: "cat > /dev/null"
+
+! set TERM env variable
+URxvt*termName: rxvt-unicode-256color
+
+! urxvt extensions:
+URxvt.perl-ext-common:  default,matcher,tabbedex,autocomplete-ALL-the-things,font-size,keyboard-select,confirm-paste,url-select
+
+! extensions keymap
+URxvt.keysym.M-x: perl:keyboard-select:search
+URxvt.keysym.C-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-slash:   perl:aAtt:word-complete
+URxvt.keysym.M-question:  perl:aAtt:fuzzy-WORD-complete
+URxvt.keysym.M-quotedbl:  perl:aAtt:undo
+URxvt.keysym.M-e: perl:tabbedex:new_tab
+URxvt.keysym.M-y: perl:tabbedex:prev_tab
+URxvt.keysym.M-r: searchable-scrollback:start
+URxvt.keysym.C-minus: font-size:decglobal
+URxvt.keysym.C-plus: font-size:incglobal
+URxvt.keysym.C-underscore: font-size:show
+URxvt.keysym.C-equal: font-size:reset
+URxvt.keysym.C-V: eval:paste_clipboard
+
+!enabling clickable links:
+!URxvt.colorUL: #4682B4
+URxvt.matcher.button:   1
+!! URxvt.url-launcher: linkhandler
+
+! url-select settings
+URxvt.keysym.M-u:   perl:url-select:select_next
+URxvt.url-select.launcher: linkhandler
+URxvt.url-select.underline: true
+
+!urxvt scrolling options:
+URxvt*saveLines: 120000
+URxvt*scrollstyle: xterm
+URxvt*scrollBar: false
+
+! urxvt tabs settings:
+URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 2
+URxvt.tabbed.tab-bg: 0
+URxvt.tabbed.autohide:  yes
+URxvt.tabbed.new-button:  no
+URxvt.tabbed.title: yes
+
+! theme settings
+*background:   #1D252C
+*foreground:   #DFDFDF
+*cursorColor:  #5EC4FF
+URxvt*cursorBlink: true
+URxvt*cursorUnderline: false
+
+! theme colors
+*color0:      #171D22
+*color8:      #384551
+*color1:      #FF6655
+*color9:      #FF6655
+*color2:      #5AF78E
+*color10:     #5AF78E
+*color3:      #23272e
+*color11:     #23272e
+*color4:      #5EC4FF
+*color12:     #5EC4FF
+*color5:      #B62D65
+*color13:     #B62D65
+*color6:      #70E1E8
+*color14:     #70E1E8
+*color7:      #DFDFDF
+*color15:     #DFDFDF

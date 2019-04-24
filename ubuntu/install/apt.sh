@@ -14,11 +14,13 @@ packages=(
     ca-certificates
     bash
     bash-completion
+    build-essential
     coreutils
     curl
     ctop
     dconf-cli
     findutils
+    fonts-powerline
     git
     gnome-tweak-tool
     gnupg-agent
@@ -33,16 +35,20 @@ packages=(
     lnav
     markdown
     moreutils
+    ncdu
     net-tools
     nodejs
     npm
     openssh-server
     openssl
     procps # for "watch"
+    ranger
+    rxvt-unicode
     sed
     silversearcher-ap
     snapd
     software-properties-common
+    thunderbird
     tree
     unrar
     vim
