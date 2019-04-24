@@ -2,11 +2,11 @@
 
 echo "seting up osx..."
 
-# Instal brew and brew-cask apps
+# Install brew and brew-cask apps
 source install/brew.sh
 source install/brew-cask.sh
 
-# Setup emacs, node and go environment
+# Install emacs, go, rust etc.
 source install/spacemacs.sh
 source install/go.sh
 source install/python.sh
