@@ -10,13 +10,13 @@ apps=(
     adapter
     appcleaner
     blank-screensaver
-    chromium
     docker
     simplenote
     firefox-developer-edition
     font-source-code-pro
     font-source-code-pro-for-powerline
     google-backup-and-sync
+    google-chrome
     iterm2
     itsycal
     keepingyouawake
