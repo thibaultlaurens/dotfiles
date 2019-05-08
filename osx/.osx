@@ -266,7 +266,7 @@ defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
 # ----------------------------------------------------------------------
 
 # Misc: disable the sound effects on boot
-sudo nvram SystemAudioVolume="%00"
+sudo nvram SystemAudioVolume=%80
 
 # Misc: automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true

@@ -25,7 +25,7 @@ cd dotfiles/osx
 ```
 
 
-## ubuntu setup
+## Ubuntu setup
 
 ```
 sudo apt install git
