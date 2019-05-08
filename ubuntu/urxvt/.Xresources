@@ -23,36 +23,53 @@ URxvt.print-pipe: "cat > /dev/null"
 ! set TERM env variable
 URxvt*termName: rxvt-unicode-256color
 
-! urxvt extensions:
-URxvt.perl-ext-common:  default,matcher,tabbedex,autocomplete-ALL-the-things,font-size,keyboard-select,confirm-paste,url-select
+! disable ISO 14755 mode
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+! enable urxvt native extensions
+! URxvt.perl-ext-common:  tabbedex,autocomplete-ALL-the-things
+URxvt.perl-ext-common:  default,matcher,font-size,selection-to-clipboard,keyboard-select,confirm-paste,url-select
+
+! enable custom extensions
+URxvt.perl-ext: pasta,fullscreen,newterm
+
+! extensions related settings
+URxvt.colorUL: #FFFFFF
+URxvt.matcher.button:   1
+URxvt.url-launcher: /snap/bin/chromium
+URxvt.url-select.launcher: linkhandler
+URxvt.url-select.underline: true
+URxvt.keyboard-select.clipboard: true
 
 ! extensions keymap
-URxvt.keysym.M-x: perl:keyboard-select:search
-URxvt.keysym.C-Escape: perl:keyboard-select:activate
-URxvt.keysym.M-slash:   perl:aAtt:word-complete
-URxvt.keysym.M-question:  perl:aAtt:fuzzy-WORD-complete
-URxvt.keysym.M-quotedbl:  perl:aAtt:undo
-URxvt.keysym.M-e: perl:tabbedex:new_tab
-URxvt.keysym.M-y: perl:tabbedex:prev_tab
-URxvt.keysym.M-r: searchable-scrollback:start
+URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.keysym.C-minus: font-size:decglobal
 URxvt.keysym.C-plus: font-size:incglobal
 URxvt.keysym.C-underscore: font-size:show
 URxvt.keysym.C-equal: font-size:reset
-URxvt.keysym.C-V: eval:paste_clipboard
+URxvt.keysym.C-S-V: perl:pasta:paste
+URxvt.keysym.C-Return: perl:fullscreen:switch
+URxvt.keysym.C-S-N: perl:newterm
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
 
-!enabling clickable links:
-!URxvt.colorUL: #4682B4
-URxvt.matcher.button:   1
-!! URxvt.url-launcher: linkhandler
+! extensions keymap
 
-! url-select settings
-URxvt.keysym.M-u:   perl:url-select:select_next
-URxvt.url-select.launcher: linkhandler
-URxvt.url-select.underline: true
+! URxvt.keysym.M-x: perl:keyboard-select:search
+! URxvt.keysym.C-Escape: perl:keyboard-select:activate
+! URxvt.keysym.M-slash: perl:aAtt:word-complete
+! URxvt.keysym.M-question: perl:aAtt:fuzzy-WORD-complete
+! URxvt.keysym.M-quotedbl: perl:aAtt:undo
+
+! URxvt.keysym.M-e: perl:tabbedex:new_tab
+! URxvt.keysym.M-y: perl:tabbedex:prev_tab
+
+! URxvt.keysym.M-r: searchable-scrollback:start
+
 
 !urxvt scrolling options:
-URxvt*saveLines: 120000
+URxvt*saveLines: 100000
 URxvt*scrollstyle: xterm
 URxvt*scrollBar: false
 
@@ -70,8 +87,10 @@ URxvt.urgentOnBell: true
 URxvt*cursorBlink: true
 URxvt*cursorUnderline: false
 
+
 ! theme settings
-URxvt*background:   #1D252C
+URxvt.depth: 32
+URxvt*background:   [90]#1D252C
 URxvt*foreground:   #DFDFDF
 URxvt*cursorColor:  #5EC4FF
 URxvt*scrollColor:                    #d6d6d6

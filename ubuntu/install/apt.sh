@@ -52,6 +52,7 @@ packages=(
     tree
     unrar
     vim
+    wmctrl
 )
 
 echo "installing packages..."
