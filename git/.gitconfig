@@ -95,6 +95,9 @@
 	# add stats summary to diffs
 	df = diff --patch-with-stat
 
+	# diff staged files
+	dfs = diff --patch-with-stat --staged
+
 	# prettier git log
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 
