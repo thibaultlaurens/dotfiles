@@ -26,7 +26,7 @@ set clipboard=unnamed           " Mac os clipboard sharing
 " ================ UI Layout =========================
 
 syntax on                       " Turn on syntax highlighting
-set termguicolors
+" set termguicolors
 silent! colorscheme onedark
 set anti enc=utf-8
 set guifont=Source\ Code\ Pro\ 11
