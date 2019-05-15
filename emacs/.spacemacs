@@ -181,7 +181,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+                               :size 12
                                :weight normal
                                :width normal
                                :powerline-scale 1.5)
@@ -440,6 +440,9 @@ you should place your code here."
    evil-escape-delay 0.2
    evil-escape-unordered-key-sequence t
 
+   ;; dont add replaced text to the killring
+   evil-kill-on-visual-paste nil
+
    ;; indent js files with 4 spaces
    js2-basic-offset 4
    js-indent-level 4
@@ -452,7 +455,7 @@ you should place your code here."
 
   (setq magit-repository-directories
         `(("~/go/src/github.com" . 2)
-          ("~/github" . 2)))
+          ("~/git" . 2)))
 
   (doom-themes-visual-bell-config)
   (doom-themes-neotree-config)
