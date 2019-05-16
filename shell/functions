@@ -20,26 +20,6 @@ function fd() {
     find . -type d -iname "*$1*";
 }
 
-# Moves a file to the MacOS trash
-function trash () {
-    command mv "$@" ~/.Trash ;
-}
-
-# Open man page as PDF
-function manpdf() {
-  man -t "$1" | open -f -a /Applications/Preview.app/
-}
-
-# Open query in Dash app
-function dash() {
-  case $# in
-    1) QUERY="$1";;
-    2) QUERY="$1:$2";;
-    *) echo "Usage: dash [docset] query"; return 1;
-  esac
-  open "dash://$QUERY"
-}
-
 #`v` with no arguments opens the current directory in vim,
 # otherwise opens the given location
 function v() {

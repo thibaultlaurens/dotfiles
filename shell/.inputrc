@@ -18,9 +18,14 @@ set completion-query-items 200
 # Show extra file information when completing, like `ls -F` does
 set visible-stats on
 
+# Color the common prefix
 set colored-completion-prefix on
 
+# Color files by types
 set colored-stats on
+
+# Color the common prefix in menu-complete
+set menu-complete-display-prefix On
 
 # Be more intelligent when autocompleting by also looking at the text after
 # the cursor. For example, when the current line is "cd ~/src/mozil", and
