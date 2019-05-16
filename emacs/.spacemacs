@@ -93,6 +93,7 @@ values."
                                       all-the-icons
                                       racer
                                       company
+                                      nord-theme
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -171,6 +172,7 @@ values."
    '(
      spacemacs-dark
      doom-city-lights
+     nord
      doom-one
      doom-vibrant
      doom-spacegrey
@@ -396,13 +398,13 @@ you should place your code here."
   (add-to-list 'default-frame-alist '(ns-appearance . dark))
 
   ;; for python autocomplete to work (anaconda)
-  ;; (add-to-list 'python-shell-extra-pythonpaths "/Users/thibault/github")
+  ;; (add-to-list 'python-shell-extra-pythonpaths "/Users/thibault/git")
 
   (setq
 
    ;; update powerline separators and fix apple rgb colors
    powerline-default-separator 'slant
-   powerline-image-apple-rgb t
+   ;; powerline-image-apple-rgb t
 
    ;; custom scroll margin
    scroll-margin 10
@@ -555,6 +557,8 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#cbcbcb"])
  '(compilation-message-face (quote default))
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#839496")
