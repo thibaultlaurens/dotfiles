@@ -94,6 +94,7 @@ values."
                                       racer
                                       company
                                       nord-theme
+                                      gruvbox-theme
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -173,10 +174,7 @@ values."
      spacemacs-dark
      doom-city-lights
      nord
-     doom-one
-     doom-vibrant
-     doom-spacegrey
-     fogus
+     gruvbox-dark-hard
      )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
