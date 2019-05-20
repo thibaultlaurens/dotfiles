@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 source /etc/bash_completion
+source ~/z.sh
 
 alias auu="sudo apt update && sudo apt upgrade"
 alias aufu="sudo apt update && sudo apt full-upgrade"
