@@ -15,20 +15,24 @@ filetype on                     " Enable file type detection
 
 set history=1000                " Store lots of :cmdline history
 set visualbell                  " No sounds
+set t_vb=                       " No blinks
 set autoread                    " Reload files changed outside vim
 set hidden                      " Buffers can exist in the background
 set ttyfast                     " Faster redraw
 set scrolloff=3                 " Scroll 3 lines away from margins
 set mouse=a                     " Enable mouse in all modes
 set backspace=indent,eol,start  " Makes backspace key more powerful.
-set clipboard=unnamed           " Mac os clipboard sharing
+set clipboard=unnamed           " Uses system clipboard
+set paste
 
 " ================ UI Layout =========================
 
+" if (has("termguicolors"))
+"   set termguicolors
+" endif
+
 syntax on                       " Turn on syntax highlighting
-" set termguicolors
-silent! colorscheme onedark
-set anti enc=utf-8
+set enc=utf-8
 set guifont=Source\ Code\ Pro\ 11
 set number                      " Enable line numbers
 set colorcolumn=80              " Add a column at 80 to the right
@@ -40,6 +44,10 @@ set showcmd                     " Show command in bottom bar
 set noshowmode                  " Dont show current mode down the bottom
 set wildmode=list:longest,full
 set wildmenu
+let base16colorspace=256
+set t_Co=256                                " 256 colors
+silent! colorscheme nord
+set background=dark
 
 
 " ================ Indentation =======================
@@ -104,10 +112,8 @@ nnoremap <Leader>f :Unite file<CR>
 
 set laststatus=2
 let g:airline_powerline_fonts = 1
-" silent! let g:airline_theme='powerlineish'
-silent! let g:airline_theme='onedark'
+silent! let g:airline_theme='nord'
 let g:airline#extensions#tabline#enabled = 1
-
 
 " ================ Nerdtree ==========================
 

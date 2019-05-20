@@ -31,8 +31,7 @@ Plug 'shougo/unite-session'
 Plug 'shougo/unite-outline'
 Plug 'shougo/vimfiler.vim'
 
-Plug 'joshdick/onedark.vim'
+Plug 'arcticicestudio/nord-vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'ryanoasis/vim-webdevicons'
 
 call plug#end()
