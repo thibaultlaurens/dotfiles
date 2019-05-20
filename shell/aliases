@@ -32,7 +32,7 @@ alias mv="mv -iv"
 alias rm="rm -iv"
 alias rr="rm -rf"
 alias mkdir="mkdir -pv"
-alias ll="ls -FGlahp"
+alias ll='ls -FGlahp --color=always'
 alias ps="ps -ef"
 alias less="less -FSRXc"
 alias grep='grep --color=auto'
