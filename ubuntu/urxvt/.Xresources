@@ -55,6 +55,6 @@ URxvt.keysym.C-s: perl:keyboard-select:search
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 
 ! load a theme
-#include "/home/thibault/.urxvt/themes/custom"
+#include "/home/thibault/.urxvt/themes/onedark"
 ! #include "/home/thibault/.urxvt/themes/gruvbox"
 ! #include "/home/thibault/.urxvt/themes/nord"
