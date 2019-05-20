@@ -5,5 +5,6 @@ sudo apt install node
 sudo apt install npm
 
 # install npm specific tools
-sudo npm install -g tern
-sudo npm install -g diff-so-fancy
+sudo npm install -g tern # used by terminal buffers in emacs
+sudo npm install -g diff-so-fancy # used by git config
+sudo npm install -g vmd # used by markdown preview in emacs
