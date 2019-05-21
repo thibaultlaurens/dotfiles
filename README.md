@@ -24,7 +24,6 @@ cd dotfiles/osx
 . ./bootstrap.sh
 ```
 
-
 ## Ubuntu setup
 
 ```

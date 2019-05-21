@@ -65,8 +65,11 @@ packages=(
 echo "installing brew packages..."
 brew install "${packages[@]}"
 
-# Install tern binary for emacs
+# Install tern binary for emacs terminal
 npm install -g tern
+
+# Install vmd binary for emacs markdown preview
+npm install -g vmd
 
 # whitelist new bash
 ln -fs ${HOME}/git/thibault/dotfiles/shell/shells /etc/shells
