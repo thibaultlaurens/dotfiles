@@ -7,6 +7,9 @@ ln -fs ${DOTFILE}/ubuntu/urxvt/.Xresources ${HOME}/.Xresources
 ln -fs ${DOTFILE}/ubuntu/urxvt/.urxvt ${HOME}/.urxvt
 ln -fs ${DOTFILE}/ubuntu/urxvt/rxvt-unicode.desktop ${HOME}/.local/share/applications
 
+# tmux
+ln -fs ${DOTFILE}/ubuntu/.tmux.conf ${HOME}/.tmux.conf
+
 # bash
 ln -fs ${DOTFILE}/shell/.inputrc ${HOME}/.inputrc
 ln -fs ${DOTFILE}/shell/.bashrc ${HOME}/.bashrc
