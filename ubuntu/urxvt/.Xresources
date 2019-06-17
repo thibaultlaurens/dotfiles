@@ -1,11 +1,17 @@
 ! reload urxvt config with:
 ! xrdb ~/.Xresources
 
+! xft Settings
+Xft*dpi: 96
+Xft*antialias:  true
+Xft*hinting:    true
+Xft*rgba:       rgb
+Xft*autohint:   false
+Xft*hintstyle:  hintfull
+Xft*lcdfilter:  lcddefault
+
 ! urxvt appearance
-URxvt*font: xft:Source Code Pro:style=Regular:size=9
-URxvt*boldFont: xft:Source Code Pro:style=Bold:size=9
-URxvt*italicFont: xft:Source Code Pro:style=Italic:size=9
-URxvt*boldItalicFont: xft:Source Code Pro:style=Bold Italic:size=9
+URxvt*font: xft:Source Code Pro:pixelsize=10:antialias=true
 
 URxvt*internalBorder:  20
 URxvt*letterSpace: -1
@@ -27,15 +33,15 @@ URxvt*iso14755: false
 URxvt*iso14755_52: false
 
 ! urxvt native extensions
-URxvt*perl-ext-common: default,matcher,font-size,selection-to-clipboard,confirm-paste,paste_clipboard
+URxvt*perl-ext-common: default,matcher,selection-to-clipboard,confirm-paste,paste_clipboard
 
 ! urxvt custom extensions
-URxvt*perl-ext: fullscreen,newterm,keyboard-select
+URxvt*perl-ext: fullscreen,newterm,keyboard-select,font-size
 
 ! extensions related settings
 URxvt*colorUL: #FFFFFF
 URxvt*matcher.button: 1
-URxvt*url-launcher: /snap/bin/chromium
+URxvt*url-launcher: /usr/bin/firefox
 URxvt*url-select.launcher: linkhandler
 URxvt*url-select.underline: true
 URxvt*keyboard-select.clipboard: true
@@ -55,6 +61,6 @@ URxvt.keysym.C-s: perl:keyboard-select:search
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 
 ! load a theme
-#include "/home/thibault/.urxvt/themes/onedark"
+#include "/home/tlaurens/.urxvt/themes/onedark"
 ! #include "/home/thibault/.urxvt/themes/gruvbox"
 ! #include "/home/thibault/.urxvt/themes/nord"
