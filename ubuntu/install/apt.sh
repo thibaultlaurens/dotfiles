@@ -45,10 +45,11 @@ packages=(
     ranger
     rxvt-unicode
     sed
-    silversearcher-ap
+    silversearcher-ag
     snapd
     software-properties-common
     thunderbird
+    tmux
     tree
     unrar
     vim
