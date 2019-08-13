@@ -14,4 +14,6 @@ alias aar="sudo apt autoremove"
 alias ama="sudo apt-mark auto"
 alias amm="sudo apt-mark manual"
 
+alias t=tmux
+
 PATH=$PATH:/snap/bin
