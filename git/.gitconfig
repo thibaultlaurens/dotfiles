@@ -3,9 +3,6 @@
 	name = Thibault Laurens
 	email = laurens.thibault@gmail.com
 
-[credential]
-	helper = osxkeychain
-
 [status]
 	# also show individual files in untracked directories
 	showUntrackedFiles = all
@@ -83,6 +80,9 @@
 	# by default, push the current branch to the same name on the remote
 	pu = push origin HEAD
 
+	# pull submodules, to latest commits instead of what the repo point to
+	pull-recurse = pull --recurse-submodules
+
 	# quick and easy wip
 	wip = "!f() { git commit -m "wip" . && git push origin HEAD; }; f"
 
@@ -121,3 +121,5 @@
 
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[http]
+	sslverify = false
