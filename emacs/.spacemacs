@@ -471,6 +471,10 @@ you should place your code here."
               (define-key yaml-mode-map (kbd "TAB") 'outline-toggle-children)
               (setq outline-regexp "^ *")))
 
+  (with-eval-after-load 'python
+    (add-hook 'before-save-hook 'spacemacs/python-remove-unused-imports)
+    )
+
   ;; make evil treat an emacs symbol as a word (ex: fix cmd 'dw' with word with '_')
   (with-eval-after-load 'evil
     (defalias #'forward-evil-word #'forward-evil-symbol))
