@@ -396,7 +396,7 @@ you should place your code here."
   (add-to-list 'default-frame-alist '(ns-appearance . dark))
 
   ;; for python autocomplete to work (anaconda)
-  ;; (add-to-list 'python-shell-extra-pythonpaths "/Users/thibault/git")
+  ;; (add-to-list 'python-shell-extra-pythonpaths "/Users/tlaurens/git")
 
   (setq
 

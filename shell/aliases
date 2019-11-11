@@ -14,7 +14,7 @@ alias gh="cd ~/git"
 alias logs="cd /var/log"
 
 # git repos aliases
-TL_REPOS_PATH="${HOME}/git/thibault/"
+TL_REPOS_PATH="${HOME}/git/tlaurens/"
 REPOS=`find $TL_REPOS_PATH -maxdepth 1 -type d -exec basename {} \;`
 for REPO in $REPOS; do
     alias $REPO='cd '$TL_REPOS_PATH/$REPO

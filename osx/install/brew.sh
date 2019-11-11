@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-# Ask for the administrator password upfront
+# Ask for the admin password upfront
 sudo -v
 
-# Check for Homebrew and install it if missing
+# Install homebrew if it's missing
 if test ! $(which brew)
 then
  echo "installing homebrew..."
@@ -12,13 +12,9 @@ fi
 
 sudo chown -R $(whoami) $(brew --prefix)/*
 
-# Make sure we’re using the latest Homebrew
+# Update homebrew, installed pacakges and check for issues
 brew update
-
-# Upgrade any already-installed formulae
 brew upgrade
-
-# Check for potential problems
 brew doctor
 
 # Add more sources
@@ -59,7 +55,6 @@ packages=(
     vim
     watch
     wget
-    z
 )
 
 echo "installing brew packages..."
