@@ -1,6 +1,6 @@
 echo "creating symlink..."
 
-DOTFILE="${HOME}/git/thibault/dotfiles"
+DOTFILE="${HOME}/git/tlaurens/dotfiles"
 
 ln -fs ${DOTFILE}/shell/.inputrc ${HOME}/.inputrc
 ln -fs ${DOTFILE}/shell/.bashrc ${HOME}/.bashrc

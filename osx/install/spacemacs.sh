@@ -3,7 +3,7 @@
 echo "installing spacemacs..."
 brew tap d12frosted/emacs-plus
 brew install emacs-plus
-brew linkapps emacs-plus
+ln -s /usr/local/Cellar/emacs-plus/*/Emacs.app/ /Applications/
 
 cd ~
 mv .emacs.d .emacs.d.bak

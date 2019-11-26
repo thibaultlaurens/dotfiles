@@ -1,15 +1,11 @@
 #!/usr/bin/env bash
 
-brew tap caskroom/cask
-brew tap caskroom/fonts
-brew tap caskroom/versions
-brew tap theseal/blank-screensaver
+brew tap homebrew/cask-versions
+brew tap homebrew/cask-fonts
 
 apps=(
     adobe-creative-cloud
     adapter
-    appcleaner
-    blank-screensaver
     docker
     simplenote
     firefox-developer-edition
@@ -21,13 +17,14 @@ apps=(
     itsycal
     keepingyouawake
     macdown
-    yujitach-menumeters
+    menumeters
     simplenote
     skype
     slack
     spectacle
     tor-browser
     transmission
+    virtualbox
     vlc
 )
 
