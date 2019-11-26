@@ -17,6 +17,9 @@ packages=(
     yapf
     isort
     ipython[all]
+    importmagic
+    epc
+    black
 )
 
 sudo pip3 install "${packages[@]}"

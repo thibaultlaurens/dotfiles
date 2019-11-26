@@ -18,6 +18,9 @@ packages=(
     yapf
     isort
     ipython[all]
+    importmagic
+    epc
+    black
 )
 
 pip install "${packages[@]}"

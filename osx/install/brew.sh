@@ -71,6 +71,10 @@ npm install -g tern
 # Install vmd binary for emacs markdown preview
 npm install -g vmd
 
+npm install -g eslint # on-the-fly syntax checking in emacs
+
+npm install -g prettier # automatic code formatting in emacs
+
 # whitelist new bash
 ln -fs ${HOME}/git/thibault/dotfiles/shell/shells /etc/shells
 
