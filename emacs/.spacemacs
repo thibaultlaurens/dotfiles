@@ -81,12 +81,7 @@ values."
      sql
      spell-checking
      themes-megapack
-     (treemacs :variables
-               treemacs-use-follow-mode t
-               treemacs-use-filewatch-mode t
-               treemacs-use-git-mode 'deferred
-               treemacs-use-collapsed-directories 3
-               treemacs-lock-width t)
+     neotree
      (version-control :variables
                       version-control-diff-tool 'diff-hl)
      vimscript
@@ -446,6 +441,14 @@ you should place your code here."
    ;; indent js files with 4 spaces
    js2-basic-offset 4
    js-indent-level 4
+
+   ;; neotree config
+   neo-theme 'ascii
+   neo-dont-be-alone t
+   neo-show-updir-line t
+   neo-vc-integration '(face)
+   neo-smart-open nil
+   neo-autorefresh nil
    )
 
   (setq magit-repository-directories
@@ -454,15 +457,14 @@ you should place your code here."
 
   ;; doom-themes
   (doom-themes-visual-bell-config)
-  (setq doom-themes-treemacs-theme "doom-colors")
-  (doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-neotree-config)
   (doom-themes-org-config)
 
   ;; disable custom scroll-margin in term-mode
   (add-hook 'term-mode-hook (lambda () (setq-local scroll-margin 0)))
 
-  (add-hook 'python-mode-hook 'anaconda-mode)
+  ;; remove import magic
+  (remove-hook 'python-mode-hook 'importmagic-mode)
 
   (add-hook 'yaml-mode-hook
             (lambda ()
