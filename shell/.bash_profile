@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export DOTFILE="${HOME}/git/tlaurens/dotfiles"
+export DOTFILE="${HOME}/git/thibault/dotfiles"
 
 if [[ $(uname -s) == Darwin ]]; then
     source $DOTFILE/osx/bash_profile

@@ -14,6 +14,7 @@ ln -fs ${DOTFILE}/ubuntu/.tmux.conf ${HOME}/.tmux.conf
 ln -fs ${DOTFILE}/shell/.inputrc ${HOME}/.inputrc
 ln -fs ${DOTFILE}/shell/.bashrc ${HOME}/.bashrc
 ln -fs ${DOTFILE}/shell/.bash_profile ${HOME}/.bash_profile
+ln -fs ${DOTFILE}/shell/.bash_completion ${HOME}/.bash_completion
 source ${HOME}/.bash_profile
 
 # git
