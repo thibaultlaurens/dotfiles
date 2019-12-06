@@ -8,6 +8,10 @@ ln -fs ${DOTFILE}/shell/.bash_profile ${HOME}/.bash_profile
 ln -fs ${DOTFILE}/shell/.bash_completion ${HOME}/.bash_completion
 source ${HOME}/.bash_profile
 
+# tmux
+ln -fs ${DOTFILE}/tmux/.tmux.conf ${HOME}/.tmux.conf
+ln -fs ${DOTFILE}/tmux/.tmux_completion ${HOME}/.bash_completion
+
 # git
 ln -fs ${DOTFILE}/git/.gitconfig ${HOME}/.gitconfig
 ln -fs ${DOTFILE}/git/.gitignore ${HOME}/.gitignore

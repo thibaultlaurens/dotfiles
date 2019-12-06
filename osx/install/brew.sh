@@ -50,6 +50,7 @@ packages=(
     node
     openssh
     openssl
+    tmux
     tree
     unrar
     vim
