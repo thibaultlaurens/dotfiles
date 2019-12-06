@@ -42,14 +42,8 @@
 	# remove any remote-tracking references that no longer exist on the remote
 	prune = fetch --prune
 
-	# TODO: check that
-	# rebase = rebase -i HEAD~15
-
 	# go back in (commit) history
 	undo = reset --soft HEAD^
-
-	# TODO: check that
-	# undo = reset HEAD~1 --mixed
 
 	# shortcut for opening a pull-request in github
 	open-pr = pull-request -o
