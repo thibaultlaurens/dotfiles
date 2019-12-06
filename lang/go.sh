@@ -1,16 +1,24 @@
 #!/usr/bin/env bash
 
 echo "installing go..."
-brew install go
+
+if [[ $(uname -s) == Darwin ]]; then
+    brew install go
+else
+    sudo add-apt-repository ppa:longsleep/golang-backports
+    sudo apt update
+    sudo apt install golang-go
+fi
+
+# create the directory structure for the go workspace
+mkdir -p $HOME/go/{bin,src}
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin
 
-echo "installing dep..."
-brew install dep
-
 echo "installing go packages..."
+
 packages=(
     golang.org/x/tools/cmd/godoc            # extract and generate doc
     golang.org/x/tools/cmd/guru             # navigate across go code in editors

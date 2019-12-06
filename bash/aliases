@@ -25,6 +25,7 @@ alias e="emacs &"
 alias g="git"
 alias c="clear"
 alias h="history"
+alias t="tmux"
 
 # Default options
 alias cp="cp -iv"
@@ -49,9 +50,6 @@ alias d="docker"
 alias dc="docker-compose"
 alias dex="docker exec -it"
 
-# Python
-alias pipi="sudo -H pip install -r requirements.txt"
-
 # Better tree
 alias tree="tree -aCF --dirsfirst -I '.git|node_modules'"
 
@@ -60,9 +58,6 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # Reload the shell
 alias reload="exec $SHELL -l"
-
-# IP address
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 # Pull all the Git repositories
 alias pullall="find . -maxdepth 1 -type d -exec sh -c '(cd {} && git pull)' ';'"

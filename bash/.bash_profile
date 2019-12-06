@@ -2,16 +2,17 @@
 
 export DOTFILE="${HOME}/git/thibault/dotfiles"
 
+# source os related bash_profile
 if [[ $(uname -s) == Darwin ]]; then
-    source $DOTFILE/osx/bash_profile
+    source $DOTFILE/bash/.bash_profile.osx
 else
-    source $DOTFILE/ubuntu/bash_profile
+    source $DOTFILE/bash/.bash_profile.ubuntu
 fi
 
-# add sbin into the PATH
+# add sbin into PATH
 export PATH="/usr/local/sbin:$PATH"
 
-# add openssl into the PATH
+# add openssl into PATH
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
 # go environment variables
@@ -20,24 +21,24 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin
 export GO111MODULE=off
 
-# add python into the PATH
+# add python into PATH
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
-# add rust into the PATH
+# add rust into PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.cargo/bin/racer:$PATH"
 
-# add ruby into the PATH
+# add ruby into PATH
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
-# Load the shell dotfiles
+# Load all the bash config files
 load_files() {
     declare -a files=(
-        $DOTFILE/shell/aliases
-        $DOTFILE/shell/exports
-        $DOTFILE/shell/functions
-        $DOTFILE/shell/options
-        $DOTFILE/shell/prompt
+        $DOTFILE/bash/aliases
+        $DOTFILE/bash/exports
+        $DOTFILE/bash/functions
+        $DOTFILE/bash/options
+        $DOTFILE/bash/prompt
     )
 
     # if these files are readable, source them
@@ -48,7 +49,6 @@ load_files() {
         fi
     done
 }
-
 load_files
 
 # exta help specific to work

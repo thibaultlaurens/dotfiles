@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
+echo "installing python..."
+
 # install rust and source it
-curl https://sh.rustup.rs -sSf | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
 
 # install racer (auto-completion tool)
