@@ -61,9 +61,6 @@ alias path='echo -e ${PATH//:/\\n}'
 # Reload the shell
 alias reload="exec $SHELL -l"
 
-# IP address
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-
 # Pull all the Git repositories
 alias pullall="find . -maxdepth 1 -type d -exec sh -c '(cd {} && git pull)' ';'"
 
