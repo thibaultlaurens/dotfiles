@@ -112,3 +112,7 @@ function git-status() {
 
     echo $output
 }
+
+function docker-cleanup() {
+    docker rmi -f $(docker images -f dangling=true -q --no-trunc)
+}
