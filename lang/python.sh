@@ -1,12 +1,18 @@
 #!/usr/bin/env bash
 
 echo "installing python..."
-brew install python
 
-pip install --upgrade distribute
-pip install --upgrade pip
+if [[ $(uname -s) == Darwin ]]; then
+    brew install python3
+else
+    sudo apt update
+    sudo apt install -y python3-pip
+fi
+
+pip3 install --upgrade pip setuptools distribute
 
 echo "installing python packages..."
+
 packages=(
     virtualenv
     virtualenvwrapper
@@ -23,7 +29,4 @@ packages=(
     black
 )
 
-pip install "${packages[@]}"
-
-echo "installing python3..."
-brew install python3
+pip3 install "${packages[@]}"

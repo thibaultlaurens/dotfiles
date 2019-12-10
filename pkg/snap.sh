@@ -8,5 +8,5 @@ apps=(
     vlc
 )
 
-echo "installing apps..."
+echo "installing snaps..."
 sudo snap install "${apps[@]}"

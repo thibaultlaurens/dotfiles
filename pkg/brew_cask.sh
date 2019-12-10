@@ -6,7 +6,6 @@ brew tap homebrew/cask-fonts
 apps=(
     adobe-creative-cloud
     adapter
-    docker
     simplenote
     firefox-developer-edition
     font-source-code-pro
@@ -18,6 +17,7 @@ apps=(
     keepingyouawake
     macdown
     menumeters
+    notion
     simplenote
     skype
     slack

@@ -45,10 +45,18 @@ set noshowmode                  " Dont show current mode down the bottom
 set wildmode=list:longest,full
 set wildmenu
 let base16colorspace=256
-set t_Co=256                                " 256 colors
+set t_Co=256                    " 256 colors
 silent! colorscheme nord
 set background=dark
+let &t_SI = "\e[5 q"            " blinking bar in edit mode
+let &t_EI = "\e[1 q"            " blinking block in visual mode
 
+" reset cursor enter and leave:
+augroup cursorCmd
+au!
+autocmd VimEnter * silent !echo -ne "\e[1 q"
+autocmd VimLeave * silent !echo -ne "\e[5 q"
+augroup END
 
 " ================ Indentation =======================
 

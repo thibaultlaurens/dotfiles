@@ -25,6 +25,7 @@ alias e="emacs &"
 alias g="git"
 alias c="clear"
 alias h="history"
+alias t="tmux"
 
 # Default options
 alias cp="cp -iv"
@@ -48,9 +49,6 @@ alias editbp="$EDITOR ~/.bash_profile"
 alias d="docker"
 alias dc="docker-compose"
 alias dex="docker exec -it"
-
-# Python
-alias pipi="sudo -H pip install -r requirements.txt"
 
 # Better tree
 alias tree="tree -aCF --dirsfirst -I '.git|node_modules'"

@@ -378,7 +378,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
    ;; always follow symlinks
    vc-follow-symlinks t
-   i)
+   )
    )
 
 

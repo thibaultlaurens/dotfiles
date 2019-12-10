@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 source /etc/bash_completion
-source ~/z.sh
 
 alias auu="sudo apt update && sudo apt upgrade"
 alias aufu="sudo apt update && sudo apt full-upgrade"
@@ -13,7 +12,5 @@ alias aac="sudo apt autoclean"
 alias aar="sudo apt autoremove"
 alias ama="sudo apt-mark auto"
 alias amm="sudo apt-mark manual"
-
-alias t=tmux
 
 PATH=$PATH:/snap/bin
