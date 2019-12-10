@@ -31,13 +31,12 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     csv
-     (rust :variables
-           rust-enable-racer t
-           rust-format-on-save t)
      ansible
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-enable-sort-by-usage t
+                      auto-completion-enable-snippets-in-popup t)
      better-defaults
+     csv
      docker
      elixir
      emacs-lisp
@@ -65,13 +64,14 @@ values."
              python-formatter 'black
              python-format-on-save t
              python-sort-imports-on-save t
-             python-fill-column 120)
+             python-fill-column 88)
      (ranger :variables
              ranger-show-preview t
              ranger-cleanup-eagerly t
              ranger-show-hidden t)
      ruby
      (rust :variables
+           rust-enable-racer t
            rust-format-on-save t)
      scala
      (shell :variables
@@ -231,7 +231,7 @@ values."
    dotspacemacs-display-default-layout nil
    ;; If non nil then the last auto saved layouts are resume automatically upon
    ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts nil
+   dotspacemacs-auto-resume-layouts t
    ;; Size (in MB) above which spacemacs will prompt to open the large file
    ;; literally to avoid performance issues. Opening a file literally means that
    ;; no major mode or minor modes are active. (default is 1)
@@ -319,7 +319,7 @@ values."
    dotspacemacs-folding-method 'evil
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
-   dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-smartparens-strict-mode t
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
    ;; over any automatically added closing parenthesis, bracket, quote, etc…
    ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
@@ -345,6 +345,25 @@ values."
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
    dotspacemacs-whitespace-cleanup 'trailing
+
+   ;; Format specification for setting the frame title.
+   ;; %a - the `abbreviated-file-name', or `buffer-name'
+   ;; %t - `projectile-project-name'
+   ;; %I - `invocation-name'
+   ;; %S - `system-name'
+   ;; %U - contents of $USER
+   ;; %b - buffer name
+   ;; %f - visited file name
+   ;; %F - frame name
+   ;; %s - process status
+   ;; %p - percent of buffer above top of window, or Top, Bot or All
+   ;; %P - percent of buffer above bottom of window, perhaps plus Top, or Bot or All
+   ;; %m - mode name
+   ;; %n - Narrow if appropriate
+   ;; %z - mnemonics of buffer, terminal, and keyboard coding systems
+   ;; %Z - like %z, but including the end-of-line format
+   ;; (default "%I@%S")
+   dotspacemacs-frame-title-format "%I@%S %a"
    ))
 
 (defun dotspacemacs/user-init ()
@@ -359,20 +378,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
    ;; always follow symlinks
    vc-follow-symlinks t
-
-   ;; require-final-newline
-
-   ;; frame title is file path and append a '•' when buffer has unsaved changed
-   frame-title-format
-   '(
-     (:eval (if (buffer-file-name)
-                (abbreviate-file-name (buffer-file-name))
-              "%b"))
-     (:eval (if (buffer-modified-p)
-                " •"))
-     )
+   i)
    )
-  )
+
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -425,9 +433,9 @@ you should place your code here."
    ;; 24 hours format
    display-time-24hr-format t
 
-   ;; 80th column indicator
+   ;; 88th column indicator
    fci-rule-color "gray35"
-   fci-rule-column 120
+   fci-rule-column 88
    fci-handle-truncate-lines nil
 
    ;; evil-escape conf: "jk", 0.2s and unordered sequence
