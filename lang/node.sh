@@ -18,6 +18,7 @@ packages=(
     vmd # used by markdown preview in emacs
     eslint # on-the-fly syntax checking in emacs
     prettier # automatic code formatting in emacs
+    import-js # automatic dependencies import
 )
 
 sudo npm install -g "${packages[@]}"

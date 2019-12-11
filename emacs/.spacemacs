@@ -50,14 +50,16 @@ values."
      html
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
+     import-js
      (javascript :variables
-                 javascript-disable-tern-port-files nil
-                 tern-command '("node" "/usr/local/bin/tern"))
+                 javascript-fmt-tool 'prettier
+                 javascript-fmt-on-save t)
      (markdown :variables
                markdown-live-preview-engine 'vmd)
      org
      (osx :variables osx-use-option-as-meta nil)
      php
+     prettier
      protobuf
      (python :variables
              python-backend 'anaconda
@@ -80,6 +82,9 @@ values."
      shell-scripts
      sql
      spell-checking
+     (tern :variables
+           tern-command '("node" "/usr/local/bin/tern")
+           tern-disable-port-files nil)
      themes-megapack
      neotree
      (version-control :variables
