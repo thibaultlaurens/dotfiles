@@ -3,7 +3,7 @@ echo "creating symlinks..."
 DOTFILE="${HOME}/git/thibault/dotfiles"
 
 # whitelist new bash
-ln -fs ${DOTFILE}/bash/shells /etc/shells
+# ln -fs ${DOTFILE}/bash/shells /etc/shells
 
 # bash
 ln -fs ${DOTFILE}/bash/.inputrc ${HOME}/.inputrc
