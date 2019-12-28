@@ -28,6 +28,7 @@ packages=(
     coreutils
     ctop
     diff-so-fancy
+    ffmpeg
     findutils
     fzf
     git
