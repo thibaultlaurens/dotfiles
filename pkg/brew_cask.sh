@@ -6,19 +6,16 @@ brew tap homebrew/cask-fonts
 apps=(
     adobe-creative-cloud
     adapter
-    simplenote
-    firefox-developer-edition
+    firefox
     font-source-code-pro
     font-source-code-pro-for-powerline
     google-backup-and-sync
-    google-chrome
     iterm2
     itsycal
     keepingyouawake
     macdown
     menumeters
     notion
-    simplenote
     skype
     slack
     spectacle

@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 apps=(
-    chromium
-    simplenote
+    firefox
     slack --classic
     transmission --beta --jailmode
     vlc
