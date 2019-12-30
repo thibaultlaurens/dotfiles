@@ -36,6 +36,8 @@ values."
                       auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t)
      better-defaults
+     (colors :variables
+             colors-colorize-identifiers 'variables)
      csv
      docker
      elixir
