@@ -27,6 +27,7 @@ packages=(
     importmagic
     epc
     black
+    python-language-server
 )
 
 pip3 install "${packages[@]}"
