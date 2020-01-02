@@ -36,8 +36,6 @@ values."
                       auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t)
      better-defaults
-     (colors :variables
-             colors-colorize-identifiers 'variables)
      csv
      docker
      elixir
@@ -64,7 +62,7 @@ values."
      prettier
      protobuf
      (python :variables
-             python-backend 'anaconda
+             python-backend 'lsp
              python-formatter 'black
              python-format-on-save t
              python-sort-imports-on-save t
@@ -326,7 +324,7 @@ values."
    dotspacemacs-folding-method 'evil
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
-   dotspacemacs-smartparens-strict-mode t
+   dotspacemacs-smartparens-strict-mode nil
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
    ;; over any automatically added closing parenthesis, bracket, quote, etc…
    ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
