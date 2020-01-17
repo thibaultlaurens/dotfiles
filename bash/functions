@@ -113,6 +113,10 @@ function git-status() {
     echo $output
 }
 
-function docker-cleanup() {
+function docker-prune-images() {
     docker rmi -f $(docker images -f dangling=true -q --no-trunc)
+}
+
+function docker-prune-all() {
+    docker system prune -a -f --volumes
 }
