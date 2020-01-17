@@ -30,4 +30,4 @@ packages=(
     python-language-server
 )
 
-pip3 install "${packages[@]}"
+pip3 install --upgrade "${packages[@]}"
