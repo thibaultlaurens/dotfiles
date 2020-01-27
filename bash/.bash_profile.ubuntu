@@ -13,4 +13,7 @@ alias aar="sudo apt autoremove"
 alias ama="sudo apt-mark auto"
 alias amm="sudo apt-mark manual"
 
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
 PATH=$PATH:/snap/bin
