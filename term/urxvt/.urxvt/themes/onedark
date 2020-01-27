@@ -6,7 +6,7 @@ URxvt*background: [95]#1D252C
 URxvt*foreground: #DFDFDF
 URxvt*cursorColor: #5EC4FF
 URxvt*scrollColor: #d6d6d6
-*fading: 25
+*fading: 10
 *fadeColor: #1D252C
 
 #define base00 #282c34
