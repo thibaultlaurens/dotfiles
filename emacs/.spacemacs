@@ -90,6 +90,7 @@ values."
      (version-control :variables
                       version-control-diff-tool 'diff-hl)
      vimscript
+     vue
      yaml
      )
    ;; List of additional packages that will be installed without being
