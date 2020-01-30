@@ -50,6 +50,7 @@ packages=(
     node
     openssh
     openssl
+    shellcheck
     tmux
     tree
     unrar

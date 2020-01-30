@@ -6,8 +6,7 @@ sudo -v
 # add hub PPA
 sudo add-apt-repository ppa:cpick/hub
 
-sudo apt update
-sudo apt upgrade
+sudo apt-get update && apt-get upgrade
 
 packages=(
     apt-transport-https
@@ -45,6 +44,7 @@ packages=(
     ranger
     rxvt-unicode
     sed
+    shellcheck
     silversearcher-ag
     snapd
     software-properties-common
@@ -57,5 +57,5 @@ packages=(
 )
 
 echo "installing packages..."
-sudo apt install "${packages[@]}"
-sudo apt autoremove
+sudo apt-get install "${packages[@]}"
+sudo apt-get autoremove

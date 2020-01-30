@@ -62,7 +62,6 @@ values."
      prettier
      protobuf
      (python :variables
-             python-backend 'lsp
              python-formatter 'black
              python-format-on-save t
              python-sort-imports-on-save t
@@ -87,6 +86,7 @@ values."
            tern-disable-port-files nil)
      themes-megapack
      neotree
+     (node :variable node-add-modules-path)
      (version-control :variables
                       version-control-diff-tool 'diff-hl)
      vimscript
@@ -237,7 +237,7 @@ values."
    dotspacemacs-display-default-layout nil
    ;; If non nil then the last auto saved layouts are resume automatically upon
    ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts t
+   dotspacemacs-auto-resume-layouts nil
    ;; Size (in MB) above which spacemacs will prompt to open the large file
    ;; literally to avoid performance issues. Opening a file literally means that
    ;; no major mode or minor modes are active. (default is 1)
@@ -463,6 +463,12 @@ you should place your code here."
    neo-vc-integration '(face)
    neo-smart-open nil
    neo-autorefresh nil
+
+   ;; web-mode
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-attr-indent-offset 2
    )
 
   (setq magit-repository-directories
