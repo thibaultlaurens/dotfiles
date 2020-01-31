@@ -385,7 +385,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
    ;; always follow symlinks
    vc-follow-symlinks t
    )
-   )
+  )
 
 
 (defun dotspacemacs/user-config ()
@@ -469,11 +469,12 @@ you should place your code here."
    web-mode-css-indent-offset 2
    web-mode-code-indent-offset 2
    web-mode-attr-indent-offset 2
-   )
 
-  (setq magit-repository-directories
-        `(("~/go/src/github.com" . 2)
-          ("~/git" . 2)))
+   ;; git repos paths
+   magit-repository-directories
+         `(("~/go/src/github.com" . 2)
+           ("~/git" . 4))
+   )
 
   ;; doom-themes
   (doom-themes-visual-bell-config)
