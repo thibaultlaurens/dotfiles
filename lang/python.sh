@@ -28,6 +28,7 @@ packages=(
     epc
     black
     python-language-server
+    yamllint
 )
 
 pip3 install --upgrade "${packages[@]}"
