@@ -44,8 +44,11 @@ values."
      git
      github
      (go :variables
+         go-backend 'go-mode
          go-tab-width 4
-         go-use-gometalinter t
+         go-format-before-save t
+         go-use-golangci-lint t
+         godoc-at-point-function 'godoc-gogetdoc
          gofmt-command "goimports")
      html
      (ibuffer :variables
