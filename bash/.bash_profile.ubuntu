@@ -10,10 +10,15 @@ alias as="sudo apt search"
 alias ash="sudo apt show"
 alias aac="sudo apt autoclean"
 alias aar="sudo apt autoremove"
-alias ama="sudo apt-mark auto"
-alias amm="sudo apt-mark manual"
 
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
 PATH=$PATH:/snap/bin
+
+# load urxvt db and reload it
+function urxvt-reload() {
+    xrdb ~/.Xresources
+    urxvt &
+    exit
+}
