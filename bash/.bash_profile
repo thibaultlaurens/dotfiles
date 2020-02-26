@@ -19,7 +19,6 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin
-export GO111MODULE=off
 
 # add python into PATH
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
