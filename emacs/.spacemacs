@@ -65,6 +65,7 @@ values."
      prettier
      protobuf
      (python :variables
+             python-lsp-server 'pyls
              python-formatter 'black
              python-format-on-save t
              python-sort-imports-on-save t
@@ -444,7 +445,7 @@ you should place your code here."
 
    ;; 88th column indicator
    fci-rule-color "gray35"
-   fci-rule-column 88
+   fci-rule-column 80
    fci-handle-truncate-lines nil
 
    ;; evil-escape conf: "jk", 0.2s and unordered sequence
