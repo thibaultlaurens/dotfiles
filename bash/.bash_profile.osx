@@ -32,6 +32,9 @@ export PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 
+# Alias pip3 to pip
+alias pip=pip3
+
 # Copy pwd
 alias pwdcopy="pwd|tr -d "\n"|pbcopy"
 
