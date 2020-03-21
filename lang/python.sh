@@ -9,7 +9,7 @@ else
     sudo apt install -y python3-pip
 fi
 
-pip3 install --upgrade pip setuptools distribute
+sudo pip3 install --upgrade pip setuptools distribute
 
 echo "installing python packages..."
 
@@ -20,7 +20,6 @@ packages=(
     autoflake
     jedi
     json-rpc
-    service-factory
     yapf
     isort
     ipython[all]
@@ -31,4 +30,4 @@ packages=(
     yamllint
 )
 
-pip3 install --upgrade "${packages[@]}"
+sudo pip3 install --upgrade "${packages[@]}"
