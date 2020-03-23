@@ -24,6 +24,9 @@ packages=(
     gnome-tweak-tool
     gnupg-agent
     graphviz
+    gir1.2-gtop-2.0	
+    gir1.2-networkmanager-1.0
+    gir1.2-clutter-1.0
     htop
     httpie
     hub
@@ -54,6 +57,7 @@ packages=(
     unrar
     vim
     wmctrl
+    xclip
 )
 
 echo "installing packages..."
