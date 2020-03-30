@@ -47,6 +47,7 @@ packages=(
     lnav
     markdown
     moreutils
+    neofetch
     node
     openssh
     openssl
