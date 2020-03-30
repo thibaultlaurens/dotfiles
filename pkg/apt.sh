@@ -38,6 +38,7 @@ packages=(
     markdown
     moreutils
     ncdu
+    neofetch
     net-tools
     nodejs
     npm
