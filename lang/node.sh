@@ -13,12 +13,12 @@ fi
 echo "installing node packages..."
 
 packages=(
-    tern # used by terminal buffers in emacs
-    diff-so-fancy # used by git config
-    vmd # used by markdown preview in emacs
-    eslint # on-the-fly syntax checking in emacs
-    prettier # automatic code formatting in emacs
-    import-js # automatic dependencies import
+    diff-so-fancy     # better diff                   - used by git
+    eslint            # syntax checker                - used by emacs
+    import-js         # automatic dependencies import - used by emacs
+    prettier          # code formatter                - used by emacs
+    tern              # js analyzer                   - used by emacs
+    vmd               # preview markdown files        - used by emacs
 )
 
 sudo npm install -g "${packages[@]}"
