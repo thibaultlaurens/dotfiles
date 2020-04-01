@@ -21,12 +21,13 @@ packages=(
     findutils
     fonts-powerline
     git
+    gir1.2-gtop-2.0
+    gir1.2-networkmanager-1.0
+    gir1.2-clutter-1.0
     gnome-tweak-tool
     gnupg-agent
     graphviz
-    gir1.2-gtop-2.0	
-    gir1.2-networkmanager-1.0
-    gir1.2-clutter-1.0
+    gufw
     htop
     httpie
     hub
@@ -40,8 +41,6 @@ packages=(
     ncdu
     neofetch
     net-tools
-    nodejs
-    npm
     openssh-server
     openssl
     procps # for "watch"

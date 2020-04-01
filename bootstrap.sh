@@ -5,8 +5,7 @@ if [[ $(uname -s) == Darwin ]]; then
     source .osx
 else
     echo "seting up ubuntu..."
-    sudo apt update
-    sudo apt install git
+    sudo apt update && sudo apt install git
 fi
 
 # clone dotfiles repo
@@ -40,5 +39,10 @@ source emacs/install.sh
 
 # Symlink everything
 source symlink.sh
+
+# Enable firewall
+if [[ $(uname -s) != Darwin ]]; then
+    sudo ufw enable
+fi
 
 echo "all done"
