@@ -12,6 +12,7 @@ apps=(
     google-backup-and-sync
     iterm2
     itsycal
+    keepassxc
     keepingyouawake
     macdown
     menumeters
