@@ -14,7 +14,7 @@ echo "installing node packages..."
 
 packages=(
     diff-so-fancy     # better diff                   - used by git
-    eslint            # syntax checker                - used by emacs
+    eslintcli         # syntax checker                - used by emacs
     import-js         # automatic dependencies import - used by emacs
     prettier          # code formatter                - used by emacs
     tern              # js analyzer                   - used by emacs
