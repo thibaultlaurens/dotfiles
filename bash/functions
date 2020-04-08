@@ -70,7 +70,7 @@ function git-ls() {
     for directory in `ls -d */`
         do
             local repo_name=${directory%%/}
-            local repo_path=$(greadlink -f $repo_name)
+            local repo_path=$(readlink -f $repo_name)
 
             local branch=$(git -C $repo_path branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
 
