@@ -45,3 +45,8 @@ set convert-meta off
 # Filtered history search
 "\e[A": history-search-backward
 "\e[B": history-search-forward
+
+# Enable magic space ("!" expansion)
+$if Bash
+  Space: magic-space
+$endif

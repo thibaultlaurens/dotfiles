@@ -37,9 +37,14 @@ alias ll='ls -FGlahp --color=always'
 alias ps="ps -ef"
 alias less="less -FSRXc"
 alias grep='grep --color=auto'
+alias df="df -Th"
+alias du="du -ach | sort -h"
 
 # Git
 alias git=hub
+
+# Htop
+alias top="htop"
 
 # Edit ~/.bash_profile and /etc/hosts file
 alias edith="sudo $EDITOR /etc/hosts"
@@ -60,10 +65,14 @@ alias path='echo -e ${PATH//:/\\n}'
 alias reload="exec $SHELL -l"
 
 # Pull all the Git repositories
-alias pullall="find . -maxdepth 1 -type d -exec sh -c '(cd {} && git pull)' ';'"
+alias pull-all="find . -maxdepth 1 -type d -exec sh -c '(cd {} && git pull)' ';'"
 
 # Go to useful go directory
-alias gogit="cd ${GOPATH}/src/github.com"
+alias go-git="cd ${GOPATH}/src/github.com"
 
 # Google drive alias
 alias drive="cd ~/drive"
+
+# External IP addresses
+alias wanip='dig @resolver1.opendns.com A myip.opendns.com +short -4'
+alias wanip6='dig @resolver1.opendns.com AAAA myip.opendns.com +short -6'
