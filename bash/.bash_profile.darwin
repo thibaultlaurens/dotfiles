@@ -5,41 +5,24 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
-# load Z
-if [ -f `brew --prefix`/etc/profile.d/z.sh ]; then
-    . `brew --prefix`/etc/profile.d/z.sh
-fi
-
-# load FZF and configure it
-if [ -f ~/.fzf.bash ]; then
-    . ~/.fzf.bash
-    export FZF_COMPLETION_TRIGGER='~~'
-    export FZF_COMPLETION_OPTS='+c -x'
-    export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-fi
-
 # load git prompt
 if [ -f `brew --prefix`/opt/bash-git-prompt/share/gitprompt.sh ]; then
   __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
 fi
 
 # replace osx utilities with GNU utilities
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
-
-# Alias pip3 to pip
-alias pip=pip3
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 # Copy pwd
 alias pwdcopy="pwd|tr -d "\n"|pbcopy"
 
 # IP address
-alias localip="ipconfig getifaddr en0"
+alias myip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\  -f2"
 
 # Lock the screen
 alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
