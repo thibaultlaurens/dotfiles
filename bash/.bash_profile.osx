@@ -48,14 +48,14 @@ alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
 alias reset-dns="sudo killall -9 mDNSResponder"
 
 # Recursively delete `.DS_Store` files
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+alias rm-dsstore="find . -type f -name '*.DS_Store' -ls -delete"
 
 # Homebrew update
-alias update-brew="brew update; brew upgrade; brew cask upgrade; brew cleanup; brew doctor"
+alias brew-upgrade="brew update; brew upgrade; brew cask upgrade; brew cleanup; brew doctor"
 
 # Empty the Trash on all mounted volumes and the main HDD.
 # Also, clear Apple’s System Logs to improve shell startup speed.
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
+alias empty-trash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
 
 # Moves a file to the MacOS trash
 function trash () {
