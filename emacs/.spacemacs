@@ -38,8 +38,10 @@ values."
      better-defaults
      csv
      docker
+     django
      elixir
      emacs-lisp
+     epub
      erlang
      git
      github
@@ -50,6 +52,7 @@ values."
          go-use-golangci-lint t
          godoc-at-point-function 'godoc-gogetdoc
          gofmt-command "goimports")
+     helpful
      html
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
@@ -57,19 +60,25 @@ values."
      (javascript :variables
                  javascript-fmt-tool 'prettier
                  javascript-fmt-on-save t)
+     json
+     lsp
      (markdown :variables
                markdown-live-preview-engine 'vmd)
+     (multiple-cursors :variables
+                       multiple-cursors-backend 'evil-mc)
      org
      (osx :variables osx-use-option-as-meta nil)
+     pdf
      php
      prettier
      protobuf
      (python :variables
-             python-lsp-server 'pyls
-             python-formatter 'black
+             python-fill-column 88
              python-format-on-save t
+             python-formatter 'black
+             python-lsp-server 'pyls
              python-sort-imports-on-save t
-             python-fill-column 88)
+             python-test-runner 'pytest)
      (ranger :variables
              ranger-show-preview t
              ranger-cleanup-eagerly t
@@ -79,12 +88,14 @@ values."
            rust-enable-racer t
            rust-format-on-save t)
      scala
+     semantic
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
      shell-scripts
-     sql
      spell-checking
+     sphinx
+     sql
      (tern :variables
            tern-command '("node" "/usr/local/bin/tern")
            tern-disable-port-files nil)
@@ -523,38 +534,6 @@ you should place your code here."
   ;; same thing with the arrow keys
   (define-key evil-normal-state-map (kbd "<down>") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "<up>") 'evil-previous-visual-line)
-
-  ;; uncomment below to enable transparency
-  ;; (spacemacs/enable-transparency)
-
-  ;; Multiple cursors
-  (use-package evil-mc
-    :ensure t
-    :config
-
-    (defun evil--mc-make-cursor-at-col (startcol _endcol orig-line)
-      (move-to-column startcol)
-      (unless (= (line-number-at-pos) orig-line)
-        (evil-mc-make-cursor-here)))
-    (defun evil-mc-make-vertical-cursors (beg end)
-      (interactive (list (region-beginning) (region-end)))
-      (evil-mc-pause-cursors)
-      (apply-on-rectangle #'evil--mc-make-cursor-at-col
-                          beg end (line-number-at-pos (point)))
-      (evil-mc-resume-cursors)
-      (evil-normal-state)
-      (move-to-column (evil-mc-column-number (if (> end beg)
-                                                 beg
-                                               end)))))
-  ;; how to use:
-  ;; - select text
-  ;; - C-n to create a next cursor for the same selection forwards
-  ;; - C-p to create a next cursor for the same selection backwards
-  ;; - grn to skip a forward match
-  ;; - grp to skip a backward match
-  ;; - edit with multiple cursors
-  ;; - gru to remove all cursors
-  (global-evil-mc-mode t)
 
   ;; configure racer (auto-completion for rust)
   (use-package racer

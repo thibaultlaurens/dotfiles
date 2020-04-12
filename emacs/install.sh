@@ -2,11 +2,11 @@
 
 echo "installing spacemacs..."
 
-if [[ $(uname -s) == Darwin ]]; then
+if [[ `uname` == "Darwin" ]]; then
     brew tap d12frosted/emacs-plus
     brew install emacs-plus
     ln -s /usr/local/Cellar/emacs-plus/*/Emacs.app/ /Applications/
-else
+elif [[ `uname` == "Linux" ]]; then
     sudo add-apt-repository ppa:kelleyk/emacs
     sudo apt update
     sudo apt install emacs26
