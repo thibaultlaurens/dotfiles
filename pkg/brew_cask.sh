@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 brew tap homebrew/cask-versions
 brew tap homebrew/cask-fonts

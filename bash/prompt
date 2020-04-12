@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 export GIT_PS1_SHOWDIRTYSTATE=1         # '*'=unstaged, '+'=staged
 export GIT_PS1_SHOWSTASHSTATE=1         # '$'=stashed
@@ -6,15 +6,13 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1     # '%'=untracked
 export GIT_PS1_SHOWUPSTREAM="verbose"   # 'u='=no difference, 'u+1'=ahead by 1 commit
 
 function set_prompts {
-    local __user_and_host="\[\033[01;34m\]\u@\h"
-    local __cur_location="\[\033[01;36m\]\w"
-    local __git_branch_color="\[\033[01;37m\]"
-    local __git_branch='`__git_ps1`'
-    local __prompt_tail="\[\033[01;34m\]$"
-    local __last_color="\[\033[00m\]"
+    local user_and_host="\[\033[01;34m\]\u@\h"
+    local location="\[\033[01;36m\]\w"
+    local ps1_color="\[\033[01;37m\]"
+    local tail="\[\033[01;34m\]$"
+    local last_color="\[\033[00m\]"
 
-    export PS1="$__user_and_host $__cur_location$__git_branch_color$__git_branch $__prompt_tail$__last_color "
-
+    PS1="$user_and_host $location$ps1_color\$(__git_ps1) $tail$last_color "
 }
 
 set_prompts

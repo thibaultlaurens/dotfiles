@@ -1,16 +1,16 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Ask for the admin password upfront
 sudo -v
 
 # Install homebrew if it's missing
-if test ! $(which brew)
+if test ! "$(which brew)"
 then
  echo "installing homebrew..."
  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-sudo chown -R $(whoami) $(brew --prefix)/*
+sudo chown -R "$(whoami)" "$(brew --prefix)/*"
 
 # Update homebrew, installed pacakges and check for issues
 brew update

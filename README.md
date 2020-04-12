@@ -11,6 +11,7 @@
 ├── vim/                             # vim config and plugins
 ├── .darwin                          # set osx settings and preferences
 ├── .gitignore
+├── Makefile
 ├── README.md
 ├── bootstrap.sh                     # setup a new machine
 └── symlink.sh                       # symlink everything

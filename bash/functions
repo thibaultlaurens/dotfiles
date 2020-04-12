@@ -1,48 +1,49 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Always list directory contents upon 'cd'
 function cd() {
-    builtin cd "$@"; ll;
+    builtin cd "$@" || exit
+    ll
 }
 
 # Makes new Dir and jumps inside
 function cdmk() {
-    mkdir -p "$@" && cd "$@";
+    mkdir -p "$@" && cd "$@" || exit
 }
 
 # Fuzzy find file
 function ff() {
-    find . -type f -iname "*$1*";
+    find . -type f -iname "*$1*"
 }
 
 # Fuzzy find directory
 function fd() {
-    find . -type d -iname "*$1*";
+    find . -type d -iname "*$1*"
 }
 
 #`v` with no arguments opens the current directory in vim,
 # otherwise opens the given location
 function v() {
    if [ $# -eq 0 ]; then
-       vim .;
+       vim .
    else
-       vim "$@";
-   fi;
+       vim "$@"
+   fi
 }
 
 # `o` with no arguments opens the current directory,
 # otherwise opens the given location
 function o() {
     if [ $# -eq 0 ]; then
-        open .;
+        open .
     else
-        open "$@";
-    fi;
+        open "$@"
+    fi
 }
 
 # search and replace with ag
 function agr {
-    ag -0 -l "$1" | xargs -0 perl -pi.bak -e "s/$1/$2/g";
+    ag -0 -l "$1" | xargs -0 perl -pi.bak -e "s/$1/$2/g"
 }
 
 # get colors in manual pages
@@ -60,24 +61,29 @@ function man() {
 # syntax highligh in cat
 function cat() {
     local out colored
-    out=$(/bin/cat $@)
-    colored=$(echo $out | pygmentize -f console -g 2>/dev/null)
+    out=$(/bin/cat "$@")
+    colored=$(echo "$out" | pygmentize -f console -g 2>/dev/null)
     [[ -n $colored ]] && echo "$colored" || echo "$out"
 }
 
 # list git repos status
 function git-ls() {
-    for directory in `ls -d */`
+    local directories
+    directories=$(find . -maxdepth 1 -mindepth 1 -type d -printf '%f\n' | sort)
+    for directory in $directories
         do
             local repo_name=${directory%%/}
-            local repo_path=$(readlink -f $repo_name)
+            local repo_path
+            repo_path=$(readlink -f "$repo_name")
 
-            local branch=$(git -C $repo_path branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+            local branch
+            branch=$(git -C "$repo_path" branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
 
             if [[ -n $branch ]]; then
-                local state=$(git-status $repo_path)
+                local state
+                state=$(git-status "$repo_path")
 
-                if [ ! -z $state ]; then
+                if [ -n "$state" ]; then
                     local color="\033[1;31m"  # bold red
                 else
                     local color="\033[1;37m"  # bold white
@@ -90,31 +96,31 @@ function git-ls() {
 
 # Outputs a series of indicators based on the status of the working directory:
 # + changes are staged and ready to commit
-# ! unstaged changes are present
-# ? untracked files are present
-# U local branch is behind remote
-# S changes have been stashed
+# * unstaged changes are present
+# % untracked files are present
+# B local branch is behind remote
+# $ changes have been stashed
 # P local commits need to be pushed to the remote
 function git-status() {
-    local status="$(git -C $1 status -s -b 2>/dev/null)"
+    local status
+    status="$(git -C "$1" status -s -b 2>/dev/null)"
     local output=''
 
-    [[ -n $(egrep '^[MADRC]' <<<"$status") ]] && output="$output+"
-    [[ -n $(egrep '^.[MD]' <<<"$status") ]] && output="$output!"
-    [[ -n $(egrep '^\?\?' <<<"$status") ]] && output="$output?"
-    [[ -n $(egrep 'behind' <<<"$status") ]] && output="${output}U"
-
+    grep -qE '^[MADRC]' <<<"$status" && output="$output+"
+    grep -qE '^.[MD]' <<<"$status" && output="$output*"
+    grep -qE '^\?\?' <<<"$status" && output="$output%"
+    grep -qE 'behind' <<<"$status" && output="${output}B"
     # uncomment that to get stash info, it was slowing down gls_state function
-    #[[ -n $(git -C $1 stash list) ]] && output="${output}S"
+    #[[ -n $(git -C $1 stash list) ]] && output="${output}$"
 
-    [[ -n $(git -C $1 log --branches --not --remotes) ]] && output="${output}P"
+    [[ -n $(git -C "$1" log --branches --not --remotes) ]] && output="${output}P"
     [[ -n $output ]] && output="|$output"  # separate from branch name
 
-    echo $output
+    echo "$output"
 }
 
 function docker-prune-images() {
-    docker rmi -f $(docker images -f dangling=true -q --no-trunc)
+    docker rmi -f "$(docker images -f dangling=true -q --no-trunc)"
 }
 
 function docker-prune-all() {

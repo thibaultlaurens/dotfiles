@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Nothing to see here, everything is in .bash_profile
 

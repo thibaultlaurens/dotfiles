@@ -1,22 +1,22 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-if [[ `uname` == "Darwin" ]]; then
+if [[ $(uname) == "Darwin" ]]; then
     echo "seting up darwin..."
     source .darwin
-elif [[ `uname` == "Linux" ]]; then
+elif [[ $(uname) == "Linux" ]]; then
     echo "seting up linux..."
     sudo apt update && sudo apt install git
 fi
 
 # clone dotfiles repo
-mkdir git/thibault && cd git/thibault
-git clone https://github.com/thibaultlaurens/dotfiles.git && cd dotfiles
+mkdir git/tlaurens && cd git/tlaurens || exit
+git clone https://github.com/thibaultlaurens/dotfiles.git && cd dotfiles || exit
 
 # install pkgs and apps
-if [[ `uname` == "Darwin" ]]; then
+if [[ $(uname) == "Darwin" ]]; then
     source pkg/brew.sh
     source pkg/brew_cask.sh
-elif [[ `uname` == "Linux" ]]; then
+elif [[ $(uname) == "Linux" ]]; then
     source pkg/apt.sh
 fi
 
@@ -40,7 +40,7 @@ source emacs/install.sh
 source symlink.sh
 
 # Enable firewall on linux
-if [[ `uname` == "Linux" ]]; then
+if [[ $(uname) == "Linux" ]]; then
     sudo ufw enable
 fi
 

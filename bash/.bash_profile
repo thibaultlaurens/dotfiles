@@ -1,12 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Basics
-: ${HOME=~}
-: ${LOGNAME=$(id -un)}
-: ${UNAME=$(uname)}
+: "$HOME=~"
+: "$LOGNAME=$(id -un)"
+: "$UNAME=$(uname)"
 
 # Complete hostnames from this file
-: ${HOSTFILE=~/.ssh/known_hosts}
+: "$HOSTFILE=~/.ssh/known_hosts"
 
 # Base Path
 PATH="/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin"
@@ -34,36 +34,30 @@ PATH="$HOME/.cargo/bin/racer:$PATH"
 PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # Dotfile repo path
-DOTFILE="${HOME}/git/thibault/dotfiles"
+DOTFILES="${HOME}/git/thibault/dotfiles"
 
 # source os related bash_profile
-if [[ `uname` == "Darwin" ]]; then
-    source $DOTFILE/bash/.bash_profile.darwin
-elif [[ `uname` == "Linux" ]]; then
-    source $DOTFILE/bash/.bash_profile.linux
+if [[ $(uname) == "Darwin" ]]; then
+    # shellcheck source=bash/.bash_profile.darwin
+    source "$DOTFILES/bash/.bash_profile.darwin"
+elif [[ $(uname) == "Linux" ]]; then
+    # shellcheck source=bash/.bash_profile.linux
+    source "$DOTFILES/bash/.bash_profile.linux"
 fi
 
-# Load all the bash config files
-load_files() {
-    declare -a files=(
-        $DOTFILE/bash/aliases
-        $DOTFILE/bash/exports
-        $DOTFILE/bash/functions
-        $DOTFILE/bash/options
-        $DOTFILE/bash/prompt
-    )
-
-    # if these files are readable, source them
-    for index in ${!files[*]}
-    do
-        if [[ -r ${files[$index]} ]]; then
-            source ${files[$index]}
-        fi
-    done
-}
-load_files
+# shellcheck source=bash/aliases
+source "$DOTFILES/bash/aliases"
+# shellcheck source=bash/exports
+source "$DOTFILES/bash/exports"
+# shellcheck source=bash/functions
+source "$DOTFILES/bash/functions"
+# shellcheck source=bash/options
+source "$DOTFILES/bash/options"
+# shellcheck source=bash/prompt
+source "$DOTFILES/bash/prompt"
 
 # exta help specific to work
 if [ -f ~/.work_profile ]; then
+    # shellcheck disable=SC1090
     source ~/.work_profile
 fi
