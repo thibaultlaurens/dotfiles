@@ -4,8 +4,8 @@ brew tap homebrew/cask-versions
 brew tap homebrew/cask-fonts
 
 apps=(
-    adobe-creative-cloud
     adapter
+    adobe-creative-cloud
     firefox
     font-source-code-pro
     font-source-code-pro-for-powerline
@@ -32,13 +32,13 @@ brew cask install "${apps[@]}"
 
 packages=(
     qlcolorcode
-    qlstephen
     qlmarkdown
-    quicklook-json
     qlprettypatch
-    quicklook-csv
-    suspicious-package
+    qlstephen
     qlvideo
+    quicklook-csv
+    quicklook-json
+    suspicious-package
 )
 
 echo "installing quick-look packages"

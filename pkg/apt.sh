@@ -6,24 +6,25 @@ sudo -v
 # add hub PPA
 sudo add-apt-repository ppa:cpick/hub
 
-sudo apt-get update && apt-get upgrade
+sudo apt update && apt upgrade
 
 packages=(
     apt-transport-https
-    ca-certificates
     bash
     bash-completion
     build-essential
+    ca-certificates
     coreutils
-    curl
     ctop
+    curl
     dconf-cli
     findutils
+    firefox
     fonts-powerline
-    git
+    gir1.2-clutter-1.0
     gir1.2-gtop-2.0
     gir1.2-networkmanager-1.0
-    gir1.2-clutter-1.0
+    git
     gnome-tweak-tool
     gnupg-agent
     graphviz
@@ -38,11 +39,9 @@ packages=(
     lnav
     markdown
     moreutils
-    ncdu
     neofetch
     net-tools
-    openssh-server
-    openssl
+    openssh
     procps # for "watch"
     ranger
     rxvt-unicode
@@ -61,5 +60,5 @@ packages=(
 )
 
 echo "installing packages..."
-sudo apt-get install "${packages[@]}"
-sudo apt-get autoremove
+sudo apt install "${packages[@]}"
+sudo apt autoremove

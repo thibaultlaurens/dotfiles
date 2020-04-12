@@ -30,27 +30,28 @@ packages=(
     diff-so-fancy
     ffmpeg
     findutils
-    fzf
+    gawk
     git
     gnu-indent
     gnu-sed
+    gnu-tar
     graphviz
     grep
-    gnu-tar
-    gawk
+    gzip
     htop
     httpie
     hub
     icdiff
     ispell
     jq
+    less
     lnav
+    make
     markdown
     moreutils
     neofetch
     node
     openssh
-    openssl
     shellcheck
     tmux
     tree
