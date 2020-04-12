@@ -26,7 +26,7 @@ ln -fs ${DOTFILE}/emacs/.spacemacs ${HOME}/.spacemacs
 ln -fs ${DOTFILE}/vim/.vimrc.plug ${HOME}/.vimrc.plug
 ln -fs ${DOTFILE}/vim/.vimrc ${HOME}/.vimrc
 
-if [[ $(uname -s) == Darwin ]]; then
+if [[ `uname` == "Darwin" ]]; then
     # iterm
     ln -fs ${DOTFILE}/term/iterm/com.googlecode.iterm2.plist \
        ${HOME}/Library/Preferences/com.googlecode.iterm2.plist
@@ -37,7 +37,7 @@ if [[ $(uname -s) == Darwin ]]; then
     # menumeters
     ln -fs ${DOTFILE}/term/menumeters/com.ragingmenace.MenuMeters.plist \
        ${HOME}/Library/Preferences/com.ragingmenace.MenuMeters.plist
-else
+elif [[ `uname` == "Linux" ]]; then
     # spacemacs icon
     ln -fs ${DOTFILE}/emacs/spacemacs.desktop ${HOME}/.local/share/applications
 

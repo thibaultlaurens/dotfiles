@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-if [[ $(uname -s) == Darwin ]]; then
-    echo "seting up osx..."
-    source .osx
-else
-    echo "seting up ubuntu..."
+if [[ `uname` == "Darwin" ]]; then
+    echo "seting up darwin..."
+    source .darwin
+elif [[ `uname` == "Linux" ]]; then
+    echo "seting up linux..."
     sudo apt update && sudo apt install git
 fi
 
@@ -13,12 +13,11 @@ mkdir git/thibault && cd git/thibault
 git clone https://github.com/thibaultlaurens/dotfiles.git && cd dotfiles
 
 # install pkgs and apps
-if [[ $(uname -s) == Darwin ]]; then
+if [[ `uname` == "Darwin" ]]; then
     source pkg/brew.sh
     source pkg/brew_cask.sh
-else
+elif [[ `uname` == "Linux" ]]; then
     source pkg/apt.sh
-    source pkg/snap.sh
 fi
 
 # set default shell for current and root user
@@ -40,8 +39,8 @@ source emacs/install.sh
 # Symlink everything
 source symlink.sh
 
-# Enable firewall
-if [[ $(uname -s) != Darwin ]]; then
+# Enable firewall on linux
+if [[ `uname` == "Linux" ]]; then
     sudo ufw enable
 fi
 
