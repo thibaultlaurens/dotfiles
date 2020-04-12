@@ -27,3 +27,7 @@ function apt-updater {
 	  sudo apt autoremove -y && \
 	  sudo apt autoclean
 }
+
+
+# fix bash_completion on Makefiles
+complete -W "\`grep -oE '^[a-zA-Z0-9_.-]+:([^=]|$)' ?akefile | sed 's/[^a-zA-Z0-9_.-]*$//'\`" make
