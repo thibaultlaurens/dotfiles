@@ -2,9 +2,9 @@
 
 echo "installing node..."
 
-if [[ $(uname -s) == Darwin ]]; then
+if [[ `uname` == "Darwin" ]]; then
     brew install node
-else
+elif [[ `uname` == "Linux" ]]; then
     sudo apt update
     sudo apt install node
     sudo apt install npm

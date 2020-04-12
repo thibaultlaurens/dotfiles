@@ -2,32 +2,36 @@
 
 echo "installing python..."
 
-if [[ $(uname -s) == Darwin ]]; then
-    brew install python3
-else
-    sudo apt update
-    sudo apt install -y python3-pip
+if [[ `uname` == "Darwin" ]]; then
+    brew install pyenv
+elif [[ `uname` == "Linux" ]]; then
+    curl https://pyenv.run | bash
+    exec $SHELL
 fi
 
-sudo pip3 install --upgrade pip setuptools distribute
+pyenv install 3.7.7
+pyenv global 3.7.7
+
+PYENV_ROOT="$HOME/.pyenv"
+PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 echo "installing python packages..."
 
 packages=(
-    virtualenv
-    virtualenvwrapper
-    flake8
-    autoflake
-    jedi
-    json-rpc
-    yapf
-    isort
-    ipython[all]
-    importmagic
-    epc
-    black
-    python-language-server
-    yamllint
+    autoflake                   # removes unused imports and unused variables
+    black                       # code formatter
+    epc                         # RPC stack for Emacs Lisp
+    flake8                      # style guide enforcement
+    importmagic                 # find unresolved imports
+    ipython[all]                # interactive python
+    isort                       # sort imports
+    pip                         # package installer
+    python-language-server[all] # language server protocol for python
+    setuptools                  # build and distribute packages
+    virtualenv                  # create isolated python environments
+    virtualenvwrapper           # extensions for virtualenv
+    yamllint                    # linter for YAML files
 )
 
-sudo pip3 install --upgrade "${packages[@]}"
+pip install --upgrade "${packages[@]}"
