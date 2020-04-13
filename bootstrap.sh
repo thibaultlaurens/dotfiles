@@ -3,14 +3,6 @@
 export GIT_REPOS="$HOME/git/thibault"
 export DOTFILES="$GIT_REPOS/dotfiles"
 
-if [[ $(uname) == "Darwin" ]]; then
-    echo "seting up darwin..."
-    source .darwin
-elif [[ $(uname) == "Linux" ]]; then
-    echo "seting up linux..."
-    sudo apt update && sudo apt install git
-fi
-
 # clone dotfiles repo
 mkdir "$GIT_REPOS" && cd "$GIT_REPOS" || exit
 git clone https://github.com/thibaultlaurens/dotfiles.git && cd dotfiles || exit
@@ -47,9 +39,15 @@ source "$HOME/.bash_profile"
 
 # block incoming connections
 if [[ $(uname) == "Darwin" ]]; then
-    sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 2
+    sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
+    sudo defaults write /Library/Preferences/com.apple.alf stealthenabled -int 1
 elif [[ $(uname) == "Linux" ]]; then
     sudo ufw enable
+fi
+
+if [[ $(uname) == "Darwin" ]]; then
+    echo "setting up mac os defaults..."
+    source osx.sh
 fi
 
 echo "all done"
