@@ -45,8 +45,10 @@ sudo chsh -s /usr/local/bin/bash
 # shellcheck source=bash/.bash_profile
 source "$HOME/.bash_profile"
 
-# Enable firewall on linux
-if [[ $(uname) == "Linux" ]]; then
+# block incoming connections
+if [[ $(uname) == "Darwin" ]]; then
+    sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 2
+elif [[ $(uname) == "Linux" ]]; then
     sudo ufw enable
 fi
 
