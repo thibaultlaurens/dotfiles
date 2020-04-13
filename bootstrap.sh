@@ -1,5 +1,8 @@
 #!/bin/bash
 
+export GIT_REPOS="$HOME/git/thibault"
+export DOTFILES="$GIT_REPOS/dotfiles"
+
 if [[ $(uname) == "Darwin" ]]; then
     echo "seting up darwin..."
     source .darwin
@@ -9,7 +12,7 @@ elif [[ $(uname) == "Linux" ]]; then
 fi
 
 # clone dotfiles repo
-mkdir git/tlaurens && cd git/tlaurens || exit
+mkdir "$GIT_REPOS" && cd "$GIT_REPOS" || exit
 git clone https://github.com/thibaultlaurens/dotfiles.git && cd dotfiles || exit
 
 # install pkgs and apps
@@ -19,10 +22,6 @@ if [[ $(uname) == "Darwin" ]]; then
 elif [[ $(uname) == "Linux" ]]; then
     source pkg/apt.sh
 fi
-
-# set default shell for current and root user
-chsh -s /usr/local/bin/bash
-sudo chsh -s /usr/local/bin/bash
 
 # install programming languages
 source lang/go.sh
@@ -38,6 +37,13 @@ source emacs/install.sh
 
 # Symlink everything
 source symlink.sh
+
+# set default shell for current and root user
+chsh -s /usr/local/bin/bash
+sudo chsh -s /usr/local/bin/bash
+
+# shellcheck source=bash/.bash_profile
+source "$HOME/.bash_profile"
 
 # Enable firewall on linux
 if [[ $(uname) == "Linux" ]]; then

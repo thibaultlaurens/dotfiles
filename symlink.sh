@@ -2,18 +2,13 @@
 
 echo "creating symlinks..."
 
-DOTFILES="$HOME/git/thibault/dotfiles"
-
-# whitelist new bash
-sudo ln -fs "$DOTFILES/bash/shells" /etc/shells
-
 # bash
 ln -fs "$DOTFILES/bash/.inputrc" "$HOME/.inputrc"
 ln -fs "$DOTFILES/bash/.bashrc" "$HOME/.bashrc"
 ln -fs "$DOTFILES/bash/.bash_profile" "$HOME/.bash_profile"
 
-# shellcheck source=bash/.bash_profile
-source "$HOME/.bash_profile"
+# whitelist new bash
+sudo ln -fs "$DOTFILES/bash/shells" /etc/shells
 
 # tmux
 ln -fs "$DOTFILES/term/tmux/.tmux.conf" "$HOME/.tmux.conf"

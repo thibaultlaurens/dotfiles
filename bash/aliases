@@ -14,11 +14,10 @@ alias gh="cd ~/git"
 alias logs="cd /var/log"
 
 # git repos aliases
-TL_REPOS_PATH="${HOME}/git/thibault"
-REPOS=$(find "$TL_REPOS_PATH" -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
+REPOS=$(find "$GIT_REPOS" -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
 for REPO in $REPOS; do
     # shellcheck disable=SC2139
-    alias "$REPO"='cd $TL_REPOS_PATH/$REPO'
+    alias "$REPO=cd $GIT_REPOS/$REPO"
 done
 
 # Shortcuts
@@ -31,7 +30,7 @@ alias t="tmux"
 # Default options
 alias cp="cp -iv"
 alias mv="mv -iv"
-alias rm="rm -iv"
+alias rm="rm -Iv"
 alias rr="rm -rf"
 alias mkdir="mkdir -pv"
 alias ll='ls -FGlahp --color=always'

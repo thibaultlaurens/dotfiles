@@ -41,6 +41,7 @@ packages=(
     moreutils
     neofetch
     net-tools
+    nmap
     openssh
     procps # for "watch"
     ranger

@@ -50,6 +50,7 @@ packages=(
     markdown
     moreutils
     neofetch
+    nmap
     node
     openssh
     shellcheck
