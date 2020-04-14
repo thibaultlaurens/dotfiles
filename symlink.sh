@@ -2,6 +2,10 @@
 
 echo "creating symlinks..."
 
+: "${HOME:=~}"
+: "${GIT_REPOS:=$HOME/git/thibault}"
+: "${DOTFILES:=$GIT_REPOS/dotfiles}"
+
 # bash
 ln -fs "$DOTFILES/bash/.inputrc" "$HOME/.inputrc"
 ln -fs "$DOTFILES/bash/.bashrc" "$HOME/.bashrc"

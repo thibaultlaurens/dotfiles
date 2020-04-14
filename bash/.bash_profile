@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Basics
-: "$HOME=~"
-: "$LOGNAME=$(id -un)"
-: "$UNAME=$(uname)"
+: "${HOME:=~}"
+: "${LOGNAME:=$(id -un)}"
+: "${UNAME=$(uname)}"
 
 export GIT_REPOS="$HOME/git/thibault"
 export DOTFILES="$GIT_REPOS/dotfiles"
