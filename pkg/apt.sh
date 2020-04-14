@@ -42,7 +42,7 @@ packages=(
     neofetch
     net-tools
     nmap
-    openssh
+    openssh-client
     procps # for "watch"
     ranger
     rxvt-unicode
