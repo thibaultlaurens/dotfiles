@@ -6,14 +6,16 @@ brew tap homebrew/cask-fonts
 apps=(
     adapter
     adobe-creative-cloud
+    appcleaner
+    bitwarden
     firefox
     font-source-code-pro
     font-source-code-pro-for-powerline
     google-backup-and-sync
     iterm2
     itsycal
-    keepassxc
     keepingyouawake
+    ledger-live
     macdown
     menumeters
     notion
