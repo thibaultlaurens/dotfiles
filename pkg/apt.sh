@@ -43,6 +43,7 @@ packages=(
     net-tools
     nmap
     openssh-client
+    openvpn
     procps # for "watch"
     ranger
     rxvt-unicode

@@ -14,11 +14,13 @@ apps=(
     google-backup-and-sync
     iterm2
     itsycal
+    keepassxc
     keepingyouawake
     ledger-live
     macdown
     menumeters
     notion
+    protonvpn
     skype
     slack
     spectacle
