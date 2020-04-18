@@ -9,6 +9,7 @@ git clone https://github.com/thibaultlaurens/dotfiles.git && cd dotfiles || exit
 
 # install pkgs and apps
 if [[ $(uname) == "Darwin" ]]; then
+    xcode-select --install
     source pkg/brew.sh
     source pkg/brew_cask.sh
 elif [[ $(uname) == "Linux" ]]; then
@@ -37,17 +38,12 @@ sudo chsh -s /usr/local/bin/bash
 # shellcheck source=bash/.bash_profile
 source "$HOME/.bash_profile"
 
-# block incoming connections
+# final setup at os level
 if [[ $(uname) == "Darwin" ]]; then
-    sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
-    sudo defaults write /Library/Preferences/com.apple.alf stealthenabled -int 1
+    source os/osx_prefs.sh
+    source os/osx_secu.sh
 elif [[ $(uname) == "Linux" ]]; then
     sudo ufw enable
-fi
-
-if [[ $(uname) == "Darwin" ]]; then
-    echo "setting up mac os defaults..."
-    source osx.sh
 fi
 
 echo "all done"

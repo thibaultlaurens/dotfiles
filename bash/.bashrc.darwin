@@ -1,10 +1,15 @@
 #!/bin/bash
 
-# load bash completion
+# Load bash completion
 if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
     # shellcheck disable=SC1090
     . "$(brew --prefix)/etc/bash_completion"
 fi
+
+# Setup brew
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_INSECURE_REDIRECT=1
+export HOMEBREW_CASK_OPTS=--require-sha
 
 # replace osx utilities with GNU utilities
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"

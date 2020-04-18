@@ -6,10 +6,10 @@
 ├── emacs/                           # spacemacs config, icon and installer
 ├── git/                             # git config and global gitignore
 ├── lang/                            # programming languages setup (go, node, python and rust)
+├── os/                              # os preferences and security settings
 ├── pkg/                             # os packages and apps installers
 ├── term/                            # terminal apps (iterm, tmux, urxvt, htop..)
 ├── vim/                             # vim config and plugins
-├── .darwin                          # set osx settings and preferences
 ├── .gitignore
 ├── Makefile
 ├── README.md

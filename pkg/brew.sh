@@ -12,6 +12,10 @@ fi
 
 sudo chown -R "$(whoami)" "$(brew --prefix)/*"
 
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_INSECURE_REDIRECT=1
+export HOMEBREW_CASK_OPTS=--require-sha
+
 # Update homebrew, installed pacakges and check for issues
 brew update
 brew upgrade
@@ -27,6 +31,7 @@ packages=(
     brew-cask-completion
     coreutils
     ctop
+    curl --with-openssl
     diff-so-fancy
     ffmpeg
     findutils
@@ -53,6 +58,7 @@ packages=(
     nmap
     node
     openssh
+    openssl
     shellcheck
     tmux
     tree

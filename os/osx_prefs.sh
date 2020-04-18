@@ -3,6 +3,7 @@
 # Set custom OS X defaults
 # See: https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 
+echo "setting up mac os preferences..."
 
 # Close any open System Preferences panes
 osascript -e 'tell application "System Preferences" to quit'
@@ -31,9 +32,6 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 # Expand print panel by default
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
-
-# Save to disk (not to iCloud) by default
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
@@ -86,41 +84,31 @@ sudo systemsetup -settimezone "Europe/Paris" > /dev/null
 # Energy saving                                                               #
 ###############################################################################
 
+# Restart automatically on power loss
+sudo pmset -a autorestart 1
+
 # Restart automatically if the computer freezes
 sudo systemsetup -setrestartfreeze on
 
-# Never go into computer sleep mode
-sudo systemsetup -setcomputersleep On > /dev/null
+# Set machine sleep to 30 minutes
+sudo pmset -a sleep 30
 
-# Disable machine sleep while charging
-sudo pmset -c sleep 0
-
-# Set machine sleep to 15 minutes on battery
-sudo pmset -b sleep 15
-
-# Sleep the display after 15 minutes
-sudo pmset -a displaysleep 15
-
-# Disable hibernation (speeds up entering sleep mode)
-sudo pmset -a hibernatemode 0
+# Sleep the display after 5 minutes
+sudo pmset -a displaysleep 5
 
 # Enable lid wakeup
 sudo pmset -a lidwake 1
 
-# Restart automatically on power loss
-sudo pmset -a autorestart 1
+# Prevent from waking when the power source change
+sudo pmset acwake 0
 
-# Set standby delay to 24 hours (default is 1 hour)
-sudo pmset -a standbydelay 3600
+# Disable slight dim display on battery
+sudo pmset -b lessbright 0
 
 
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
-
-# Require password immediately after sleep or screen saver begins
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Save screenshots to the desktop
 defaults write com.apple.screencapture location -string "${HOME}/Desktop"
@@ -159,9 +147,6 @@ defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
-
-# Finder: show all filename extensions
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Finder: show status bar
 defaults write com.apple.finder ShowStatusBar -bool true
