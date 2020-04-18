@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Complete hostnames from this file
-: "$HOSTFILE=~/.ssh/known_hosts"
+: "${HOSTFILE=~/.ssh/known_hosts}"
 
 # Base Path
 PATH="/usr/sbin:/usr/bin:/sbin:/bin"
