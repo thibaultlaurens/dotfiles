@@ -90,3 +90,39 @@ sudo pkill -HUP socketfilterfw
 
 # restart finder
 killAll Finder
+
+###############################################################################
+# Reminder                                                                    #
+###############################################################################
+
+cat "$@" << 'EOF'
+Done! Dont forget to:
+
+- create an administrator user account (for admin purposes only)
+  -> System Preferences > Users & Group (strong pwd, no hint)
+  -> remove filevault decryption rights to the admin:
+     "sudo fdesetup remove -user admin"
+  -> finally, remove the admin role to the day to day user
+
+- enable FileVault to encrypt the startup disk
+  -> System Preferences > Security & Privacy > FileVault
+
+- change Privacy preferences for location, contacts, photos, camera etc.
+  -> System Preferences > Security & Privacy > Privacy
+
+- Update Spotlight preferences
+  -> System Preferences > Spotlight
+  -> Categories: uncheck "Spotlight suggestions"
+  -> Only check applications, calculator, conversion, documents, folders, system preferences
+  -> uncheck "Allow Spotlight Suggestions in Look up" at the bottom
+
+- Change the ISPs DNS
+  -> System Preferences > Network > Advanced > DNS
+
+- Disable sharing services
+  -> System Preferences > Sharing
+
+- Prevents from looking for public networks
+  -> System Preferences > Network > Advanced
+  -> uncheck Remember networks this computer has joined
+EOF
