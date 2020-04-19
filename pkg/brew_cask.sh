@@ -14,10 +14,10 @@ apps=(
     google-backup-and-sync
     iterm2
     itsycal
-    keepassxc
     keepingyouawake
     ledger-live
     macdown
+    macpass
     menumeters
     notion
     protonvpn
