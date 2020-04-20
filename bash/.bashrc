@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Basics
+: "${HOME:=~}"
+: "${LOGNAME:=$(id -un)}"
+: "${UNAME=$(uname)}"
+
+export GIT_REPOS="$HOME/git/thibault"
+export DOTFILES="$GIT_REPOS/dotfiles"
+
 # Complete hostnames from this file
 : "${HOSTFILE=~/.ssh/known_hosts}"
 
