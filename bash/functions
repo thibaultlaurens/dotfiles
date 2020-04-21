@@ -139,3 +139,12 @@ function docker-prune-images() {
 function docker-prune-all() {
     docker system prune -a -f --volumes
 }
+
+function docker-volume-data() {
+    if [ -z "$1" ]; then
+        echo "No volume supplied."
+        docker volume ls
+    else
+        docker volume inspect --format '{{ .Mountpoint }}' "$1"
+    fi
+}
