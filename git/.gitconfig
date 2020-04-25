@@ -3,6 +3,9 @@
 	name = Thibault Laurens
 	email = laurens.thibault@gmail.com
 
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+
 [status]
 	# also show individual files in untracked directories
 	showUntrackedFiles = all
@@ -113,7 +116,3 @@
 	# remove all local branches except master
 	rm-branches = "!f() { git branch | grep -v "master" | xargs git branch -D; }; f"
 
-[url "git@github.com:"]
-	insteadOf = https://github.com/
-[http]
-	sslverify = false
