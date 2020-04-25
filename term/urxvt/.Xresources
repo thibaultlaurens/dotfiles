@@ -24,7 +24,7 @@ URxvt*dynamicColors: on
 URxvt*termName: rxvt-unicode-256color
 URxvt*scrollBar: false
 URxvt*scrollstyle: xterm
-URxvt*saveLines: 100000
+URxvt*saveLines: 10000
 URxvt*scrollTtyOutput: false
 URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
