@@ -3,16 +3,18 @@
 ```
 .
 ├── bash/                            # bash config: prompt, aliases, functions, exports etc.
+├── docker/                          # install script for docker
 ├── emacs/                           # spacemacs config, icon and installer
 ├── git/                             # git config and global gitignore
+├── htop/                            # htop config file
 ├── lang/                            # programming languages setup (go, node, python and rust)
-├── os/                              # os preferences and security settings
-├── pkg/                             # os packages and apps installers
-├── term/                            # terminal apps (iterm, tmux, urxvt, htop..)
+├── osx/                             # osx packages, apps and settings
+├── tmux/                            # tmux config and autocompletion file
+├── ubuntu/                          # ubuntu packages, apps and settings
 ├── vim/                             # vim config and plugins
-├── .gitignore
-├── Makefile
-├── README.md
+├── .gitignore                       # exclude work directory
+├── Makefile                         # quickly run shellcheck
+├── README.md                        # this file
 ├── bootstrap.sh                     # setup a new machine
 └── symlink.sh                       # symlink everything
 ```

@@ -10,10 +10,10 @@ git clone https://github.com/thibaultlaurens/dotfiles.git && cd dotfiles || exit
 # install pkgs and apps
 if [[ $(uname) == "Darwin" ]]; then
     xcode-select --install
-    source pkg/brew.sh
-    source pkg/brew_cask.sh
+    source osx/brew.sh
+    source osx/brew_cask.sh
 elif [[ $(uname) == "Linux" ]]; then
-    source pkg/apt.sh
+    source ubuntu/apt.sh
 fi
 
 # install programming languages
@@ -23,7 +23,7 @@ source lang/python.sh
 source lang/rust.sh
 
 # install docker
-source pkg/docker.sh
+source docker/docker.sh
 
 # install spacemacs
 source emacs/install.sh
@@ -40,8 +40,8 @@ source "$HOME/.bash_profile"
 
 # final setup at os level
 if [[ $(uname) == "Darwin" ]]; then
-    source os/osx_prefs.sh
-    source os/osx_secu.sh
+    source osx/preferences.sh
+    source osx/hardening.sh
 elif [[ $(uname) == "Linux" ]]; then
     sudo ufw enable
 fi

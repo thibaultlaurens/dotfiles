@@ -36,15 +36,6 @@ PATH="$HOME/.cargo/bin/racer:$PATH"
 # Ruby
 PATH="/usr/local/opt/ruby/bin:$PATH"
 
-# source os related bash_profile
-if [[ $(uname) == "Darwin" ]]; then
-    # shellcheck source=bash/.bashrc.darwin
-    source "$DOTFILES/bash/.bashrc.darwin"
-elif [[ $(uname) == "Linux" ]]; then
-    # shellcheck source=bash/.bashrc.linux
-    source "$DOTFILES/bash/.bashrc.linux"
-fi
-
 # shellcheck source=bash/aliases
 source "$DOTFILES/bash/aliases"
 # shellcheck source=bash/exports
@@ -56,8 +47,20 @@ source "$DOTFILES/bash/options"
 # shellcheck source=bash/prompt
 source "$DOTFILES/bash/prompt"
 
+# shellcheck source=tmux/.tmux_completion disable=SC1094
+source "$DOTFILES/tmux/.tmux_completion"
+
+# source os related bash_profile
+if [[ $(uname) == "Darwin" ]]; then
+    # shellcheck source=osx/.bashrc
+    source "$DOTFILES/osx/.bashrc"
+elif [[ $(uname) == "Linux" ]]; then
+    # shellcheck source=ubuntu/.bashrc
+    source "$DOTFILES/ubuntu/.bashrc"
+fi
+
 # exta help specific to work
-if [ -f "$HOME/.bashrc.work" ]; then
+if [ -f "$DOTFILES/work/.bashrc" ]; then
     # shellcheck disable=SC1090
-    source "$HOME/.bashrc.work"
+    source "$DOTFILES/work/.bashrc"
 fi

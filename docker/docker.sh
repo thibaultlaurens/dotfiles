@@ -15,5 +15,5 @@ elif [[ $(uname) == "Linux" ]]; then
     sudo apt install docker-ce docker-ce-cli containerd.io
     systemctl start docker
     systemctl enable docker
-    sudo usermod -aG docker thibault
+    sudo usermod -aG docker tlaurens
 fi
