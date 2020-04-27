@@ -6,12 +6,14 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+# Quick cd
 alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
 alias dm="cd ~/Documents"
-
+alias dr="cd ~/drive"
+alias dt="cd ~/Desktop"
 alias gh="cd ~/git"
-alias logs="cd /var/log"
+alias ghgo='cd $GOPATH/src/github.com'
+alias lg="cd /var/log"
 
 # git repos aliases
 REPOS=$(find "$GIT_REPOS" -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
@@ -20,57 +22,32 @@ for REPO in $REPOS; do
     alias "$REPO=cd $GIT_REPOS/$REPO"
 done
 
-# Shortcuts
-alias e="emacs &"
-alias g="git"
-alias c="clear"
-alias h="history"
-alias t="tmux"
-
 # Default options
 alias cp="cp -iv"
-alias rm="rm -Iv"
-alias rr="rm -rf"
-alias mkdir="mkdir -pv"
-alias ll='ls -FGlahp --color=always'
-alias ps="ps -ef"
-alias less="less -FSRXc"
-alias grep='grep --color=auto'
 alias df="df -Th"
 alias du="du -ach | sort -h"
+alias grep='grep --color=auto'
+alias less="less -FSRXc"
+alias ll='ls -FGlahp --color=always'
+alias mkdir="mkdir -pv"
+alias ps="ps -ef"
+alias rm="rm -Iv"
+alias rr="rm -rf"
+alias tree="tree -aCF --dirsfirst -I '.git|node_modules'"
 
-# Git
-alias git="hub"
-
-# Htop
-alias top="htop"
-
-# Edit ~/.bash_profile and /etc/hosts file
-alias edith='sudo $EDITOR /etc/hosts'
-alias editbp='$EDITOR ~/.bash_profile'
-
-# Docker
-alias d="docker"
+# Shortcuts
+alias c="clear"
 alias dc="docker-compose"
 alias dex="docker exec -it"
-
-# Better tree
-alias tree="tree -aCF --dirsfirst -I '.git|node_modules'"
+alias git="hub"
+alias h="history"
+alias t="tmux"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
 # Reload the shell
 alias reload='exec $SHELL -l'
-
-# Pull all the Git repositories
-alias pull-all="find . -maxdepth 1 -type d -exec sh -c '(cd {} && git pull)' ';'"
-
-# Go to useful go directory
-alias go-git='cd $GOPATH/src/github.com'
-
-# Google drive alias
-alias drive="cd ~/drive"
 
 # External IP addresses
 alias wanip='dig @resolver1.opendns.com A myip.opendns.com +short -4'

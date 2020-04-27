@@ -59,18 +59,6 @@ function agr {
     ag -0 -l "$1" | xargs -0 perl -pi.bak -e "s/$1/$2/g"
 }
 
-# get colors in manual pages
-function man() {
-    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-    LESS_TERMCAP_md=$(printf "\e[1;31m") \
-    LESS_TERMCAP_me=$(printf "\e[0m") \s
-    LESS_TERMCAP_se=$(printf "\e[0m") \
-    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-    LESS_TERMCAP_ue=$(printf "\e[0m") \
-    LESS_TERMCAP_us=$(printf "\e[1;32m") \
-    /usr/bin/man "$@"
-}
-
 # syntax highligh in cat
 function cat() {
     local out colored
@@ -123,8 +111,6 @@ function git-status() {
     grep -qE '^.[MD]' <<<"$status" && output="$output*"
     grep -qE '^\?\?' <<<"$status" && output="$output%"
     grep -qE 'behind' <<<"$status" && output="${output}B"
-    # uncomment that to get stash info, it was slowing down gls_state function
-    #[[ -n $(git -C $1 stash list) ]] && output="${output}$"
 
     [[ -n $(git -C "$1" log --branches --not --remotes) ]] && output="${output}P"
     [[ -n $output ]] && output="|$output"  # separate from branch name
@@ -132,14 +118,22 @@ function git-status() {
     echo "$output"
 }
 
+# Pull all the Git repositories
+function git-pull-all(){
+    find . -maxdepth 1 -type d \( ! -name . \) -exec sh -c 'i="$1"; cd "$i" && git pull' _ {} \;
+}
+
+# Prune all docker images
 function docker-prune-images() {
     docker rmi -f "$(docker images -f dangling=true -q --no-trunc)"
 }
 
+# Prune everything docker related
 function docker-prune-all() {
     docker system prune -a -f --volumes
 }
 
+# Display the path to the volume data
 function docker-volume-data() {
     if [ -z "$1" ]; then
         echo "No volume supplied."
