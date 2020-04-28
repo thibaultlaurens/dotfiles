@@ -11,10 +11,10 @@ fi
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
 
-# e.g. `**/qux` will enter `./foo/bar/baz/qux`
+# Ex: `**/qux` will enter `./foo/bar/baz/qux`
 shopt -s autocd;
 
- # append to the Bash history file, rather than overwriting it
+# Append to the Bash history file, rather than overwriting it
 shopt -s histappend;
 
 # Do not autocomplete when accidentally pressing Tab on an empty line.

@@ -15,12 +15,15 @@ alias gh="cd ~/git"
 alias ghgo='cd $GOPATH/src/github.com'
 alias lg="cd /var/log"
 
-# git repos aliases
-REPOS=$(find "$GIT_REPOS" -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
-for REPO in $REPOS; do
-    # shellcheck disable=SC2139
-    alias "$REPO=cd $GIT_REPOS/$REPO"
-done
+# Git repos aliases
+GIT_REPOS="$HOME/git/thibault"
+if [ -d "$GIT_REPOS" ]; then
+    REPOS=$(find "$GIT_REPOS" -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
+    for REPO in $REPOS; do
+        # shellcheck disable=SC2139
+        alias "$REPO=cd $GIT_REPOS/$REPO"
+    done
+fi
 
 # Default options
 alias cp="cp -iv"

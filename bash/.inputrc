@@ -47,6 +47,4 @@ set convert-meta off
 "\e[B": history-search-forward
 
 # Enable magic space ("!" expansion)
-$if Bash
-  Space: magic-space
-$endif
+Space: magic-space

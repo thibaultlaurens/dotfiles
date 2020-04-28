@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "creating symlinks.."
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 
 # Bash
 ln -fs "$DIR/bash/.bash_profile" "$HOME/.bash_profile"

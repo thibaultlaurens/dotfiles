@@ -5,8 +5,12 @@
 : "${LOGNAME:=$(id -un)}"
 : "${UNAME=$(uname)}"
 
-export GIT_REPOS="$HOME/git/thibault"
-export DOTFILES="$GIT_REPOS/dotfiles"
+# swap greadlink for readlink on macos..
+if [[ $(uname) == "Darwin" ]]; then
+    alias readlink="greadlink"
+fi
+
+DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 
 # Complete hostnames from this file
 : "${HOSTFILE=~/.ssh/known_hosts}"
@@ -15,7 +19,7 @@ export DOTFILES="$GIT_REPOS/dotfiles"
 PATH="/usr/sbin:/usr/bin:/sbin:/bin"
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
-# ~/bin if it exists
+# Add ~/bin to the PATH if it exists
 test -d "$HOME/bin" &&
     PATH="$HOME/bin:$PATH"
 
@@ -36,31 +40,24 @@ PATH="$HOME/.cargo/bin/racer:$PATH"
 # Ruby
 PATH="/usr/local/opt/ruby/bin:$PATH"
 
-# shellcheck source=bash/aliases
-source "$DOTFILES/bash/aliases"
-# shellcheck source=bash/exports
-source "$DOTFILES/bash/exports"
-# shellcheck source=bash/functions
-source "$DOTFILES/bash/functions"
-# shellcheck source=bash/options
-source "$DOTFILES/bash/options"
-# shellcheck source=bash/prompt
-source "$DOTFILES/bash/prompt"
+# Custom bash aliases, functions, prompt etc.
+source "$DIR/aliases.sh"
+source "$DIR/exports.sh"
+source "$DIR/functions.sh"
+source "$DIR/options.sh"
+source "$DIR/prompt.sh"
 
-# shellcheck source=tmux/.tmux_completion disable=SC1094
-source "$DOTFILES/tmux/.tmux_completion"
+# Tmux completion
+source "$DIR/../tmux/.tmux_completion"
 
-# source os related bash_profile
+# Source os related bashrc
 if [[ $(uname) == "Darwin" ]]; then
-    # shellcheck source=osx/.bashrc
-    source "$DOTFILES/osx/.bashrc"
+    source "$DIR/../osx/.bashrc"
 elif [[ $(uname) == "Linux" ]]; then
-    # shellcheck source=ubuntu/.bashrc
-    source "$DOTFILES/ubuntu/.bashrc"
+    source "$DIR/../ubuntu/.bashrc"
 fi
 
-# exta help specific to work
-if [ -f "$DOTFILES/work/.bashrc" ]; then
-    # shellcheck disable=SC1090
-    source "$DOTFILES/work/.bashrc"
+# Source bashrc dedicated to work environment
+if [ -f "$DIR/../work/.bashrc" ]; then
+    source "$DIR/../work/.bashrc"
 fi

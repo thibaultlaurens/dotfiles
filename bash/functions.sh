@@ -6,9 +6,8 @@ function cd() {
     ll
 }
 
-# Call mv without the second parameter,
-# it will prompt you to edit the filename on command line.
-# Original mv is called when it's called with more than one argument.
+# With only one parameter: it will prompt to edit the filename
+# With a second parameter: it will call the original mv
 function mv() {
     if [ "$#" -ne 1 ] || [ ! -e "$1" ]; then
         command mv -iv "$@"
@@ -54,12 +53,12 @@ function o() {
     fi
 }
 
-# search and replace with ag
+# Search and replace with ag
 function agr {
     ag -0 -l "$1" | xargs -0 perl -pi.bak -e "s/$1/$2/g"
 }
 
-# syntax highligh in cat
+# Syntax highligh in cat
 function cat() {
     local out colored
     out=$(/bin/cat "$@")
@@ -67,7 +66,7 @@ function cat() {
     [[ -n $colored ]] && echo "$colored" || echo "$out"
 }
 
-# list git repos status
+# List git repos status
 function git-ls() {
     local directories
     directories=$(find . -maxdepth 1 -mindepth 1 -type d -printf '%f\n' | sort)
@@ -118,7 +117,7 @@ function git-status() {
     echo "$output"
 }
 
-# sync a fork master branch
+# Sync a fork master branch
 function git-sync-fork() {
     if [ -z "$1" ]; then
         echo "No remote upstream repository specified."
