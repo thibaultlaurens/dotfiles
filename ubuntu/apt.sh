@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# ask for the administrator password upfront
-sudo -v
-
-# add hub PPA
-sudo add-apt-repository ppa:cpick/hub
-
-sudo apt update && apt upgrade
-
 packages=(
     apt-transport-https
     bash
@@ -42,9 +34,10 @@ packages=(
     neofetch
     net-tools
     nmap
+    openssl
     openssh-client
     openvpn
-    procps # for "watch"
+    procps
     ranger
     rxvt-unicode
     sed
@@ -61,6 +54,12 @@ packages=(
     xclip
 )
 
-echo "installing packages..."
+echo "installing packages.."
+sudo apt update && apt upgrade
+
+# Add hub ppa
+sudo add-apt-repository ppa:cpick/hub
+
 sudo apt install "${packages[@]}"
 sudo apt autoremove
+echo "done"
