@@ -1,52 +1,51 @@
 #!/bin/bash
 
-echo "creating symlinks..."
+echo "creating symlinks.."
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-: "${HOME:=~}"
-: "${GIT_REPOS:=$HOME/git/thibault}"
-: "${DOTFILES:=$GIT_REPOS/dotfiles}"
+# Bash
+ln -fs "$DIR/bash/.bash_profile" "$HOME/.bash_profile"
+ln -fs "$DIR/bash/.inputrc" "$HOME/.inputrc"
+ln -fs "$DIR/bash/.bashrc" "$HOME/.bashrc"
 
-# bash
-ln -fs "$DOTFILES/bash/.bash_profile" "$HOME/.bash_profile"
-ln -fs "$DOTFILES/bash/.inputrc" "$HOME/.inputrc"
-ln -fs "$DOTFILES/bash/.bashrc" "$HOME/.bashrc"
+# Whitelist newly installed bash
+sudo ln -fs "$DIR/bash/shells" "/etc/shells"
 
-# whitelist new bash
-sudo ln -fs "$DOTFILES/bash/shells" "/etc/shells"
+# Tmux
+ln -fs "$DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
 
-# tmux
-ln -fs "$DOTFILES/tmux/.tmux.conf" "$HOME/.tmux.conf"
+# Git
+ln -fs "$DIR/git/.gitconfig" "$HOME/.gitconfig"
+ln -fs "$DIR/git/.gitignore" "$HOME/.gitignore"
 
-# git
-ln -fs "$DOTFILES/git/.gitconfig" "$HOME/.gitconfig"
-ln -fs "$DOTFILES/git/.gitignore" "$HOME/.gitignore"
+# Emacs
+ln -fs "$DIR/emacs/.spacemacs" "$HOME/.spacemacs"
 
-# emacs
-ln -fs "$DOTFILES/emacs/.spacemacs" "$HOME/.spacemacs"
+# Vim
+ln -fs "$DIR/vim/.vimrc.plug" "$HOME/.vimrc.plug"
+ln -fs "$DIR/vim/.vimrc" "$HOME/.vimrc"
 
-# vim
-ln -fs "$DOTFILES/vim/.vimrc.plug" "$HOME/.vimrc.plug"
-ln -fs "$DOTFILES/vim/.vimrc" "$HOME/.vimrc"
-
-# htop
-ln -fs "$DOTFILES/htop/htoprc" "${HOME}/.config/htop/htoprc"
+# Htop
+ln -fs "$DIR/htop/htoprc" "${HOME}/.config/htop/htoprc"
 
 if [[ $(uname) == "Darwin" ]]; then
-    # iterm
-    ln -fs "$DOTFILES/osx/iterm/com.googlecode.iterm2.plist" \
+    # Iterm
+    ln -fs "$DIR/osx/iterm/com.googlecode.iterm2.plist" \
        "$HOME/Library/Preferences/com.googlecode.iterm2.plist"
 
-    # menumeters
-    ln -fs "$DOTFILES/osx/menumeters/com.ragingmenace.MenuMeters.plist" \
+    # Menumeters
+    ln -fs "$DIR/osx/menumeters/com.ragingmenace.MenuMeters.plist" \
        "$HOME/Library/Preferences/com.ragingmenace.MenuMeters.plist"
-elif [[ $(uname) == "Linux" ]]; then
-    # rxvt
-    ln -fs "$DOTFILES/ubuntu/urxvt/.Xresources" "$HOME/.Xresources"
-    ln -fs "$DOTFILES/ubuntu/urxvt/.urxvt" "$HOME/.urxvt"
 
-    # spacemacs and rxvt icons
-    ln -fs "$DOTFILES/emacs/spacemacs.desktop" \
+elif [[ $(uname) == "Linux" ]]; then
+    # Rxvt
+    ln -fs "$DIR/ubuntu/urxvt/.Xresources" "$HOME/.Xresources"
+    ln -fs "$DIR/ubuntu/urxvt/.urxvt" "$HOME/.urxvt"
+
+    # Spacemacs and rxvt icons
+    ln -fs "$DIR/emacs/spacemacs.desktop" \
        "$HOME/.local/share/applications/spacemacs.desktop"
-    ln -fs "$DOTFILES/ubuntu/urxvt/rxvt-unicode.desktop" \
+    ln -fs "$DIR/ubuntu/urxvt/rxvt-unicode.desktop" \
        "$HOME/.local/share/applications/rxvt-unicode.desktop"
 fi
+echo "done"

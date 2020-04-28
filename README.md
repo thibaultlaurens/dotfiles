@@ -14,7 +14,7 @@
 ├── vim/                             # vim config and plugins
 ├── .gitignore                       # exclude work directory
 ├── Makefile                         # quickly run shellcheck
-├── README.md                        # this file
-├── bootstrap.sh                     # setup a new machine
+├── README.md
+├── setup.sh                         # setup a new machine
 └── symlink.sh                       # symlink everything
 ```
