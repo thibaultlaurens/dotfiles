@@ -1,21 +1,22 @@
 #!/bin/bash
 
-echo "installing python..."
+echo "installing python.."
 
-# prepare the python build environment
+# Prepare the python build environment
 if [[ $(uname) == "Darwin" ]]; then
     brew install openssl readline sqlite3 xz zlib
 elif [[ $(uname) == "Linux" ]]; then
-    sudo apt update
-    sudo apt install --no-install-recommends \
+    sudo apt update && sudo apt install --no-install-recommends \
          make build-essential libssl-dev zlib1g-dev libbz2-dev \
          libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev \
          xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 fi
 
-# install pyenv
+# Install pyenv
 : "${PYENV_ROOT:=$HOME/.pyenv}"
 if [ ! -d "$PYENV_ROOT" ]; then
+    echo "installing pyenv.."
+
     if [[ $(uname) == "Darwin" ]]; then
         brew install pyenv
     elif [[ $(uname) == "Linux" ]]; then
@@ -26,10 +27,8 @@ fi
 PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-pyenv install 3.7.7
-pyenv global 3.7.7
-
-echo "installing python packages..."
+pyenv install 3.8.2
+pyenv global 3.8.2
 
 packages=(
     'autoflake'                   # removes unused imports and unused variables
@@ -47,4 +46,6 @@ packages=(
     'yamllint'                    # linter for YAML files
 )
 
+echo "installing python packages.."
 pip install --upgrade "${packages[@]}"
+echo "done"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "installing node..."
+echo "installing node.."
 
 if [[ $(uname) == "Darwin" ]]; then
     brew install node
@@ -8,8 +8,6 @@ elif [[ $(uname) == "Linux" ]]; then
     sudo apt update
     sudo apt install nodejs npm
 fi
-
-echo "installing node packages..."
 
 packages=(
     'diff-so-fancy'     # better diff                   - used by git
@@ -20,4 +18,6 @@ packages=(
     'vmd'               # preview markdown files        - used by emacs
 )
 
+echo "installing node packages..."
 sudo npm install -g "${packages[@]}"
+echo "done"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "installing go..."
+echo "installing go.."
 
 if [[ $(uname) == "Darwin" ]]; then
     brew install go
@@ -10,14 +10,12 @@ elif [[ $(uname) == "Linux" ]]; then
     sudo apt install golang-go
 fi
 
-# create the directory structure for the go workspace
+# Create the directory structure for the go workspace
 mkdir -p "$HOME/go/{bin,src}"
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin
-
-echo "installing go packages..."
 
 packages=(
     'golang.org/x/tools/cmd/godoc'          # extract and generate doc
@@ -39,8 +37,10 @@ packages=(
     'github.com/zmb3/gogetdoc'
 )
 
+echo "installing go packages.."
 go get -u -v "${packages[@]}"
 
-# install golangci-lint
-# binary will be $(go env GOPATH)/bin/golangci-lint
+echo "installing golangcli-lint.."
+# Install golangci-lint, binary will be $(go env GOPATH)/bin/golangci-lint
 curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "$(go env GOPATH)/bin" v1.24.0
+echo "done"
