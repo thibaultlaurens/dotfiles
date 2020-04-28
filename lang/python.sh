@@ -24,9 +24,11 @@ if [ ! -d "$PYENV_ROOT" ]; then
     fi
 fi
 
+# Setup pyenv
 PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+# Install python
 pyenv install 3.8.2
 pyenv global 3.8.2
 

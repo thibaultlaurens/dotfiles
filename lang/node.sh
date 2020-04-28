@@ -18,6 +18,6 @@ packages=(
     'vmd'               # preview markdown files        - used by emacs
 )
 
-echo "installing node packages..."
+echo "installing node packages.."
 sudo npm install -g "${packages[@]}"
 echo "done"
