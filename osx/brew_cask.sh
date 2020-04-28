@@ -30,9 +30,9 @@ apps=(
     vlc
 )
 
-echo "installing homebrew apps..."
+echo "installing apps.."
 brew cask install "${apps[@]}"
-
+echo "done"
 
 packages=(
     qlcolorcode
@@ -45,5 +45,6 @@ packages=(
     suspicious-package
 )
 
-echo "installing quick-look packages"
+echo "installing quick-look packages.."
 brew cask install "${packages[@]}"
+echo "done"

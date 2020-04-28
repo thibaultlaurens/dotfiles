@@ -2,8 +2,7 @@
 
 # Load bash completion
 if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-    # shellcheck disable=SC1090
-    . "$(brew --prefix)/etc/bash_completion"
+    source "$(brew --prefix)/etc/bash_completion"
 fi
 
 # Setup brew
@@ -14,7 +13,7 @@ export HOMEBREW_CASK_OPTS=--require-sha
 # Add cli colors
 export CLICOLOR=1
 
-# replace osx utilities with GNU utilities
+# Replace osx utilities with GNU utilities
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
@@ -37,9 +36,8 @@ alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
 # Restart dns
 alias dns-reset="sudo killall -9 mDNSResponder"
 
-# Empty the Trash on all mounted volumes and the main HDD.
-# Also, clear Apple’s System Logs to improve shell startup speed.
+# Empty the trash on all mounted volumes, the main hdd and clear system logs
 alias rm-trashes="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
 
-# Homebrew update
+# Homebrew update / upgrade
 alias brew-upgrade="brew update; brew upgrade; brew cask upgrade; brew cleanup; brew doctor"

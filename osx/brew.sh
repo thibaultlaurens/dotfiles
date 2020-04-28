@@ -1,12 +1,9 @@
 #!/bin/bash
 
-# Ask for the admin password upfront
-sudo -v
-
 # Install homebrew if it's missing
 if test ! "$(which brew)"
 then
- echo "installing homebrew..."
+ echo "installing homebrew.."
  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
@@ -15,14 +12,6 @@ sudo chown -R "$(whoami)" "$(brew --prefix)/*"
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_INSECURE_REDIRECT=1
 export HOMEBREW_CASK_OPTS=--require-sha
-
-# Update homebrew, installed pacakges and check for issues
-brew update
-brew upgrade
-brew doctor
-
-# Add more sources
-brew tap Homebrew/bundle
 
 packages=(
     ag
@@ -69,8 +58,11 @@ packages=(
 )
 
 echo "installing brew packages..."
-brew install "${packages[@]}"
+brew update && brew upgrade && brew doctor
 
-# Remove outdated versions from the cellar
-echo "cleaning up..."
+# Add more sources
+brew tap Homebrew/bundle
+
+brew install "${packages[@]}"
 brew cleanup
+echo "done"
