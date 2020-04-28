@@ -22,6 +22,9 @@ PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
+# Better ps
+alias ps="ps -ef"
+
 # Copy pwd
 alias pwdcopy="pwd | tr -d '\n' | pbcopy"
 

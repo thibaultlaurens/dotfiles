@@ -30,9 +30,7 @@ alias grep='grep --color=auto'
 alias less="less -FSRXc"
 alias ll='ls -FGlahp --color=always'
 alias mkdir="mkdir -pv"
-alias ps="ps -ef"
 alias rm="rm -Iv"
-alias rr="rm -rf"
 alias tree="tree -aCF --dirsfirst -I '.git|node_modules'"
 
 # Shortcuts

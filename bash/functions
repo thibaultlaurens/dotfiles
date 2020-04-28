@@ -118,6 +118,20 @@ function git-status() {
     echo "$output"
 }
 
+# sync a fork master branch
+function git-sync-fork() {
+    if [ -z "$1" ]; then
+        echo "No remote upstream repository specified."
+    else
+        git remote add upstream "$1"
+        git remote -v
+        git fetch upstream
+        git checkout master
+        git merge upstream/master
+        git push origin master
+    fi
+}
+
 # Pull all the Git repositories
 function git-pull-all(){
     find . -maxdepth 1 -type d \( ! -name . \) -exec sh -c 'i="$1"; cd "$i" && git pull' _ {} \;
