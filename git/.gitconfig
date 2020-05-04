@@ -42,49 +42,11 @@
 	difftool = true
 
 [alias]
-	# remove any remote-tracking references that no longer exist on the remote
-	prune = fetch --prune
-
-	# go back in (commit) history
-	undo = reset --soft HEAD^
-
-	# shortcut for opening a pull-request in github
-	open-pr = pull-request -o
-
-	# saves local updates, including un-added files
-	stash-all = stash save --include-untracked
-
 	# amend the currently staged files to the latest commit
 	amend = commit --amend --reuse-message=HEAD
 
-	# list tags, branches or remotes
-	tags = tag -l
+	# list branches
 	branches = branch -av
-	remotes = remote -v
-
-	# remove untracked files
-	rm-untracked = clean -xfdi
-
-	# switch to a branch, creating it if necessary
-	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
-
-	# short status summary, but include branch info
-	ss = status -sb
-
-	# step through each change, or hunk when adding to git
-	ap = add -p
-
-	# by default, push the current branch to the same name on the remote
-	pu = push origin HEAD
-
-	# pull submodules, to latest commits instead of what the repo point to
-	pull-recurse = pull --recurse-submodules
-
-	# quick and easy wip
-	wip = "!f() { git commit -m "wip" . && git push origin HEAD; }; f"
-
-	# cl a repository including all submodules
-	cl = clone --recursive
 
 	# list contributors with number of commits
 	contributors = shortlog --summary --numbered
@@ -95,24 +57,59 @@
 	# diff staged files
 	dfs = diff --patch-with-stat --staged
 
-	# prettier git log
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	# switch to a branch, creating it if necessary
+	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
-	# prettier git log, with stats
-	log-stat = "! git log --pretty=tformat:\"%C(auto,yellow)%h%C(auto)%d%C(auto,reset) by %C(auto,blue)%cn%C(auto,reset), %C(auto,cyan)%ar%C(auto,reset)%n %s\" --stat"
+	# pretty log, with graph
+	logg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 
-	# Find branches containing commit
-	find-branches = "!f() { git branch -a --contains $1; }; f"
+	# pretty log, short lines
+	logp = log --decorate --date=short --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d'
 
-	# Find tags containing commit
-	find-tags = "!f() { git describe --always --contains $1; }; f"
+	# pretty log, with stats
+	logs = log --stat --pretty=format:\"%C(yellow)%h %C(auto)%d %C(reset) by %C(blue)%cn%C(reset), %C(cyan)%ar%C(reset)%n %s\"
 
-	# Find commits by source code
-	find-commits = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+	# by default, push the current branch to the same name on the remote
+	pu = push origin HEAD
 
-	# Find commits by commit message
-	find-messages = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+	# shortcut for opening a pull-request in github
+	pr = pull-request -o
+
+	# remove any remote-tracking references that no longer exist on the remote
+	prune = fetch --prune
+
+	# list remotes
+	remotes = remote -v
 
 	# remove all local branches except master
 	rm-branches = "!f() { git branch | grep -v "master" | xargs git branch -D; }; f"
 
+	# remove untracked files
+	rm-untracked = clean -xfdi
+
+	# search branches containing commit
+	search-branches = "!f() { git branch -a --contains $1; }; f"
+
+	# search tags containing commit
+	search-tags = "!f() { git describe --always --contains $1; }; f"
+
+	# search commits by source code
+	search-codes = "!f() { git logp -S$1; }; f"
+
+	# search commits by commit message
+	search-commits = "!f() { git logp --grep=$1; }; f"
+
+	# short status summary, but include branch info
+	ss = status -sb
+
+	# saves local updates, including un-added files
+	stash-all = stash save --include-untracked
+
+	# list tags
+	tags = tag -l\
+
+	# go back in (commit) history
+	undo = reset --soft HEAD^
+
+	# quick and easy wip
+	wip = "!f() { git commit -m "wip" . && git push origin HEAD; }; f"
