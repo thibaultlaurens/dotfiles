@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# Ruby
+PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # Load bash completion
 if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
@@ -21,6 +24,9 @@ PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
+# Open files, dirs or urls
+alias o="xdg-open"
+
 # Better ps
 alias ps="ps -ef"
 
@@ -34,7 +40,7 @@ alias myip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\  -f2"
 alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
 
 # Restart dns
-alias dns-reset="sudo killall -9 mDNSResponder"
+alias reset-dns="sudo killall -9 mDNSResponder"
 
 # Empty the trash on all mounted volumes, the main hdd and clear system logs
 alias rm-trashes="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"

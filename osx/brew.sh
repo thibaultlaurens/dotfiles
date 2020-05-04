@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env/bash
 
 # Install homebrew if it's missing
 if test ! "$(which brew)"
