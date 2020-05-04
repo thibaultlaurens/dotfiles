@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env/bash
 
 echo "creating symlinks.."
 DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
@@ -7,9 +7,6 @@ DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 ln -fs "$DIR/bash/.bash_profile" "$HOME/.bash_profile"
 ln -fs "$DIR/bash/.inputrc" "$HOME/.inputrc"
 ln -fs "$DIR/bash/.bashrc" "$HOME/.bashrc"
-
-# Whitelist newly installed bash
-sudo ln -fs "$DIR/bash/shells" "/etc/shells"
 
 # Tmux
 ln -fs "$DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
@@ -42,10 +39,14 @@ elif [[ $(uname) == "Linux" ]]; then
     ln -fs "$DIR/ubuntu/urxvt/.Xresources" "$HOME/.Xresources"
     ln -fs "$DIR/ubuntu/urxvt/.urxvt" "$HOME/.urxvt"
 
-    # Spacemacs and rxvt icons
+    # Spacemacs icon
     ln -fs "$DIR/emacs/spacemacs.desktop" \
        "$HOME/.local/share/applications/spacemacs.desktop"
+
+    # Rxvt icon
     ln -fs "$DIR/ubuntu/urxvt/rxvt-unicode.desktop" \
        "$HOME/.local/share/applications/rxvt-unicode.desktop"
+    ln -fs "$DIR/ubuntu/urxvt/rxvt-unicode.png" \
+       "$HOME/.local/share/applications/rxvt-unicode.png"
 fi
 echo "done"

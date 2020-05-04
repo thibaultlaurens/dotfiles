@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
@@ -11,6 +11,13 @@ if [[ $(uname) == "Darwin" ]]; then
     # Install packages and apps
     source "$DIR/osx/brew.sh"
     source "$DIR/osx/brew_cask.sh"
+
+    # Whitelist the upgraded bash
+    echo "/usr/local/bin/bash" >> /etc/shells
+
+    # Set default shell for current and root user
+    chsh -s /usr/local/bin/bash
+    sudo chsh -s /usr/local/bin/bash
 
     # Apply preferences and security measures
     source "$DIR/osx/preferences.sh"
@@ -40,10 +47,6 @@ source "$DIR/emacs/install.sh"
 
 # Symlink everything
 source "$DIR/symlink.sh"
-
-# Set default shell for current and root user
-chsh -s /usr/local/bin/bash
-sudo chsh -s /usr/local/bin/bash
 
 # Reload bashrc
 source "$HOME/.bashrc"
