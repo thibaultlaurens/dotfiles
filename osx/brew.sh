@@ -29,6 +29,7 @@ packages=(
     gnu-indent
     gnu-sed
     gnu-tar
+    gpg
     graphviz
     grep
     gzip

@@ -7,6 +7,7 @@ apps=(
     adapter
     adobe-creative-cloud
     appcleaner
+    balenaetcher
     bitwarden
     firefox
     font-source-code-pro
@@ -15,15 +16,15 @@ apps=(
     iterm2
     itsycal
     keepingyouawake
+    keybase
     ledger-live
     macdown
     macpass
     menumeters
-    notion
+    protonmail-bridge
     protonvpn
-    skype
-    slack
     spectacle
+    standard-notes
     tor-browser
     transmission
     virtualbox
