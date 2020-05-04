@@ -1,10 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# Load urxvt db
+xrdb "$HOME/.Xresources"
 
 # Load bash completion
 source /etc/bash_completion
 
 # Add snaps in the PATH
 PATH="/snap/bin:$PATH"
+
+# Open files, dirs or urls
+alias o="xdg-open"
 
 # Copy and paste
 alias pbcopy='xclip -selection clipboard'
@@ -18,13 +24,6 @@ alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 # IP addresses
 alias myip="ip -4 addr | grep -oP '(?<=inet\s)\d+(\.\d+){3}'"
 alias myip6="ip -6 addr | grep -oP '(?<=inet6\s)[\da-f:]+'"
-
-# Load urxvt db and reload it
-function urxvt-reload() {
-    xrdb ~/.Xresources
-    urxvt &
-    exit
-}
 
 # Apt update / upgrade
 function apt-updater {
