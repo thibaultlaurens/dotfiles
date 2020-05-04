@@ -1,50 +1,42 @@
-#!/bin/bash
-
-# Make Tab autocomplete regardless of filename case
-set completion-ignore-case on
-
-# List all matches in case multiple possible completions are possible
-set show-all-if-ambiguous on
-
-# Immediately add a trailing slash when autocompleting symlinks to directories
-set mark-symlinked-directories on
-
-# Show all autocomplete results at once
-set page-completions off
-
-# If there are more than 200 possible completions for a word, ask to show them all
-set completion-query-items 200
-
-# Show extra file information when completing, like `ls -F` does
-set visible-stats on
-
-# Color the common prefix
-set colored-completion-prefix on
-
 # Color files by types
 set colored-stats on
 
-# Color the common prefix in menu-complete
-set menu-complete-display-prefix On
+# Set visible bell
+set bell-style visible
 
-# Be more intelligent when autocompleting by also looking at the text after
-# the cursor. For example, when the current line is "cd ~/src/mozil", and
-# the cursor is on the "z", pressing Tab will not autocomplete it to "cd
-# ~/src/mozillail", but to "cd ~/src/mozilla". (This is supported by the
-# Readline used by Bash 4.)
-set skip-completed-text on
+# Immediately add a trailing slash when autocompleting symlinks to directories
+set mark-symlinked-directories on
 
 # Allow UTF-8 input and output, instead of showing stuff like $'\0123\0456'
 set input-meta on
 set output-meta on
 set convert-meta off
 
-# Flip through autocompletion matches with Shift-Tab.
-"\e[Z": menu-complete
+# Completion Options
+set colored-completion-prefix on      # Color the common prefix
+set completion-ignore-case on         # Ignore case
+set completion-query-items 200        # If more than 200 matches, ask to show them all
+set match-hidden-files off            # Don't match hidden files, unless the pattern starts with a dot
+set menu-complete-display-prefix On   # Color the common prefix in menu-complete
+set page-completions off              # Show all autocomplete results at once
+set show-all-if-ambiguous on          # List all matches
+set show-all-if-unmodified on         # List immediately, don't bell if ambigous
+set skip-completed-text on            # Look at the text after the cursor
+set visible-stats on                  # Show item type like 'ls -F', displays /,*,@ next to name
 
-# Filtered history search
-"\e[A": history-search-backward
-"\e[B": history-search-forward
+$if mode=emacs
+"\e[1~": beginning-of-line            # CTRL + A
+"\e[4~": end-of-line                  # CTRL + E
+"\e[5C": forward-word                 # Control + Right
+"\e[5D": backward-word                # Control + Left
+"\e[3~": delete-char                  # Delete
+"\e[3;3~": kill-word                  # ALT/META + Delete
+"\e[2~": quoted-insert                # CTRL + v
+"\e[5~": history-search-backward      # Page Up
+"\e[6~": history-search-forward       # Page Down
+$endif
 
 # Enable magic space ("!" expansion)
-Space: magic-space
+$if Bash
+  Space: magic-space
+$endif

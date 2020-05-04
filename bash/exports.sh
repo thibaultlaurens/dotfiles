@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env/bash
 
 # Proper locale
 : "$LANG:=\"en_US.UTF-8\""
@@ -25,9 +25,8 @@ export HISTSIZE="32768"
 export PYTHONIOENCODING="UTF-8"
 
 # Don’t clear the screen after quitting a manual page
-PAGER="less -FirSwX"
-MANPAGER="$PAGER"
-export PAGER MANPAGER
+export PAGER="less -FirSwX"
+export MANPAGER="$PAGER"
 
 # get colors in manual pages
 export LESS_TERMCAP_mb=$'\e[1;32m'

@@ -1,11 +1,29 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob
+
+# Recursive globbing with "**"
+shopt -s globstar
+
+# Correct dir spellings
+shopt -s cdspell;
+
+# Ex: `**/qux` will enter `./foo/bar/baz/qux`
+shopt -s autocd;
+
+# Append rather than overwrite history on exit
+shopt -s histappend;
+
+# Do not autocomplete when accidentally pressing Tab on an empty line.
+shopt -s no_empty_cmd_completion
 
 # Basics
 : "${HOME:=~}"
 : "${LOGNAME:=$(id -un)}"
 : "${UNAME=$(uname)}"
 
-# swap greadlink for readlink on macos..
+# Swap greadlink for readlink on macos..
 if [[ $(uname) == "Darwin" ]]; then
     alias readlink="greadlink"
 fi
@@ -37,14 +55,9 @@ PATH="/usr/local/go/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
 PATH="$HOME/.cargo/bin/racer:$PATH"
 
-# Ruby
-PATH="/usr/local/opt/ruby/bin:$PATH"
-
-# Custom bash aliases, functions, prompt etc.
+# Custom bash aliases, exports and prompt
 source "$DIR/aliases.sh"
 source "$DIR/exports.sh"
-source "$DIR/functions.sh"
-source "$DIR/options.sh"
 source "$DIR/prompt.sh"
 
 # Tmux completion
