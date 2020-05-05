@@ -1,17 +1,19 @@
 #!/usr/bin/env/bash
 
-echo "installing node.."
+# Install nvm
+echo "installing nvm.."
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+source "$HOME/.bashrc"
 
-if [[ $(uname) == "Darwin" ]]; then
-    brew install node
-elif [[ $(uname) == "Linux" ]]; then
-    sudo apt update
-    sudo apt install nodejs npm
-fi
+# Install node
+echo "installing node.."
+nvm install 12.16.3
+nvm use 12.16.3
 
 packages=(
     'diff-so-fancy'     # better diff                   - used by git
-    'eslint-cli'        # syntax checker                - used by emacs
+    'eslint'            # syntax checker                - used by emac
+    'eslint-cli'        # syntax checker cli            - used by emacs
     'import-js'         # automatic dependencies import - used by emacs
     'prettier'          # code formatter                - used by emacs
     'tern'              # js analyzer                   - used by emacs
@@ -19,5 +21,5 @@ packages=(
 )
 
 echo "installing node packages.."
-sudo npm install -g "${packages[@]}"
+npm install -g "${packages[@]}"
 echo "done"

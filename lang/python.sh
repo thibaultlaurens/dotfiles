@@ -1,6 +1,5 @@
 #!/usr/bin/env/bash
 
-echo "installing python.."
 
 # Prepare the python build environment
 if [[ $(uname) == "Darwin" ]]; then
@@ -29,6 +28,7 @@ PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 # Install python
+echo "installing python.."
 pyenv install 3.8.2
 pyenv global 3.8.2
 
