@@ -55,6 +55,11 @@ PATH="/usr/local/go/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
 PATH="$HOME/.cargo/bin/racer:$PATH"
 
+# Node
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 # Custom bash aliases, exports and prompt
 source "$DIR/aliases.sh"
 source "$DIR/exports.sh"

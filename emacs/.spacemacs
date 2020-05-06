@@ -58,8 +58,12 @@ values."
               ibuffer-group-buffers-by 'projects)
      import-js
      (javascript :variables
+                 javascript-backend 'tern
+                 javascript-fmt-on-save t
                  javascript-fmt-tool 'prettier
-                 javascript-fmt-on-save t)
+                 javascript-import-tool 'import-js
+                 js-indent-level 2
+                 js2-basic-offset 2)
      json
      lsp
      (markdown :variables
@@ -87,7 +91,6 @@ values."
      (rust :variables
            rust-enable-racer t
            rust-format-on-save t)
-     scala
      semantic
      (shell :variables
             shell-default-height 30
@@ -96,12 +99,10 @@ values."
      spell-checking
      sphinx
      sql
-     (tern :variables
-           tern-command '("node" "/usr/local/bin/tern")
-           tern-disable-port-files nil)
+     tern
      themes-megapack
      neotree
-     (node :variable node-add-modules-path)
+     node
      (version-control :variables
                       version-control-diff-tool 'diff-hl)
      vimscript
@@ -431,9 +432,6 @@ you should place your code here."
 
   (setq
 
-   ;; so emacs can find our python installed with pyenv
-   exec-path (cons "/home/tlaurens/.pyenv/shims" exec-path)
-
    ;; update powerline separators and fix apple rgb colors
    powerline-default-separator 'slant
    ;; powerline-image-apple-rgb t
@@ -469,10 +467,6 @@ you should place your code here."
 
    ;; dont add replaced text to the killring
    evil-kill-on-visual-paste nil
-
-   ;; indent js files with 4 spaces
-   js2-basic-offset 4
-   js-indent-level 4
 
    ;; neotree config
    neo-theme 'ascii
