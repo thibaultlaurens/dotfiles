@@ -9,6 +9,7 @@
 ├── htop/                            # htop config file
 ├── lang/                            # programming languages setup (go, node, python and rust)
 ├── osx/                             # osx packages, apps and settings
+├── ssh/                             # ssh base config file
 ├── tmux/                            # tmux config and autocompletion file
 ├── ubuntu/                          # ubuntu packages, apps and settings
 ├── vim/                             # vim config and plugins
