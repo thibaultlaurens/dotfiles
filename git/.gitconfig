@@ -1,7 +1,10 @@
-
 [user]
 	name = Thibault Laurens
-	email = laurens.thibault@gmail.com
+	email = thibault.laurens@pm.me
+
+[branch "master"]
+    remote = origin
+    merge = refs/heads/master
 
 [url "git@github.com:"]
     insteadOf = https://github.com/
