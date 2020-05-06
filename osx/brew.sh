@@ -36,6 +36,7 @@ packages=(
     htop
     httpie
     hub
+    hugo
     icdiff
     ispell
     jq
