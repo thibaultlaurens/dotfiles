@@ -33,7 +33,7 @@ URxvt*iso14755: false
 URxvt*iso14755_52: false
 
 ! urxvt native extensions
-URxvt*perl-ext-common: default,matcher,selection-to-clipboard,confirm-paste,paste_clipboard
+URxvt*perl-ext-common: default,matcher,selection-to-clipboard,confirm-paste
 
 ! urxvt custom extensions
 URxvt*perl-ext: fullscreen,newterm,keyboard-select,font-size
@@ -58,7 +58,7 @@ URxvt.keysym.C-Return: perl:fullscreen:switch
 URxvt.keysym.C-N: perl:newterm
 URxvt.keysym.C-Escape: perl:keyboard-select:activate
 URxvt.keysym.C-s: perl:keyboard-select:search
-URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.C-v: eval:paste_clipboard
 
 ! load a theme
 #include "/home/tlaurens/.urxvt/themes/onedark"
