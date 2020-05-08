@@ -14,13 +14,14 @@ apps=(
     font-source-code-pro-for-powerline
     google-backup-and-sync
     iterm2
-    itsycal
-    keepingyouawake
     keybase
     ledger-live
+    lulu
     macdown
     macpass
     menumeters
+    music-manager
+    oversight
     protonmail-bridge
     protonvpn
     spectacle
