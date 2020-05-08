@@ -25,7 +25,7 @@ PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 # Open files, dirs or urls
-alias o="xdg-open"
+alias o="open"
 
 # Better ps
 alias ps="ps -ef"
