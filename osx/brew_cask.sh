@@ -16,12 +16,13 @@ apps=(
     iterm2
     keybase
     ledger-live
-    lulu
+    little-snitch
     macdown
     macpass
     menumeters
+    micro-snitch
     music-manager
-    oversight
+    onyx
     protonmail-bridge
     protonvpn
     spectacle
