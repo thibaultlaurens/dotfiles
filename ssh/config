@@ -32,5 +32,5 @@ Host *
     # check server connection after 10s of inactivity
     ServerAliveInterval 10
 
-    #exit after 2 failed checks
+    # exit after 2 failed checks
     ServerAliveCountMax 2
