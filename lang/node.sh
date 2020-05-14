@@ -7,8 +7,8 @@ source "$HOME/.bashrc"
 
 # Install node
 echo "installing node.."
-nvm install 12.16.3
-nvm use 12.16.3
+nvm install 14.2.0
+nvm use 14.2.0
 
 packages=(
     'diff-so-fancy'     # better diff                   - used by git
