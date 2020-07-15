@@ -122,6 +122,8 @@ values."
                                       company
                                       nord-theme
                                       gruvbox-theme
+                                      jinja2-mode
+                                      nvm
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -551,6 +553,9 @@ you should place your code here."
 
   ;; auto-completion
   (setq company-tooltip-align-annotations t)
+
+  ;; set node version
+  (nvm-use "v14.2.0")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
