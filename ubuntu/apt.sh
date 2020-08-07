@@ -15,7 +15,7 @@ packages=(
     fonts-powerline
     gir1.2-clutter-1.0
     gir1.2-gtop-2.0
-    gir1.2-networkmanager-1.0
+    gir1.2-nm-1.0
     git
     gnome-tweak-tool
     gnupg-agent
@@ -55,7 +55,7 @@ packages=(
 )
 
 echo "installing packages.."
-sudo apt update && apt upgrade
+sudo apt update && sudo apt upgrade
 
 # Add hub ppa
 sudo add-apt-repository ppa:cpick/hub

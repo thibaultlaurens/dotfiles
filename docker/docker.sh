@@ -7,16 +7,9 @@ if [[ $(uname) == "Darwin" ]]; then
     brew install docker-completion
 
 elif [[ $(uname) == "Linux" ]]; then
-    sudo apt remove docker docker-engine docker.io containerd runc
-
-    sudo add-apt-repository \
-       "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-       $(lsb_release -cs) \
-       stable"
-    sudo apt update && sudo apt install docker-ce docker-ce-cli containerd.io
-
-    systemctl enable docker
-    systemctl start docker
+    sudo apt remove docker docker.io containerd runc
+    sudo apt update && sudo apt install docker.io
+    sudo systemctl enable --now docker
     sudo usermod -aG docker tlaurens
 fi
 
