@@ -96,7 +96,8 @@ values."
             shell-default-height 30
             shell-default-position 'bottom)
      shell-scripts
-     spell-checking
+     (spell-checking :variables
+                     spell-checking-enable-auto-dictionary t)
      sphinx
      sql
      tern
