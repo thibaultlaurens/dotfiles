@@ -18,7 +18,7 @@ alias lg="cd /var/log"
 # Default options
 alias cp="cp -iv"
 alias df="df -Th"
-alias du="du -ach | sort -h"
+alias du="du -ach"
 alias grep='grep --color=auto'
 alias less="less -FSRXc"
 alias ll='ls -FGlahp --color=always'
@@ -110,12 +110,15 @@ function git-sync-fork() {
     fi
 }
 
-# Alias all the git directories
-GIT_REPOS="$HOME/git/thibault"
-if [ -d "$GIT_REPOS" ]; then
-    REPOS=$(find "$GIT_REPOS" -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
-    for REPO in $REPOS; do
-        # shellcheck disable=SC2139
-        alias "$REPO=cd $GIT_REPOS/$REPO"
-    done
-fi
+# Cd alias one level of directory given a base path
+function alias-dirs() {
+    if [ -z "$1" ]; then
+        echo "No directory path specified."
+    elif [ -d "$1" ]; then
+        REPOS=$(find "$1" -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
+        for REPO in $REPOS; do
+            # shellcheck disable=SC2139
+            alias "$REPO=cd $1/$REPO"
+        done
+    fi
+}
