@@ -17,6 +17,7 @@ packages=(
     gir1.2-gtop-2.0
     gir1.2-nm-1.0
     git
+    gnome-shell-extension-system-monitor
     gnome-tweak-tool
     gnupg-agent
     graphviz
@@ -24,10 +25,10 @@ packages=(
     htop
     httpie
     hub
-    i3
     icdiff
     ispell
     jq
+    keepassxc
     lnav
     markdown
     moreutils
