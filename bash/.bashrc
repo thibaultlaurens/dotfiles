@@ -18,6 +18,9 @@ shopt -s histappend;
 # Do not autocomplete when accidentally pressing Tab on an empty line.
 shopt -s no_empty_cmd_completion
 
+# Show hidden files on autocomplete
+bind 'set match-hidden-files on'
+
 # Basics
 : "${HOME:=~}"
 : "${LOGNAME:=$(id -un)}"
