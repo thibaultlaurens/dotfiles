@@ -38,22 +38,20 @@ PATH="/usr/sbin:/usr/bin:/sbin:/bin"
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # Add ~/bin to the PATH if it exists
-test -d "$HOME/bin" &&
-    PATH="$HOME/bin:$PATH"
+[ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
 
 # Python
 PYENV_ROOT="$HOME/.pyenv"
-PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+[ -d "$PYENV_ROOT/bin" ] && PATH="$PYENV_ROOT/bin:$PATH"
+type pyenv &> /dev/null && eval "$(pyenv init -)"
 
 # Golang
 GOPATH="$HOME/go"
-PATH="$GOPATH/bin:$PATH"
-PATH="/usr/local/go/bin:$PATH"
+[ -d "$GOPATH/bin" ] && PATH="$GOPATH/bin:$PATH"
+[ -d "$/usr/local/go/bin" ] && PATH="/usr/local/go/bin:$PATH"
 
 # Rust
-PATH="$HOME/.cargo/bin:$PATH"
-PATH="$HOME/.cargo/bin/racer:$PATH"
+[ -d "$HOME/.cargo/bin" ] && PATH="$HOME/.cargo/bin:$PATH"
 
 # Node
 export NVM_DIR="$HOME/.nvm"
