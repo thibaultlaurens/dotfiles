@@ -10,6 +10,7 @@ packages=(
     ctop
     curl
     dconf-cli
+    fd-find
     findutils
     firefox
     fonts-powerline
@@ -40,6 +41,7 @@ packages=(
     openvpn
     procps
     ranger
+    ripgrep
     rxvt-unicode
     sed
     shellcheck
