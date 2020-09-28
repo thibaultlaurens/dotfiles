@@ -22,6 +22,7 @@ packages=(
     ctop
     curl --with-openssl
     diff-so-fancy
+    fd
     ffmpeg
     findutils
     gawk
@@ -50,6 +51,7 @@ packages=(
     node
     openssh
     openssl
+    rg
     shellcheck
     tmux
     tree
