@@ -53,37 +53,16 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+
+;; Display time in 24 hours format
+(setq display-time-24hr-format t)
+(display-time-mode 1)
+
 ;; Maximize emacs on startup
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
-
-;; Fix the width of treemacs
-(setq treemacs-width 25)
 
 ;; Auto save files
 (set auto-save-default t)
 
-;; Enter new window when splitting
-(setq evil-vsplit-window-right t
-      evil-split-window-below t)
-
-;; Pull up ivy after window split
-(defadvice! prompt-for-buffer (&rest _)
-  :after '(evil-window-split evil-window-vsplit)
-  (+ivy/switch-buffer))
-
-;; Preview buffers before opening
-(setq +ivy-buffer-preview t)
-
-;; Window navigation and swapping shortcuts
-(map! :map evil-window-map
-      "SPC"         #'rotate-layout
-       ;; Navigation
-       "<left>"     #'evil-window-left
-       "<down>"     #'evil-window-down
-       "<up>"       #'evil-window-up
-       "<right>"    #'evil-window-right
-       ;; Swapping windows
-       "C-<left>"   #'+evil/window-move-left
-       "C-<down>"   #'+evil/window-move-down
-       "C-<up>"     #'+evil/window-move-up
-       "C-<right>"  #'+evil/window-move-right)
+(map! "M-1"  #'winum-select-window-1)
+(map! "M-2"  #'winum-select-window-2)
