@@ -28,6 +28,7 @@ ln -fs "$(pwd)/.spacemacs" "$HOME/.spacemacs"
 
 # install doom-emacs
 git clone https://github.com/hlissner/doom-emacs ~/doom-emacs
+ln -fs "$(pwd)/.doom.d" "$HOME/.doom.d"
 ~/doom-emacs/bin/doom install
 
 # use doom-emacs as default emacs
