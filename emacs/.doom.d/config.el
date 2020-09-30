@@ -53,28 +53,62 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; Uniquify buffer names
-(setq-default uniquify-buffer-name-style 'forward)
-
-;; Display time in the modeline
-(display-time-mode 1)
-
 ;; Maximize emacs on startup
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
-;; By default while in insert all changes are one big blob. Be more granular
-(setq evil-want-fine-undo t)
+;; Display time and battery info in the modeline
+(after! doom-modeline
+  (display-time-mode 1)
+  (display-battery-mode 1))
 
 ;; Replace selection when inserting text
 (delete-selection-mode 1)
 
-;; always follow symlinks
-(setq-default vc-follow-symlinks t)
+;; Blink visible cursor
+(blink-cursor-mode 'visible-cursor)
 
-;; Auto save files
-;;(set auto-save-default t)
+(setq-default
+ ;; always follow symlinks
+ vc-follow-symlinks t
 
-;; SPC <number> to select window
+ ;; Uniquify buffer names
+ uniquify-buffer-name-style 'forward
+ )
+
+(setq
+ ;; Auto save files
+ auto-save-default t
+
+ ;; By default while in insert all changes are one big blob. Be more granular
+ evil-want-fine-undo t
+
+ ;; Split window and move to it
+ evil-split-window-below t
+ evil-vsplit-window-right t
+
+ ;; trash files
+ delete-by-moving-to-trash t
+
+ ;; don't create lockfiles
+ create-lockfiles nil
+
+ ;; less sensitive mouse / trackpad scrolling
+ mouse-wheel-scroll-amount '(5 ((shift) . 1) ((control) . nil))
+ mouse-wheel-progressive-speed nil
+
+ ; Add a margin when scrolling vertically
+ scroll-margin 2
+ )
+
+;; Turn on 80th column indicator for all files
+(add-hook 'prog-mode-hook 'fci-mode)
+
+;; Pull up ivy when splitting the window so we can select a buffer
+(defadvice! prompt-for-buffer (&rest _)
+  :after '(evil-window-split evil-window-vsplit)
+  (+ivy/switch-buffer))
+
+;; SPC <number> or SPC <[>, <]> to select windows
 (after! winum
     (map! (:when (featurep! :ui window-select)
             :leader
@@ -86,19 +120,31 @@
             :n "6" #'winum-select-window-6
         )))
 
-;; Split window and move to it
-(setq evil-split-window-below t
-      evil-vsplit-window-right t)
-
 ;; Toggle centered cursor
 (map! :leader
       :desc "Center cursor"
       :n "t-" (λ! () (interactive) (centered-cursor-mode 'toggle)))
 
+;; Set dired-k to use human readable styles
+;(after! dired-k
+;    (setq dired-k-human-readable t))
+
+;; Set frame title with project name (when possible)
+(setq frame-title-format
+    '(""
+      (:eval
+       (if (s-contains-p org-roam-directory (or buffer-file-name ""))
+           (replace-regexp-in-string ".*/[0-9]*-?" "🢔 " buffer-file-name)
+         "%b"))
+      (:eval
+       (let ((project-name (projectile-project-name)))
+         (unless (string= "-" project-name)
+           (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s") project-name))))))
+
 ;; Magit
 (after! magit
   ;; (magit-wip-mode)
-  (setq magit-repository-directories '(("~/git" . 2))
+  (setq magit-repository-directories '(("~/git" . 4))
         magit-save-repository-buffers nil
         ;; Don't restore the wconf after quitting magit
         magit-inhibit-save-previous-winconf t
@@ -106,7 +152,3 @@
         ;; magit-delete-by-moving-to-trash nil
         git-commit-summary-max-length 120))
 
-;; https://noelwelsh.com/posts/2019-01-10-doom-emacs.html
-;; https://tecosaur.github.io/emacs-config/config.html
-;; https://github.com/angrybacon/dotemacs/blob/master/dotemacs.org
-;; https://lccambiaghi.github.io/.doom.d/readme.html
