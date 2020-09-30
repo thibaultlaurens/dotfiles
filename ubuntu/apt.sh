@@ -25,7 +25,6 @@ packages=(
     gufw
     htop
     httpie
-    hub
     icdiff
     ispell
     jq
@@ -59,9 +58,6 @@ packages=(
 
 echo "installing packages.."
 sudo apt update && sudo apt upgrade
-
-# Add hub ppa
-sudo add-apt-repository ppa:cpick/hub
 
 sudo apt install "${packages[@]}"
 sudo apt autoremove
