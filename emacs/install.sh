@@ -32,6 +32,6 @@ ln -fs "$(pwd)/.doom.d" "$HOME/.doom.d"
 ~/doom-emacs/bin/doom install
 
 # use doom-emacs as default emacs
-echo 'doom-emacs' > "$HOME/.emacs-profile"
+echo 'doom' > "$HOME/.emacs-profile"
 
 echo "done"
