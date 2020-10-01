@@ -11,13 +11,15 @@ nvm install 14.2.0
 nvm use 14.2.0
 
 packages=(
-    'diff-so-fancy'     # better diff                   - used by git
-    'eslint'            # syntax checker                - used by emac
-    'eslint-cli'        # syntax checker cli            - used by emacs
-    'import-js'         # automatic dependencies import - used by emacs
-    'prettier'          # code formatter                - used by emacs
-    'tern'              # js analyzer                   - used by emacs
-    'vmd'               # preview markdown files        - used by emacs
+    'diff-so-fancy'     # better diff                  
+    'eslint'            # syntax checker               
+    'eslint-cli'        # syntax checker cli           
+    'import-js'         # automatic dependencies import
+    'js-beautify'       # beautifier for javascript 
+    'prettier'          # code formatter               
+    'stylelint'         # a mighty, modern style linter
+    'tern'              # js analyzer                 
+    'vmd'               # preview markdown files       
 )
 
 echo "installing node packages.."

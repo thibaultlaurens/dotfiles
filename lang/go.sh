@@ -19,6 +19,7 @@ export PATH=$PATH:/usr/local/go/bin
 
 packages=(
     'golang.org/x/tools/cmd/godoc'          # extract and generate doc
+    'golang.org/x/tools/gopls'              # lsp server for go
     'golang.org/x/tools/cmd/goimports'      # drop in replacement for gofmt
     'golang.org/x/tools/cmd/gorename'       # precise type-safe renaming
     'golang.org/x/tools/cmd/guru'           # navigate across go code in editors
@@ -31,8 +32,8 @@ packages=(
     'github.com/josharian/impl'
     'github.com/k0kubun/pp'                 # pretty printer
     'github.com/mailgun/godebug'            # cross-platform debugger
-    'github.com/mdempsky/gocode'            # autocompletion daemon
-    'github.com/motemen/gore'               # go REPL
+    'github.com/stamblerre/gocode'          # autocompletion daemon
+    'github.com/motemen/gore/cmd/gore'      # go REPL
     'github.com/rogpeppe/godef'             # find symbol information in go code
     'github.com/zmb3/gogetdoc'
 )
@@ -42,5 +43,6 @@ go get -u -v "${packages[@]}"
 
 echo "installing golangcli-lint.."
 # Binary will be $(go env GOPATH)/bin/golangci-lint
-curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "$(go env GOPATH)/bin" v1.30.0
+curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "$(go env GOPATH)/bin" v1.31.0
+
 echo "done"
