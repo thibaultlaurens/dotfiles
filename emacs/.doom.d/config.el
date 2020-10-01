@@ -101,7 +101,7 @@
  )
 
 ;; Turn on 80th column indicator for all files
-(add-hook 'prog-mode-hook 'fci-mode)
+(add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
 
 ;; Pull up ivy when splitting the window so we can select a buffer
 (defadvice! prompt-for-buffer (&rest _)
@@ -124,10 +124,6 @@
 (map! :leader
       :desc "Center cursor"
       :n "t-" (λ! () (interactive) (centered-cursor-mode 'toggle)))
-
-;; Set dired-k to use human readable styles
-;(after! dired-k
-;    (setq dired-k-human-readable t))
 
 ;; Set frame title with project name (when possible)
 (setq frame-title-format
