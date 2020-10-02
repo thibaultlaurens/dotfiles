@@ -25,7 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-vibrant)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -64,6 +64,9 @@
 ;; Replace selection when inserting text
 (delete-selection-mode 1)
 
+;; Turn on 80th column indicator for all files
+(add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
+
 ;; Blink visible cursor
 (blink-cursor-mode 'visible-cursor)
 
@@ -100,42 +103,36 @@
  scroll-margin 2
  )
 
-;; Turn on 80th column indicator for all files
-(add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
-
 ;; Pull up ivy when splitting the window so we can select a buffer
 (defadvice! prompt-for-buffer (&rest _)
   :after '(evil-window-split evil-window-vsplit)
   (+ivy/switch-buffer))
 
-;; SPC <number> or SPC <[>, <]> to select windows
+;; Assign window number 0 to neotree
+(defun winum-assign-0-to-neotree ()
+  (when (string-match-p (buffer-name) ".*\\NeoTree\\*.*") 10))
+
+;; SPC <number> to select windows
 (after! winum
+(add-to-list 'winum-assign-functions #'winum-assign-0-to-neotree)
     (map! (:when (featurep! :ui window-select)
-            :leader
-            :n "1" #'winum-select-window-1
-            :n "2" #'winum-select-window-2
-            :n "3" #'winum-select-window-3
-            :n "4" #'winum-select-window-4
-            :n "5" #'winum-select-window-5
-            :n "6" #'winum-select-window-6
-        )))
+           :leader
+           :n "0" #'winum-select-window-0-or-10
+           :n "1" #'winum-select-window-1
+           :n "2" #'winum-select-window-2
+           :n "3" #'winum-select-window-3
+           :n "4" #'winum-select-window-4
+           :n "5" #'winum-select-window-5
+           :n "6" #'winum-select-window-6
+           )))
 
 ;; Toggle centered cursor
 (map! :leader
       :desc "Center cursor"
       :n "t-" (λ! () (interactive) (centered-cursor-mode 'toggle)))
 
-;; Set frame title with project name (when possible)
-(setq frame-title-format
-    '(""
-      (:eval
-       (if (s-contains-p org-roam-directory (or buffer-file-name ""))
-           (replace-regexp-in-string ".*/[0-9]*-?" "🢔 " buffer-file-name)
-         "%b"))
-      (:eval
-       (let ((project-name (projectile-project-name)))
-         (unless (string= "-" project-name)
-           (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s") project-name))))))
+;; Set frame title with file path and major mode
+(setq-default frame-title-format '("%f [%m]"))
 
 ;; Magit
 (after! magit
