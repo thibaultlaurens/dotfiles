@@ -6,7 +6,7 @@ xrdb "$HOME/.Xresources"
 # Load bash completion
 source /etc/bash_completion
 
-# Add snaps in the PATH
+# Add snaps in PATH
 PATH="/snap/bin:$PATH"
 
 # Open files, dirs or urls

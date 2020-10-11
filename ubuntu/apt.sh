@@ -47,7 +47,6 @@ packages=(
     silversearcher-ag
     snapd
     software-properties-common
-    thunderbird
     tmux
     tree
     unrar
