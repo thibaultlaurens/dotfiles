@@ -6,32 +6,36 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
-
+" lean & mean status/tabline for vim
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-airline-colornum'
+
+" display the indention levels with thin vertical lines
 Plug 'Yggdroot/indentLine'
+
+" shows git diff markers in the sign column
 Plug 'airblade/vim-gitgutter'
+
+" shows how many times a search pattern occurs in the current buffer
 Plug 'google/vim-searchindex'
 
-Plug 'terryma/vim-multiple-cursors'
+" multiple cursors plugin for vim
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
+" mappings to easily delete, change and add surroundings in pairs
 Plug 'tpope/vim-surround'
+
+" insert or delete brackets, parens, quotes in pair
 Plug 'jiangmiao/auto-pairs'
-Plug 'gcmt/wildfire.vim'
-Plug 'habamax/vim-skipit'
-Plug 'junegunn/vim-easy-align'
+
+" comment stuff out
 Plug 'tpope/vim-commentary'
 
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'shougo/unite.vim'
-Plug 'shougo/unite-session'
-Plug 'shougo/unite-outline'
-Plug 'shougo/vimfiler.vim'
-
+" vim nord theme
 Plug 'arcticicestudio/nord-vim'
+
+" a collection of language packs for Vim
 Plug 'sheerun/vim-polyglot'
 
 call plug#end()
