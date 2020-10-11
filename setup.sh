@@ -1,36 +1,13 @@
 #!/usr/bin/env bash
 
+echo "setting up environment.."
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
+# OS related setup first
 if [[ $(uname) == "Darwin" ]]; then
-    echo "setting up osx.."
-
-    # Install xcode cli
-    xcode-select --install
-
-    # Install packages and apps
-    source "$DIR/osx/brew.sh"
-    source "$DIR/osx/brew_cask.sh"
-
-    # Whitelist the upgraded bash
-    echo "/usr/local/bin/bash" >> /etc/shells
-
-    # Set default shell for current and root user
-    chsh -s /usr/local/bin/bash
-    sudo chsh -s /usr/local/bin/bash
-
-    # Apply preferences and security measures
-    source "$DIR/osx/preferences.sh"
-    source "$DIR/osx/hardening.sh"
-
+    source "$DIR/osx/setup.sh"
 elif [[ $(uname) == "Linux" ]]; then
-    echo "setting up ubuntu.."
-
-    # Install packages
-    source "$DIR/ubuntu/apt.sh"
-
-    # Enable firewall
-    sudo ufw enable
+    source "$DIR/ubuntu/setup.sh"
 fi
 
 # Install programming languages
@@ -42,13 +19,32 @@ source "$DIR/lang/rust.sh"
 # Install docker
 source "$DIR/docker/docker.sh"
 
-# Install spacemacs
-source "$DIR/emacs/install.sh"
+# Install emacs
+source "$DIR/emacs/emacs.sh"
 
-# Symlink everything
-source "$DIR/symlink.sh"
+# Link bash config
+ln -fs "$DIR/bash/.bash_profile" "$HOME/.bash_profile"
+ln -fs "$DIR/bash/.inputrc" "$HOME/.inputrc"
+ln -fs "$DIR/bash/.bashrc" "$HOME/.bashrc"
+
+# Link tmux config
+ln -fs "$DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
+
+# Link git config
+ln -fs "$DIR/git/.gitconfig" "$HOME/.gitconfig"
+ln -fs "$DIR/git/.gitignore" "$HOME/.gitignore"
+
+# Link vim config
+ln -fs "$DIR/vim/.vimrc.plug" "$HOME/.vimrc.plug"
+ln -fs "$DIR/vim/.vimrc" "$HOME/.vimrc"
+
+# Link htop config
+ln -fs "$DIR/htop/htoprc" "${HOME}/.config/htop/htoprc"
 
 # Reload bashrc
 source "$HOME/.bashrc"
+
+echo "don't forget to copy the default ssh config"
+# cp "$DIR/ssh/config" "${HOME}/.ssh/config"
 
 echo "all done"

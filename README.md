@@ -16,6 +16,5 @@
 ├── .gitignore                       # exclude work directory
 ├── Makefile                         # quickly run shellcheck
 ├── README.md
-├── setup.sh                         # setup a new machine
-└── symlink.sh                       # symlink everything
+└── setup.sh                         # setup a new environment
 ```
