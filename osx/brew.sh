@@ -48,7 +48,6 @@ packages=(
     moreutils
     neofetch
     nmap
-    node
     openssh
     openssl
     rg
@@ -68,5 +67,5 @@ brew update && brew upgrade && brew doctor
 brew tap Homebrew/bundle
 
 brew install "${packages[@]}"
-brew cleanup
+brew cleanup && brew doctor
 echo "done"
