@@ -15,6 +15,7 @@ export HOMEBREW_CASK_OPTS=--require-sha
 
 packages=(
     ag
+    aspell
     bash
     bash-completion
     brew-cask-completion

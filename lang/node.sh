@@ -12,6 +12,7 @@ nvm use 14.2.0
 
 packages=(
     'diff-so-fancy'     # better diff                  
+    'dockerfile-language-server-nodejs'
     'eslint'            # syntax checker               
     'eslint-cli'        # syntax checker cli           
     'import-js'         # automatic dependencies import
