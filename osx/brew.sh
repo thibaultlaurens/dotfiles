@@ -15,6 +15,7 @@ export HOMEBREW_CASK_OPTS=--require-sha
 
 packages=(
     ag
+    aspell
     bash
     bash-completion
     brew-cask-completion
@@ -48,7 +49,6 @@ packages=(
     moreutils
     neofetch
     nmap
-    node
     openssh
     openssl
     rg
@@ -68,5 +68,5 @@ brew update && brew upgrade && brew doctor
 brew tap Homebrew/bundle
 
 brew install "${packages[@]}"
-brew cleanup
+brew cleanup && brew doctor
 echo "done"

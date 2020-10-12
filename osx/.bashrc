@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Ruby
+# Replace osx ruby binaries
 PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # Load bash completion
@@ -40,10 +40,10 @@ alias myip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\  -f2"
 alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
 
 # Restart dns
-alias reset-dns="sudo killall -9 mDNSResponder"
+alias restart-dns="sudo killall -9 mDNSResponder"
 
 # Empty the trash on all mounted volumes, the main hdd and clear system logs
 alias rm-trashes="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
 
 # Homebrew update / upgrade
-alias brew-upgrade="brew update; brew upgrade; brew cask upgrade; brew cleanup; brew doctor"
+alias brew-upgrade="brew update; brew upgrade; brew cleanup; brew doctor"

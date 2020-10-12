@@ -110,36 +110,7 @@ map <leader>p :bprevious<CR>
 
 filetype plugin on
 
-" Gitgutter - always on
-" set signcolumn=yes
-
-" Unite"
-nnoremap <Leader>f :Unite file<CR>
-
 " Vim-airline.
-
 set laststatus=2
 let g:airline_powerline_fonts = 1
-silent! let g:airline_theme='nord'
-let g:airline#extensions#tabline#enabled = 1
-
-" ================ Nerdtree ==========================
-
-let NERDTreeMapActivateNode='<right>'       " Right arrow to open a node
-let NERDTreeShowHidden=1                    " Display hidden files
-
-nmap <leader>t :NERDTreeToggle<CR>          " Toggle Nerdtree with <Leader> + t
-nmap <leader>j :NERDTreeFind<CR>            " Focus file in the tree
-
-" Hide useless files in the tree
-let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
-
-" Open nerdtree automatically when vim starts up...
-autocmd StdinReadPre * let s:std_in=1
-" ...if no files were specified
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | wincmd p | endif
-" ...on opening a directory
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
-" close vim if the only window left open is a Nerdtree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"silent! let g:airline_theme='nord'
