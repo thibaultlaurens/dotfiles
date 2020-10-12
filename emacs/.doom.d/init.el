@@ -79,7 +79,7 @@
 
        :checkers
        syntax           ; tasing you for every semicolon you forget
-       spell            ; tasing you for misspelling mispelling
+       ;; spell         ; tasing you for misspelling mispelling
        grammar          ; tasing grammar mistake every you make
 
        :tools
@@ -131,7 +131,7 @@
        ;;(haskell +dante)  ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ;
-       json                ; At least it ain't XML
+       (json +lsp)         ; At least it ain't XML
        ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
        (javascript +lsp)   ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
@@ -159,13 +159,13 @@
        ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;scheme            ; a fully conniving family of lisps
-       sh                  ; she sells {ba,z,fi}sh shells on the C xor
+       (sh +lsp)           ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml               ; no, the /other/ ML
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        web                 ; the tubes
-       yaml                ; JSON, but readable
+       (yaml +lsp)         ; JSON, but readable
 
        :email
        ;;(mu4e +gmail)
