@@ -108,7 +108,7 @@
  mouse-wheel-progressive-speed nil
 
  ; Add a margin when scrolling vertically
- scroll-margin 2
+ scroll-margin 5
  )
 
 ;; Pull up ivy when splitting the window so we can select a buffer
@@ -131,13 +131,7 @@
            :n "3" #'winum-select-window-3
            :n "4" #'winum-select-window-4
            :n "5" #'winum-select-window-5
-           :n "6" #'winum-select-window-6
            )))
-
-;; Toggle centered cursor
-(map! :leader
-      :desc "Center cursor"
-      :n "t-" (λ! () (interactive) (centered-cursor-mode 'toggle)))
 
 ;; Set frame title with file path and major mode
 (setq-default frame-title-format '("%f [%m]"))
