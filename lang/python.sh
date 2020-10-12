@@ -42,6 +42,7 @@ packages=(
     'isort'                       # sort imports
     'mypy'                        # optional static typing checker
     'pip'                         # package installer
+    'pipenv'                      # python development workflow for humans 
     'pytest'                      # test python code 
     'setuptools'                  # build and distribute packages
     'virtualenv'                  # create isolated python environments
