@@ -23,7 +23,8 @@ packages=(
     'golang.org/x/tools/cmd/goimports'      # drop in replacement for gofmt
     'golang.org/x/tools/cmd/gorename'       # precise type-safe renaming
     'golang.org/x/tools/cmd/guru'           # navigate across go code in editors
-
+    
+    'github.com/jessfraz/dockfmt'
     'github.com/cweill/gotests/...'
     'github.com/davidrjenni/reftools/cmd/fillstruct'
     'github.com/fatih/gomodifytags'
