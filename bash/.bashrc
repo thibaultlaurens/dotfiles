@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 
@@ -20,6 +23,9 @@ shopt -s no_empty_cmd_completion
 
 # Show hidden files on autocomplete
 bind 'set match-hidden-files on'
+
+# Ignore case on bash completion
+bind 'set completion-ignore-case on'
 
 # Basics
 : "${HOME:=~}"
