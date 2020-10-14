@@ -107,7 +107,7 @@
  mouse-wheel-scroll-amount '(5 ((shift) . 1) ((control) . nil))
  mouse-wheel-progressive-speed nil
 
- ; Add a margin when scrolling vertically
+ ;; Add a margin when scrolling vertically
  scroll-margin 5
  )
 
@@ -120,18 +120,23 @@
 (defun winum-assign-0-to-neotree ()
   (when (string-match-p (buffer-name) ".*\\NeoTree\\*.*") 10))
 
-;; SPC <number> to select windows
+;; SPC-<number> to select windows
 (after! winum
-(add-to-list 'winum-assign-functions #'winum-assign-0-to-neotree)
-    (map! (:when (featurep! :ui window-select)
-           :leader
-           :n "0" #'winum-select-window-0-or-10
-           :n "1" #'winum-select-window-1
-           :n "2" #'winum-select-window-2
-           :n "3" #'winum-select-window-3
-           :n "4" #'winum-select-window-4
-           :n "5" #'winum-select-window-5
-           )))
+  (add-to-list 'winum-assign-functions #'winum-assign-0-to-neotree)
+  (map! (:when (featurep! :ui window-select)
+         :leader
+         :n "0" #'winum-select-window-0-or-10
+         :n "1" #'winum-select-window-1
+         :n "2" #'winum-select-window-2
+         :n "3" #'winum-select-window-3
+         :n "4" #'winum-select-window-4
+         :n "5" #'winum-select-window-5
+         )))
+
+;; Refresh neotree for added/removed files
+(after! neotree
+  (map! :map neotree-mode-map
+        :n "R"  #'neotree-refresh))
 
 ;; Set frame title with file path and major mode
 (setq-default frame-title-format '("%f [%m]"))
@@ -146,4 +151,3 @@
         magit-log-arguments '("--graph" "--decorate" "--color")
         ;; magit-delete-by-moving-to-trash nil
         git-commit-summary-max-length 120))
-
