@@ -77,7 +77,6 @@ source "$DIR/prompt.sh"
 
 # Cd alias personal git repos
 GIT_REPOS="$HOME/git/thibault"
-alias "thibault=cd $GIT_REPOS"
 alias-dirs $GIT_REPOS
 
 # Tmux completion

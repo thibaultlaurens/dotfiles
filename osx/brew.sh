@@ -37,7 +37,6 @@ packages=(
     gzip
     htop
     httpie
-    hub
     hugo
     icdiff
     ispell

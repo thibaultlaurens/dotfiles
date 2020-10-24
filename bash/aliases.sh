@@ -11,8 +11,7 @@ alias dl="cd ~/Downloads"
 alias dm="cd ~/Documents"
 alias dr="cd ~/drive"
 alias dt="cd ~/Desktop"
-alias gh="cd ~/git"
-alias ghgo='cd $GOPATH/src/github.com'
+alias gt="cd ~/git"
 alias lg="cd /var/log"
 
 # Default options
@@ -24,13 +23,11 @@ alias less="less -FSRXc"
 alias ll='ls -FGlahp --color=always'
 alias mkdir="mkdir -pv"
 alias rm="rm -Iv"
-alias tree="tree -aCF --dirsfirst -I '.git|node_modules'"
+alias tree="tree -aCF --dirsfirst -I '.git'"
 
 # Shortcuts
 alias c="clear"
 alias dc="docker-compose"
-alias dex="docker exec -it"
-alias git="hub"
 alias h="history"
 alias t="tmux"
 alias v="vim"
@@ -58,7 +55,7 @@ ff() { find . -type f -iname "*$1*"; }
 fd() { find . -type d -iname "*$1*"; }
 
 # Syntax highligh in cat
-function cat() {
+cat() {
     local out colored
     out=$(/bin/cat "$@")
     colored=$(echo "$out" | pygmentize -f console -g 2>/dev/null)
@@ -76,18 +73,43 @@ mv() {
     command mv -iv -- "$1" "$newfilename"
 }
 
+# Archive extraction
+extract () {
+  if [ -f "$1" ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf "$1"    ;;
+      *.tar.gz)    tar xzf "$1"    ;;
+      *.bz2)       bunzip2 "$1"    ;;
+      *.rar)       unrar x "$1"    ;;
+      *.gz)        gunzip "$1"     ;;
+      *.tar)       tar xf "$1"     ;;
+      *.tbz2)      tar xjf "$1"    ;;
+      *.tgz)       tar xzf "$1"    ;;
+      *.zip)       unzip "$1"      ;;
+      *.Z)         uncompress "$1" ;;
+      *.7z)        7z x "$1"       ;;
+      *.deb)       ar x "$1"       ;;
+      *.tar.xz)    tar xf "$1"     ;;
+      *.tar.zst)   unzstd "$1"     ;;      
+      *)           echo "'$1' cannot be extracted via extract()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
 # Prune everything docker related
-function docker-prune-all() {
+docker-prune-all() {
     docker system prune -a -f --volumes
 }
 
 # Prune all docker images
-function docker-prune-images() {
+docker-prune-images() {
     docker rmi -f "$(docker images -f dangling=true -q --no-trunc)"
 }
 
 # Display the path to the volume data
-function docker-volume-path() {
+docker-volume-path() {
     if [ -z "$1" ]; then
         echo "No volume supplied."
         docker volume ls
@@ -97,7 +119,7 @@ function docker-volume-path() {
 }
 
 # Sync a fork master branch
-function git-sync-fork() {
+git-sync-fork() {
     if [ -z "$1" ]; then
         echo "No remote upstream repository specified."
     else
@@ -111,7 +133,7 @@ function git-sync-fork() {
 }
 
 # Cd alias one level of directory given a base path
-function alias-dirs() {
+alias-dirs() {
     if [ -z "$1" ]; then
         echo "No directory path specified."
     elif [ -d "$1" ]; then
