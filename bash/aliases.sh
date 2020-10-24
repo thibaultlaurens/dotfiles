@@ -49,10 +49,10 @@ cd() { builtin cd "$@" || exit && ll; }
 cdmk() { mkdir -p "$@" && cd "$@" || exit; }
 
 # Fuzzy find file
-ff() { find . -type f -iname "*$1*"; }
+fff() { find . -type f -iname "*$1*"; }
 
 # Fuzzy find directory
-fd() { find . -type d -iname "*$1*"; }
+ffd() { find . -type d -iname "*$1*"; }
 
 # Syntax highligh in cat
 cat() {
