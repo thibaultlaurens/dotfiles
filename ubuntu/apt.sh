@@ -14,11 +14,11 @@ packages=(
     findutils
     firefox
     fonts-powerline
+    gcc
     gir1.2-clutter-1.0
     gir1.2-gtop-2.0
     gir1.2-nm-1.0
     git
-    gnome-shell-extension-system-monitor
     gnome-tweak-tool
     gnupg-agent
     graphviz
@@ -30,13 +30,14 @@ packages=(
     jq
     keepassxc
     lnav
+    make
     markdown
     moreutils
     neofetch
     net-tools
     nmap
-    openssl
     openssh-client
+    openssl
     openvpn
     procps
     ranger
@@ -45,7 +46,6 @@ packages=(
     sed
     shellcheck
     silversearcher-ag
-    snapd
     software-properties-common
     tmux
     tree
@@ -55,9 +55,11 @@ packages=(
     xclip
 )
 
-echo "installing packages.."
-sudo apt update && sudo apt upgrade
 
+echo "upgrading packages.."
+sudo apt update && sudo apt dist-upgrade
+
+echo "installing new packages.."
 sudo apt install "${packages[@]}"
 sudo apt autoremove
 echo "done"
