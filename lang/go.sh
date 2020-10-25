@@ -5,13 +5,13 @@ echo "installing go.."
 if [[ $(uname) == "Darwin" ]]; then
     brew install go
 elif [[ $(uname) == "Linux" ]]; then
-    sudo add-apt-repository ppa:longsleep/golang-backports
     sudo apt update
-    sudo apt install golang-go
+    sudo apt install golang-1.15
+    sudo ln -nfs "/usr/lib/go-1.15" "/usr/local/go" 
 fi
 
 # Create the directory structure for the go workspace
-mkdir -p "$HOME/go/{bin,src}"
+mkdir -p "$HOME/go/${bin,src}"
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
