@@ -37,8 +37,6 @@ if [[ $(uname) == "Darwin" ]]; then
     alias readlink="greadlink"
 fi
 
-DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
-
 # Complete hostnames from this file
 : "${HOSTFILE=~/.ssh/known_hosts}"
 
@@ -59,9 +57,6 @@ GOPATH="$HOME/go"
 [ -d "$GOPATH/bin" ] && PATH="$GOPATH/bin:$PATH"
 [ -d "$/usr/local/go/bin" ] && PATH="/usr/local/go/bin:$PATH"
 
-# Rust
-[ -d "$HOME/.cargo/bin" ] && PATH="$HOME/.cargo/bin:$PATH"
-
 # Node
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -70,26 +65,28 @@ export NVM_DIR="$HOME/.nvm"
 # Doom emacs
 [ -d "$HOME/doom-emacs/bin" ] && PATH="$HOME/doom-emacs/bin:$PATH"
 
+DF_BASH_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+
 # Custom bash aliases, exports and prompt
-source "$DIR/aliases.sh"
-source "$DIR/exports.sh"
-source "$DIR/prompt.sh"
+source "$DF_BASH_DIR/aliases.sh"
+source "$DF_BASH_DIR/exports.sh"
+source "$DF_BASH_DIR/prompt.sh"
 
 # Cd alias personal git repos
 GIT_REPOS="$HOME/git/thibault"
 alias-dirs $GIT_REPOS
 
 # Tmux completion
-source "$DIR/../tmux/.tmux_completion"
+source "$DF_BASH_DIR/../tmux/.tmux_completion"
 
 # Source os related bashrc
 if [[ $(uname) == "Darwin" ]]; then
-    source "$DIR/../osx/.bashrc"
+    source "$DF_BASH_DIR/../osx/.bashrc"
 elif [[ $(uname) == "Linux" ]]; then
-    source "$DIR/../ubuntu/.bashrc"
+    source "$DF_BASH_DIR/../ubuntu/.bashrc"
 fi
 
 # Source bashrc dedicated to work environment
-if [ -f "$DIR/../work/.bashrc" ]; then
-    source "$DIR/../work/.bashrc"
+if [ -f "$DF_BASH_DIR/../work/.bashrc" ]; then
+    source "$DF_BASH_DIR/../work/.bashrc"
 fi
