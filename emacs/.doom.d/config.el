@@ -97,6 +97,9 @@
  evil-split-window-below t
  evil-vsplit-window-right t
 
+ ;; don’t move back the cursor when exiting insert mode
+ evil-move-cursor-back nil
+
  ;; trash files
  delete-by-moving-to-trash t
 
@@ -140,6 +143,11 @@
 
 ;; Set frame title with file path and major mode
 (setq-default frame-title-format '("%f [%m]"))
+
+;; Set rg to search in hidden files
+(after! counsel
+  (setq counsel-rg-base-command
+        "rg -M 240 --hidden --with-filename --no-heading --line-number --color never --glob '!.git' %s"))
 
 ;; Magit
 (after! magit
