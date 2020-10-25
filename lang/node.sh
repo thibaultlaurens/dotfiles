@@ -3,7 +3,10 @@
 # Install nvm
 echo "installing nvm.."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-source "$HOME/.bashrc"
+
+# Load NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # Install node
 echo "installing node.."
@@ -28,5 +31,5 @@ packages=(
 )
 
 echo "installing node packages.."
-npm install -g "${packages[@]}"
+npm install -f -g "${packages[@]}"
 echo "done"
