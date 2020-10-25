@@ -7,7 +7,7 @@
 ├── emacs/                           # spacemacs config, icon and installer
 ├── git/                             # git config and global gitignore
 ├── htop/                            # htop config file
-├── lang/                            # programming languages setup (go, node, python and rust)
+├── lang/                            # programming languages setup (go, node and python)
 ├── osx/                             # osx packages, apps and settings
 ├── ssh/                             # ssh base config file
 ├── tmux/                            # tmux config and autocompletion file
