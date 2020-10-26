@@ -19,6 +19,7 @@ packages=(
     gir1.2-gtop-2.0
     gir1.2-nm-1.0
     git
+    glslang-tools
     gnome-shell-extensions
     gnome-tweak-tool
     gnupg-agent
