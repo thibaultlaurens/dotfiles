@@ -55,7 +55,7 @@ type pyenv &> /dev/null && eval "$(pyenv init -)"
 # Golang
 GOPATH="$HOME/go"
 [ -d "$GOPATH/bin" ] && PATH="$GOPATH/bin:$PATH"
-[ -d "$/usr/local/go/bin" ] && PATH="/usr/local/go/bin:$PATH"
+[ -d "/usr/local/go/bin" ] && PATH="/usr/local/go/bin:$PATH"
 
 # Node
 export NVM_DIR="$HOME/.nvm"
