@@ -19,6 +19,7 @@ packages=(
     gir1.2-gtop-2.0
     gir1.2-nm-1.0
     git
+    gnome-shell-extensions
     gnome-tweak-tool
     gnupg-agent
     graphviz
@@ -29,6 +30,7 @@ packages=(
     ispell
     jq
     keepassxc
+    laptop-mode-tools
     lnav
     make
     markdown
@@ -39,8 +41,11 @@ packages=(
     openssh-client
     openssl
     openvpn
+    p7zip-full
+    p7zip-rar
     procps
     ranger
+    rar
     ripgrep
     rxvt-unicode
     sed
@@ -49,8 +54,10 @@ packages=(
     software-properties-common
     tmux
     tree
+    ubuntu-restricted-extras
     unrar
     vim
+    vlc
     wmctrl
     xclip
 )
