@@ -6,6 +6,9 @@ DF_UBUNTU_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )
 # Install packages
 source "$DF_UBUNTU_DIR/apt.sh"
 
+# Install fonts
+source "$DF_UBUNTU_DIR/fonts.sh"
+
 # Enable firewall
 sudo ufw enable
 
