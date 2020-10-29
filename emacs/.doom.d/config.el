@@ -78,8 +78,11 @@
 
 (add-hook 'after-change-major-mode-hook #'doom-modeline-conditional-buffer-encoding)
 
+;; Disable custom scroll-margin in term-mode
+(add-hook 'term-mode-hook (lambda () (setq-local scroll-margin 0)))
+
 (setq-default
- ;; always follow symlinks
+ ;; Always follow symlinks
  vc-follow-symlinks t
 
  ;; Uniquify buffer names
@@ -97,13 +100,13 @@
  evil-split-window-below t
  evil-vsplit-window-right t
 
- ;; don’t move back the cursor when exiting insert mode
+ ;; Don’t move back the cursor when exiting insert mode
  evil-move-cursor-back nil
 
- ;; trash files
+ ;; Trash files
  delete-by-moving-to-trash t
 
- ;; don't create lockfiles
+ ;; Don't create lockfiles
  create-lockfiles nil
 
  ;; less sensitive mouse / trackpad scrolling
