@@ -7,7 +7,7 @@ if [ ! -d "$HOME/.fonts" ] ; then
 fi
 
 unzip 1.050R-it.zip 
-cp source-code-pro-*-it/OTF/*.otf "$HOME/.fonts/"
+cp -n source-code-pro-*-it/OTF/*.otf "$HOME/.fonts/"
 
 rm -rf source-code-pro* 
 rm 1.050R-it.zip
