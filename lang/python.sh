@@ -11,7 +11,7 @@ elif [[ $(uname) == "Linux" ]]; then
         xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
 fi
 
-# Install pyenv
+# Install or update pyenv
 : "${PYENV_ROOT:=$HOME/.pyenv}"
 if [ ! -d "$PYENV_ROOT" ]; then
     echo "installing pyenv.."
@@ -21,6 +21,8 @@ if [ ! -d "$PYENV_ROOT" ]; then
     elif [[ $(uname) == "Linux" ]]; then
         curl https://pyenv.run | bash
     fi
+else
+    git -C "$PYENV_ROOT" pull
 fi
 
 # Setup pyenv
