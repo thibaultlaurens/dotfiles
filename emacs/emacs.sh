@@ -12,11 +12,6 @@ elif [[ $(uname) == "Linux" ]]; then
     snap install emacs --classic
 fi
 
-# backup default emacs
-cd ~ || exit
-mv .emacs.d .emacs.d.bak
-mv .emacs .emacs.bak
-
 # install chemacs startup script
 wget -O ~/.emacs https://raw.githubusercontent.com/plexus/chemacs/master/.emacs
 ln -fs "$DF_EMACS_DIR/.emacs-profiles.el" "$HOME/.emacs-profiles.el"
