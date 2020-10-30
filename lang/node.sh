@@ -11,7 +11,8 @@ export NVM_DIR="$HOME/.nvm"
 # Install node
 echo "installing node.."
 nvm install 14.2.0
-nvm use 14.2.0
+nvm alias default v14.2.0
+nvm use default
 
 packages=(
     'bash-language-server'
