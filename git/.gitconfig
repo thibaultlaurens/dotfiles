@@ -13,6 +13,9 @@
 	# also show individual files in untracked directories
 	showUntrackedFiles = all
 
+[pull]
+	rebase = false
+
 [color "branch"]
 	current = yellow reverse
 	local = yellow
