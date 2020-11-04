@@ -43,8 +43,10 @@ packages=(
     'ipython[all]'                # interactive python
     'isort'                       # sort imports
     'mypy'                        # optional static typing checker
-    'pipenv'                      # python development workflow for humans 
+    'pipenv'                      # python development workflow for humans
+    'pyflakes'                    # checks python source files for errors 
     'pytest'                      # test python code 
+    'python-language-server[all]' # python language server
     'virtualenv'                  # create isolated python environments
     'virtualenvwrapper'           # extensions for virtualenv
     'yamllint'                    # linter for YAML files
