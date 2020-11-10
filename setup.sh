@@ -14,6 +14,7 @@ fi
 source "$DF_DIR/lang/go.sh"
 source "$DF_DIR/lang/python.sh"
 source "$DF_DIR/lang/node.sh"
+source "$DF_DIR/lang/rust.sh"
 
 # Install docker
 source "$DF_DIR/docker/docker.sh"
