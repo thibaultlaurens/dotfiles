@@ -20,7 +20,6 @@ alias df="df -Th"
 alias du="du -ach"
 alias grep='grep --color=auto'
 alias less="less -FSRXc"
-alias ll='ls -FGlahp --color=always'
 alias mkdir="mkdir -pv"
 alias rm="rm -Iv"
 alias tree="tree -aCF --dirsfirst -I '.git'"
@@ -31,6 +30,10 @@ alias dc="docker-compose"
 alias h="history"
 alias t="tmux"
 alias v="vim"
+
+# Drop in replacements
+alias cat="bat --theme=ansi-dark"
+alias ll="exa -abghlmFU --git"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
@@ -47,20 +50,6 @@ cd() { builtin cd "$@" || exit && ll; }
 
 # Makes new Dir and jumps inside
 cdmk() { mkdir -p "$@" && cd "$@" || exit; }
-
-# Fuzzy find file
-fff() { find . -type f -iname "*$1*"; }
-
-# Fuzzy find directory
-ffd() { find . -type d -iname "*$1*"; }
-
-# Syntax highligh in cat
-cat() {
-    local out colored
-    out=$(/bin/cat "$@")
-    colored=$(echo "$out" | pygmentize -f console -g 2>/dev/null)
-    [[ -n $colored ]] && echo "$colored" || echo "$out"
-}
 
 # Prompt to edit the given path if called with one parameter
 mv() {
@@ -137,7 +126,7 @@ alias-dirs() {
     if [ -z "$1" ]; then
         echo "No directory path specified."
     elif [ -d "$1" ]; then
-        REPOS=$(find "$1" -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
+        REPOS=$(fd -d 1 -t d -x basename {} \; . "$1";)
         for REPO in $REPOS; do
             # shellcheck disable=SC2139
             alias "$REPO=cd $1/$REPO"
