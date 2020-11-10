@@ -26,7 +26,7 @@ packages=(
     'marked'                # a markdown parser built for speed
     'prettier'              # code formatter               
     'stylelint'             # a mighty, modern style linter
-    'tern'                  # js analyzer                 
+    'tern'                  # js analyzer
     'vmd'                   # preview markdown files
     'yaml-language-server'  # language Server for Yaml Files 
 )
