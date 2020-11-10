@@ -18,14 +18,15 @@ packages=(
     aspell
     bash
     bash-completion
+    bat
     brew-cask-completion
     coreutils
     ctop
     curl --with-openssl
     diff-so-fancy
-    fd
     ffmpeg
     findutils
+    fzf
     gawk
     git
     gnu-indent

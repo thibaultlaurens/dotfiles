@@ -4,16 +4,17 @@ packages=(
     apt-transport-https
     bash
     bash-completion
+    bat
     build-essential
     ca-certificates
     coreutils
     ctop
     curl
     dconf-cli
-    fd-find
     findutils
     firefox
     fonts-powerline
+    fzf
     gcc
     gir1.2-clutter-1.0
     gir1.2-gtop-2.0
@@ -70,4 +71,9 @@ sudo apt update && sudo apt dist-upgrade
 echo "installing new packages.."
 sudo apt install "${packages[@]}"
 sudo apt autoremove
+
+# fix name clash for bat and fd on ubuntu
+mkdir -p /usr/local/bin
+ln -s /usr/bin/batcat /usr/local/bin/bat
+
 echo "done"
