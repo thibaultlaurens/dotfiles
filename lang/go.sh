@@ -11,7 +11,7 @@ elif [[ $(uname) == "Linux" ]]; then
 fi
 
 # Create the directory structure for the go workspace
-mkdir -p "$HOME/go/${bin,src}"
+mkdir -p "$HOME/go/{bin,src}"
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
