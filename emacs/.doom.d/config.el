@@ -81,6 +81,9 @@
 ;; Disable custom scroll-margin in term-mode
 (add-hook 'term-mode-hook (lambda () (setq-local scroll-margin 0)))
 
+;; Add py-isort-before-save to before-save-hook in python-mode
+(add-hook 'python-mode-hook (lambda() (add-hook 'before-save-hook 'py-isort-before-save)))
+
 (setq-default
  ;; Always follow symlinks
  vc-follow-symlinks t
