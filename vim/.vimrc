@@ -33,7 +33,6 @@ set paste
 
 syntax on                       " Turn on syntax highlighting
 set enc=utf-8
-set guifont=Source\ Code\ Pro\ 11
 set number                      " Enable line numbers
 set colorcolumn=80              " Add a column at 80 to the right
 set cursorline                  " Highlight current line

@@ -10,8 +10,7 @@ apps=(
     balenaetcher
     bitwarden
     firefox
-    font-source-code-pro
-    font-source-code-pro-for-powerline
+    font-sauce-code-pro-nerd-font
     google-backup-and-sync
     iterm2
     keybase
