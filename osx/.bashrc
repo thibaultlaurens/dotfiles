@@ -23,6 +23,7 @@ PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
 # Open files, dirs or urls
 alias o="open"
@@ -43,7 +44,18 @@ alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
 alias restart-dns="sudo killall -9 mDNSResponder"
 
 # Empty the trash on all mounted volumes, the main hdd and clear system logs
-alias rm-trashes="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
+function rm-trashes {
+    sudo rm -rfv /Volumes/*/.Trashes && \
+    sudo rm -rfv ~/.Trash && \
+    sudo rm -rfv /private/var/log/asl/*.asl
+}
 
 # Homebrew update / upgrade
-alias brew-upgrade="brew update; brew upgrade; brew cleanup; brew doctor"
+function brew-updater {
+	brew update && \
+	brew upgrade && \
+	brew autoremove && \
+	brew cleanup && \
+	brew doctor
+}
+

@@ -68,7 +68,7 @@ packages=(
 echo "upgrading packages.."
 sudo apt update && sudo apt dist-upgrade
 
-echo "installing new packages.."
+echo "installing packages.."
 sudo apt install "${packages[@]}"
 sudo apt autoremove
 

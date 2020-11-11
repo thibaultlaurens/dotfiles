@@ -25,4 +25,6 @@ packages=(
 echo "installing rust packages.."
 cargo install -f "${packages[@]}"
 
+tldr --update
+
 echo "done"

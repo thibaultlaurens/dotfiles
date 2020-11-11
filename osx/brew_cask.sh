@@ -21,7 +21,6 @@ apps=(
     macpass
     menumeters
     micro-snitch
-    music-manager
     onyx
     protonmail-bridge
     protonvpn

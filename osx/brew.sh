@@ -1,13 +1,12 @@
 #!/usr/bin/env/bash
 
 # Install homebrew if it's missing
-if test ! "$(which brew)"
-then
- echo "installing homebrew.."
+if test ! "$(which brew)"; then
+ echo "installing brew.."
  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-sudo chown -R "$(whoami)" "$(brew --prefix)/*"
+sudo chown -R "$(whoami)" "$(brew --prefix)"/*
 
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_INSECURE_REDIRECT=1
@@ -22,7 +21,7 @@ packages=(
     brew-cask-completion
     coreutils
     ctop
-    curl --with-openssl
+    curl-openssl
     diff-so-fancy
     ffmpeg
     findutils
@@ -61,12 +60,14 @@ packages=(
     wget
 )
 
-echo "installing brew packages..."
+echo "upgrading packages.."
 brew update && brew upgrade && brew doctor
 
 # Add more sources
 brew tap Homebrew/bundle
 
+echo "installing packages.."
 brew install "${packages[@]}"
 brew cleanup && brew doctor
+
 echo "done"
