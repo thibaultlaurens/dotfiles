@@ -124,7 +124,7 @@
 ;; Pull up ivy when splitting the window so we can select a buffer
 (defadvice! prompt-for-buffer (&rest _)
   :after '(evil-window-split evil-window-vsplit)
-  (+ivy/switch-buffer))
+  (+ivy/projectile-find-file))
 
 ;; Assign window number 0 to neotree
 (defun winum-assign-0-to-neotree ()
