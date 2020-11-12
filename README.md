@@ -3,11 +3,11 @@
 ```
 .
 ├── bash/                            # bash config: prompt, aliases, functions, exports etc.
+├── config/                          # .config files for htop and procs
 ├── docker/                          # install script for docker
 ├── emacs/                           # spacemacs config, icon and installer
 ├── git/                             # git config and global gitignore
-├── htop/                            # htop config file
-├── lang/                            # programming languages setup (go, node and python)
+├── lang/                            # programming languages setup (go, node, rust and python)
 ├── osx/                             # osx packages, apps and settings
 ├── ssh/                             # ssh base config file
 ├── tmux/                            # tmux config and autocompletion file
