@@ -7,13 +7,8 @@ DF_UBUNTU_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )
 source "$DF_UBUNTU_DIR/apt.sh"
 
 # Install fonts
-if [ ! -d "$HOME/.fonts" ] ; then
-    mkdir "$HOME/.fonts"
-fi
-
 git clone --depth 1 https://github.com/ryanoasis/nerd-fonts /tmp/nerd-fonts
 /tmp/nerd-fonts/install.sh SourceCodePro
-fc-cache -f -v
 
 # Enable firewall
 sudo ufw enable
