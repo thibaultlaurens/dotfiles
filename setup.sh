@@ -38,8 +38,9 @@ ln -fs "$DF_DIR/git/.gitignore" "$HOME/.gitignore"
 ln -fs "$DF_DIR/vim/.vimrc.plug" "$HOME/.vimrc.plug"
 ln -fs "$DF_DIR/vim/.vimrc" "$HOME/.vimrc"
 
-# Link htop config
-ln -fs "$DF_DIR/htop/htoprc" "${HOME}/.config/htop/htoprc"
+# Link .config files
+ln -fs "$DF_DIR/config/htop/htoprc" "${HOME}/.config/htop/htoprc"
+ln -fs "$DF_DIR/config/procs/config.toml" "${HOME}/.config/procs/config.toml"
 
 # Reload bashrc
 source "$HOME/.bashrc"
