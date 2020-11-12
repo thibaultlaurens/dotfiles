@@ -74,6 +74,6 @@ sudo apt autoremove
 
 # fix name clash for bat and fd on ubuntu
 mkdir -p /usr/local/bin
-ln -s /usr/bin/batcat /usr/local/bin/bat
+ln -fs /usr/bin/batcat /usr/local/bin/bat
 
 echo "done"
