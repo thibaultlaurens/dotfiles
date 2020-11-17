@@ -18,7 +18,7 @@ sudo ufw enable
 ln -fs "$DF_UBUNTU_DIR/urxvt/.Xresources" "$HOME/.Xresources"
 ln -nfs "$DF_UBUNTU_DIR/urxvt/.urxvt/" "$HOME/.urxvt"
 
-# Link Rxvt custom icon
+# Link Rxvt Desktop Entry
 ln -fs "$DF_UBUNTU_DIR/urxvt/rxvt-unicode.desktop" \
     "$HOME/.local/share/applications/rxvt-unicode.desktop"
 ln -fs "$DF_UBUNTU_DIR/urxvt/rxvt-unicode.png" \
