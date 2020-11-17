@@ -46,6 +46,7 @@ packages=(
     make
     markdown
     moreutils
+    monit
     neofetch
     nmap
     openssh
