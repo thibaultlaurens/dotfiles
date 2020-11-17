@@ -1,13 +1,13 @@
 [[columns]]
 kind = "Pid"
-style = "BrightYellow"
+style = "Yellow"
 numeric_search = true
 nonnumeric_search = false
 align = "Left"
 
 [[columns]]
 kind = "User"
-style = "BrightGreen"
+style = "Green"
 numeric_search = false
 nonnumeric_search = true
 align = "Left"
@@ -28,14 +28,14 @@ align = "Left"
 
 [[columns]]
 kind = "Nice"
-style = "BrightMagenta"
+style = "Magenta"
 numeric_search = false
 nonnumeric_search = false
 align = "Right"
 
 [[columns]]
 kind = "Tty"
-style = "BrightWhite"
+style = "White"
 numeric_search = false
 nonnumeric_search = false
 align = "Left"
@@ -70,7 +70,7 @@ align = "Right"
 
 [[columns]]
 kind = "TcpPort"
-style = "BrightCyan"
+style = "Cyan"
 numeric_search = true
 nonnumeric_search = false
 align = "Left"
@@ -78,7 +78,7 @@ max_width = 20
 
 [[columns]]
 kind = "UdpPort"
-style = "BrightCyan"
+style = "Cyan"
 numeric_search = true
 nonnumeric_search = false
 align = "Left"
@@ -114,21 +114,21 @@ align = "Left"
 
 [[columns]]
 kind = "CpuTime"
-style = "BrightCyan"
+style = "Cyan"
 numeric_search = false
 nonnumeric_search = false
 align = "Left"
 
 [[columns]]
 kind = "StartTime"
-style = "BrightMagenta"
+style = "Magenta"
 numeric_search = false
 nonnumeric_search = false
 align = "Left"
 
 [[columns]]
 kind = "Docker"
-style = "BrightGreen"
+style = "Green"
 numeric_search = false
 nonnumeric_search = true
 align = "Left"
@@ -142,41 +142,41 @@ align = "Left"
 
 [[columns]]
 kind = "Command"
-style = "BrightWhite"
+style = "White"
 numeric_search = false
 nonnumeric_search = true
 align = "Left"
 
 [style]
-header = "BrightWhite"
-unit = "BrightWhite"
-tree = "BrightWhite"
+header = "White"
+unit = "White"
+tree = "White"
 
 [style.by_percentage]
-color_000 = "BrightBlue"
-color_025 = "BrightGreen"
-color_050 = "BrightYellow"
-color_075 = "BrightRed"
-color_100 = "BrightRed"
+color_000 = "Blue"
+color_025 = "Green"
+color_050 = "Yellow"
+color_075 = "Red"
+color_100 = "Red"
 
 [style.by_state]
-color_d = "BrightRed"
-color_r = "BrightGreen"
-color_s = "BrightBlue"
-color_t = "BrightCyan"
-color_z = "BrightMagenta"
-color_x = "BrightMagenta"
-color_k = "BrightYellow"
-color_w = "BrightYellow"
-color_p = "BrightYellow"
+color_d = "Red"
+color_r = "Green"
+color_s = "Blue"
+color_t = "Cyan"
+color_z = "Magenta"
+color_x = "Magenta"
+color_k = "Yellow"
+color_w = "Yellow"
+color_p = "Yellow"
 
 [style.by_unit]
-color_k = "BrightBlue"
-color_m = "BrightGreen"
-color_g = "BrightYellow"
-color_t = "BrightRed"
-color_p = "BrightRed"
-color_x = "BrightBlue"
+color_k = "Blue"
+color_m = "Green"
+color_g = "Yellow"
+color_t = "Red"
+color_p = "Red"
+color_x = "Blue"
 
 [search]
 numeric_search = "Exact"
