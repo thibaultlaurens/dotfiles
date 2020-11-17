@@ -121,6 +121,9 @@
  scroll-margin 5
  )
 
+;; replace active region just by typing text
+(delete-selection-mode t)
+
 ;; Pull up ivy when splitting the window so we can select a buffer
 (defadvice! prompt-for-buffer (&rest _)
   :after '(evil-window-split evil-window-vsplit)
