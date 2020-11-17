@@ -28,3 +28,4 @@ ln -nfs "$DF_EMACS_DIR/.doom.d" "$HOME/.doom.d"
 # use doom-emacs as default emacs
 echo 'doom' > "$HOME/.emacs-profile"
 
+echo "done"
