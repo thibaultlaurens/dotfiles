@@ -39,6 +39,7 @@ ln -fs "$DF_DIR/vim/.vimrc.plug" "$HOME/.vimrc.plug"
 ln -fs "$DF_DIR/vim/.vimrc" "$HOME/.vimrc"
 
 # Link .config files
+mkdir -p "$HOME/.config/"{htop,procs}""
 ln -fs "$DF_DIR/config/htop/htoprc" "${HOME}/.config/htop/htoprc"
 ln -fs "$DF_DIR/config/procs/config.toml" "${HOME}/.config/procs/config.toml"
 
