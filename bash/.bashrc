@@ -49,8 +49,7 @@ PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # Python
 PYENV_ROOT="$HOME/.pyenv"
-[ -d "$PYENV_ROOT/bin" ] && PATH="$PYENV_ROOT/bin:$PATH"
-type pyenv &> /dev/null && eval "$(pyenv init -)"
+[ -d "$PYENV_ROOT/bin" ] && PATH="$PYENV_ROOT/bin:$PATH" && eval "$(pyenv init -)"
 
 # Golang
 GOPATH="$HOME/go"
@@ -67,6 +66,9 @@ export NVM_DIR="$HOME/.nvm"
 
 # Doom emacs
 [ -d "$HOME/doom-emacs/bin" ] && PATH="$HOME/doom-emacs/bin:$PATH"
+
+# Alacritty
+[ -s "$HOME/.bash_completion/alacritty" ] && \. "$HOME/.bash_completion/alacritty"
 
 DF_BASH_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 
