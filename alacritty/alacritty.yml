@@ -57,7 +57,6 @@ window:
 
   # Window title
   #title: Alacritty
-
   # Allow terminal applications to change Alacritty's window title.
   #dynamic_title: true
 
@@ -93,7 +92,17 @@ font:
     style: Italic
 
   # Point size
-  size: 8
+  size: 13
+
+  # Offset is the extra space around each character. `offset.y` can be thought
+  # of as modifying the line spacing, and `offset.x` as modifying the letter
+  # spacing.
+  offset:
+    x: 0
+    y: 0
+
+  # Better font rendering for mac
+  use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
@@ -101,8 +110,8 @@ font:
 # Colors (Doom One)
 colors:
   primary:
-    background: "0x282c34"
-    foreground: "0xbbc2cf"
+    background: "0x242730"
+    foreground: "0xdfdfdf"
 
   # Cursor colors
   #
@@ -116,14 +125,14 @@ colors:
 
   # Normal colors
   normal:
-    black: "0x282c34"
-    red: "0xff6c6b"
-    green: "0x98be65"
-    yellow: "0xecbe7b"
+    black: "0x242730"
+    red: "0xff665c"
+    green: "0x7bc275"
+    yellow: "0xfcce7b"
     blue: "0x51afef"
-    magenta: "0xc678dd"
-    cyan: "0x46d9ff"
-    white: "0xbbc2cf"
+    magenta: "0xc57bdb"
+    cyan: "0x5cefff"
+    white: "0xdfdfdf"
 
 # Bell
 #
@@ -477,4 +486,3 @@ mouse_bindings:
 #- { key: F,              mods: Command|Control,    action: ToggleFullscreen }
 #- { key: F,              mods: Command,            action: SearchForward    }
 #- { key: B,              mods: Command,            action: SearchBackward   }
-
