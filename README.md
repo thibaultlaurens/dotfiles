@@ -2,10 +2,11 @@
 
 ```
 .
+├── alacritty/                       # terminal config and installer
 ├── bash/                            # bash config: prompt, aliases, functions, exports etc.
 ├── config/                          # .config files for htop and procs
 ├── docker/                          # install script for docker
-├── emacs/                           # spacemacs config, icon and installer
+├── emacs/                           # emacs config, icon and installer
 ├── git/                             # git config and global gitignore
 ├── lang/                            # programming languages setup (go, node, rust and python)
 ├── osx/                             # osx packages, apps and settings
