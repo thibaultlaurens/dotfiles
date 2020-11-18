@@ -27,10 +27,6 @@ set paste
 
 " ================ UI Layout =========================
 
-" if (has("termguicolors"))
-"   set termguicolors
-" endif
-
 syntax on                       " Turn on syntax highlighting
 set enc=utf-8
 set number                      " Enable line numbers
@@ -46,7 +42,8 @@ set wildmenu
 let base16colorspace=256
 set t_Co=256                    " 256 colors
 silent! colorscheme nord
-set background=dark
+
+
 
 " ================ Indentation =======================
 
@@ -103,4 +100,3 @@ filetype plugin on
 " Vim-airline.
 set laststatus=2
 let g:airline_powerline_fonts = 1
-"silent! let g:airline_theme='nord'
