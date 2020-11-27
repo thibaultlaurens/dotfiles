@@ -13,8 +13,8 @@ PATH="/snap/bin:$PATH"
 alias o="xdg-open"
 
 # Copy and paste
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
+alias pbcopy="xclip -selection clipboard"
+alias pbpaste="xclip -selection clipboard -o"
 
 # Better defaults
 alias free="free -mt"
@@ -35,3 +35,4 @@ function apt-updater {
 
 # Fix bash_completion on Makefiles
 complete -W "\`grep -oE '^[a-zA-Z0-9_.-]+:([^=]|$)' ?akefile | sed 's/[^a-zA-Z0-9_.-]*$//'\`" make
+
