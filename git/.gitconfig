@@ -2,6 +2,9 @@
 	name = Thibault Laurens
 	email = thibault.laurens@pm.me
 
+[includeIf "gitdir:~/git/work/"]
+  path = .gitconfig.work
+
 [branch "master"]
     remote = origin
     merge = refs/heads/master
