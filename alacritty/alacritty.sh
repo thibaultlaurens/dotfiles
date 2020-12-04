@@ -20,7 +20,7 @@ elif [[ $(uname) == "Linux" ]]; then
         libxcb-xfixes0-dev python3
 
     # Build
-    cargo build --release
+    cargo build --manifest-path="$HOME/alacritty/Cargo.toml" --release
     sudo cp "$HOME/alacritty/target/release/alacritty" /usr/local/bin
 
     # Link Desktop Entry
