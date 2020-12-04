@@ -45,9 +45,6 @@ alias reload='exec $SHELL -l'
 alias wanip='dig @resolver1.opendns.com A myip.opendns.com +short -4'
 alias wanip6='dig @resolver1.opendns.com AAAA myip.opendns.com +short -6'
 
-# Always list directory contents upon 'cd'
-cd() { builtin cd "$@" || exit && ll; }
-
 # Makes new Dir and jumps inside
 cdmk() { mkdir -p "$@" && cd "$@" || exit; }
 
