@@ -42,6 +42,7 @@ ln -fs "$DF_DIR/vim/.vimrc" "$HOME/.vimrc"
 mkdir -p "$HOME/.config/"{htop,procs}""
 ln -fs "$DF_DIR/config/htop/htoprc" "${HOME}/.config/htop/htoprc"
 ln -fs "$DF_DIR/config/procs/config.toml" "${HOME}/.config/procs/config.toml"
+ln -fs "$DF_DIR/config/starship.toml" "${HOME}/.config/starship.toml"
 
 # Reload bashrc
 source "$HOME/.bashrc"

@@ -1,0 +1,107 @@
+
+[aws]
+symbol = " "
+
+[battery]
+full_symbol = ""
+charging_symbol = ""
+discharging_symbol = ""
+
+[character]
+success_symbol = "[❯](bold blue) "
+error_symbol = "[❯](bold red) "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[directory]
+read_only = " "
+truncate_to_repo = false
+truncation_length = 8
+truncation_symbol = "…/"
+
+[docker]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[git_branch]
+symbol = " "
+always_show_remote = true
+style = "bold yellow"
+
+[git_commit]
+only_detached = false
+tag_disabled = false
+
+[golang]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[hostname]
+ssh_only = false
+format =  "on [$hostname](bold blue) "
+
+[line_break]
+disabled = true
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = " "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[status]
+format = '[\[$symbol $status\]]($style) '
+disabled = false
+
+[swift]
+symbol = "ﯣ "
+
+[username]
+style_user = "white bold"
+style_root = "red bold"
+show_always = true
+format = "[$user]($style) "
