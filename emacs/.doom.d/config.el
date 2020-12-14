@@ -85,6 +85,9 @@
 ;; Add py-isort-before-save to before-save-hook in python-mode
 (add-hook 'python-mode-hook (lambda() (add-hook 'before-save-hook 'py-isort-before-save)))
 
+;; Invalidate project cache once switched to it
+(add-hook 'projectile-after-switch-project-hook (lambda () (projectile-invalidate-cache nil)))
+
 (setq-default
  ;; Always follow symlinks
  vc-follow-symlinks t
