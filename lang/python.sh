@@ -1,6 +1,5 @@
 #!/usr/bin/env/bash
 
-
 # Prepare the python build environment
 if [[ $(uname) == "Darwin" ]]; then
     brew install openssl readline sqlite3 xz zlib

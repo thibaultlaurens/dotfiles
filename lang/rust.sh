@@ -25,6 +25,7 @@ packages=(
 echo "installing rust packages.."
 cargo install -f "${packages[@]}"
 
+# Update tldr local cache
 tldr --update
 
 echo "done"

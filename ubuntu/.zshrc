@@ -4,7 +4,7 @@
 PATH="/snap/bin:$PATH"
 
 # Open files, dirs or urls
-alias o="xdg-open"
+alias open="xdg-open"
 
 # Copy and paste
 alias pbcopy="xclip -selection clipboard"

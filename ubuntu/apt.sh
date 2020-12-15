@@ -2,8 +2,7 @@
 
 packages=(
     apt-transport-https
-    bash
-    bash-completion
+    aspell
     bat
     build-essential
     ca-certificates
@@ -37,7 +36,6 @@ packages=(
     make
     markdown
     moreutils
-    neofetch
     net-tools
     nmap
     openssh-client
@@ -49,7 +47,6 @@ packages=(
     ranger
     rar
     ripgrep
-    rxvt-unicode
     sed
     shellcheck
     silversearcher-ag

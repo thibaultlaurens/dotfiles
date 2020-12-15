@@ -3,7 +3,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-### EXPORT ###
+##### EXPORT ##### 
 
 # Proper locale
 : "$LANG:=\"en_US.UTF-8\""
@@ -18,7 +18,7 @@ export EDITOR="vim"
 # Set terminal emulator
 export TERM="xterm-256color"
 
-### OH MY ZSH ###
+##### OH MY ZSH #####
 
 # Path to oh-my-zsh installation.
 export ZSH="/home/tlaurens/.oh-my-zsh"
@@ -29,13 +29,15 @@ HYPHEN_INSENSITIVE="true"
 # Disable command auto-correction.
 ENABLE_CORRECTION="false"
 
+# Disable auto-setting terminal title. 
+DISABLE_AUTO_TITLE="true"
+
 # Change the command execution time stamp shown in the history command output
 HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
     alias-finder
     colored-man-pages
-    # common-aliases
     extract
     git
     history
@@ -52,7 +54,7 @@ zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 source $ZSH/oh-my-zsh.sh
 
-### USER CONFIGURATION ###
+##### USER CONFIG #####
 
 # Basics
 : "${HOME:=~}"
@@ -97,7 +99,7 @@ export NVM_DIR="$HOME/.nvm"
 # Alacritty
 [ -s "$HOME/.bash_completion/alacritty" ] && \. "$HOME/.bash_completion/alacritty"
 
-### ALIASES ###
+##### ALIASES #####
 
 # Navigation
 alias ..="cd .."
@@ -144,19 +146,21 @@ alias reload='exec $SHELL -l'
 alias wanip='dig @resolver1.opendns.com A myip.opendns.com +short -4'
 alias wanip6='dig @resolver1.opendns.com AAAA myip.opendns.com +short -6'
 
+##### FUNCTIONS #####
+
 # Makes new Dir and jumps inside
 cdmk() { mkdir -p "$@" && cd "$@" || exit; }
 
 # Prompt to edit the given path if called with one parameter
-# mv() {
-#     if [ "$#" -ne 1 ] || [ ! -e "$1" ]; then
-#         command mv -iv "$@"
-#         return
-#     fi
+mv() {
+    if [ "$#" -ne 1 ] || [ ! -e "$1" ]; then
+        command mv -iv "$@"
+        return
+    fi
 
-#     read -r -ei "$1" newfilename
-#     command mv -iv -- "$1" "$newfilename"
-# }
+    read -r -ei "$1" newfilename
+    command mv -iv -- "$1" "$newfilename"
+}
 
 # Prune everything docker related
 docker-prune-all() {
@@ -192,7 +196,7 @@ git-sync-fork() {
     fi
 }
 
-### EXTRA ZSHRC FILES ###
+##### EXTRA #####
 
 DF_ZSH_DIR="$(dirname "$(readlink -f "${(%):-%N}")")"
 
@@ -208,6 +212,6 @@ if [ -f "$DF_ZSH_DIR/../work/.zshrc" ]; then
     source "$DF_ZSH_DIR/../work/.zshrc"
 fi
 
-### STARSHIP PROMPT ###
+##### PROMPT #####
 
 eval "$(starship init zsh)"

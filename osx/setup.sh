@@ -10,13 +10,6 @@ xcode-select --install
 source "$DF_OSX_DIR/brew.sh"
 source "$DF_OSX_DIR/brew_cask.sh"
 
-# Whitelist the upgraded shell
-echo /usr/local/bin/bash | sudo tee -a /etc/shells
-
-# Set default shell for current and root user
-chsh -s /usr/local/bin/bash
-sudo chsh -s /usr/local/bin/bash
-
 # Apply os preferences and hardening
 source "$DF_OSX_DIR/preferences.sh"
 source "$DF_OSX_DIR/hardening.sh"

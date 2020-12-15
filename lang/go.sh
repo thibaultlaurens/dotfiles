@@ -30,9 +30,6 @@ packages=(
     
     # used by emacs lsp layer 
     'golang.org/x/tools/gopls'              # lsp server
-    
-    # used by emacs docker layer
-    'github.com/jessfraz/dockfmt'           # dockerfile fmt
 )
 
 echo "installing go packages.."

@@ -12,20 +12,16 @@ elif [[ $(uname) == "Linux" ]]; then
     snap install emacs --classic
 fi
 
-# install chemacs startup script
-wget -O ~/.emacs https://raw.githubusercontent.com/plexus/chemacs/master/.emacs
-ln -fs "$DF_EMACS_DIR/.emacs-profiles.el" "$HOME/.emacs-profiles.el"
-
-# install spacemacs
-git clone https://github.com/syl20bnr/spacemacs ~/spacemacs
-ln -fs "$DF_EMACS_DIR/.spacemacs" "$HOME/.spacemacs"
-
-# install doom-emacs
+# Clone doom emacs repo
 git clone https://github.com/hlissner/doom-emacs ~/doom-emacs
+
+# Link config
 ln -nfs "$DF_EMACS_DIR/.doom.d" "$HOME/.doom.d"
+
+# Install and setup doom emacs 
 ~/doom-emacs/bin/doom install
 
-# use doom-emacs as default emacs
-echo 'doom' > "$HOME/.emacs-profile"
+# Show potential issues on the system
+~/doom-emacs/bin/doom doctor
 
 echo "done"

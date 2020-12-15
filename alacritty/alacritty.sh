@@ -23,7 +23,7 @@ elif [[ $(uname) == "Linux" ]]; then
     cargo build --manifest-path="$HOME/alacritty/Cargo.toml" --release
     sudo cp "$HOME/alacritty/target/release/alacritty" /usr/local/bin
 
-    # Link Desktop Entry
+    # Desktop Entry
     ln -fs "$DF_ALACRITTY_DIR/alacritty.desktop" \
         "$HOME/.local/share/applications/alacritty.desktop"
     ln -fs "$DF_ALACRITTY_DIR/alacritty-term.svg" \
@@ -36,18 +36,12 @@ sudo mkdir -p /usr/local/share/man/man1
 gzip -c "$HOME/alacritty/extra/alacritty.man" | \
     sudo tee /usr/local/share/man/man1/alacritty.1.gz > /dev/null
 
-# Bash completion
-mkdir -p "$HOME/.bash_completion"
-cp "$HOME/alacritty/extra/completions/alacritty.bash" \
-    "$HOME/.bash_completion/alacritty"
-
 # Terminfo
 sudo tic -xe alacritty,alacritty-direct "$HOME/alacritty/extra/alacritty.info"
 
 # Link config
 mkdir -p "$HOME/.config/alacritty"
-ln -fs "$DF_ALACRITTY_DIR/alacritty.yml" \
-    "$HOME/.config/alacritty/alacritty.yml"
+ln -fs "$DF_ALACRITTY_DIR/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
 
 # Remove the repo
 rm -rf "$HOME/alacritty"

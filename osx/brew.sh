@@ -15,8 +15,6 @@ export HOMEBREW_CASK_OPTS=--require-sha
 packages=(
     ag
     aspell
-    bash
-    bash-completion
     bat
     brew-cask-completion
     coreutils
@@ -47,7 +45,6 @@ packages=(
     markdown
     moreutils
     monit
-    neofetch
     nmap
     openssh
     openssl
