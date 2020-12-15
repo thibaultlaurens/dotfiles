@@ -94,7 +94,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"
 
 # Doom emacs
-[ -d "$HOME/doom-emacs/bin" ] && PATH="$HOME/doom-emacs/bin:$PATH"
+[ -d "$HOME/.emacs.d/bin" ] && PATH="$HOME/.emacs.d/bin:$PATH"
 
 # Alacritty
 [ -s "$HOME/.bash_completion/alacritty" ] && \. "$HOME/.bash_completion/alacritty"

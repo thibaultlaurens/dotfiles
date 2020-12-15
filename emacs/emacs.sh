@@ -13,15 +13,15 @@ elif [[ $(uname) == "Linux" ]]; then
 fi
 
 # Clone doom emacs repo
-git clone https://github.com/hlissner/doom-emacs ~/doom-emacs
+git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
 
 # Link config
 ln -nfs "$DF_EMACS_DIR/.doom.d" "$HOME/.doom.d"
 
 # Install and setup doom emacs 
-~/doom-emacs/bin/doom install
+~/.emacs.d/bin/doom install
 
 # Show potential issues on the system
-~/doom-emacs/bin/doom doctor
+~/.emacs.d/bin/doom doctor
 
 echo "done"
