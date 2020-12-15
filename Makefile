@@ -2,7 +2,7 @@
 
 .PHONY: checks
 checks:		## Run static analysis tool.
-	shellcheck -e SC1091,SC1090 ./*.sh ./**/*.sh ./**/.bashrc ./bash/.bash_profile
+	shellcheck -e SC1091,SC1090 ./*.sh ./**/*.sh
 
 .PHONY: help
 help:		## Show this help.
