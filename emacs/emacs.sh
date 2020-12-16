@@ -9,7 +9,7 @@ if [[ $(uname) == "Darwin" ]]; then
     ln -s /usr/local/Cellar/emacs-plus/*/Emacs.app/ /Applications/
 
 elif [[ $(uname) == "Linux" ]]; then
-    snap install emacs --classic
+    sudo snap install emacs --classic
 fi
 
 # Clone doom emacs repo

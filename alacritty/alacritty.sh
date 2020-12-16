@@ -22,6 +22,7 @@ elif [[ $(uname) == "Linux" ]]; then
     # Build
     cargo build --manifest-path="$HOME/alacritty/Cargo.toml" --release
     sudo cp "$HOME/alacritty/target/release/alacritty" /usr/local/bin
+    sudo chown "$USER":"$GID" /usr/local/bin/alacritty
 
     # Desktop Entry
     ln -fs "$DF_ALACRITTY_DIR/alacritty.desktop" \

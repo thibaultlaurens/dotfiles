@@ -6,8 +6,8 @@ if [[ $(uname) == "Darwin" ]]; then
     brew install go
 elif [[ $(uname) == "Linux" ]]; then
     sudo apt update
-    sudo apt install golang-1.15
-    sudo ln -nfs "/usr/lib/go-1.15" "/usr/local/go" 
+    sudo apt install golang-1.14
+    sudo ln -nfs "/usr/lib/go-1.14" "/usr/local/go" 
 fi
 
 # Create the directory structure for the go workspace
