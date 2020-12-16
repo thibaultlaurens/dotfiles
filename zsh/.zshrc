@@ -21,7 +21,7 @@ export TERM="xterm-256color"
 ##### OH MY ZSH #####
 
 # Path to oh-my-zsh installation.
-export ZSH="/home/tlaurens/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Use hyphen-insensitive completion: _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
@@ -211,6 +211,9 @@ fi
 if [ -f "$DF_ZSH_DIR/../work/.zshrc" ]; then
     source "$DF_ZSH_DIR/../work/.zshrc"
 fi
+
+# reload zsh completion
+autoload -U compinit && compinit
 
 ##### PROMPT #####
 

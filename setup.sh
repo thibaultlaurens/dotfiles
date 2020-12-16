@@ -22,10 +22,8 @@ source "$DF_DIR/docker/docker.sh"
 # Install emacs
 source "$DF_DIR/emacs/emacs.sh"
 
-# Link bash config
-ln -fs "$DF_DIR/bash/.bash_profile" "$HOME/.bash_profile"
-ln -fs "$DF_DIR/bash/.inputrc" "$HOME/.inputrc"
-ln -fs "$DF_DIR/bash/.bashrc" "$HOME/.bashrc"
+# Install starship
+curl -fsSL https://starship.rs/install.sh | bash
 
 # Link tmux config
 ln -fs "$DF_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
