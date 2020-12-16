@@ -9,8 +9,14 @@ elif [[ $(uname) == "Linux" ]]; then
     sudo apt update && sudo apt install zsh
 fi
 
+# Link zsh config
+ln -fs "$DF_ZSH_DIR/.zshrc" "$HOME/.zshrc"
+
 # manually update default shell to zsh
 sudo usermod --shell "$(which zsh)" "$(whoami)"
+
+echo "installing oh-my-zsh.."
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # install zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
@@ -24,14 +30,8 @@ git clone https://github.com/zsh-users/zsh-autosuggestions \
 git clone https://github.com/zsh-users/zsh-completions \
     "${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions"
 
-echo "installing oh-my-zsh.."
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 # install starship
 curl -fsSL https://starship.rs/install.sh | bash
-
-# Link zsh config
-ln -fs "$DF_ZSH_DIR/.zshrc" "$HOME/.zshrc"
 
 # reload zsh completion
 autoload -U compinit && compinit
