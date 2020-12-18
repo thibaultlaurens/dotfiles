@@ -16,7 +16,7 @@ fi
 git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
 
 # Link config
-ln -nfs "$DF_EMACS_DIR/.doom.d" "$HOME/.doom.d"
+ln -fs "$DF_EMACS_DIR/.doom.d" "$HOME/.doom.d"
 
 # Install and setup doom emacs 
 ~/.emacs.d/bin/doom install
