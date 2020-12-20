@@ -2,123 +2,135 @@
 	name = Thibault Laurens
 	email = thibault.laurens@pm.me
 
+# Include dedicated config related to work
 [includeIf "gitdir:~/git/work/"]
-  path = .gitconfig.work
+	path = .gitconfig.work
 
+[core]
+	# Prevent CRLF to be written into the repo
+	autocrlf = input
+	# Path to the global .gitignore file
+	excludesfile = ~/.gitignore
+	# Text viewer for git commands
+	pager = diff-so-fancy | less --tabs=4 -RFX
+
+# Set default remote for master branches
 [branch "master"]
     remote = origin
     merge = refs/heads/master
 
+# Always access github repos via SSH
 [url "git@github.com:"]
-    insteadOf = https://github.com/
+	insteadOf = https://github.com/
 
 [status]
-	# also show individual files in untracked directories
+	# Show untracked files, directories and files in untracked directorie
 	showUntrackedFiles = all
 
 [pull]
-	rebase = false
+	# Keep local commits on top of the tree
+	rebase = true
+	
+[rebase]
+	# Stash and pop uncommitted changes on rebase
+	autoStash = true
 
+# Maintain a 1-1 mapping to upstream refs and tags
+[fetch]
+	prune = true
+	pruneTags = true
+
+# Custom colors for branches
 [color "branch"]
 	current = yellow reverse
 	local = yellow
 	remote = green
 
+# Custom colors for diff 
 [color "diff"]
+	frag = blue bold
 	meta = yellow bold
-	old = red # deletions
-	new = green # additions
+	old = red
+	new = green
 
 [help]
-	# automatically correct and execute mistyped commands
+	# Correct and execute mistyped commands
 	autocorrect = 1
 
-[core]
-	excludesfile = ~/.gitignore
-	pager = diff-so-fancy | less --tabs=4 -RFX
-	autocrlf = input
-
-[diff]
-	tool = icdiff
-
-[difftool]
-	prompt = false
-
-[difftool "icdiff"]
-	cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
-
-[pager]
-	difftool = true
-
 [alias]
-	# amend the currently staged files to the latest commit
+	# List all the git aliases
+	aliases = !sh -c 'git config --get-regexp '^alias\\.' | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | sort'
+	
+	# Add the currently staged files to the latest commit
 	amend = commit --amend --reuse-message=HEAD
 
-	# list branches
-	branches = branch -av
+	# Show a list of the remote branches authors name, email and creation date
+	authors = "! for branch in `git branch -r | grep -v /HEAD`; \
+	do echo \\* $branch - `git show --color --date=format:'%d/%m/%Y' --pretty=format:\"by %C(bold blue)%an%C(reset) <%ae> %C(bold yellow)%ad (%ar)%C(reset)\" $branch | \
+	head -n 1` ; done"
 
-	# list contributors with number of commits
-	contributors = shortlog --summary --numbered
+	# List remote-tracking and local branches
+	branches = branch --all -vv
 
-	# add stats summary to diffs
+	# Show a condensed summary of the changes from HEAD
+	changes = diff HEAD --compact-summary
+
+	# Remove untracked and ignored files interactively 
+	cleanup = clean -xfdi
+
+	# List top contributors by number of commits (10 by default)
+	contributors = "!f() { git shortlog --numbered --summary --email --no-merges | head -n${1:-10}; }; f"
+
+	# Count the number of lines that matched a given pattern in tracked files
+	count = grep -c
+	
+	# Show changes not added to the index
 	df = diff --patch-with-stat
 
-	# diff staged files
-	dfs = diff --patch-with-stat --staged
+	# Show all the changes since the last commit
+	dfh = df HEAD
 
-	# switch to a branch, creating it if necessary
+	# Show changes in the index
+	dfs = df --staged
+
+	# Filter the commit logs messages with the provided string
+	filter = "!f() { git logs --grep=$1; }; f"
+
+	# Switch to a given branch, creates it if necessary
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout -f \"$1\"; }; f"
 
-	# pretty log, with graph
-	logg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	# Show the commit logs with stats
+	logs = log --stat --full-history --date=format:'%H:%M:%S %d/%m/%Y' --pretty=format:'%C(bold white)%h%C(auto)%d %C(reset)by %C(bold blue)%cn%C(reset) at %C(bold yellow)%ad%C(reset)%n %s'
 
-	# pretty log, short lines
-	logp = log --decorate --date=short --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d'
+	# Show commits created by the last command 
+	news = !sh -c 'git logs $1@{1}..$1@{0} HEAD'
 
-	# pretty log, with stats
-	logs = log --stat --pretty=format:\"%C(yellow)%h %C(auto)%d %C(reset) by %C(blue)%cn%C(reset), %C(cyan)%ar%C(reset)%n %s\"
-
-	# by default, push the current branch to the same name on the remote
+	# Push the current branch to the same name on the remote
 	pu = push origin HEAD
 
-	# shortcut for opening a pull-request in github
-	pr = pull-request -o
+	# Revert the last commit and put its changes in the index
+	revert = reset --soft HEAD^
 
-	# remove any remote-tracking references that no longer exist on the remote
-	prune = fetch --prune
+	# Remove all local branches except master and the current one
+	rmlbs = "!f() { git branch | grep -v "master" | grep -v "^*" | xargs git branch -d; }; f"
 
-	# list remotes
-	remotes = remote -v
+	# Remove a remote branch
+	rmrb = "push origin -d"
 
-	# remove all local branches except master
-	rm-branches = "!f() { git branch | grep -v "master" | xargs git branch -D; }; f"
+	# Grep the given pattern in tracked files with line numbers and context
+	search = grep -n -C 1
 
-	# remove untracked files
-	rm-untracked = clean -xfdi
-
-	# search branches containing commit
-	search-branches = "!f() { git branch -a --contains $1; }; f"
-
-	# search tags containing commit
-	search-tags = "!f() { git describe --always --contains $1; }; f"
-
-	# search commits by source code
-	search-codes = "!f() { git logp -S$1; }; f"
-
-	# search commits by commit message
-	search-commits = "!f() { git logp --grep=$1; }; f"
-
-	# short status summary, but include branch info
+	# Show a short status summary with branch info
 	ss = status -sb
-
-	# saves local updates, including un-added files
+	
+	# Stash the working directory, the index and the untracked files
 	stash-all = stash save --include-untracked
 
-	# list tags
-	tags = tag -l\
+	# Show a graph of the commit logs
+	tree = log --graph --full-history --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(bold blue)[%an]%C(reset)'
 
-	# go back in (commit) history
-	undo = reset --soft HEAD^
+	# Remove a file from the index
+	unstage = reset HEAD --
 
-	# quick and easy wip
+	# Quick and dirty "wip" commit
 	wip = "!f() { git commit -m "wip" . && git push origin HEAD; }; f"

@@ -1,24 +1,42 @@
+# Compiled source
+*.o
+*.pyc
+*.pyo
+*.so
+
+# Logs and databases 
+*.log
+*.sql
+*.sqlite
+
+# Temporary files
+*#
+*.bak
+*.swo
+*.swp
+*~
+
+# Tools specific
+*.retry
+.vagrant/
+.venv
+npm-debug.log
+
+# OSX generated files
+.AppleDB
+.AppleDesktop
+.AppleDouble
 .DS_Store
-
-# Thumbnail cache files
-._*
-Thumbs.db
-
-# Icon must end with two \r
-Icon
-
-# Files that might appear in the root of a volume
 .DocumentRevisions-V100
-.fseventsd
+.LSOverride
 .Spotlight-V100
 .TemporaryItems
 .Trashes
 .VolumeIcon.icns
+._*
+.apdisk
 .com.apple.timemachine.donotpresent
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
+.fseventsd
+Icon
 Network Trash Folder
 Temporary Items
-.apdisk
