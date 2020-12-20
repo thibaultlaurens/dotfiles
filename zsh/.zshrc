@@ -78,7 +78,10 @@ PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # Python
 PYENV_ROOT="$HOME/.pyenv"
-[ -d "$PYENV_ROOT/bin" ] && PATH="$PYENV_ROOT/bin:$PATH" && eval "$(pyenv init -)"
+[ -d "$PYENV_ROOT/bin" ] && PATH="$PYENV_ROOT/bin:$PATH"
+if [ -x "$(command -v pyenv)" ]; then
+    eval "$(pyenv init -)"
+fi
 
 # Golang
 GOPATH="$HOME/go"
@@ -88,16 +91,12 @@ GOPATH="$HOME/go"
 # Node
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # Rust
 [ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"
 
 # Doom emacs
 [ -d "$HOME/.emacs.d/bin" ] && PATH="$HOME/.emacs.d/bin:$PATH"
-
-# Alacritty
-[ -s "$HOME/.bash_completion/alacritty" ] && \. "$HOME/.bash_completion/alacritty"
 
 ##### ALIASES #####
 
@@ -148,7 +147,7 @@ alias wanip6='dig @resolver1.opendns.com AAAA myip.opendns.com +short -6'
 
 ##### FUNCTIONS #####
 
-# Makes new Dir and jumps inside
+# Makes a new dir and cd into it
 cdmk() { mkdir -p "$@" && cd "$@" || exit; }
 
 # Prompt to edit the given path if called with one parameter
@@ -196,11 +195,36 @@ git-sync-fork() {
     fi
 }
 
+# Upgrade packages installed without package management
+# Warning: takes ages and is very yolo, things might break !
+custom-updater() {
+    if [ -x "$(command -v npm)" ]; then
+        echo "upadting node packages"
+        npm update -g
+    fi
+    if [ -x "$(command -v pip)" ]; then
+        echo "upadting python packages"
+        pip freeze | cut -d'=' -f1 | xargs -n1 pip install -U
+    fi
+    if [ -x "$(command -v cargo)" ]; then
+        echo "upadting rust packages"
+        cargo install-update -a
+    fi
+    if [ -x "$(command -v go)" ]; then
+        echo "upadting golang packages"
+        go get -u all
+    fi
+    if typeset -f omz > /dev/null; then
+        echo "upadting oh my zsh"
+        omz update
+    fi
+}
+
 ##### EXTRA #####
 
 DF_ZSH_DIR="$(dirname "$(readlink -f "${(%):-%N}")")"
 
-# Source os related bashrc
+# Source os related zshrc
 if [[ $(uname) == "Darwin" ]]; then
     source "$DF_ZSH_DIR/../osx/.zshrc"
 elif [[ $(uname) == "Linux" ]]; then
