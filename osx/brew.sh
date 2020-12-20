@@ -20,7 +20,6 @@ packages=(
     coreutils
     ctop
     curl-openssl
-    diff-so-fancy
     ffmpeg
     findutils
     fzf
@@ -36,7 +35,6 @@ packages=(
     htop
     httpie
     hugo
-    icdiff
     ispell
     jq
     less

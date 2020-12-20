@@ -27,7 +27,6 @@ packages=(
     gufw
     htop
     httpie
-    icdiff
     ispell
     jq
     keepassxc

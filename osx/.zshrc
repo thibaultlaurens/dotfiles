@@ -36,14 +36,14 @@ alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
 alias restart-dns="sudo killall -9 mDNSResponder"
 
 # Empty the trash on all mounted volumes, the main hdd and clear system logs
-function rm-trashes {
+rm-trashes() {
     sudo rm -rfv /Volumes/*/.Trashes && \
     sudo rm -rfv ~/.Trash && \
     sudo rm -rfv /private/var/log/asl/*.asl
 }
 
 # Homebrew update / upgrade
-function brew-updater {
+brew-updater() {
     brew update && \
     brew upgrade && \
     brew autoremove && \
