@@ -1,6 +1,10 @@
 [user]
 	name = Thibault Laurens
 	email = thibault.laurens@pm.me
+	signingKey = 87CE04F5DF17DC3C
+
+[commit]
+	gpgsign = true
 
 # Include dedicated config related to work
 [includeIf "gitdir:~/git/work/"]
@@ -20,7 +24,7 @@
     merge = refs/heads/master
 
 # Always access github repos via SSH
-[url "git@github.com:"]
+[url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
 
 [status]
@@ -105,7 +109,7 @@
 	# Show commits created by the last command 
 	news = !sh -c 'git logs $1@{1}..$1@{0} HEAD'
 
-	# Push the current branch to the same name on the remote
+	# Push HEAD on the origin remote
 	pu = push origin HEAD
 
 	# Revert the last commit and put its changes in the index

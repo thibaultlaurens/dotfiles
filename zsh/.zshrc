@@ -18,6 +18,9 @@ export EDITOR="vim"
 # Set terminal emulator
 export TERM="xterm-256color"
 
+# Set terminal for the gpg-agent
+export GPG_TTY=$(tty)
+
 ##### OH MY ZSH #####
 
 # Path to oh-my-zsh installation.
