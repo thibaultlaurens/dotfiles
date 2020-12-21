@@ -23,6 +23,7 @@ packages=(
     gnome-shell-extensions
     gnome-tweak-tool
     gnupg-agent
+    gping
     graphviz
     gufw
     htop

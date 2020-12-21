@@ -29,6 +29,7 @@ packages=(
     gnu-sed
     gnu-tar
     gpg
+    gping
     graphviz
     grep
     gzip
@@ -41,8 +42,8 @@ packages=(
     lnav
     make
     markdown
-    moreutils
     monit
+    moreutils
     nmap
     openssh
     openssl
