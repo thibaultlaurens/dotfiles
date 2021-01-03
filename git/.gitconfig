@@ -113,7 +113,7 @@
 	pu = push origin HEAD
 
 	# Revert the last commit and put its changes in the index
-	revert = reset --soft HEAD^
+	resets = reset --soft HEAD^
 
 	# Remove all local branches except master and the current one
 	rmlbs = "!f() { git branch | grep -v "master" | grep -v "^*" | xargs git branch -d; }; f"
