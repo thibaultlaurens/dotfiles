@@ -118,12 +118,17 @@ alias gt="cd ~/git"
 alias lg="cd /var/log"
 
 # Default options
+alias chgrp='chgrp --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chown='chown --preserve-root'
 alias cp="cp -iv"
 alias df="df -Th"
 alias du="du -ach"
 alias grep='grep --color=auto'
 alias less="less -FSRXc"
+alias ln='ln -i'
 alias mkdir="mkdir -pv"
+alias mv='mv -i'
 alias rm="rm -Iv"
 alias tree="tree -aCF --dirsfirst -I '.git'"
 
@@ -144,6 +149,9 @@ alias path='echo -e ${PATH//:/\\n}'
 # Reload the shell
 alias reload='exec $SHELL -l'
 
+# List all TCP/UDP ports
+alias ports='netstat -tulanp'
+
 # External IP addresses
 alias wanip='dig @resolver1.opendns.com A myip.opendns.com +short -4'
 alias wanip6='dig @resolver1.opendns.com AAAA myip.opendns.com +short -6'
@@ -152,17 +160,6 @@ alias wanip6='dig @resolver1.opendns.com AAAA myip.opendns.com +short -6'
 
 # Makes a new dir and cd into it
 cdmk() { mkdir -p "$@" && cd "$@" || exit; }
-
-# Prompt to edit the given path if called with one parameter
-mv() {
-    if [ "$#" -ne 1 ] || [ ! -e "$1" ]; then
-        command mv -iv "$@"
-        return
-    fi
-
-    read -r -ei "$1" newfilename
-    command mv -iv -- "$1" "$newfilename"
-}
 
 # Prune everything docker related
 docker-prune-all() {
