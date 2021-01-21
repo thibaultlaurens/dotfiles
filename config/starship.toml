@@ -52,7 +52,7 @@ symbol = " "
 
 [hostname]
 ssh_only = false
-format =  "on [$hostname](bold blue) "
+format =  "at [$hostname](bold blue) "
 
 [line_break]
 disabled = true
