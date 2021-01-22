@@ -161,6 +161,26 @@ alias wanip6='dig @resolver1.opendns.com AAAA myip.opendns.com +short -6'
 # Makes a new dir and cd into it
 cdmk() { mkdir -p "$@" && cd "$@" || exit; }
 
+# Pack a folder into a .tar.bz2
+pack(){
+    if [ -z "$1" ]; then
+        echo "No directory supplied. \nUsage: $funcstack[1] directory-path"
+    elif ! [[ -d $1 ]]; then
+        echo "error: $1 is not a directory."
+    else
+        tar -cvjSf "$(date "+%F")-$1.tar.bz2" "$1"
+    fi
+}
+
+# Unpack a .tar.bz2 folder
+unpack(){
+    if [ -z "$1" ]; then
+        echo "No directory supplied. \nUsage: $funcstack[1] directory-path.tar.bz2"
+    else
+        tar xjf "$1"
+    fi
+}
+
 # Prune everything docker related
 docker-prune-all() {
     docker system prune -a -f --volumes
@@ -174,7 +194,7 @@ docker-prune-images() {
 # Display the path to the volume data
 docker-volume-path() {
     if [ -z "$1" ]; then
-        echo "No volume supplied."
+        echo "No volume supplied. \nUsage: $funcstack[1] volume-name"
         docker volume ls
     else
         docker volume inspect --format '{{ .Mountpoint }}' "$1"
@@ -184,7 +204,7 @@ docker-volume-path() {
 # Sync a fork master branch
 git-sync-fork() {
     if [ -z "$1" ]; then
-        echo "No remote upstream repository specified."
+        echo "No remote upstream repository specified.\n Usage: $funcstack[1] remote-repository"
     else
         git remote add upstream "$1"
         git remote -v
@@ -192,6 +212,17 @@ git-sync-fork() {
         git checkout master
         git merge upstream/master
         git push origin master
+    fi
+}
+
+# Archive all git repos from a given parent directory
+git-archive-all(){
+    if [ -z "$1" ]; then
+        echo "No parent directory specified.\n Usage: $funcstack[1] parent-directory-path"
+    elif ! [[ -d $1 ]]; then
+        echo "error: $1 is not a directory."
+    else
+        fd -td -d 1 -x bash -c "git -C {} archive --output=../{/}.tar.gz --format=tar HEAD" ';' . $1
     fi
 }
 
