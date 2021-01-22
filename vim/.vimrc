@@ -1,13 +1,11 @@
 
 set nocompatible                " Make Vim more useful
 
-
 " ================ Plug ==============================
 
 if filereadable(expand("~/.vimrc.plug"))
   source ~/.vimrc.plug
 endif
-
 
 " ================ General Config ====================
 
@@ -43,8 +41,6 @@ let base16colorspace=256
 set t_Co=256                    " 256 colors
 silent! colorscheme nord
 
-
-
 " ================ Indentation =======================
 
 filetype indent on
@@ -57,7 +53,6 @@ set softtabstop=4               " 4 spaces tab
 set tabstop=4                   " 4 spaces tab
 set expandtab                   " Use spaces for tabs
 
-
 " ================ Search ============================
 
 set incsearch               " Search as characters are entered
@@ -68,13 +63,11 @@ set gdefault                " Add the g flag to search/replace
 " cancel a search with Escape
 " nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 
-
 " ================ Folding ==========================
 set foldmethod=indent       " Fold based on indent level
 set foldnestmax=10          " Max 10 depth
 set foldenable              " don't fold files by default on open
 set foldlevelstart=10       " start with fold level of 1
-
 
 " ================ Shortcuts ========================
 
@@ -91,7 +84,6 @@ nnoremap <C-H> <C-W><C-H>
 " Cycle through buffers
 map <leader>n :bnext<CR>
 map <leader>p :bprevious<CR>
-
 
 " ================ Plugins ===========================
 
