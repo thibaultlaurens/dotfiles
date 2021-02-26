@@ -160,11 +160,17 @@
 
 ;; Magit
 (after! magit
-  ;; (magit-wip-mode)
   (setq magit-repository-directories '(("~/git" . 4))
         magit-save-repository-buffers nil
         ;; Don't restore the wconf after quitting magit
         magit-inhibit-save-previous-winconf t
         magit-log-arguments '("--graph" "--decorate" "--color")
-        ;; magit-delete-by-moving-to-trash nil
         git-commit-summary-max-length 120))
+
+;; Projectile
+(after! 'projectile
+  (when (require 'magit nil t)
+    (mapc #'projectile-add-known-project
+          (mapcar #'file-name-as-directory (magit-list-repos)))
+    ;; Optionally write to persistent `projectile-known-projects-file'
+    (projectile-save-known-projects)))
