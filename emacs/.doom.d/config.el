@@ -121,6 +121,8 @@
 
  ;; Add a margin when scrolling vertically
  scroll-margin 5
+
+ js-indent-level 2
  )
 
 ;; Pull up ivy when splitting the window so we can select a buffer
