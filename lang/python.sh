@@ -34,11 +34,7 @@ pyenv install 3.8.6
 pyenv global 3.8.6
 
 packages=(
-    'autoflake'                   # removes unused imports and unused variables
     'black'                       # code formatter
-    'epc'                         # RPC stack for Emacs Lisp
-    'flake8'                      # style guide enforcement
-    'importmagic'                 # find unresolved imports
     'ipython[all]'                # interactive python
     'isort'                       # sort imports
     'mypy'                        # optional static typing checker
