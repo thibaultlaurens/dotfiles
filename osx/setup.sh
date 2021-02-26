@@ -14,10 +14,6 @@ source "$DF_OSX_DIR/brew_cask.sh"
 source "$DF_OSX_DIR/preferences.sh"
 source "$DF_OSX_DIR/hardening.sh"
 
-# Link Iterm2 config
-ln -fs "$DF_OSX_DIR/iterm/com.googlecode.iterm2.plist" \
-    "$HOME/Library/Preferences/com.googlecode.iterm2.plist"
-
 # Link Menumeters config
 ln -fs "$DF_OSX_DIR/menumeters/com.ragingmenace.MenuMeters.plist" \
     "$HOME/Library/Preferences/com.ragingmenace.MenuMeters.plist"

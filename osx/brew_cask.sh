@@ -12,7 +12,6 @@ apps=(
     firefox
     font-sauce-code-pro-nerd-font
     google-backup-and-sync
-    iterm2
     keybase
     ledger-live
     little-snitch
