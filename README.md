@@ -5,7 +5,7 @@
 ├── alacritty/                       # terminal config and installer
 ├── config/                          # .config files for htop, procs and starship prompt
 ├── docker/                          # install script for docker
-├── emacs/                           # emacs config, icon and installer
+├── emacs/                           # emacs config and installer
 ├── git/                             # git config and global gitignore
 ├── lang/                            # go, node, rust and python setup and tools
 ├── osx/                             # osx packages, apps and settings
@@ -17,5 +17,5 @@
 ├── .gitignore                       # exclude work directory
 ├── Makefile                         # quickly run shellcheck
 ├── README.md
-└── setup.sh                         # setup a new environment
+└── setup.sh                         # setup a new machine
 ```
