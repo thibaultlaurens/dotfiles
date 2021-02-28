@@ -57,6 +57,9 @@ zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 source $ZSH/oh-my-zsh.sh
 
+# load zmv function
+autoload zmv
+
 ##### USER CONFIG #####
 
 # Basics
@@ -157,7 +160,7 @@ alias wanip6='dig @resolver1.opendns.com AAAA myip.opendns.com +short -6'
 ##### FUNCTIONS #####
 
 # Makes a new dir and cd into it
-cdmk() { mkdir -p "$@" && cd "$@" || exit; }
+cdmk() { echo "DEPRECATED: use \"take\" command instead" && take $1; }
 
 # Pack a folder into a .tar.bz2
 pack(){
