@@ -170,7 +170,7 @@
         git-commit-summary-max-length 120))
 
 ;; Projectile
-(after! 'projectile
+(after! projectile
   (when (require 'magit nil t)
     (mapc #'projectile-add-known-project
           (mapcar #'file-name-as-directory (magit-list-repos)))
