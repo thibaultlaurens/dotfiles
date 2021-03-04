@@ -49,6 +49,7 @@ packages=(
     openssl
     rg
     shellcheck
+    tig
     tmux
     tree
     unrar

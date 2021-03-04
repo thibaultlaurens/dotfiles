@@ -51,6 +51,7 @@ packages=(
     shellcheck
     silversearcher-ag
     software-properties-common
+    tig
     tmux
     tree
     ubuntu-restricted-extras
