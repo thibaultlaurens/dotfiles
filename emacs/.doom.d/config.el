@@ -115,13 +115,14 @@
  ;; Don't create lockfiles
  create-lockfiles nil
 
- ;; less sensitive mouse / trackpad scrolling
+ ;; Less sensitive mouse / trackpad scrolling
  mouse-wheel-scroll-amount '(5 ((shift) . 1) ((control) . nil))
  mouse-wheel-progressive-speed nil
 
  ;; Add a margin when scrolling vertically
  scroll-margin 5
 
+ ;; Indent level for yml files
  js-indent-level 2
  )
 
