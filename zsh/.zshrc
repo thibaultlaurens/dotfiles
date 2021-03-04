@@ -134,15 +134,14 @@ alias mkdir="mkdir -pv"
 alias mv='mv -i'
 alias rm="rm -Iv"
 alias tree="tree -aCF --dirsfirst -I '.git'"
-alias bat="bat --theme=ansi-dark"
+alias cat="bat --theme=ansi-dark"
 alias ll="exa -abghlmFU --git"
 
 # Shortcuts
 alias c="clear"
 alias dc="docker-compose"
 alias h="history"
-alias t="tmux"
-alias v="vim"
+alias t="tig"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
