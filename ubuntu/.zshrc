@@ -16,8 +16,7 @@ alias ps="ps auxf"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 
 # IP addresses
-alias myip="ip -4 addr | grep -oP '(?<=inet\s)\d+(\.\d+){3}'"
-alias myip6="ip -6 addr | grep -oP '(?<=inet6\s)[\da-f:]+'"
+alias myip="ip -br -c a"
 
 # Apt update / upgrade
 apt-updater() {
