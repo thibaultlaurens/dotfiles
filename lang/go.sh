@@ -30,6 +30,9 @@ packages=(
     
     # used by emacs lsp layer 
     'golang.org/x/tools/gopls'              # lsp server
+    
+    # used by emacs fmt layer
+    'mvdan.cc/sh/v3/cmd/shfmt'
 )
 
 echo "installing go packages.."

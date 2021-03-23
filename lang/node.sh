@@ -15,7 +15,7 @@ nvm alias default v14.2.0
 nvm use default
 
 packages=(
-    'bash-language-server'
+    'bash-language-server'  # a language server for Bash 
     'diff-so-fancy'         # better diff                  
     'markdownlint'          # style checker and lint tool for Markdown
     'marked'                # a markdown parser built for speed
