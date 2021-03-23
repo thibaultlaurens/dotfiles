@@ -177,3 +177,13 @@
           (mapcar #'file-name-as-directory (magit-list-repos)))
     ;; Optionally write to persistent `projectile-known-projects-file'
     (projectile-save-known-projects)))
+
+;; Shell fmt
+(after! format-all
+  (set-formatter! 'shfmt
+    '("shfmt"
+      "-i" "4"
+      ;; Mode selection copied from the default config
+      ("-ln" "%s" (cl-case (and (boundp 'sh-shell) (symbol-value 'sh-shell))
+                    (bash "bash") (mksh "mksh") (t "posix"))))
+    :modes 'sh-mode))
