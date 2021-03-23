@@ -95,7 +95,7 @@ killAll Finder
 # Reminder                                                                    #
 ###############################################################################
 
-cat "$@" << 'EOF'
+cat "$@" <<'EOF'
 Done! Dont forget to:
 
 - create an administrator user account (for admin purposes only)

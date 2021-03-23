@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "installing zsh.."
-DF_ZSH_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+DF_ZSH_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 if [[ $(uname) == "Darwin" ]]; then
     brew install zsh
@@ -13,7 +13,7 @@ fi
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
     "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
 
-# install zsh-autosuggestions 
+# install zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions \
     "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
 
@@ -26,6 +26,3 @@ ln -fs "$DF_ZSH_DIR/.zshrc" "$HOME/.zshrc"
 
 # echo "installing oh-my-zsh.."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-
-

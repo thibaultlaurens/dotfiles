@@ -7,7 +7,7 @@ if [[ $(uname) == "Darwin" ]]; then
 elif [[ $(uname) == "Linux" ]]; then
     sudo apt update
     sudo apt install golang-1.14
-    sudo ln -nfs "/usr/lib/go-1.14" "/usr/local/go" 
+    sudo ln -nfs "/usr/lib/go-1.14" "/usr/local/go"
 fi
 
 # Create the directory structure for the go workspace
@@ -18,19 +18,19 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin
 
 packages=(
-    # used by emacs golang layer 
-    'github.com/cweill/gotests/...'         # generate test code
-    'github.com/fatih/gomodifytags'         # tag manipulation
-    'github.com/motemen/gore/cmd/gore'      # repl
-    'github.com/stamblerre/gocode'          # code completion & eldoc support
-    'golang.org/x/tools/cmd/godoc'          # documentation lookup
-    'golang.org/x/tools/cmd/goimports'      # fmt on save and fix imports
-    'golang.org/x/tools/cmd/gorename'       # refactoring
-    'golang.org/x/tools/cmd/guru'           # code navigation and refactoring
-    
-    # used by emacs lsp layer 
-    'golang.org/x/tools/gopls'              # lsp server
-    
+    # used by emacs golang layer
+    'github.com/cweill/gotests/...'    # generate test code
+    'github.com/fatih/gomodifytags'    # tag manipulation
+    'github.com/motemen/gore/cmd/gore' # repl
+    'github.com/stamblerre/gocode'     # code completion & eldoc support
+    'golang.org/x/tools/cmd/godoc'     # documentation lookup
+    'golang.org/x/tools/cmd/goimports' # fmt on save and fix imports
+    'golang.org/x/tools/cmd/gorename'  # refactoring
+    'golang.org/x/tools/cmd/guru'      # code navigation and refactoring
+
+    # used by emacs lsp layer
+    'golang.org/x/tools/gopls' # lsp server
+
     # used by emacs fmt layer
     'mvdan.cc/sh/v3/cmd/shfmt'
 )

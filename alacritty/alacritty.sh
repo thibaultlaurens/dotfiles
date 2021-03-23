@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 echo "installing alacritty.."
-DF_ALACRITTY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+DF_ALACRITTY_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 # Clone the repo
 git clone https://github.com/alacritty/alacritty.git "$HOME/alacritty"
 
 if [[ $(uname) == "Darwin" ]]; then
     brew install alacritty
-    
+
 elif [[ $(uname) == "Linux" ]]; then
     # Check rust compiler
     rustup override set stable
@@ -34,8 +34,8 @@ fi
 
 # Manual pages
 sudo mkdir -p /usr/local/share/man/man1
-gzip -c "$HOME/alacritty/extra/alacritty.man" | \
-    sudo tee /usr/local/share/man/man1/alacritty.1.gz > /dev/null
+gzip -c "$HOME/alacritty/extra/alacritty.man" |
+    sudo tee /usr/local/share/man/man1/alacritty.1.gz >/dev/null
 
 # Terminfo
 sudo tic -xe alacritty,alacritty-direct "$HOME/alacritty/extra/alacritty.info"
