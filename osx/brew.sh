@@ -28,7 +28,8 @@ packages=(
     gnu-indent
     gnu-sed
     gnu-tar
-    gpg
+    gnupg
+    gpg2
     gping
     graphviz
     grep
@@ -47,12 +48,12 @@ packages=(
     nmap
     openssh
     openssl
+    pinentry-mac   
     rg
     shellcheck
     tig
     tmux
     tree
-    unrar
     vim
     watch
     wget

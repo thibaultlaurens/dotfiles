@@ -29,10 +29,10 @@ apps=(
 )
 
 echo "installing apps.."
-brew install "${apps[@]}"
+brew install --cask "${apps[@]}"
 echo "done"
 
-ql-packages=(
+ql_packages=(
     qlcolorcode
     qlmarkdown
     qlprettypatch
@@ -44,5 +44,5 @@ ql-packages=(
 )
 
 echo "installing quick-look packages.."
-brew install "${ql-packages[@]}"
+brew install --cask "${ql_packages[@]}"
 echo "done"
