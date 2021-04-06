@@ -1,8 +1,5 @@
 #!/usr/bin/env/bash
 
-brew tap homebrew/cask-versions
-brew tap homebrew/cask-fonts
-
 apps=(
     adapter
     adobe-creative-cloud
@@ -12,18 +9,19 @@ apps=(
     firefox
     font-sauce-code-pro-nerd-font
     google-backup-and-sync
-    keybase
-    ledger-live
+    handshaker
+    keepassxc
     little-snitch
     macdown
-    macpass
     menumeters
     micro-snitch
     onyx
     protonmail-bridge
     protonvpn
+    proxyman
     spectacle
     standard-notes
+    tableplus
     tor-browser
     transmission
     virtualbox
@@ -31,10 +29,10 @@ apps=(
 )
 
 echo "installing apps.."
-brew cask install "${apps[@]}"
+brew install "${apps[@]}"
 echo "done"
 
-packages=(
+ql-packages=(
     qlcolorcode
     qlmarkdown
     qlprettypatch
@@ -46,5 +44,5 @@ packages=(
 )
 
 echo "installing quick-look packages.."
-brew cask install "${packages[@]}"
+brew install "${ql-packages[@]}"
 echo "done"
