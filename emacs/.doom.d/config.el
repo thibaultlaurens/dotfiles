@@ -115,9 +115,8 @@
  ;; Don't create lockfiles
  create-lockfiles nil
 
- ;; Less sensitive mouse / trackpad scrolling
- mouse-wheel-scroll-amount '(5 ((shift) . 1) ((control) . nil))
- mouse-wheel-progressive-speed nil
+ ;; Enable mouse / trackpad progressive scrolling
+ mouse-wheel-progressive-speed t
 
  ;; Add a margin when scrolling vertically
  scroll-margin 5

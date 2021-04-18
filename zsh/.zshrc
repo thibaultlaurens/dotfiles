@@ -40,6 +40,8 @@ HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
     alias-finder
+    docker
+    docker-compose
     colored-man-pages
     extract
     git
@@ -134,12 +136,12 @@ alias mkdir="mkdir -pv"
 alias mv='mv -i'
 alias rm="rm -Iv"
 alias tree="tree -aCF --dirsfirst -I '.git'"
-alias cat="bat --theme=ansi-dark"
+alias cat="bat --theme=ansi"
 alias ll="exa -abghlmFU --git"
 
 # Shortcuts
 alias c="clear"
-alias dc="docker-compose"
+alias dc="docker compose"
 alias h="history"
 alias t="tig"
 

@@ -21,6 +21,7 @@ packages=(
     # used by emacs golang layer
     'github.com/cweill/gotests/...'    # generate test code
     'github.com/fatih/gomodifytags'    # tag manipulation
+    'github.com/google/pprof'          # visualization and analysis of profiling data
     'github.com/motemen/gore/cmd/gore' # repl
     'github.com/stamblerre/gocode'     # code completion & eldoc support
     'golang.org/x/tools/cmd/godoc'     # documentation lookup
