@@ -121,7 +121,7 @@
  ;; Add a margin when scrolling vertically
  scroll-margin 5
 
- ;; Indent level for yml files
+ ;; JS Indent level
  js-indent-level 2
  )
 
@@ -181,8 +181,11 @@
 (after! format-all
   (set-formatter! 'shfmt
     '("shfmt"
-      "-i" "4"
+      "-i" "2"
       ;; Mode selection copied from the default config
       ("-ln" "%s" (cl-case (and (boundp 'sh-shell) (symbol-value 'sh-shell))
                     (bash "bash") (mksh "mksh") (t "posix"))))
     :modes 'sh-mode))
+
+;; Use prettier instead of yaml-lsp
+(setq-hook! 'yaml-mode-hook +format-with-lsp nil)

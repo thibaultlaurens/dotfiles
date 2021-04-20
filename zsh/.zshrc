@@ -46,6 +46,7 @@ plugins=(
     extract
     git
     history
+    pass
     sudo
     zsh-autosuggestions 
     zsh-completions
@@ -142,6 +143,7 @@ alias ll="exa -abghlmFU --git"
 # Shortcuts
 alias c="clear"
 alias dc="docker compose"
+alias ddf="docker system df"
 alias h="history"
 alias t="tig"
 
@@ -186,11 +188,6 @@ unpack(){
 # Prune everything docker related
 docker-prune-all() {
     docker system prune -a -f --volumes
-}
-
-# Prune all docker images
-docker-prune-images() {
-    docker rmi -f "$(docker images -f dangling=true -q --no-trunc)"
 }
 
 # Display the path to the volume data

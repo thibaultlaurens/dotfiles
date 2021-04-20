@@ -10,8 +10,8 @@ export NVM_DIR="$HOME/.nvm"
 
 # Install node
 echo "installing node.."
-nvm install 14.2.0
-nvm alias default v14.2.0
+nvm install 14.16.0
+nvm alias default v14.16.0
 nvm use default
 
 packages=(
