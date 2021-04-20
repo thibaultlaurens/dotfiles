@@ -11,7 +11,7 @@ window:
     y: 10
 
   # Window decorations [full|none] ([transparent|buttonless] osx only)
-  decorations: transparent
+  decorations: full
 
   # Maximize at startup
   startup_mode: Maximized

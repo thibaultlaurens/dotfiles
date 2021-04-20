@@ -18,10 +18,8 @@ apps=(
     onyx
     protonmail-bridge
     protonvpn
-    proxyman
     spectacle
     standard-notes
-    tableplus
     tor-browser
     transmission
     virtualbox

@@ -26,8 +26,8 @@ sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setallowsignedapp off
 ###############################################################################
 
 # change computer's name and local hostname
-sudo scutil --set ComputerName mbp
-sudo scutil --set LocalHostName mbp
+sudo scutil --set ComputerName tlaurens-mbp
+sudo scutil --set LocalHostName tlaurens-mbp
 
 # enable gatekeeper
 sudo spctl --master-enable

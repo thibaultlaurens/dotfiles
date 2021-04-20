@@ -4,11 +4,14 @@ echo "installing emacs.."
 DF_EMACS_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 
 if [[ $(uname) == "Darwin" ]]; then
-    brew tap d12frosted/emacs-plus
-    brew install emacs-plus
-    ln -s /usr/local/Cellar/emacs-plus/*/Emacs.app/ /Applications/
+    brew install git ripgrep coreutils fd
+    xcode-select --install
+    brew tap railwaycat/emacsmacport
+    brew install emacs-mac --with-modules
+    ln -fs /usr/local/opt/emacs-mac/Emacs.app /Applications/Emacs.app
 
 elif [[ $(uname) == "Linux" ]]; then
+    sudo apt update && sudo apt apt install git ripgrep fd-find
     sudo snap install emacs --classic
 fi
 
