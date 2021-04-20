@@ -1,4 +1,3 @@
-
 [aws]
 symbol = " "
 
@@ -6,10 +5,6 @@ symbol = " "
 full_symbol = ""
 charging_symbol = ""
 discharging_symbol = ""
-
-[character]
-success_symbol = "[❯](bold blue) "
-error_symbol = "[❯](bold red) "
 
 [conda]
 symbol = " "
@@ -19,9 +14,7 @@ symbol = " "
 
 [directory]
 read_only = " "
-truncate_to_repo = false
-truncation_length = 8
-truncation_symbol = "…/"
+style = "bold blue"
 
 [docker]
 symbol = " "
@@ -40,6 +33,7 @@ style = "bold yellow"
 [git_commit]
 only_detached = false
 tag_disabled = false
+style = "yellow"
 
 [golang]
 symbol = " "
@@ -49,10 +43,6 @@ symbol = " "
 
 [hg_branch]
 symbol = " "
-
-[hostname]
-ssh_only = false
-format =  "at [$hostname](bold blue) "
 
 [line_break]
 disabled = true
@@ -99,9 +89,3 @@ disabled = false
 
 [swift]
 symbol = "ﯣ "
-
-[username]
-style_user = "white bold"
-style_root = "red bold"
-show_always = true
-format = "[$user]($style) "
