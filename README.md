@@ -1,21 +1,36 @@
 # Dotfiles
 
-```
+```sh
+❯ tree -L 2
 .
-├── alacritty/                       # terminal config and installer
-├── config/                          # .config files for htop, procs and starship prompt
-├── docker/                          # install script for docker
-├── emacs/                           # emacs config and installer
-├── git/                             # git config and global gitignore
-├── lang/                            # go, node, rust and python setup and tools
-├── osx/                             # osx packages, apps and settings
-├── ssh/                             # ssh base config file
-├── tmux/                            # tmux config
-├── ubuntu/                          # ubuntu packages, apps and settings
-├── vim/                             # vim config and plugins
-├── zsh/                             # oh my zsh config
-├── .gitignore                       # exclude work directory
-├── Makefile                         # quickly run shellcheck
+├── .config/
+│   ├── alacritty/
+│   ├── doom/
+│   ├── git/
+│   ├── htop/
+│   ├── procs/
+│   ├── ssh/
+│   ├── tmux/
+│   ├── vim/
+│   ├── zsh/
+│   └── starship.toml
+├── install/
+│   ├── alacritty-term.svg
+│   ├── alacritty.desktop
+│   ├── alacritty.sh
+│   ├── apt.sh
+│   ├── brew.sh
+│   ├── docker.sh
+│   ├── emacs.sh
+│   ├── go.sh
+│   ├── macos_harden.sh
+│   ├── macos_prefs.sh
+│   ├── node.sh
+│   ├── python.sh
+│   ├── rust.sh
+│   └── zsh.sh
+├── .gitignore
+├── Makefile
 ├── README.md
-└── setup.sh                         # setup a new machine
+└── setup.sh
 ```

@@ -3,11 +3,15 @@
 echo "installing go.."
 
 if [[ $(uname) == "Darwin" ]]; then
-    brew install go
+    brew install go golangci-lint
+
 elif [[ $(uname) == "Linux" ]]; then
     sudo apt update
-    sudo apt install golang-1.14
-    sudo ln -nfs "/usr/lib/go-1.14" "/usr/local/go"
+    sudo apt install golang-1.16
+    sudo ln -nfs "/usr/lib/go-1.16" "/usr/local/go"
+
+    # Binary will be $(go env GOPATH)/bin/golangci-lint
+    curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "$(go env GOPATH)/bin" v1.39.0
 fi
 
 # Create the directory structure for the go workspace
@@ -38,9 +42,5 @@ packages=(
 
 echo "installing go packages.."
 go get -u -v "${packages[@]}"
-
-echo "installing golangcli-lint.."
-# Binary will be $(go env GOPATH)/bin/golangci-lint
-curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "$(go env GOPATH)/bin" v1.31.0
 
 echo "done"

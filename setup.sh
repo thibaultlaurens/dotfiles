@@ -3,47 +3,58 @@
 echo "setting up environment.."
 DF_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
-# OS related setup first
+# Link .config directory
+rm -r .config
+ln -s "$DF_DIR/.config" "${HOME}/.config"
+
+# Link non XDG config files
+ln -s "$DF_DIR/.config/zsh/.zshrc" "${HOME}/.zshrc"
+ln -s "$DF_DIR/.config/zsh/.zshrc.macos" "${HOME}/.zshrc.macos"
+ln -s "$DF_DIR/.config/zsh/.zshrc.linux" "${HOME}/.zshrc.linux"
+
+# OS related setup
 if [[ $(uname) == "Darwin" ]]; then
-    source "$DF_DIR/osx/setup.sh"
+    # Install xcode cli
+    xcode-select --install
+
+    # Install packages
+    source "$DF_DIR/install/brew.sh"
+
+    # Apply os hardening and preferences
+    source "$DF_DIR/install/macos_harden.sh"
+    source "$DF_DIR/install/macos_prefs.sh"
+
 elif [[ $(uname) == "Linux" ]]; then
-    source "$DF_DIR/ubuntu/setup.sh"
+    # Install packages
+    source "$DF_DIR/install/apt.sh"
+
+    # Install fonts
+    git clone --depth 1 https://github.com/ryanoasis/nerd-fonts "$HOME/nerd-fonts"
+    "$HOME/nerd-fonts/install.sh" SourceCodePro
+    rm -rf "$HOME/nerd-fonts"
+
+    # Enable firewall
+    sudo ufw enable
 fi
 
 # Install programming languages
-source "$DF_DIR/lang/go.sh"
-source "$DF_DIR/lang/python.sh"
-source "$DF_DIR/lang/node.sh"
-source "$DF_DIR/lang/rust.sh"
+source "$DF_DIR/install/go.sh"
+source "$DF_DIR/install/python.sh"
+source "$DF_DIR/install/node.sh"
+source "$DF_DIR/install/rust.sh"
 
 # Install docker
-source "$DF_DIR/docker/docker.sh"
+source "$DF_DIR/install/docker.sh"
 
 # Install emacs
-source "$DF_DIR/emacs/emacs.sh"
+source "$DF_DIR/install/emacs.sh"
 
-# Install starship
+# Install alacritty
+source "$DF_DIR/install/alacritty.sh"
+
+# Install starship prompt and zsh
 curl -fsSL https://starship.rs/install.sh | bash
-
-# Link tmux config
-ln -fs "$DF_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
-
-# Link git config
-ln -fs "$DF_DIR/git/.gitconfig" "$HOME/.gitconfig"
-ln -fs "$DF_DIR/git/.gitignore" "$HOME/.gitignore"
-
-# Link vim config
-ln -fs "$DF_DIR/vim/.vimrc.plug" "$HOME/.vimrc.plug"
-ln -fs "$DF_DIR/vim/.vimrc" "$HOME/.vimrc"
-
-# Link .config files
-mkdir -p "$HOME/.config/"{htop,procs}""
-ln -fs "$DF_DIR/config/htop/htoprc" "${HOME}/.config/htop/htoprc"
-ln -fs "$DF_DIR/config/procs/config.toml" "${HOME}/.config/procs/config.toml"
-ln -fs "$DF_DIR/config/starship.toml" "${HOME}/.config/starship.toml"
-
-# Reload bashrc
-source "$HOME/.bashrc"
+source "$DF_DIR/install/zsh.sh"
 
 echo "don't forget to copy the default ssh config"
 # cp "$DF_DIR/ssh/config" "${HOME}/.ssh/config"

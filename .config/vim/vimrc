@@ -3,8 +3,8 @@ set nocompatible                " Make Vim more useful
 
 " ================ Plug ==============================
 
-if filereadable(expand("~/.vimrc.plug"))
-  source ~/.vimrc.plug
+if filereadable(expand("~/.config/vim/vimrc.plug"))
+  source ~/.config/vim/vimrc.plug
 endif
 
 " ================ General Config ====================

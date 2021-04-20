@@ -45,7 +45,11 @@ plugins=(
     colored-man-pages
     extract
     git
+    git-auto-fetch
+    gnu-utils
+    gpg-agent
     history
+    last-working-dir
     pass
     sudo
     zsh-autosuggestions 
@@ -135,7 +139,7 @@ alias less="less -FSRXc"
 alias ln='ln -i'
 alias mkdir="mkdir -pv"
 alias mv='mv -i'
-alias rm="rm -Iv"
+alias rm="rm -iv"
 alias tree="tree -aCF --dirsfirst -I '.git'"
 alias cat="bat --theme=ansi"
 alias ll="exa -abghlmFU --all --git"
@@ -250,20 +254,29 @@ custom-updater() {
     fi
 }
 
+##### XDG CONFIG #####
+
+# XDG home
+export XDG_CONFIG_HOME="$HOME/.config"
+
+# Vim
+export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+export VIMDOTDIR="$XDG_CONFIG_HOME/vim"
+
 ##### EXTRA #####
 
 DF_ZSH_DIR="$(dirname "$(readlink -f "${(%):-%N}")")"
 
 # Source os related zshrc
 if [[ $(uname) == "Darwin" ]]; then
-    source "$DF_ZSH_DIR/../osx/.zshrc"
+    source "$DF_ZSH_DIR/.zshrc.macos"
 elif [[ $(uname) == "Linux" ]]; then
-    source "$DF_ZSH_DIR/../ubuntu/.zshrc"
+    source "$DF_ZSH_DIR/.zshrc.linux"
 fi
 
 # Source zshrc dedicated to work environment
-if [ -f "$DF_ZSH_DIR/../work/.zshrc" ]; then
-    source "$DF_ZSH_DIR/../work/.zshrc"
+if [ -f "$DF_ZSH_DIR/../../work/.zshrc" ]; then
+    source "$DF_ZSH_DIR/../../work/.zshrc"
 fi
 
 # reload zsh completion

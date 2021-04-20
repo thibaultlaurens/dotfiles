@@ -11,15 +11,6 @@ export HOMEBREW_CASK_OPTS=--require-sha
 # Add cli colors
 export CLICOLOR=1
 
-# Replace osx utilities with GNU utilities
-PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
-
 # Better ps
 alias ps="ps -ef"
 
