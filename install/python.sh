@@ -3,11 +3,26 @@
 # Prepare the python build environment
 if [[ $(uname) == "Darwin" ]]; then
     brew install openssl readline sqlite3 xz zlib
+    
 elif [[ $(uname) == "Linux" ]]; then
     sudo apt update && sudo apt install --no-install-recommends \
-        make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev \
-        libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-        xz-utils tk-dev libffi-dev liblzma-dev git
+        make \
+        build-essential \
+        libssl-dev \
+        zlib1g-dev \
+        libbz2-dev \
+        libreadline-dev \
+        libsqlite3-dev \
+        wget \
+        curl \
+        llvm \
+        libncurses5-dev \
+        xz-utils \
+        tk-dev \
+        libxml2-dev \
+        libxmlsec1-dev \
+        libffi-dev \
+        liblzma-dev
 fi
 
 # Install or update pyenv
@@ -17,9 +32,11 @@ if [ ! -d "$PYENV_ROOT" ]; then
 
     if [[ $(uname) == "Darwin" ]]; then
         brew install pyenv
+
     elif [[ $(uname) == "Linux" ]]; then
-        curl https://pyenv.run | bash
+        git clone https://github.com/pyenv/pyenv.git "$PYENV_ROOT"
     fi
+
 else
     git -C "$PYENV_ROOT" pull
 fi
@@ -30,8 +47,8 @@ eval "$(pyenv init -)"
 
 # Install python
 echo "installing python.."
-pyenv install 3.8.6
-pyenv global 3.8.6
+pyenv install 3.8.9
+pyenv global 3.8.9
 
 packages=(
     'black'                       # code formatter
