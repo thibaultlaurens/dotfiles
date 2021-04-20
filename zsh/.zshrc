@@ -138,7 +138,7 @@ alias mv='mv -i'
 alias rm="rm -Iv"
 alias tree="tree -aCF --dirsfirst -I '.git'"
 alias cat="bat --theme=ansi"
-alias ll="exa -abghlmFU --git"
+alias ll="exa -abghlmFU --all --git"
 
 # Shortcuts
 alias c="clear"
