@@ -12,7 +12,6 @@
 │   ├── ssh/
 │   ├── tmux/
 │   ├── vim/
-│   ├── zsh/
 │   └── starship.toml
 ├── install/
 │   ├── alacritty-term.svg
@@ -30,6 +29,7 @@
 │   ├── rust.sh
 │   └── zsh.sh
 ├── .gitignore
+├── .zshrc
 ├── Makefile
 ├── README.md
 └── setup.sh

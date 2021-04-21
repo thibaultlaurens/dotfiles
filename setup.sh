@@ -7,11 +7,6 @@ DF_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 rm -r .config
 ln -s "$DF_DIR/.config" "${HOME}/.config"
 
-# Link non XDG config files
-ln -s "$DF_DIR/.config/zsh/.zshrc" "${HOME}/.zshrc"
-ln -s "$DF_DIR/.config/zsh/.zshrc.macos" "${HOME}/.zshrc.macos"
-ln -s "$DF_DIR/.config/zsh/.zshrc.linux" "${HOME}/.zshrc.linux"
-
 # OS related setup
 if [[ $(uname) == "Darwin" ]]; then
     # Install xcode cli
@@ -56,7 +51,7 @@ source "$DF_DIR/install/alacritty.sh"
 curl -fsSL https://starship.rs/install.sh | bash
 source "$DF_DIR/install/zsh.sh"
 
-echo "don't forget to copy the default ssh config"
-# cp "$DF_DIR/ssh/config" "${HOME}/.ssh/config"
+# Link zsh config file
+ln -s "$DF_DIR/.zshrc" "${HOME}/.zshrc"
 
 echo "all done"

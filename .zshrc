@@ -21,6 +21,13 @@ export TERM="xterm-256color"
 # Set terminal for the gpg-agent
 export GPG_TTY=$(tty)
 
+# Set xdg home directory
+export XDG_CONFIG_HOME="$HOME/.config"
+
+# Set vim config path
+export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+export VIMDOTDIR="$XDG_CONFIG_HOME/vim"
+
 ##### OH MY ZSH #####
 
 # Path to oh-my-zsh installation.
@@ -254,29 +261,83 @@ custom-updater() {
     fi
 }
 
-##### XDG CONFIG #####
+##### OS SPECIFIC #####
 
-# XDG home
-export XDG_CONFIG_HOME="$HOME/.config"
-
-# Vim
-export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
-export VIMDOTDIR="$XDG_CONFIG_HOME/vim"
-
-##### EXTRA #####
-
-DF_ZSH_DIR="$(dirname "$(readlink -f "${(%):-%N}")")"
-
-# Source os related zshrc
 if [[ $(uname) == "Darwin" ]]; then
-    source "$DF_ZSH_DIR/.zshrc.macos"
+    # Replace osx ruby binaries
+    PATH="/usr/local/opt/ruby/bin:$PATH"
+
+    # Setup brew
+    export HOMEBREW_NO_ANALYTICS=1
+    export HOMEBREW_NO_INSECURE_REDIRECT=1
+    export HOMEBREW_CASK_OPTS=--require-sha
+
+    # Add cli colors
+    export CLICOLOR=1
+
+    # Better ps
+    alias ps="ps -ef"
+
+    # Copy pwd
+    alias pwdcopy="pwd | tr -d '\n' | pbcopy"
+
+    # IP address
+    alias myip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\  -f2"
+
+    # Lock the screen
+    alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
+
+    # Restart dns
+    alias restart-dns="sudo killall -9 mDNSResponder"
+
+    # Empty the trash on all mounted volumes, the main hdd and clear system logs
+    rm-trashes() {
+        sudo rm -rfv /Volumes/*/.Trashes && \
+        sudo rm -rfv ~/.Trash && \
+        sudo rm -rfv /private/var/log/asl/*.asl
+    }
+
+    # Homebrew update / upgrade
+    brew-updater() {
+        brew update && \
+        brew upgrade && \
+        brew autoremove && \
+        brew cleanup && \
+        brew doctor
+    }
+
 elif [[ $(uname) == "Linux" ]]; then
-    source "$DF_ZSH_DIR/.zshrc.linux"
+    # Add snaps in PATH
+    PATH="/snap/bin:$PATH"
+
+    # Open files, dirs or urls
+    alias open="xdg-open"
+
+    # Copy and paste
+    alias pbcopy="xclip -selection clipboard"
+    alias pbpaste="xclip -selection clipboard -o"
+
+    # Better defaults
+    alias free="free -mt"
+    alias ps="ps auxf"
+    alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
+
+    # IP addresses
+    alias myip="ip -br -c a"
+
+    # Apt update / upgrade
+    apt-updater() {
+        sudo apt update && \
+        sudo apt full-upgrade -Vy && \
+        sudo apt autoremove -y && \
+        sudo apt autoclean
+    }
 fi
 
 # Source zshrc dedicated to work environment
-if [ -f "$DF_ZSH_DIR/../../work/.zshrc" ]; then
-    source "$DF_ZSH_DIR/../../work/.zshrc"
+DF_ZSH_DIR="$(dirname "$(readlink -f "${(%):-%N}")")"
+if [ -f "$DF_ZSH_DIR/../work/.zshrc" ]; then
+    source "$DF_ZSH_DIR/../work/.zshrc"
 fi
 
 # reload zsh completion
