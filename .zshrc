@@ -336,8 +336,8 @@ fi
 
 # Source zshrc dedicated to work environment
 DF_ZSH_DIR="$(dirname "$(readlink -f "${(%):-%N}")")"
-if [ -f "$DF_ZSH_DIR/../work/.zshrc" ]; then
-    source "$DF_ZSH_DIR/../work/.zshrc"
+if [ -f "$DF_ZSH_DIR/work/.zshrc" ]; then
+    source "$DF_ZSH_DIR/work/.zshrc"
 fi
 
 # reload zsh completion
