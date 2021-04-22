@@ -120,6 +120,10 @@ export NVM_DIR="$HOME/.nvm"
 
 ##### ALIASES #####
 
+# bare git repo config alias
+alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias config-lint="shellcheck -e SC1091,SC1090 $HOME/.install/*.sh"
+
 # Navigation
 alias ..="cd .."
 alias ...="cd ../.."
@@ -335,9 +339,8 @@ elif [[ $(uname) == "Linux" ]]; then
 fi
 
 # Source zshrc dedicated to work environment
-DF_ZSH_DIR="$(dirname "$(readlink -f "${(%):-%N}")")"
-if [ -f "$DF_ZSH_DIR/work/.zshrc" ]; then
-    source "$DF_ZSH_DIR/work/.zshrc"
+if [ -f "$HOME/work/.zshrc" ]; then
+    source "$HOME/work/.zshrc"
 fi
 
 # reload zsh completion
