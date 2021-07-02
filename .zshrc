@@ -244,23 +244,23 @@ git-archive-all(){
 # Warning: takes ages and is very yolo, things might break !
 custom-updater() {
     if [ -x "$(command -v npm)" ]; then
-        echo "upadting node packages"
+        echo "updating node packages"
         npm update -g
     fi
     if [ -x "$(command -v pip)" ]; then
-        echo "upadting python packages"
+        echo "updating python packages"
         pip freeze | cut -d'=' -f1 | xargs -n1 pip install -U
     fi
     if [ -x "$(command -v cargo)" ]; then
-        echo "upadting rust packages"
+        echo "updating rust packages"
         cargo install-update -a
     fi
     if [ -x "$(command -v go)" ]; then
-        echo "upadting golang packages"
+        echo "updating golang packages"
         go get -u all
     fi
     if typeset -f omz > /dev/null; then
-        echo "upadting oh my zsh"
+        echo "updating oh my zsh"
         omz update
     fi
 }
