@@ -2,7 +2,7 @@
 
 # Install nvm
 echo "installing nvm.."
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 
 # Load NVM
 export NVM_DIR="$HOME/.nvm"
@@ -10,8 +10,8 @@ export NVM_DIR="$HOME/.nvm"
 
 # Install node
 echo "installing node.."
-nvm install 14.16.0
-nvm alias default v14.16.0
+nvm install 16.4.1
+nvm alias default v16.4.1
 nvm use default
 
 packages=(
