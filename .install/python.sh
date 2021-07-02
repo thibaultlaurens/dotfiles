@@ -38,7 +38,7 @@ if [ ! -d "$PYENV_ROOT" ]; then
     fi
 
 else
-    git -C "$PYENV_ROOT" pull
+    pyenv update
 fi
 
 # Setup pyenv
