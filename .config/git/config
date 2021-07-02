@@ -7,8 +7,8 @@
 	gpgsign = true
 
 # Include dedicated config related to work
-[includeIf "gitdir:~/git/work/"]
-	path = .gitconfig.work
+[include]
+	path = ~/work/.gitconfig
 
 [core]
 	# Prevent CRLF to be written into the repo
