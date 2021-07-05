@@ -100,7 +100,7 @@ PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 PYENV_ROOT="$HOME/.pyenv"
 [ -d "$PYENV_ROOT/bin" ] && PATH="$PYENV_ROOT/bin:$PATH"
 if [ -x "$(command -v pyenv)" ]; then
-    eval "$(pyenv init -)"
+    eval "$(pyenv init --path)"
 fi
 
 # Golang
