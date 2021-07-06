@@ -15,8 +15,6 @@
 ;;      directory (for easy access to its source code).
 
 (doom! :input
-       ;;chinese
-       ;;japanese
        ;;layout                 ; auie,ctsrnm is the superior home row
 
        :completion
@@ -30,7 +28,6 @@
        doom                     ; what makes DOOM look the way it does
        doom-dashboard           ; a nifty splash screen for Emacs
        doom-quit                ; DOOM quit-message prompts when you quit Emacs
-       ;;fill-column            ; a `fill-column' indicator
        hl-todo                  ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ;;hydra
        ;;indent-guides          ; highlighted indent columns
@@ -95,7 +92,7 @@
        lsp                 ; Language Server Protocol
        magit               ; a git porcelain for Emacs
        make                ; run make tasks from Emacs
-       ;;pas               ; password manager for nerds
+       ;;pass              ; password manager for nerds
        pdf                 ; pdf enhancements
        ;;prodigy           ; FIXME managing external services & code builders
        rgb                 ; creating color strings
@@ -110,6 +107,7 @@
 
        :lang
        ;;agda              ; types of types of types of types...
+       ;;beancount         ; mind the GAAP
        (cc +lsp)           ; C/C++/Obj-C madness
        ;;clojure           ; java with a lisp
        ;;common-lisp       ; if you've seen one lisp, you've seen them all
@@ -166,6 +164,7 @@
        ;;terra             ; Earth and Moon in alignment for performance.
        web                 ; the tubes
        (yaml +lsp)         ; JSON, but readable
+       ;;zig               ; C, but simpler
 
        :email
        ;;(mu4e +gmail)
@@ -174,6 +173,7 @@
 
        :app
        ;;calendar
+       ;;emms
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
