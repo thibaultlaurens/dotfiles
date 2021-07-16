@@ -17,9 +17,6 @@ source "$HOME/.install/go.sh"
 source "$HOME/.install/python.sh"
 source "$HOME/.install/node.sh"
 
-# Install docker
-source "$HOME/.install/docker.sh"
-
 # Install emacs
 source "$HOME/.install/emacs.sh"
 
