@@ -56,21 +56,14 @@ shellcheck -e SC1091,SC1090 $HOME/.install/*.sh
 │   ├── vim/
 │   └── starship.toml
 ├── .install/
-│   ├── alacritty-term.svg
-│   ├── alacritty.desktop
-│   ├── alacritty.sh
 │   ├── all.sh
-│   ├── apt.sh
 │   ├── brew.sh
-│   ├── docker.sh
 │   ├── emacs.sh
 │   ├── go.sh
 │   ├── macos_harden.sh
 │   ├── macos_prefs.sh
 │   ├── node.sh
-│   ├── python.sh
-│   ├── rust.sh
-│   └── zsh.sh
+│   └── python.sh
 ├── .gitignore
 ├── .zshrc
 └── README.md

@@ -21,16 +21,16 @@ brew tap Homebrew/bundle
 packages=(
   ag
   aspell
-  bat
   bandwhich
+  bat
   coreutils
   ctop
   curl
+  docker-completion
   dust
   exa
   fd
   ffmpeg
-  kubectl
   findutils
   fzf
   gawk
@@ -48,6 +48,7 @@ packages=(
   httpie
   hugo
   jq
+  kubectl
   less
   lnav
   make
@@ -57,17 +58,21 @@ packages=(
   nmap
   openssh
   openssl
-  procs
   pinentry-mac
-  tealdeer
+  procs
   rg
   shellcheck
+  tealdeer
   tig
   tmux
   tree
   vim
   watch
   wget
+  zsh
+  zsh-autosuggestions
+  zsh-completions
+  zsh-syntax-highlighting
 )
 
 echo "\e[34mInstalling packages:\e[0m"
@@ -76,9 +81,11 @@ brew install "${packages[@]}"
 apps=(
   adapter
   adobe-creative-cloud
+  alacritty
   appcleaner
   balenaetcher
   bitwarden
+  docker
   firefox
   font-sauce-code-pro-nerd-font
   google-backup-and-sync

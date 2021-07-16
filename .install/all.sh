@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-echo "running install script.."
-
 # Install xcode cli
 xcode-select --install
 
@@ -20,8 +18,7 @@ source "$HOME/.install/node.sh"
 # Install emacs
 source "$HOME/.install/emacs.sh"
 
-# Install starship prompt and zsh
+# Setup zsh, install starship prompt and omz
+chsh -s /usr/local/bin/zsh
 curl -fsSL https://starship.rs/install.sh | bash
-source "$HOME/.install/zsh.sh"
-
-echo "all done"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
