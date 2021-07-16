@@ -12,6 +12,12 @@ export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_INSECURE_REDIRECT=1
 export HOMEBREW_CASK_OPTS=--require-sha
 
+echo "upgrading packages.."
+brew update && brew upgrade && brew doctor
+
+# Add more sources
+brew tap Homebrew/bundle
+
 packages=(
     ag
     aspell
@@ -63,12 +69,6 @@ packages=(
     watch
     wget
 )
-
-echo "upgrading packages.."
-brew update && brew upgrade && brew doctor
-
-# Add more sources
-brew tap Homebrew/bundle
 
 echo "installing packages.."
 brew install "${packages[@]}"
