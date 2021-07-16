@@ -112,9 +112,6 @@ GOPATH="$HOME/go"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# Rust
-[ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"
-
 # Doom emacs
 [ -d "$HOME/.emacs.d/bin" ] && PATH="$HOME/.emacs.d/bin:$PATH"
 
@@ -146,13 +143,12 @@ alias cp="cp -iv"
 alias df="df -Th"
 alias du="du -ach"
 alias grep='grep --color=auto'
-alias less="less -FSRXc"
 alias ln='ln -i'
 alias mkdir="mkdir -pv"
 alias mv='mv -i'
 alias rm="rm -iv"
 alias tree="tree -aCF --dirsfirst -I '.git'"
-alias less="bat --theme=ansi-dark"
+alias less="bat --theme=ansi-dark" # replace "less -FSRXc"
 alias ll="exa -abghlmFU --all --git"
 
 # Shortcuts
@@ -251,10 +247,6 @@ custom-updater() {
         echo "updating python packages"
         pip freeze | cut -d'=' -f1 | xargs -n1 pip install -U
     fi
-    if [ -x "$(command -v cargo)" ]; then
-        echo "updating rust packages"
-        cargo install-update -a
-    fi
     if [ -x "$(command -v go)" ]; then
         echo "updating golang packages"
         go get -u all
@@ -265,8 +257,7 @@ custom-updater() {
     fi
 }
 
-##### OS SPECIFIC #####
-
+# OSX specific
 if [[ $(uname) == "Darwin" ]]; then
     # Replace osx ruby binaries
     PATH="/usr/local/opt/ruby/bin:$PATH"
@@ -308,33 +299,6 @@ if [[ $(uname) == "Darwin" ]]; then
         brew autoremove && \
         brew cleanup && \
         brew doctor
-    }
-
-elif [[ $(uname) == "Linux" ]]; then
-    # Add snaps in PATH
-    PATH="/snap/bin:$PATH"
-
-    # Open files, dirs or urls
-    alias open="xdg-open"
-
-    # Copy and paste
-    alias pbcopy="xclip -selection clipboard"
-    alias pbpaste="xclip -selection clipboard -o"
-
-    # Better defaults
-    alias free="free -mt"
-    alias ps="ps auxf"
-    alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
-
-    # IP addresses
-    alias myip="ip -br -c a"
-
-    # Apt update / upgrade
-    apt-updater() {
-        sudo apt update && \
-        sudo apt full-upgrade -Vy && \
-        sudo apt autoremove -y && \
-        sudo apt autoclean
     }
 fi
 

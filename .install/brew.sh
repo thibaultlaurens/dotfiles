@@ -16,11 +16,15 @@ packages=(
     ag
     aspell
     bat
-    brew-cask-completion
+    bandwhich
     coreutils
     ctop
-    curl-openssl
+    curl
+    dust
+    exa
+    fd
     ffmpeg
+    kubectl
     findutils
     fzf
     gawk
@@ -37,7 +41,6 @@ packages=(
     htop
     httpie
     hugo
-    ispell
     jq
     less
     lnav
@@ -48,7 +51,9 @@ packages=(
     nmap
     openssh
     openssl
-    pinentry-mac   
+    procs
+    pinentry-mac
+    tealdeer
     rg
     shellcheck
     tig

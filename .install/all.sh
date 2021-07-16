@@ -2,7 +2,7 @@
 
 echo "running install script.."
 
-# OS related setup
+# OSX specific
 if [[ $(uname) == "Darwin" ]]; then
   # Install xcode cli
   xcode-select --install
@@ -13,25 +13,12 @@ if [[ $(uname) == "Darwin" ]]; then
   # Apply os hardening and preferences
   source "$HOME/.install/macos_harden.sh"
   source "$HOME/.install/macos_prefs.sh"
-
-elif [[ $(uname) == "Linux" ]]; then
-  # Install packages
-  source "$HOME/.install/apt.sh"
-
-  # Install fonts
-  git clone --depth 1 https://github.com/ryanoasis/nerd-fonts "$HOME/nerd-fonts"
-  "$HOME/nerd-fonts/install.sh" SourceCodePro
-  rm -rf "$HOME/nerd-fonts"
-
-  # Enable firewall
-  sudo ufw enable
 fi
 
 # Install programming languages
 source "$HOME/.install/go.sh"
 source "$HOME/.install/python.sh"
 source "$HOME/.install/node.sh"
-source "$HOME/.install/rust.sh"
 
 # Install docker
 source "$HOME/.install/docker.sh"
