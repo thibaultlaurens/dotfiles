@@ -3,7 +3,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-##### EXPORT ##### 
+##### EXPORT #####
 
 # Proper locale
 : "$LANG:=\"en_US.UTF-8\""
@@ -39,7 +39,7 @@ HYPHEN_INSENSITIVE="true"
 # Disable command auto-correction.
 ENABLE_CORRECTION="false"
 
-# Disable auto-setting terminal title. 
+# Disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="true"
 
 # Change the command execution time stamp shown in the history command output
@@ -59,7 +59,7 @@ plugins=(
     last-working-dir
     pass
     sudo
-    zsh-autosuggestions 
+    zsh-autosuggestions
     zsh-completions
     zsh-interactive-cd
     zsh-syntax-highlighting
@@ -83,7 +83,7 @@ autoload zmv
 
 # Swap greadlink for readlink on macos..
 if [[ $(uname) == "Darwin" ]]; then
-    alias readlink="greadlink"
+  alias readlink="greadlink"
 fi
 
 # Complete hostnames from this file
@@ -100,7 +100,7 @@ PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 PYENV_ROOT="$HOME/.pyenv"
 [ -d "$PYENV_ROOT/bin" ] && PATH="$PYENV_ROOT/bin:$PATH"
 if [ -x "$(command -v pyenv)" ]; then
-    eval "$(pyenv init --path)"
+  eval "$(pyenv init --path)"
 fi
 
 # Golang
@@ -110,7 +110,7 @@ GOPATH="$HOME/go"
 
 # Node
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
 
 # Doom emacs
 [ -d "$HOME/.emacs.d/bin" ] && PATH="$HOME/.emacs.d/bin:$PATH"
@@ -177,134 +177,126 @@ alias wanip6='dig @resolver1.opendns.com AAAA myip.opendns.com +short -6'
 cdmk() { echo "DEPRECATED: use \"take\" command instead" && take $1; }
 
 # Pack a folder into a .tar.bz2
-pack(){
-    if [ -z "$1" ]; then
-        echo "No directory supplied. \nUsage: $funcstack[1] directory-path"
-    elif ! [[ -d $1 ]]; then
-        echo "error: $1 is not a directory."
-    else
-        tar -cvjSf "$(date "+%F")-$1.tar.bz2" "$1"
-    fi
+pack() {
+  if [ -z "$1" ]; then
+    echo "No directory supplied. \nUsage: $funcstack[1] directory-path"
+  elif ! [[ -d $1 ]]; then
+    echo "Error: $1 is not a directory."
+  else
+    tar -cvjSf "$(date "+%F")-$1.tar.bz2" "$1"
+  fi
 }
 
 # Unpack a .tar.bz2 folder
-unpack(){
-    if [ -z "$1" ]; then
-        echo "No directory supplied. \nUsage: $funcstack[1] directory-path.tar.bz2"
-    else
-        tar xjf "$1"
-    fi
+unpack() {
+  if [ -z "$1" ]; then
+    echo "No directory supplied. \nUsage: $funcstack[1] directory-path.tar.bz2"
+  else
+    tar xjf "$1"
+  fi
 }
 
 # Prune everything docker related
-docker-prune-all() {
-    docker system prune -a -f --volumes
+docker_prune_all() {
+  docker system prune -a -f --volumes
 }
 
 # Display the path to the volume data
-docker-volume-path() {
-    if [ -z "$1" ]; then
-        echo "No volume supplied. \nUsage: $funcstack[1] volume-name"
-        docker volume ls
-    else
-        docker volume inspect --format '{{ .Mountpoint }}' "$1"
-    fi
+docker_volume_path() {
+  if [ -z "$1" ]; then
+    echo "No volume supplied. \nUsage: $funcstack[1] volume-name"
+    docker volume ls
+  else
+    docker volume inspect --format '{{ .Mountpoint }}' "$1"
+  fi
 }
 
 # Sync a fork master branch
-git-sync-fork() {
-    if [ -z "$1" ]; then
-        echo "No remote upstream repository specified.\n Usage: $funcstack[1] remote-repository"
-    else
-        git remote add upstream "$1"
-        git remote -v
-        git fetch upstream
-        git checkout master
-        git merge upstream/master
-        git push origin master
-    fi
+git_sync_fork() {
+  if [ -z "$1" ]; then
+    echo "No remote upstream repository specified.\n Usage: $funcstack[1] remote-repository"
+  else
+    git remote add upstream "$1"
+    git remote -v
+    git fetch upstream
+    git checkout master
+    git merge upstream/master
+    git push origin master
+  fi
 }
 
 # Archive all git repos from a given parent directory
-git-archive-all(){
-    if [ -z "$1" ]; then
-        echo "No parent directory specified.\n Usage: $funcstack[1] parent-directory-path"
-    elif ! [[ -d $1 ]]; then
-        echo "error: $1 is not a directory."
-    else
-        fd -td -d 1 -x bash -c "git -C {} archive --output=../{/}.tar.gz --format=tar HEAD" ';' . $1
-    fi
+git_archive_all() {
+  if [ -z "$1" ]; then
+    echo "No parent directory specified.\n Usage: $funcstack[1] parent-directory-path"
+  elif ! [[ -d $1 ]]; then
+    echo "Error: $1 is not a directory."
+  else
+    fd -td -d 1 -x bash -c "git -C {} archive --output=../{/}.tar.gz --format=tar HEAD" ';' . $1
+  fi
 }
 
 # Upgrade packages installed without package management
-# Warning: takes ages and is very yolo, things might break !
-custom-updater() {
-    if [ -x "$(command -v npm)" ]; then
-        echo "updating node packages"
-        npm update -g
-    fi
-    if [ -x "$(command -v pip)" ]; then
-        echo "updating python packages"
-        pip freeze | cut -d'=' -f1 | xargs -n1 pip install -U
-    fi
-    if [ -x "$(command -v go)" ]; then
-        echo "updating golang packages"
-        [ -s "$HOME/.install/go.sh" ] && \. "$HOME/.install/go.sh"
-    fi
-    if typeset -f omz > /dev/null; then
-        echo "updating oh my zsh"
-        omz update
-    fi
+custom_updater() {
+  [ -s "$HOME/.install/node.sh" ] && \. "$HOME/.install/node.sh"
+  [ -s "$HOME/.install/python.sh" ] && \. "$HOME/.install/python.sh"
+  [ -s "$HOME/.install/go.sh" ] && \. "$HOME/.install/go.sh"
+
+  if typeset -f omz >/dev/null; then
+    omz update
+  fi
+
+  echo "\e[34mDone.\e[0m"
 }
 
 # OSX specific
 if [[ $(uname) == "Darwin" ]]; then
-    # Replace osx ruby binaries
-    PATH="/usr/local/opt/ruby/bin:$PATH"
+  # Replace osx ruby binaries
+  PATH="/usr/local/opt/ruby/bin:$PATH"
 
-    # Setup brew
-    export HOMEBREW_NO_ANALYTICS=1
-    export HOMEBREW_NO_INSECURE_REDIRECT=1
-    export HOMEBREW_CASK_OPTS=--require-sha
+  # Setup brew
+  export HOMEBREW_NO_ANALYTICS=1
+  export HOMEBREW_NO_INSECURE_REDIRECT=1
+  export HOMEBREW_CASK_OPTS=--require-sha
 
-    # Add cli colors
-    export CLICOLOR=1
+  # Add cli colors
+  export CLICOLOR=1
 
-    # Better ps
-    alias ps="ps -ef"
+  # Better ps
+  alias ps="ps -ef"
 
-    # Copy pwd
-    alias pwdcopy="pwd | tr -d '\n' | pbcopy"
+  # Copy pwd
+  alias pwdcopy="pwd | tr -d '\n' | pbcopy"
 
-    # IP address
-    alias myip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\  -f2"
+  # IP address
+  alias myip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\  -f2"
 
-    # Lock the screen
-    alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
+  # Lock the screen
+  alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
 
-    # Restart dns
-    alias restart-dns="sudo killall -9 mDNSResponder"
+  # Restart dns
+  alias restart-dns="sudo killall -9 mDNSResponder"
 
-    # Empty the trash on all mounted volumes, the main hdd and clear system logs
-    rm-trashes() {
-        sudo rm -rfv /Volumes/*/.Trashes && \
-        sudo rm -rfv ~/.Trash && \
-        sudo rm -rfv /private/var/log/asl/*.asl
-    }
+  # Empty the trash on all mounted volumes, the main hdd and clear system logs
+  rm_trashes() {
+    sudo rm -rfv /Volumes/*/.Trashes &&
+      sudo rm -rfv ~/.Trash &&
+      sudo rm -rfv /private/var/log/asl/*.asl
+  }
 
-    # Homebrew update / upgrade
-    brew-updater() {
-        brew update && \
-        brew upgrade && \
-        brew autoremove && \
-        brew cleanup && \
-        brew doctor
-    }
+  # Homebrew update / upgrade
+  brew_updater() {
+    brew update &&
+      brew upgrade &&
+      brew autoremove &&
+      brew cleanup -s &&
+      brew doctor
+  }
 fi
 
 # Source zshrc dedicated to work environment
 if [ -f "$HOME/work/.zshrc" ]; then
-    source "$HOME/work/.zshrc"
+  source "$HOME/work/.zshrc"
 fi
 
 # reload zsh completion

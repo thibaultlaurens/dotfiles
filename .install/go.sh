@@ -1,9 +1,13 @@
 #!/usr/bin/env/bash
 
-echo "installing go.."
-
-if [[ $(uname) == "Darwin" ]]; then
-    brew install go golangci-lint
+# Install or update go
+: "${GOPATH:=$HOME/go}"
+if [ ! "$(command -v go)" ]; then
+  echo "\e[34mInstalling go:\e[0m"
+  brew install go golangci-lint
+else
+  echo "\e[34mUpgrading go:\e[0m"
+  brew upgrade go golangci-lint
 fi
 
 # Create the directory structure for the go workspace
@@ -13,28 +17,21 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin
 
-packages=(
-    # visualization and analysis of profiling data
-    'github.com/google/pprof'
+echo "\e[34mInstalling go packages:\e[0m"
 
-    # used by emacs golang layer
-    'github.com/stamblerre/gocode'     # code completion & eldoc support
-    'golang.org/x/tools/cmd/godoc'     # documentation lookup
-    'golang.org/x/tools/cmd/gorename'  # refactoring
-    'github.com/motemen/gore/cmd/gore' # repl
-    'golang.org/x/tools/cmd/guru'      # code navigation and refactoring
-    'golang.org/x/tools/cmd/goimports' # fmt on save and fix imports
-    'github.com/cweill/gotests/...'    # generate test code
-    'github.com/fatih/gomodifytags'    # tag manipulation
+go install 'github.com/google/pprof@latest' # visualization and analysis of profiling data
 
-    # used by emacs lsp layer
-    'golang.org/x/tools/gopls' # lsp server
+go install 'golang.org/x/tools/gopls@latest' # used by emacs lsp layer
+go install 'mvdan.cc/sh/v3/cmd/shfmt@latest' # used by emacs fmt layer
 
-    # used by emacs fmt layer
-    'mvdan.cc/sh/v3/cmd/shfmt'
-)
+# Used by emacs golang layer
+go install 'github.com/stamblerre/gocode@latest'     # code completion & eldoc support
+go install 'golang.org/x/tools/cmd/godoc@latest'     # documentation lookup
+go install 'golang.org/x/tools/cmd/gorename@latest'  # refactoring
+go install 'github.com/motemen/gore/cmd/gore@latest' # repl
+go install 'golang.org/x/tools/cmd/guru@latest'      # code navigation and refactoring
+go install 'golang.org/x/tools/cmd/goimports@latest' # fmt on save and fix imports
+go install 'github.com/cweill/gotests/...@latest'    # generate test code
+go install 'github.com/fatih/gomodifytags@latest'    # tag manipulation
 
-echo "installing go packages.."
-go get -u -v "${packages[@]}"
-
-echo "done"
+echo "\e[34mDone.\e[0m"

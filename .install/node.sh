@@ -1,29 +1,36 @@
 #!/usr/bin/env/bash
 
-# Install nvm
-echo "installing nvm.."
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+
+# Install or update nvm
+if [ ! "$(command -v nvm)" ]; then
+  echo "\e[34mInstalling nvm:\e[0m"
+  brew install nvm
+else
+  echo "\e[34mUpgrading nvm:\e[0m"
+  brew upgrade nvm
+fi
 
 # Load NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
 
 # Install node
-echo "installing node.."
-nvm install 16.4.1
-nvm alias default v16.4.1
+echo "\e[34mInstalling node:\e[0m"
+nvm install 16.5.0
+nvm alias default v16.5.0
 nvm use default
 
 packages=(
-    'bash-language-server' # a language server for Bash
-    'diff-so-fancy'        # better diff
-    'markdownlint'         # style checker and lint tool for Markdown
-    'marked'               # a markdown parser built for speed
-    'prettier'             # code formatter
-    'tern'                 # js analyzer
-    'vmd'                  # preview markdown files
+  'bash-language-server' # a language server for Bash
+  'diff-so-fancy'        # better diff
+  'markdownlint'         # style checker and lint tool for Markdown
+  'marked'               # a markdown parser built for speed
+  'prettier'             # code formatter
+  'tern'                 # js analyzer
+  'vmd'                  # preview markdown files
 )
 
-echo "installing node packages.."
+echo "\e[34mInstalling node packages:\e[0m"
+npm install -f -g npm
 npm install -f -g "${packages[@]}"
-echo "done"
+echo "\e[34mDone.\e[0m"

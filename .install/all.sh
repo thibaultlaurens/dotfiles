@@ -2,18 +2,15 @@
 
 echo "running install script.."
 
-# OSX specific
-if [[ $(uname) == "Darwin" ]]; then
-  # Install xcode cli
-  xcode-select --install
+# Install xcode cli
+xcode-select --install
 
-  # Install packages
-  source "$HOME/.install/brew.sh"
+# Install packages
+source "$HOME/.install/brew.sh"
 
-  # Apply os hardening and preferences
-  source "$HOME/.install/macos_harden.sh"
-  source "$HOME/.install/macos_prefs.sh"
-fi
+# Apply os hardening and preferences
+source "$HOME/.install/macos_harden.sh"
+source "$HOME/.install/macos_prefs.sh"
 
 # Install programming languages
 source "$HOME/.install/go.sh"
