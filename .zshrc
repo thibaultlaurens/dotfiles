@@ -249,7 +249,7 @@ custom-updater() {
     fi
     if [ -x "$(command -v go)" ]; then
         echo "updating golang packages"
-        go get -u all
+        [ -s "$HOME/.install/go.sh" ] && \. "$HOME/.install/go.sh"
     fi
     if typeset -f omz > /dev/null; then
         echo "updating oh my zsh"

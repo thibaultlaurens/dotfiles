@@ -4,14 +4,6 @@ echo "installing go.."
 
 if [[ $(uname) == "Darwin" ]]; then
     brew install go golangci-lint
-
-elif [[ $(uname) == "Linux" ]]; then
-    sudo apt update
-    sudo apt install golang-1.16
-    sudo ln -nfs "/usr/lib/go-1.16" "/usr/local/go"
-
-    # Binary will be $(go env GOPATH)/bin/golangci-lint
-    curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "$(go env GOPATH)/bin" v1.39.0
 fi
 
 # Create the directory structure for the go workspace
@@ -22,16 +14,18 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin
 
 packages=(
+    # visualization and analysis of profiling data
+    'github.com/google/pprof'
+
     # used by emacs golang layer
-    'github.com/cweill/gotests/...'    # generate test code
-    'github.com/fatih/gomodifytags'    # tag manipulation
-    'github.com/google/pprof'          # visualization and analysis of profiling data
-    'github.com/motemen/gore/cmd/gore' # repl
     'github.com/stamblerre/gocode'     # code completion & eldoc support
     'golang.org/x/tools/cmd/godoc'     # documentation lookup
-    'golang.org/x/tools/cmd/goimports' # fmt on save and fix imports
     'golang.org/x/tools/cmd/gorename'  # refactoring
+    'github.com/motemen/gore/cmd/gore' # repl
     'golang.org/x/tools/cmd/guru'      # code navigation and refactoring
+    'golang.org/x/tools/cmd/goimports' # fmt on save and fix imports
+    'github.com/cweill/gotests/...'    # generate test code
+    'github.com/fatih/gomodifytags'    # tag manipulation
 
     # used by emacs lsp layer
     'golang.org/x/tools/gopls' # lsp server
