@@ -20,9 +20,6 @@ source "$HOME/.install/node.sh"
 # Install emacs
 source "$HOME/.install/emacs.sh"
 
-# Install alacritty
-source "$HOME/.install/alacritty.sh"
-
 # Install starship prompt and zsh
 curl -fsSL https://starship.rs/install.sh | bash
 source "$HOME/.install/zsh.sh"
