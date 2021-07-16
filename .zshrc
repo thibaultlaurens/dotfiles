@@ -152,11 +152,11 @@ alias mkdir="mkdir -pv"
 alias mv='mv -i'
 alias rm="rm -iv"
 alias tree="tree -aCF --dirsfirst -I '.git'"
-alias cat="bat --theme=ansi"
+alias less="bat --theme=ansi-dark"
 alias ll="exa -abghlmFU --all --git"
 
 # Shortcuts
-alias c="clear"
+alias c="config"
 alias dc="docker compose"
 alias ddf="docker system df"
 alias h="history"
