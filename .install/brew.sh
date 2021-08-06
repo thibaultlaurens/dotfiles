@@ -2,7 +2,7 @@
 
 # Install homebrew if it's missing
 if test ! "$(which brew)"; then
-  echo "\e[34mInstalling brew:\e[0m"
+  echo "Installing brew:"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
@@ -10,13 +10,13 @@ sudo chown -R "$(whoami)" "$(brew --prefix)"/*
 
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_INSECURE_REDIRECT=1
-export HOMEBREW_CASK_OPTS=--require-sha
 
-echo "\e[34mUpgrading packages:\e[0m"
+echo "Upgrading packages:"
 brew update && brew upgrade
 
 # Add more sources
 brew tap Homebrew/bundle
+brew tap homebrew/cask-fonts
 
 packages=(
   ag
@@ -70,12 +70,9 @@ packages=(
   watch
   wget
   zsh
-  zsh-autosuggestions
-  zsh-completions
-  zsh-syntax-highlighting
 )
 
-echo "\e[34mInstalling packages:\e[0m"
+echo "Installing packages:"
 brew install "${packages[@]}"
 
 apps=(
@@ -85,16 +82,14 @@ apps=(
   appcleaner
   balenaetcher
   bitwarden
-  docker
+  # docker
   firefox
   font-sauce-code-pro-nerd-font
   google-backup-and-sync
   handshaker
   keepassxc
   little-snitch
-  macdown
   micro-snitch
-  onyx
   protonmail-bridge
   protonvpn
   spectacle
@@ -106,7 +101,7 @@ apps=(
   vlc
 )
 
-echo "\e[34mInstalling apps:\e[0m"
+echo "Installing apps:"
 brew install --cask "${apps[@]}"
 
 ql_packages=(
@@ -121,10 +116,10 @@ ql_packages=(
   suspicious-package
 )
 
-echo "\e[34mInstalling quick look packages:\e[0m"
+echo "Installing quick look packages:"
 brew install "${ql_packages[@]}"
 
-echo "\e[34mCleaning up and checking for problems:\e[0m"
+echo "Cleaning up and checking for problems:"
 brew cleanup -s && brew doctor
 
-echo "\e[34mDone.\e[0m"
+echo "Done."

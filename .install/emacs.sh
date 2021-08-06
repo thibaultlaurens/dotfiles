@@ -1,6 +1,6 @@
 #!/usr/bin/env/bash
 
-echo "\e[34mInstalling emacs:\e[0m"
+echo "Installing emacs:"
 brew install git ripgrep coreutils fd
 xcode-select --install
 
@@ -17,4 +17,4 @@ git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
 # Show potential issues on the system
 ~/.emacs.d/bin/doom doctor
 
-echo "\e[34mDone.\e[0m"
+echo "Done."
