@@ -1,7 +1,7 @@
 [user]
 	name = Thibault Laurens
 	email = thibault.laurens@pm.me
-	signingKey = 87CE04F5DF17DC3C
+	signingKey = 58EFB347
 
 [commit]
 	gpgsign = true
@@ -14,7 +14,7 @@
 	# Prevent CRLF to be written into the repo
 	autocrlf = input
 	# Path to the global .gitignore file
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.config/git/ignore
 	# Text viewer for git commands
 	pager = diff-so-fancy | less --tabs=4 -RFX
 
@@ -25,7 +25,7 @@
 
 # Always access github repos via SSH
 [url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+    insteadOf = https://github.com/
 
 [status]
 	# Show untracked files, directories and files in untracked directorie
