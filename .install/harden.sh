@@ -1,6 +1,6 @@
 #!/usr/bin/env/bash
 
-echo "applying basic mac os security..."
+echo "Applying basic mac os security:"
 
 ###############################################################################
 # Firewall                                                                    #
@@ -96,7 +96,9 @@ killAll Finder
 ###############################################################################
 
 cat "$@" <<'EOF'
-Done! Dont forget to:
+Done.
+
+Dont forget to:
 
 - create an administrator user account (for admin purposes only)
   -> System Preferences > Users & Group (strong pwd, no hint)
