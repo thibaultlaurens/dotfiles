@@ -80,11 +80,11 @@
        grammar             ; tasing grammar mistake every you make
 
        :tools
-       ansible             ; a crucible for infrastructure as code
+       ;; ansible          ; a crucible for infrastructure as code
        debugger            ; FIXME stepping through code, to help you add bugs
        ;;direnv            ; be direct about your environment
        (docker +lsp)       ; port everything to containers
-       editorconfig        ; let someone else argue about tabs vs spaces
+       ;; editorconfig     ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
        ;;gist              ; interacting with github gists
@@ -97,7 +97,7 @@
        ;;prodigy           ; FIXME managing external services & code builders
        rgb                 ; creating color strings
        ;;taskrunner        ; taskrunner for all your projects
-       terraform           ; infrastructure as code
+       ;; terraform        ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
 
