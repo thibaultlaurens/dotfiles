@@ -6,6 +6,7 @@ A bare git repository to store my dotfiles.
 
 ```sh
 # Clone the repo into a bare repository in $HOME
+# Warning: git will only work via SSH after this
 git clone --bare https://github.com/thibaultlaurens/dotfiles $HOME/.dotfiles
 
 # Define a "config" alias in the current shell scope
@@ -60,10 +61,11 @@ shellcheck -e SC1091,SC1090 $HOME/.install/*.sh
 │   ├── brew.sh
 │   ├── emacs.sh
 │   ├── go.sh
-│   ├── macos_harden.sh
-│   ├── macos_prefs.sh
+│   ├── gpg.sh
+│   ├── harden.sh
 │   ├── node.sh
-│   └── python.sh
+│   ├── python.sh
+│   └── shell.sh
 ├── .gitignore
 ├── .zshrc
 └── README.md
