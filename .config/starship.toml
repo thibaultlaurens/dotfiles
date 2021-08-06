@@ -17,7 +17,7 @@ read_only = " "
 truncate_to_repo = false
 style = "bold blue"
 
-[docker]
+[docker_context]
 symbol = " "
 
 [elixir]
@@ -38,9 +38,6 @@ style = "yellow"
 
 [golang]
 symbol = " "
-
-[haskell]
-symbol = " "
 
 [hg_branch]
 symbol = " "
