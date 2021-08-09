@@ -82,7 +82,7 @@ apps=(
   appcleaner
   balenaetcher
   bitwarden
-  # docker
+  docker
   firefox
   font-sauce-code-pro-nerd-font
   google-backup-and-sync
@@ -105,7 +105,6 @@ echo "Installing apps:"
 brew install --cask "${apps[@]}"
 
 ql_packages=(
-  qlcolorcode
   qlimagesize
   qlmarkdown
   qlprettypatch
