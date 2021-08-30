@@ -84,7 +84,7 @@ apps=(
   bitwarden
   docker
   firefox
-  font-sauce-code-pro-nerd-font
+  font-fira-code-nerd-font
   google-backup-and-sync
   handshaker
   keepassxc
@@ -99,6 +99,7 @@ apps=(
   transmission
   virtualbox
   vlc
+  zoom
 )
 
 echo "Installing apps:"
@@ -108,7 +109,6 @@ ql_packages=(
   qlimagesize
   qlmarkdown
   qlprettypatch
-  qlstephen
   qlvideo
   quicklook-csv
   quicklook-json
