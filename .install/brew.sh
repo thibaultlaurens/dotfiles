@@ -86,7 +86,7 @@ apps=(
   docker
   firefox
   font-fira-code-nerd-font
-  google-backup-and-sync
+  google-drive
   handshaker
   karabiner-elements
   keepassxc
