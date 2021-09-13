@@ -64,3 +64,8 @@ selection:
 # Paste with the mouse middle button
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
+
+key_bindings:
+  # Move cursor word by word
+  - { key: Right, mods: Command, chars: "\x1BF" }
+  - { key: Left, mods: Command, chars: "\x1BB" }

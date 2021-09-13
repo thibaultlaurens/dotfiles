@@ -23,6 +23,7 @@ packages=(
   aspell
   bandwhich
   bat
+  cmake
   coreutils
   ctop
   curl
@@ -87,6 +88,7 @@ apps=(
   font-fira-code-nerd-font
   google-backup-and-sync
   handshaker
+  karabiner-elements
   keepassxc
   little-snitch
   micro-snitch

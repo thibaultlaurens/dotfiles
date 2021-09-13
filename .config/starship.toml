@@ -1,3 +1,5 @@
+command_timeout = 5000
+
 [aws]
 symbol = " "
 
@@ -68,9 +70,6 @@ symbol = " "
 
 [perl]
 symbol = " "
-
-[php]
-symbol = " "
 
 [python]
 symbol = " "

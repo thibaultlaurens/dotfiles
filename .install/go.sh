@@ -25,7 +25,7 @@ go install 'golang.org/x/tools/gopls@latest' # used by emacs lsp layer
 go install 'mvdan.cc/sh/v3/cmd/shfmt@latest' # used by emacs fmt layer
 
 # Used by emacs golang layer
-go install 'github.com/mdempsky/gocode@latest'       # code completion & eldoc support
+go install 'github.com/mdempsky/gocode@latest'         # code completion & eldoc support
 go install 'golang.org/x/tools/cmd/godoc@latest'       # documentation lookup
 go install 'golang.org/x/tools/cmd/gorename@latest'    # refactoring
 go install 'github.com/x-motemen/gore/cmd/gore@latest' # repl
@@ -33,5 +33,6 @@ go install 'golang.org/x/tools/cmd/guru@latest'        # code navigation and ref
 go install 'golang.org/x/tools/cmd/goimports@latest'   # fmt on save and fix imports
 go install 'github.com/cweill/gotests/...@latest'      # generate test code
 go install 'github.com/fatih/gomodifytags@latest'      # tag manipulation
+go install 'github.com/golang/lint/golint@latest'      # go linter
 
 echo "Done."

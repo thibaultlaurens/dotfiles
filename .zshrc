@@ -148,7 +148,7 @@ alias mkdir="mkdir -pv"
 alias mv='mv -i'
 alias rm="rm -iv"
 alias tree="tree -aCF --dirsfirst -I '.git'"
-alias less="bat --theme=ansi-dark" # replace "less -FSRXc"
+alias less="bat --theme=ansi" # replace "less -FSRXc"
 alias ll="exa -abghlmFU --all --git"
 
 # Shortcuts
