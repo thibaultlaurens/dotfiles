@@ -110,7 +110,7 @@
 	news = !sh -c 'git logs $1@{1}..$1@{0} HEAD'
 
 	# Push HEAD on the origin remote
-	pu = push origin HEAD
+	pu = push --set-upstream origin HEAD
 
 	# Revert the last commit and put its changes in the index
 	resets = reset --soft HEAD^
@@ -129,6 +129,12 @@
 	
 	# Stash the working directory, the index and the untracked files
 	stash-all = stash save --include-untracked
+
+	# Update submodules
+	subupdate = submodule update --init --recursive
+
+	# Update tags
+	tagupdate = fetch --tags -f
 
 	# Show a graph of the commit logs
 	tree = log --graph --full-history --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(bold blue)[%an]%C(reset)'
