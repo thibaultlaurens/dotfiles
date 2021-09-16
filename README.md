@@ -52,6 +52,7 @@ shellcheck -e SC1091,SC1090 $HOME/.install/*.sh
 │   ├── git/
 │   ├── htop/
 │   ├── k9s/
+│   ├── karabiner/
 │   ├── procs/
 │   ├── ssh/
 │   ├── tmux/
