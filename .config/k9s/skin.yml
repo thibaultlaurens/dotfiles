@@ -1,0 +1,101 @@
+# OneDark presets
+foreground: &foreground "0xdfdfdf"
+background: &background "0x242730"
+black: &black "#242730"
+blue: &blue "#51afef"
+green: &green "#7bc275"
+grey: &grey "#dfdfdf"
+orange: &orange "#ffb86c"
+purple: &purple "#c57bdb"
+red: &red "#ff665c"
+yellow: &yellow "#fcce7b"
+yellow_bright: &yellow_bright "#d19a66"
+
+k9s:
+  body:
+    fgColor: *foreground
+    bgColor: *background
+    logoColor: *blue
+
+  prompt:
+    fgColor: *foreground
+    bgColor: *background
+    suggestColor: *blue
+
+  info:
+    fgColor: *blue
+    sectionColor: *foreground
+
+  dialog:
+    fgColor: *foreground
+    bgColor: *background
+    buttonFgColor: *foreground
+    buttonBgColor: *blue
+    buttonFocusFgColor: *yellow
+    buttonFocusBgColor: *blue
+    labelFgColor: *yellow
+    fieldFgColor: *foreground
+
+  frame:
+    border:
+      fgColor: *blue
+      focusColor: *blue
+    menu:
+      fgColor: *grey
+      keyColor: *yellow
+      numKeyColor: *yellow
+    crumbs:
+      fgColor: *black
+      bgColor: *blue
+      activeColor: *yellow
+    status:
+      newColor: *blue
+      modifyColor: *green
+      addColor: *grey
+      pendingColor: *orange
+      errorColor: *red
+      highlightcolor: *yellow
+      killColor: *red
+      completedColor: *grey
+    title:
+      fgColor: *blue
+      bgColor: *background
+      highlightColor: *yellow
+      counterColor: *foreground
+      filterColor: *blue
+
+  views:
+    table:
+      fgColor: *yellow
+      bgColor: *background
+      cursorFgColor: *black
+      cursorBgColor: *blue
+      markColor: *yellow
+      header:
+        fgColor: *grey
+        bgColor: *background
+        sorterColor: *yellow
+    logs:
+      fgColor: *grey
+      bgColor: *background
+      indicator:
+        fgColor: *blue
+        bgColor: *background
+    yaml:
+      keyColor: *blue
+      colonColor: *blue
+      valueColor: *yellow
+    charts:
+      bgColor: *background
+      defaultDialColors:
+        - *green
+        - *red
+      defaultChartColors:
+        - *green
+        - *red
+    xray:
+      fgColor: *blue
+      bgColor: *background
+      cursorColor: *foreground
+      graphicColor: *yellow
+      showIcons: false

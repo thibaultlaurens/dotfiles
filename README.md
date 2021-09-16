@@ -51,6 +51,7 @@ shellcheck -e SC1091,SC1090 $HOME/.install/*.sh
 │   ├── doom/
 │   ├── git/
 │   ├── htop/
+│   ├── k9s/
 │   ├── procs/
 │   ├── ssh/
 │   ├── tmux/
