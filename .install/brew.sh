@@ -94,7 +94,7 @@ apps=(
   micro-snitch
   protonmail-bridge
   protonvpn
-  spectacle
+  rectangle
   standard-notes
   stats
   tor-browser
