@@ -14,7 +14,7 @@
 	# Prevent CRLF to be written into the repo
 	autocrlf = input
 	# Path to the global .gitignore file
-	excludesfile = ~/.config/git/ignore
+	excludesfile = /Users/tlaurens/.config/git/ignore
 	# Text viewer for git commands
 	pager = diff-so-fancy | less --tabs=4 -RFX
 
