@@ -33,11 +33,16 @@ font:
   # Better font rendering for mac
   use_thin_strokes: true
 
+# If `true`, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors: true
+
 # Colors (Doom Vibrant)
 colors:
   primary:
     background: "0x242730"
     foreground: "0xdfdfdf"
+    dim_backgrounf: "0xdfdfdf"
+    bright_background: "0xdfdfdf"
   cursor:
     text: CellBackground
     cursor: "0x51afef"
@@ -46,6 +51,15 @@ colors:
     background: "0x3e4451"
   normal:
     black: "0x242730"
+    red: "0xff665c"
+    green: "0x7bc275"
+    yellow: "0xfcce7b"
+    blue: "0x51afef"
+    magenta: "0xc57bdb"
+    cyan: "0x5cefff"
+    white: "0xdfdfdf"
+  bright:
+    black: "0x979797"
     red: "0xff665c"
     green: "0x7bc275"
     yellow: "0xfcce7b"
