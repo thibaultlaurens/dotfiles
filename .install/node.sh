@@ -30,6 +30,7 @@ packages=(
   'stylelint'            # css linter
   'tern'                 # js analyzer
   'vmd'                  # preview markdown files
+  'pyright'              # static type checker for Python
 )
 
 echo "Installing node packages:"
