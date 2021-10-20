@@ -16,7 +16,7 @@ export LANG LANGUAGE LC_CTYPE LC_ALL
 export EDITOR="vim"
 
 # Set terminal emulator
-export TERM="xterm-256color"
+export TERM="screen-256color"
 
 # Set terminal for the gpg-agent
 export GPG_TTY=$(tty)
@@ -96,13 +96,6 @@ PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 # Add ~/bin to the PATH if it exists
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
 
-# Python
-PYENV_ROOT="$HOME/.pyenv"
-[ -d "$PYENV_ROOT/bin" ] && PATH="$PYENV_ROOT/bin:$PATH"
-if [ -x "$(command -v pyenv)" ]; then
-  eval "$(pyenv init --path)"
-fi
-
 # Golang
 GOPATH="$HOME/go"
 [ -d "$GOPATH/bin" ] && PATH="$GOPATH/bin:$PATH"
@@ -114,6 +107,9 @@ export NVM_DIR="$HOME/.nvm"
 
 # Doom emacs
 [ -d "$HOME/.emacs.d/bin" ] && PATH="$HOME/.emacs.d/bin:$PATH"
+
+# Replace BSD with GNU core utils
+PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 
 ##### ALIASES #####
 
@@ -140,23 +136,28 @@ alias chgrp='chgrp --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chown='chown --preserve-root'
 alias cp="cp -iv"
-alias df="df -Th"
+alias df="df -h"
 alias du="du -ach"
 alias grep='grep --color=auto'
 alias ln='ln -i'
 alias mkdir="mkdir -pv"
 alias mv='mv -i'
-alias rm="rm -iv"
+alias rm="rm -i"
 alias tree="tree -aCF --dirsfirst -I '.git'"
 alias less="bat --theme=ansi" # replace "less -FSRXc"
-alias ll="exa -abghlmFU --all --git"
+alias ll="exa -abghlmFU --all"
 
 # Shortcuts
 alias c="config"
 alias dc="docker compose"
 alias ddf="docker system df"
 alias h="history"
-alias t="tig"
+alias tg="tig"
+alias tm="tmux"
+
+# Python
+alias python="/usr/local/bin/python3"
+alias pip="/usr/local/bin/pip3"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
