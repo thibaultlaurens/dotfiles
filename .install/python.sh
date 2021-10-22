@@ -10,7 +10,6 @@ packages=(
   'pipenv'            # python development workflow for humans
   'pyflakes'          # checks python source files for errors
   'pytest'            # test python code
-  'pyright'           # static type checker
   'virtualenv'        # create isolated python environments
   'virtualenvwrapper' # extensions for virtualenv
   'yamllint'          # linter for YAML files
