@@ -117,7 +117,7 @@ PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 
 # Bare git repo config alias
 alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-alias config-lint="shellcheck -e SC1091,SC1090 $HOME/.install/*.sh"
+alias lint-config="shellcheck -e SC1091,SC1090 $HOME/.install/*.sh"
 
 # Reload the shell
 alias reload='exec $SHELL -l'
