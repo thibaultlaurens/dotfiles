@@ -113,9 +113,12 @@ PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 
 ##### ALIASES #####
 
-# bare git repo config alias
+# Bare git repo config alias
 alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias config-lint="shellcheck -e SC1091,SC1090 $HOME/.install/*.sh"
+
+# Reload the shell
+alias reload='exec $SHELL -l'
 
 # Navigation
 alias ..="cd .."
@@ -152,6 +155,7 @@ alias c="config"
 alias dc="docker compose"
 alias ddf="docker system df"
 alias h="history"
+alias r="reload"
 alias tg="tig"
 alias tm="tmux"
 
@@ -161,9 +165,6 @@ alias pip="/usr/local/bin/pip3"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
-
-# Reload the shell
-alias reload='exec $SHELL -l'
 
 # List all TCP/UDP ports
 alias ports='netstat -tulanp'
