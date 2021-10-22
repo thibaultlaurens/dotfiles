@@ -3,7 +3,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-##### EXPORT #####
+### EXPORT #####################################################################
 
 # Proper locale
 : "$LANG:=\"en_US.UTF-8\""
@@ -28,7 +28,14 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 export VIMDOTDIR="$XDG_CONFIG_HOME/vim"
 
-##### OH MY ZSH #####
+# Set brew options
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_INSECURE_REDIRECT=1
+
+# Add cli colors
+export CLICOLOR=1
+
+### OH MY ZSH ##################################################################
 
 # Path to oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -47,9 +54,10 @@ HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
     alias-finder
+    autoupdate
+    colored-man-pages
     docker
     docker-compose
-    colored-man-pages
     extract
     git
     git-auto-fetch
@@ -74,17 +82,12 @@ source $ZSH/oh-my-zsh.sh
 # load zmv function
 autoload zmv
 
-##### USER CONFIG #####
+### USER CONFIG ################################################################
 
 # Basics
 : "${HOME:=~}"
 : "${LOGNAME:=$(id -un)}"
 : "${UNAME=$(uname)}"
-
-# Swap greadlink for readlink on macos..
-if [[ $(uname) == "Darwin" ]]; then
-  alias readlink="greadlink"
-fi
 
 # Complete hostnames from this file
 : "${HOSTFILE=~/.ssh/known_hosts}"
@@ -101,9 +104,8 @@ GOPATH="$HOME/go"
 [ -d "$GOPATH/bin" ] && PATH="$GOPATH/bin:$PATH"
 [ -d "/usr/local/go/bin" ] && PATH="/usr/local/go/bin:$PATH"
 
-# Node
-export NVM_DIR="$HOME/.nvm"
-[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
+# Ruby
+[ -d "/usr/local/opt/ruby/bin" ] && PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # Doom emacs
 [ -d "$HOME/.emacs.d/bin" ] && PATH="$HOME/.emacs.d/bin:$PATH"
@@ -111,7 +113,7 @@ export NVM_DIR="$HOME/.nvm"
 # Replace BSD with GNU core utils
 PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 
-##### ALIASES #####
+### ALIASES ####################################################################
 
 # Bare git repo config alias
 alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
@@ -142,13 +144,14 @@ alias cp="cp -iv"
 alias df="df -h"
 alias du="du -ach"
 alias grep='grep --color=auto'
+alias less="bat --theme=ansi" # replace "less -FSRXc"
+alias ll="exa -abghlmFU --all"
 alias ln='ln -i'
 alias mkdir="mkdir -pv"
 alias mv='mv -i'
+alias ps="ps -ef"
 alias rm="rm -i"
 alias tree="tree -aCF --dirsfirst -I '.git'"
-alias less="bat --theme=ansi" # replace "less -FSRXc"
-alias ll="exa -abghlmFU --all"
 
 # Shortcuts
 alias c="config"
@@ -173,7 +176,19 @@ alias ports='netstat -tulanp'
 alias wanip='dig @resolver1.opendns.com A myip.opendns.com +short -4'
 alias wanip6='dig @resolver1.opendns.com AAAA myip.opendns.com +short -6'
 
-##### FUNCTIONS #####
+# Copy pwd
+alias pwdcopy="pwd | tr -d '\n' | pbcopy"
+
+# IP address
+alias myip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\  -f2"
+
+# Lock the screen
+alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
+
+# Restart dns
+alias restart_dns="sudo killall -9 mDNSResponder"
+
+### FUNCTIONS ##################################################################
 
 # Makes a new dir and cd into it
 cdmk() { echo "DEPRECATED: use \"take\" command instead" && take $1; }
@@ -195,6 +210,33 @@ unpack() {
     echo "No directory supplied. \nUsage: $funcstack[1] directory-path.tar.bz2"
   else
     tar xjf "$1"
+  fi
+}
+
+# Empty the trash on all mounted volumes, the main hdd and clear system logs
+rm_trashes() {
+  sudo rm -rfv /Volumes/*/.Trashes &&
+    sudo rm -rfv ~/.Trash &&
+    sudo rm -rfv /private/var/log/asl/*.asl
+}
+
+# Homebrew update / upgrade
+brew_updater() {
+  brew update &&
+    brew upgrade &&
+    brew autoremove &&
+    brew cleanup -s &&
+    brew doctor
+}
+
+# Upgrade packages installed without package management
+custom_updater() {
+  [ -s "$HOME/.install/node.sh" ] && \. "$HOME/.install/node.sh"
+  [ -s "$HOME/.install/python.sh" ] && \. "$HOME/.install/python.sh"
+  [ -s "$HOME/.install/go.sh" ] && \. "$HOME/.install/go.sh"
+
+  if typeset -f omz >/dev/null; then
+    omz update
   fi
 }
 
@@ -238,64 +280,9 @@ git_archive_all() {
   fi
 }
 
-# Upgrade packages installed without package management
-custom_updater() {
-  [ -s "$HOME/.install/node.sh" ] && \. "$HOME/.install/node.sh"
-  [ -s "$HOME/.install/python.sh" ] && \. "$HOME/.install/python.sh"
-  [ -s "$HOME/.install/go.sh" ] && \. "$HOME/.install/go.sh"
+### MISC #######################################################################
 
-  if typeset -f omz >/dev/null; then
-    omz update
-  fi
-
-  echo "\e[34mDone.\e[0m"
-}
-
-# OSX specific
-if [[ $(uname) == "Darwin" ]]; then
-  # Replace osx ruby binaries
-  PATH="/usr/local/opt/ruby/bin:$PATH"
-
-  # Setup brew
-  export HOMEBREW_NO_ANALYTICS=1
-  export HOMEBREW_NO_INSECURE_REDIRECT=1
-
-  # Add cli colors
-  export CLICOLOR=1
-
-  # Better ps
-  alias ps="ps -ef"
-
-  # Copy pwd
-  alias pwdcopy="pwd | tr -d '\n' | pbcopy"
-
-  # IP address
-  alias myip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\  -f2"
-
-  # Lock the screen
-  alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
-
-  # Restart dns
-  alias restart-dns="sudo killall -9 mDNSResponder"
-
-  # Empty the trash on all mounted volumes, the main hdd and clear system logs
-  rm_trashes() {
-    sudo rm -rfv /Volumes/*/.Trashes &&
-      sudo rm -rfv ~/.Trash &&
-      sudo rm -rfv /private/var/log/asl/*.asl
-  }
-
-  # Homebrew update / upgrade
-  brew_updater() {
-    brew update &&
-      brew upgrade &&
-      brew autoremove &&
-      brew cleanup -s &&
-      brew doctor
-  }
-fi
-
-# Source zshrc dedicated to work environment
+# Source .zshrc dedicated to work environment
 if [ -f "$HOME/work/.zshrc" ]; then
   source "$HOME/work/.zshrc"
 fi
@@ -303,6 +290,6 @@ fi
 # reload zsh completion
 autoload -U compinit && compinit
 
-##### PROMPT #####
-
-eval "$(starship init zsh)"
+if [ -f "/usr/local/bin/starship" ]; then
+  eval "$(starship init zsh)"
+fi

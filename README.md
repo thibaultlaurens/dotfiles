@@ -67,7 +67,7 @@ shellcheck -e SC1091,SC1090 $HOME/.install/*.sh
 │   ├── harden.sh
 │   ├── node.sh
 │   ├── python.sh
-│   └── shell.sh
+│   └── zsh.sh
 ├── .gitignore
 ├── .zshrc
 └── README.md

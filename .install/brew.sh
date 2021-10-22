@@ -61,7 +61,8 @@ packages=(
   openssl
   pinentry-mac
   procs
-  rg
+  ripgrep
+  ruby
   shellcheck
   tealdeer
   tig
@@ -80,14 +81,12 @@ apps=(
   adapter
   adobe-creative-cloud
   alacritty
-  appcleaner
   balenaetcher
   bitwarden
   docker
   firefox
   font-fira-code-nerd-font
   google-drive
-  handshaker
   karabiner-elements
   keepassxc
   little-snitch
@@ -96,6 +95,7 @@ apps=(
   protonvpn
   rectangle
   standard-notes
+  starship
   stats
   tor-browser
   transmission

@@ -1,24 +1,6 @@
 #!/usr/bin/env/bash
 
-export NVM_DIR="$HOME/.nvm"
-
-# Install or update nvm
-if [ ! "$(command -v nvm)" ]; then
-  echo "Installing nvm:"
-  brew install nvm
-else
-  echo "Upgrading nvm:"
-  brew upgrade nvm
-fi
-
-# Load NVM
-[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
-
-# Install node
-echo "Installing node:"
-nvm install 16.5.0
-nvm alias default v16.5.0
-nvm use default
+brew install node
 
 packages=(
   'bash-language-server' # a language server for Bash

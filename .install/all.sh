@@ -9,8 +9,8 @@ xcode-select --install
 # Install packages
 source "$HOME/.install/brew.sh"
 
-# Setup shell and gpg
-source "$HOME/.install/shell.sh"
+# Setup zsh and gpg
+source "$HOME/.install/zsh.sh"
 source "$HOME/.install/gpg.sh"
 
 # Install programming languages
