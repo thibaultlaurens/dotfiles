@@ -22,6 +22,7 @@ packages=(
   ag
   aspell
   bandwhich
+  bash
   bat
   cmake
   coreutils

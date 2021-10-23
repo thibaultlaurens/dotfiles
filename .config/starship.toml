@@ -35,6 +35,7 @@ style = "yellow"
 only_detached = false
 tag_disabled = false
 style = "yellow"
+disabled = true
 
 [git_metrics]
 disabled = false

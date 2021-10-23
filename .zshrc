@@ -50,37 +50,58 @@ ENABLE_CORRECTION="false"
 DISABLE_AUTO_TITLE="true"
 
 # Change the command execution time stamp shown in the history command output
-HIST_STAMPS="yyyy-mm-dd"
+HIST_STAMPS="dd.mm.yyyy"
+
+# Skip duplicates in Ctrl+r search
+setopt HIST_FIND_NO_DUPS
 
 plugins=(
-    alias-finder
-    autoupdate
-    colored-man-pages
-    docker
-    docker-compose
-    extract
-    git
-    git-auto-fetch
-    gnu-utils
-    gpg-agent
-    history
-    last-working-dir
-    pass
-    sudo
-    zsh-autosuggestions
-    zsh-completions
-    zsh-interactive-cd
-    zsh-syntax-highlighting
+  alias-finder            # check if there is an alias defined for the command
+  autoupdate              # automatically update custom-plugins
+  colored-man-pages       # add colors to man pages
+  docker                  # auto-completion for docker
+  docker-compose          # auto-completion for docker-compose
+  extract                 # an extract function that supports a lot of filetypes
+  gpg-agent               # start gpg-agent if its not running
+  history                 # aliases for history command
+  last-working-dir        # new shell jumps into last used dir
+  sudo                    # prefix current or previous commands with sudo (press esc twice)
+  zsh-autosuggestions     # autosuggestions for zsh
+  zsh-completions         # additional completion definitions for zZsh
+  zsh-interactive-cd      # interactive tab completion for the cd command
+  zsh-syntax-highlighting # syntax highlighting for zsh
+  tmux                    # aliases and zsh integrationfor tmux
 )
 
-# enable option-stacking for docker
+# Automatically starts tmux
+ZSH_TMUX_AUTOSTART=true
+
+# Set tmux configuration path
+ZSH_TMUX_CONFIG="$HOME/.config/tmux/tmux.conf"
+
+# Check for aliases on each command
+ZSH_ALIAS_FINDER_AUTOMATIC=true
+
+# Enable option-stacking for docker (i.e docker run -it <TAB>)
 zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 source $ZSH/oh-my-zsh.sh
 
-# load zmv function
+# Load zmv function
 autoload zmv
+
+# Source .zshrc dedicated to work environment
+if [ -f "$HOME/work/.zshrc" ]; then
+  source "$HOME/work/.zshrc"
+fi
+
+# Reload zsh completion
+autoload -U compinit && compinit
+
+if [ -f "/usr/local/bin/starship" ]; then
+  eval "$(starship init zsh)"
+fi
 
 ### USER CONFIG ################################################################
 
@@ -122,12 +143,6 @@ alias lint-config="shellcheck -e SC1091,SC1090 $HOME/.install/*.sh"
 # Reload the shell
 alias reload='exec $SHELL -l'
 
-# Navigation
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-
 # Quick cd
 alias dl="cd ~/Downloads"
 alias dm="cd ~/Documents"
@@ -155,9 +170,7 @@ alias tree="tree -aCF --dirsfirst -I '.git'"
 
 # Shortcuts
 alias c="config"
-alias dc="docker compose"
 alias ddf="docker system df"
-alias h="history"
 alias r="reload"
 alias tg="tig"
 alias tm="tmux"
@@ -279,17 +292,3 @@ git_archive_all() {
     fd -td -d 1 -x bash -c "git -C {} archive --output=../{/}.tar.gz --format=tar HEAD" ';' . $1
   fi
 }
-
-### MISC #######################################################################
-
-# Source .zshrc dedicated to work environment
-if [ -f "$HOME/work/.zshrc" ]; then
-  source "$HOME/work/.zshrc"
-fi
-
-# reload zsh completion
-autoload -U compinit && compinit
-
-if [ -f "/usr/local/bin/starship" ]; then
-  eval "$(starship init zsh)"
-fi

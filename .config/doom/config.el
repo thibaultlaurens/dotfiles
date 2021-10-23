@@ -211,13 +211,9 @@
 ;;
 ;;; SH ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Set sh formatter
-(after! format-all
+;; Set sh formatter to always use bash (fix zsh array error)
+(after! sh-script
   (set-formatter! 'shfmt
-    '("shfmt"
-      "-i" "2"
-      ;; Mode selection copied from the default config
-      ("-ln" "%s" (cl-case (and (boundp 'sh-shell) (symbol-value 'sh-shell))
-                    (bash "bash") (mksh "mksh") (t "posix"))))
-    :modes 'sh-mode))
-
+    '("shfmt" "-ci"
+      ("-i" "%d" (unless indent-tabs-mode tab-width))
+      ("-ln" "bash"))))
