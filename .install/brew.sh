@@ -41,7 +41,6 @@ packages=(
   gnu-sed
   gnu-tar
   gnupg
-  gpg2
   gping
   graphviz
   grep
