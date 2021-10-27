@@ -61,8 +61,8 @@ plugins=(
   colored-man-pages       # add colors to man pages
   docker                  # auto-completion for docker
   docker-compose          # auto-completion for docker-compose
+  emacs                   # aliases for emacs, set EDITOR, quickly open frames with emacs daemon
   extract                 # an extract function that supports a lot of filetypes
-  gpg-agent               # start gpg-agent if its not running
   history                 # aliases for history command
   last-working-dir        # new shell jumps into last used dir
   sudo                    # prefix current or previous commands with sudo (press esc twice)
@@ -91,11 +91,6 @@ source $ZSH/oh-my-zsh.sh
 # Load zmv function
 autoload zmv
 
-# Source .zshrc dedicated to work environment
-if [ -f "$HOME/work/.zshrc" ]; then
-  source "$HOME/work/.zshrc"
-fi
-
 # Reload zsh completion
 autoload -U compinit && compinit
 
@@ -114,8 +109,14 @@ fi
 : "${HOSTFILE=~/.ssh/known_hosts}"
 
 # Base Path
-PATH="/usr/sbin:/usr/bin:/sbin:/bin"
+PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+# Ruby
+[ -d "/usr/local/opt/ruby/bin" ] && PATH="/usr/local/opt/ruby/bin:$PATH"
+
+# Replace BSD with GNU core utils
+PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 
 # Add ~/bin to the PATH if it exists
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
@@ -125,14 +126,15 @@ GOPATH="$HOME/go"
 [ -d "$GOPATH/bin" ] && PATH="$GOPATH/bin:$PATH"
 [ -d "/usr/local/go/bin" ] && PATH="/usr/local/go/bin:$PATH"
 
-# Ruby
-[ -d "/usr/local/opt/ruby/bin" ] && PATH="/usr/local/opt/ruby/bin:$PATH"
-
 # Doom emacs
 [ -d "$HOME/.emacs.d/bin" ] && PATH="$HOME/.emacs.d/bin:$PATH"
 
-# Replace BSD with GNU core utils
-PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
+# Source .zshrc dedicated to work environment
+if [ -f "$HOME/work/.zshrc" ]; then
+  source "$HOME/work/.zshrc"
+fi
+
+export PATH
 
 ### ALIASES ####################################################################
 
