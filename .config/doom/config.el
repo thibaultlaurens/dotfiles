@@ -105,7 +105,7 @@
  evil-vsplit-window-right t
 
  ;; Don’t move back the cursor when exiting insert mode
- evil-move-cursor-back nil
+ ;; evil-move-cursor-back nil
 
  ;; Implicit /g flag on evil ex substitution.
  evil-ex-substitute-global t
@@ -165,7 +165,7 @@
 ;; Open vertico when splitting the window so we can select a buffer
 (defadvice! prompt-for-buffer (&rest _)
   :after '(evil-window-split evil-window-vsplit)
-  (+vertico/switch-workspace-buffer))
+  (+vertico/find-file-in))
 
 ;; Assign window number 0 to neotree
 (defun winum-assign-0-to-neotree ()
@@ -206,6 +206,12 @@
 
 ;; Use prettier instead of yaml-lsp
 (setq-hook! 'yaml-mode-hook +format-with-lsp nil)
+
+;; Add jsonnet support
+(use-package! jsonnet-mode
+  :defer t
+  :config
+  (set-electric! 'jsonnet-mode :chars '(?\n ?: ?{ ?})))
 
 ;;
 ;;; SH ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
