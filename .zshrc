@@ -61,7 +61,6 @@ plugins=(
   colored-man-pages       # add colors to man pages
   docker                  # auto-completion for docker
   docker-compose          # auto-completion for docker-compose
-  emacs                   # aliases for emacs, set EDITOR, quickly open frames with emacs daemon
   extract                 # an extract function that supports a lot of filetypes
   history                 # aliases for history command
   last-working-dir        # new shell jumps into last used dir
