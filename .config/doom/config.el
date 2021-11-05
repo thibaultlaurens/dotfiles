@@ -71,7 +71,7 @@
 
 
 ;; Set frame title with file path and major mode
-(setq-default frame-title-format '("%f [%m]"))
+;; (setq-default frame-title-format '("%f [%m]"))
 
 ;;
 ;;; FILES / BUFFERS / TEXT ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -93,6 +93,9 @@
 ;; Replace selection when inserting text
 (delete-selection-mode t)
 
+;; enable word-wrap (almost) everywhere
+(+global-word-wrap-mode t)
+
 ;;
 ;;; EVIL ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -105,7 +108,7 @@
  evil-vsplit-window-right t
 
  ;; Don’t move back the cursor when exiting insert mode
- ;; evil-move-cursor-back nil
+ evil-move-cursor-back nil
 
  ;; Implicit /g flag on evil ex substitution.
  evil-ex-substitute-global t
@@ -212,6 +215,16 @@
   :defer t
   :config
   (set-electric! 'jsonnet-mode :chars '(?\n ?: ?{ ?})))
+
+;;
+;;; SH ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Use goimports instead of gofmt on save
+(after! go-mode
+  (setq gofmt-command "goimports")
+  (add-hook 'go-mode-hook
+            (lambda ()
+              (add-hook 'after-save-hook 'gofmt nil 'make-it-local))))
 
 ;;
 ;;; SH ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
