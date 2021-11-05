@@ -20,6 +20,7 @@ brew tap homebrew/cask-fonts
 
 packages=(
   ag
+  alfred
   aspell
   bandwhich
   bash
@@ -44,6 +45,7 @@ packages=(
   gping
   graphviz
   grep
+  grip
   gzip
   htop
   httpie
