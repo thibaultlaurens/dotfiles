@@ -94,6 +94,9 @@ autoload zmv
 autoload -U compinit && compinit
 
 if [ -f "/usr/local/bin/starship" ]; then
+  # Hide warnings (i.e git timeout)
+  export STARSHIP_LOG=error
+
   eval "$(starship init zsh)"
 fi
 
@@ -172,6 +175,7 @@ alias tree="tree -aCF --dirsfirst -I '.git'"
 # Shortcuts
 alias c="config"
 alias ddf="docker system df"
+alias g="git"
 alias r="reload"
 alias tg="tig"
 alias tm="tmux"
