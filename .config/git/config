@@ -34,7 +34,11 @@
 [pull]
 	# Keep local commits on top of the tree
 	rebase = true
-	
+
+[push]
+	# Update a branch with same name on remote
+	default = current
+
 [rebase]
 	# Stash and pop uncommitted changes on rebase
 	autoStash = true
@@ -56,6 +60,9 @@
 	meta = yellow bold
 	old = red
 	new = green
+
+[blame]
+	coloring = highlightRecent
 
 [help]
 	# Correct and execute mistyped commands
@@ -119,7 +126,7 @@
 	rmlbs = "!f() { git branch | grep -v "master" | grep -v "^*" | xargs git branch -d; }; f"
 
 	# Remove a remote branch
-	rmrb = "push origin -d"
+	rmrb = push origin -d
 
 	# Grep the given pattern in tracked files with line numbers and context
 	search = grep -n -C 1

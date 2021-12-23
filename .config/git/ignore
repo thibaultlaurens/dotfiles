@@ -4,10 +4,8 @@
 *.pyo
 *.so
 
-# Logs and databases 
+# Logs
 *.log
-*.sql
-*.sqlite
 
 # Temporary files
 *#
