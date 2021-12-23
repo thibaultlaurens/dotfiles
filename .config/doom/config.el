@@ -121,8 +121,8 @@
 (setq-default vc-follow-symlinks t)
 
 (after! magit
-  (setq magit-repository-directories '(("~/git" . 2)
-                                       ("~/code" . 2))
+  (setq magit-repository-directories '(("~/git" . 3)
+                                       ("~/code" . 3))
         magit-save-repository-buffers nil
         ;; Don't restore the wconf after quitting magit
         magit-inhibit-save-previous-winconf t
@@ -217,14 +217,13 @@
   (set-electric! 'jsonnet-mode :chars '(?\n ?: ?{ ?})))
 
 ;;
-;;; SH ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; GOLANG ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Use goimports instead of gofmt on save
-(after! go-mode
-  (setq gofmt-command "goimports")
-  (add-hook 'go-mode-hook
-            (lambda ()
-              (add-hook 'after-save-hook 'gofmt nil 'make-it-local))))
+;; Set up before-save hooks to format buffer and add/delete imports.
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
 ;;
 ;;; SH ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
