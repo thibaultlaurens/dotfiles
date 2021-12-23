@@ -9,8 +9,8 @@ charging_symbol = ""
 discharging_symbol = ""
 
 [character]
-success_symbol = "[❯](bold blue)"
-error_symbol = "[❯](bold red)"
+success_symbol = "%{%G[❯](bold blue)%}"
+error_symbol = "%{%G[❯](bold red)%}"
 
 [directory]
 read_only = " "
