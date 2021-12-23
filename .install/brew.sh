@@ -47,6 +47,7 @@ packages=(
   grep
   grip
   gzip
+  hadolint
   htop
   httpie
   hugo
