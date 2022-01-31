@@ -69,7 +69,8 @@ colors:
     white: "0xdfdfdf"
 
 # Disable transparency
-background_opacity: 1.0
+window:
+  opacity: 1.0
 
 selection:
   # Copy selected text to the primary clipboard.

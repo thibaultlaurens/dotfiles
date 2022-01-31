@@ -33,6 +33,6 @@ go install 'golang.org/x/tools/cmd/guru@latest'        # code navigation and ref
 go install 'golang.org/x/tools/cmd/goimports@latest'   # fmt on save and fix imports
 go install 'github.com/cweill/gotests/...@latest'      # generate test code
 go install 'github.com/fatih/gomodifytags@latest'      # tag manipulation
-go install 'github.com/golang/lint/golint@latest'      # go linter
+go install 'github.com/golang/x/golint@latest'         # go linter
 
 echo "Done."

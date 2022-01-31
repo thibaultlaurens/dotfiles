@@ -94,6 +94,9 @@
 
 	# Count the number of lines that matched a given pattern in tracked files
 	count = grep -c
+
+	# Return the current branch
+	current-branch = branch --show-current
 	
 	# Show changes not added to the index
 	df = diff --patch-with-stat
