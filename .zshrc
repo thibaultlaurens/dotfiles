@@ -297,3 +297,4 @@ git_archive_all() {
     fd -td -d 1 -x bash -c "git -C {} archive --output=../{/}.tar.gz --format=tar HEAD" ';' . $1
   fi
 }
+

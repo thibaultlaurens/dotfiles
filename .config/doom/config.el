@@ -30,6 +30,7 @@
 
 (setq
  doom-theme 'doom-vibrant
+ doom-themes-treemacs-theme "doom-colors"
 
  doom-font (font-spec :family "FiraCode Nerd Font" :size 13)
  doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font" :size 13)
@@ -147,20 +148,35 @@
     (projectile-save-known-projects)))
 
 ;;
-;;; NEOTREE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; TREEMACS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Neotree evil mode key bindings
-(add-hook 'neotree-mode-hook
-        (lambda ()
-        (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
-        (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-quick-look)
-        (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
-        (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
-        (define-key evil-normal-state-local-map (kbd "R") 'neotree-refresh)
-        (define-key evil-normal-state-local-map (kbd "n") 'neotree-next-line)
-        (define-key evil-normal-state-local-map (kbd "p") 'neotree-previous-line)
-        (define-key evil-normal-state-local-map (kbd "A") 'neotree-stretch-toggle)
-        (define-key evil-normal-state-local-map (kbd "H") 'neotree-hidden-file-toggle)))
+(with-eval-after-load 'treemacs
+  (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
+
+  ;; disable git mode (until auto-refresh is supported)
+  (treemacs-git-mode -1)
+
+  ;; <RET> to open in most recently used window
+  (treemacs-define-RET-action 'file-node-open   #'treemacs-visit-node-in-most-recently-used-window)
+  (treemacs-define-RET-action 'file-node-closed #'treemacs-visit-node-in-most-recently-used-window)
+
+  (set-face-attribute 'treemacs-root-face nil
+                      :height 1.0
+                      :weight 'bold)
+
+  (setq treemacs-indentation 1
+        treemacs-width 32
+        treemacs-follow-after-init t
+        treemacs-recenter-after-file-follow t
+        treemacs-show-hidden-files t
+        treemacs-is-never-other-window t))
+
+
+;; Make Treemacs accessible as Window #0
+(after! (treemacs winum)
+    (setq winum-ignored-buffers-regexp
+          (delete (regexp-quote (format "%sFramebuffer-" treemacs--buffer-name-prefix))
+                  winum-ignored-buffers-regexp)))
 
 ;;
 ;;; WINUM ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -170,16 +186,11 @@
   :after '(evil-window-split evil-window-vsplit)
   (+vertico/find-file-in))
 
-;; Assign window number 0 to neotree
-(defun winum-assign-0-to-neotree ()
-  (when (string-match-p (buffer-name) ".*\\NeoTree\\*.*") 10))
-
 ;; SPC-<number> to select windows
 (after! winum
-  (add-to-list 'winum-assign-functions #'winum-assign-0-to-neotree)
   (map! (:when (featurep! :ui window-select)
          :leader
-         :n "0" #'winum-select-window-0-or-10
+         :n "0" #'treemacs-select-window
          :n "1" #'winum-select-window-1
          :n "2" #'winum-select-window-2
          :n "3" #'winum-select-window-3

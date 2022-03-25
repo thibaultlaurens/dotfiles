@@ -38,6 +38,7 @@
 [push]
 	# Update a branch with same name on remote
 	default = current
+	useForceIfIncludes = true
 
 [rebase]
 	# Stash and pop uncommitted changes on rebase
@@ -72,8 +73,11 @@
 	# List all the git aliases
 	aliases = !sh -c 'git config --get-regexp '^alias\\.' | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | sort'
 	
+	# Update latest commit message
+	amend = commit --amend 
+
 	# Add the currently staged files to the latest commit
-	amend = commit --amend --reuse-message=HEAD
+	amend-with-staged = commit --amend --reuse-message=HEAD
 
 	# Show a list of the remote branches authors name, email and creation date
 	authors = "! for branch in `git branch -r | grep -v /HEAD`; \
@@ -142,6 +146,9 @@
 
 	# Update submodules
 	subupdate = submodule update --init --recursive
+
+	# List tags and sort them by version number
+	tags = tag -l --sort=version:refname
 
 	# Update tags
 	tagupdate = fetch --tags -f
