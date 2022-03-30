@@ -91,8 +91,8 @@ apps=(
   font-fira-code-nerd-font
   google-drive
   karabiner-elements
-  keepassxc
   little-snitch
+  macpass
   micro-snitch
   protonmail-bridge
   protonvpn
