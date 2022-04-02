@@ -39,6 +39,7 @@ set wildmenu
 let base16colorspace=256
 set t_Co=256                    " 256 colors
 silent! colorscheme nord
+highlight Visual ctermbg=DarkGrey
 
 " ================ Indentation =======================
 
