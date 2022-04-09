@@ -65,11 +65,13 @@ plugins=(
   history                 # aliases for history command
   last-working-dir        # new shell jumps into last used dir
   sudo                    # prefix current or previous commands with sudo (press esc twice)
+  tmux                    # aliases and zsh integrationfor tmux
   zsh-autosuggestions     # autosuggestions for zsh
   zsh-completions         # additional completion definitions for zZsh
   zsh-interactive-cd      # interactive tab completion for the cd command
   zsh-syntax-highlighting # syntax highlighting for zsh
-  tmux                    # aliases and zsh integrationfor tmux
+  # must be declared after zsh-syntax-highlighting
+  zsh-history-substring-search # zsh port of fish history search
 )
 
 # Automatically starts tmux
@@ -86,6 +88,14 @@ zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 source $ZSH/oh-my-zsh.sh
+
+# zsh-syntax-highlighting configuration
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=green,fg=white,bold'
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=red,fg=white,bold'
+
+# bind UP and DOWN arrow keys to history-substring-search
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
 
 # Load zmv function
 autoload zmv
@@ -297,4 +307,3 @@ git_archive_all() {
     fd -td -d 1 -x bash -c "git -C {} archive --output=../{/}.tar.gz --format=tar HEAD" ';' . $1
   fi
 }
-
