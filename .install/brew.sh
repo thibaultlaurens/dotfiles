@@ -100,7 +100,6 @@ apps=(
   standard-notes
   starship
   stats
-  tor-browser
   transmission
   virtualbox
   vlc
