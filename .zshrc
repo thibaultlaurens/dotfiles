@@ -217,7 +217,7 @@ alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
 alias restart_dns="sudo killall -9 mDNSResponder"
 
 # Convert all flac files to mp3 files
-alias flac_to_mp3="find . -name "*.flac" -exec ffmpeg -i {} -ab 320k -map_metadata 0 -id3v2_version 3 {}.mp3 \;"
+alias flac_to_mp3="find . -name '*.flac' -exec ffmpeg -i {} -ab 320k -map_metadata 0 -id3v2_version 3 {}.mp3 \;"
 
 ### FUNCTIONS ##################################################################
 
