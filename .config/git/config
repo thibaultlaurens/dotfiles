@@ -148,7 +148,7 @@
 	subupdate = submodule update --init --recursive
 
 	# List tags and sort them by version number
-	tags = tag -l --sort=version:refname
+	tags = tag -l --sort=-version:refname
 
 	# Update tags
 	tagupdate = fetch --tags -f
