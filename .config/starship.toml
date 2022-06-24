@@ -9,8 +9,8 @@ charging_symbol = ""
 discharging_symbol = ""
 
 [character]
-success_symbol = "%{%G[❯](bold blue)%}"
-error_symbol = "%{%G[❯](bold red)%}"
+success_symbol = "[❯](bold blue)"
+error_symbol = "[❯](bold red)"
 
 [directory]
 read_only = " "
@@ -25,6 +25,9 @@ symbol = " "
 
 [elm]
 symbol = " "
+
+[gcloud]
+disabled = true
 
 [git_branch]
 symbol = " "
@@ -57,7 +60,7 @@ symbol = " "
 [kubernetes]
 disabled = false
 style = "cyan"
-format = '[$symbol$context( \($namespace\))]($style) in '
+format = '[$symbol$context]($style) in '
 
 [memory_usage]
 symbol = " "
