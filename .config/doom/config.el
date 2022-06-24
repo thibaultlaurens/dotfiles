@@ -25,6 +25,7 @@
 
 ;; Default location for org files
 (setq org-directory "~/org/")
+
 ;;
 ;;; UI ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
