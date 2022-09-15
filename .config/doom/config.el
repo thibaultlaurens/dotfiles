@@ -45,6 +45,9 @@
 
  ;; Add a margin when scrolling vertically
  scroll-margin 5
+
+ ;; Stretch cursor to the glyph width
+ x-stretch-cursor t
  )
 
 ;; Disable the custom scroll-margin in term-mode
@@ -53,16 +56,23 @@
 ;; Prevents some cases of Emacs flickering
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 
-;; Display time and battery info in the modeline
-(after! doom-modeline
-  (display-time-mode t)
-  (display-battery-mode t))
-
 ;; Turn on 80th column indicator for all files
 (add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
 
 ;; Blink visible cursor
 (blink-cursor-mode 'visible-cursor)
+
+;; Add padding to the right of the modeline
+(after! doom-modeline
+  (doom-modeline-def-modeline 'main
+   '(bar workspace-name window-number modals matches follow buffer-info remote-host buffer-position word-count parrot selection-info)
+   '(objed-state misc-info persp-name battery grip irc mu4e gnus github debug repl lsp minor-modes input-method indent-info buffer-encoding major-mode process vcs checker "  ")))
+
+;; Mode line customization
+(after! doom-modeline
+  (setq doom-modeline-bar-width 4
+        doom-modeline-major-mode-icon t
+        doom-modeline-major-mode-color-icon t))
 
 ;; Only show the encoding in the nmodeline when it't not UTF-8
 (defun doom-modeline-conditional-buffer-encoding ()
@@ -71,9 +81,16 @@
                           (eq buffer-file-coding-system 'utf-8)))))
 (add-hook 'after-change-major-mode-hook #'doom-modeline-conditional-buffer-encoding)
 
+;; Custom splash image
+(setq fancy-splash-image (expand-file-name "assets/emacs-e.svg" doom-user-dir))
+
+;; Which key idle delay
+(setq which-key-idle-delay 0.5 ;; Default is 1.0
+      which-key-idle-secondary-delay 0.05) ;; Default is nil
 
 ;; Set frame title with file path and major mode
 ;; (setq-default frame-title-format '("%f [%m]"))
+
 
 ;;
 ;;; FILES / BUFFERS / TEXT ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -185,7 +202,7 @@
 ;; Open vertico when splitting the window so we can select a buffer
 (defadvice! prompt-for-buffer (&rest _)
   :after '(evil-window-split evil-window-vsplit)
-  (+vertico/find-file-in))
+  (consult-buffer))
 
 ;; SPC-<number> to select windows
 (after! winum
