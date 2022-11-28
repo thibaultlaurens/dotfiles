@@ -190,6 +190,10 @@ alias r="reload"
 alias tg="tig"
 alias tm="tmux"
 
+# Golang
+alias gopath="cd $GOPATH"
+alias gotest="go test  -v -coverprofile='coverage.out' -timeout=30m -race  -failfast ./..."
+
 # Python
 alias python="/usr/local/bin/python3"
 alias pip="/usr/local/bin/pip3"
@@ -218,6 +222,38 @@ alias restart_dns="sudo killall -9 mDNSResponder"
 
 # Convert all flac files to mp3 files
 alias flac_to_mp3="find . -name '*.flac' -exec ffmpeg -i {} -ab 320k -map_metadata 0 -id3v2_version 3 {}.mp3 \;"
+
+# Kubernetes tools
+alias kx="kubectx"
+alias k9="k9s -c pod --readonly"
+
+# Kubectl
+alias k="kubectl"
+alias kaf='kubectl apply -f'
+alias kdc="kubectl describe configmap"
+alias kdd="kubectl describe deployment"
+alias kdp='kubectl describe pods'
+alias kds='kubectl describe svc'
+alias keti='kubectl exec -ti'
+alias kgcc='kubectl config get-contexts'
+alias kgcj="kubectl get cronjob"
+alias kgcm="kubectl get configmap"
+alias kgd="kubectl get deployements"
+alias kge="kubectl get events"
+alias kgi="kubectl get ingress"
+alias kgp="kubectl get pods"
+alias kgpv="kgp -o jsonpath='{.items[*].spec.containers[*].image}' | tr -s '[[:space:]]' '\n' | sort | cut -d'/' -f3 | column -t -s':' | uniq -c"
+alias kgs='kubectl get svc'
+alias kgsec="kubectl get secrets"
+alias kl='kubectl logs'
+alias klf1s='kubectl logs --since 1s -f'
+alias klf5m='kubectl logs --since 5m -f'
+alias klf="kubectl logs -f"
+alias klo="kubectl login"
+alias klos="kubectl login sync --ask --prune"
+alias kpf="kubectl port-forward"
+alias krrd="kubectl rollout restart deployment"
+alias ksd="kubectl scale deployment"
 
 ### FUNCTIONS ##################################################################
 
@@ -286,6 +322,72 @@ docker_volume_path() {
   fi
 }
 
+# Upload a docker image to the provided registry
+docker_upload_image() {
+  if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Please supply image:tag to pull and registry to push image in.
+                \nUsage: $funcstack[1] <image:tag> <registry>"
+  else
+    docker pull $1
+    docker tag $1 $2/$1
+
+    docker login $2
+    docker push $2/$1
+  fi
+}
+
+# Upload all the docker image tags to a provided registry
+docker_upload_images() {
+  if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Please supply image to pull tags from and registry to push images in.
+                \nUsage: $funcstack[1] <image> <registry>"
+  else
+    docker pull $1 --all-tags
+
+    docker login $2
+    docker images $1 \
+      --format "docker tag {{.Repository}}:{{.Tag}} $2/{{.Repository}}:{{.Tag}} \
+            | docker push $2/{{.Repository}}:{{.Tag}}" | bash
+  fi
+}
+
+# View the kubernetes secrets of a provided service
+kube_view_secrets() {
+  if [ -z "$1" ]; then
+    echo "No service supplied. \nUsage: $funcstack[1] <service>"
+  else
+    kubectl get secret "$1" \
+      -o go-template='{{range $k, $v := .data }}export {{$k}}={{ $v | base64decode | printf "%q"}}{{"\n"}}{{end}}'
+  fi
+}
+
+# View the kubernetes config of a provided service
+kube_view_config() {
+  if [ -z "$1" ]; then
+    echo "No service supplied. \nUsage: $funcstack[1] <service>"
+  else
+    kubectl get configmap "$1" \
+      -o go-template='{{range $k, $v := .data }}export {{$k}}={{$v}}{{"\n"}}{{end}}'
+  fi
+}
+
+# View the envionment variables of a provided pod
+kube_view_env() {
+  if [ -z "$1" ]; then
+    echo "No pod supplied. \nUsage: $funcstack[1] <pod_name>"
+  else
+    kubectl exec "$1" -it -- env
+  fi
+}
+
+# View the containers running in kubernetes
+kube_view_containers() {
+  kubectl get pods -o jsonpath="{.items[*].spec.containers[*].image}" |
+    tr -s '[[:space:]]' '\n' |
+    sort |
+    uniq -c
+}
+
 # Sync a fork master branch
 git_sync_fork() {
   if [ -z "$1" ]; then
@@ -309,4 +411,9 @@ git_archive_all() {
   else
     fd -td -d 1 -x bash -c "git -C {} archive --output=../{/}.tar.gz --format=tar HEAD" ';' . $1
   fi
+}
+
+# Run go tests with colors on PASS and FAIL
+go_test_with_colors() {
+  gotest | sed ''/PASS/s//$(printf "\033[32mPASS\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/''
 }
