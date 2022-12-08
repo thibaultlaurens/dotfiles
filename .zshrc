@@ -192,7 +192,7 @@ alias tm="tmux"
 
 # Golang
 alias gopath="cd $GOPATH"
-alias gotest="go test  -v -coverprofile='coverage.out' -timeout=30m -race  -failfast ./..."
+alias gotest="go test -v -coverprofile='coverage.out' -race -failfast ./..."
 
 # Python
 alias python="/usr/local/bin/python3"

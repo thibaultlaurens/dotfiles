@@ -31,7 +31,8 @@ disabled = true
 
 [git_branch]
 symbol = " "
-always_show_remote = true
+always_show_remote = false
+truncation_length = 50
 style = "yellow"
 
 [git_commit]
