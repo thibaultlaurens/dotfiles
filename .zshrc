@@ -173,7 +173,7 @@ alias cp="cp -iv"
 alias df="df -h"
 alias du="du -ach"
 alias grep='grep --color=auto'
-alias less="bat --theme=ansi" # replace "less -FSRXc"
+alias less="bat --theme=ansi --style=header,grid,rule" # replace "less -FSRXc"
 alias ll="exa -abghlmFU --all"
 alias ln='ln -i'
 alias mkdir="mkdir -pv"

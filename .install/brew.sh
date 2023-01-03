@@ -64,6 +64,7 @@ packages=(
   openssl
   pinentry-mac
   procs
+  rar
   ripgrep
   ruby
   shellcheck
