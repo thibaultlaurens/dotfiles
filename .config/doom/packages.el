@@ -50,3 +50,7 @@
 ;(unpin! t)
 
 (package! jsonnet-mode)
+(package! imenu-list)
+(package! protobuf-mode
+  :recipe (:host github :repo "protocolbuffers/protobuf"
+           :files ("editors/protobuf-mode.el")))

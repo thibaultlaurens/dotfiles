@@ -14,11 +14,6 @@
 ;; Maximize emacs on startup
 ;; (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
-;; Set rg to search in hidden files
-(after! counsel
-  (setq counsel-rg-base-command
-        "rg -M 240 --hidden --with-filename --no-heading --line-number --color never --glob '!.git' %s"))
-
 ;; Disable lsp file watcher to improve perf on large repos
 (with-eval-after-load 'lsp-mode
   (setq lsp-enable-file-watchers nil))
@@ -49,6 +44,10 @@
  ;; Stretch cursor to the glyph width
  x-stretch-cursor t
  )
+
+;; Doom-vibrant theme customisation
+(custom-theme-set-faces! 'doom-vibrant
+   '(font-lock-variable-name-face :foreground "base8"))
 
 ;; Disable the custom scroll-margin in term-mode
 (add-hook 'term-mode-hook (lambda () (setq-local scroll-margin 0)))
@@ -88,10 +87,6 @@
 (setq which-key-idle-delay 0.5 ;; Default is 1.0
       which-key-idle-secondary-delay 0.05) ;; Default is nil
 
-;; Set frame title with file path and major mode
-;; (setq-default frame-title-format '("%f [%m]"))
-
-
 ;;
 ;;; FILES / BUFFERS / TEXT ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -114,6 +109,14 @@
 
 ;; enable word-wrap (almost) everywhere
 (+global-word-wrap-mode t)
+
+;; focus imenu-list sidebar after activation
+(setq imenu-list-focus-after-activation t)
+
+;; add shortcut to toggle imenu-list sidebar
+(map! :leader
+      (:prefix ("t" . "Toggle")
+       :desc "Toggle imenu shown in a sidebar" "i" #'imenu-list-smart-toggle))
 
 ;;
 ;;; EVIL ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -171,9 +174,6 @@
 (with-eval-after-load 'treemacs
   (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
 
-  ;; disable git mode (until auto-refresh is supported)
-  (treemacs-git-mode -1)
-
   ;; <RET> to open in most recently used window
   (treemacs-define-RET-action 'file-node-open   #'treemacs-visit-node-in-most-recently-used-window)
   (treemacs-define-RET-action 'file-node-closed #'treemacs-visit-node-in-most-recently-used-window)
@@ -190,11 +190,20 @@
         treemacs-is-never-other-window t))
 
 
-;; Make Treemacs accessible as Window #0
+;; make Treemacs accessible as Window #0
 (after! (treemacs winum)
     (setq winum-ignored-buffers-regexp
           (delete (regexp-quote (format "%sFramebuffer-" treemacs--buffer-name-prefix))
                   winum-ignored-buffers-regexp)))
+
+;; refresh git status after file save
+(after! treemacs
+  (defun treemacs--force-git-update-current-file ()
+    (-let [file (treemacs-canonical-path buffer-file-name)]
+      (treemacs-run-in-every-buffer
+       (when (treemacs-is-path file :in-workspace)
+         (treemacs-update-single-file-git-state file)))))
+  (add-hook 'after-save-hook 'treemacs--force-git-update-current-file))
 
 ;;
 ;;; WINUM ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -254,6 +263,8 @@
   (add-hook 'before-save-hook #'lsp-organize-imports t t))
 (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
+(setq lsp-go-library-directories-include-go-modules nil)
+
 ;;
 ;;; SH ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -263,3 +274,9 @@
     '("shfmt" "-ci"
       ("-i" "%d" (unless indent-tabs-mode tab-width))
       ("-ln" "bash"))))
+
+;;
+;;; Proto ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package! protobuf-mode
+  :defer-incrementally t)
