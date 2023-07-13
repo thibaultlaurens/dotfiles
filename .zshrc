@@ -151,8 +151,9 @@ export PATH
 ### ALIASES ####################################################################
 
 # Bare git repo config alias
-alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias config="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias lint-config="shellcheck -e SC1091,SC1090 $HOME/.install/*.sh"
+alias ls-config="config ls-tree --full-tree -r HEAD"
 
 # Reload the shell
 alias reload='exec $SHELL -l'
@@ -173,7 +174,7 @@ alias cp="cp -iv"
 alias df="df -h"
 alias du="du -ach"
 alias grep='grep --color=auto'
-alias less="bat --theme=ansi --style=header,grid,rule" # replace "less -FSRXc"
+alias less="bat --theme=ansi --style=header,grid" # replace "less -FSRXc"
 alias ll="exa -abghlmFU --all"
 alias ln='ln -i'
 alias mkdir="mkdir -pv"
@@ -195,7 +196,7 @@ alias gopath="cd $GOPATH"
 alias gotest="go test -v -coverprofile='coverage.out' -race -failfast ./..."
 
 # Python
-alias python="/usr/local/bin/python3"
+alias python="/usr/local/bin/python3.11"
 alias pip="/usr/local/bin/pip3"
 
 # Print each PATH entry on a separate line
@@ -234,7 +235,7 @@ alias kdc="kubectl describe configmap"
 alias kdd="kubectl describe deployment"
 alias kdp='kubectl describe pods'
 alias kds='kubectl describe svc'
-alias keti='kubectl exec -ti'
+alias keti='kubectl exec --stdin --tty'
 alias kgcc='kubectl config get-contexts'
 alias kgcj="kubectl get cronjob"
 alias kgcm="kubectl get configmap"
@@ -242,7 +243,6 @@ alias kgd="kubectl get deployements"
 alias kge="kubectl get events"
 alias kgi="kubectl get ingress"
 alias kgp="kubectl get pods"
-alias kgpv="kgp -o jsonpath='{.items[*].spec.containers[*].image}' | tr -s '[[:space:]]' '\n' | sort | cut -d'/' -f3 | column -t -s':' | uniq -c"
 alias kgs='kubectl get svc'
 alias kgsec="kubectl get secrets"
 alias kl='kubectl logs'
@@ -255,7 +255,7 @@ alias kpf="kubectl port-forward"
 alias krrd="kubectl rollout restart deployment"
 alias ksd="kubectl scale deployment"
 
-### FUNCTIONS ##################################################################
+### SH FUNCTIONS ###############################################################
 
 # Makes a new dir and cd into it
 cdmk() { echo "DEPRECATED: use \"take\" command instead" && take $1; }
@@ -307,6 +307,8 @@ custom_updater() {
   fi
 }
 
+### DOCKER FUNCTIONS ###########################################################
+
 # Prune everything docker related
 docker_prune_all() {
   docker system prune -a -f --volumes
@@ -351,42 +353,105 @@ docker_upload_images() {
   fi
 }
 
-# View the kubernetes secrets of a provided service
-kube_view_secrets() {
-  if [ -z "$1" ]; then
-    echo "No service supplied. \nUsage: $funcstack[1] <service>"
-  else
-    kubectl get secret "$1" \
-      -o go-template='{{range $k, $v := .data }}export {{$k}}={{ $v | base64decode | printf "%q"}}{{"\n"}}{{end}}'
-  fi
+### KUBERNETES FUNCTIONS #######################################################
+
+# Get pod IAM role $1 => servicename
+pod_iam_role() {
+  kubectl get po -lapp=$1 -o json | jq '.items [] .metadata .annotations ["iam.amazonaws.com/role"]'
 }
 
-# View the kubernetes config of a provided service
-kube_view_config() {
-  if [ -z "$1" ]; then
-    echo "No service supplied. \nUsage: $funcstack[1] <service>"
-  else
-    kubectl get configmap "$1" \
-      -o go-template='{{range $k, $v := .data }}export {{$k}}={{$v}}{{"\n"}}{{end}}'
-  fi
+# Get pod fail reason $1 => servicename
+pod_fail_reason() {
+  kubectl get po -lapp=$1 -o json | jq ".items [] .status .containerStatuses [] .lastState"
 }
 
-# View the envionment variables of a provided pod
-kube_view_env() {
-  if [ -z "$1" ]; then
-    echo "No pod supplied. \nUsage: $funcstack[1] <pod_name>"
-  else
-    kubectl exec "$1" -it -- env
-  fi
+# Get service secrets $1 => servicename
+pod_secrets() {
+  kubectl get secret $1 -o go-template='{{ range $k, $v := .data }}{{$k}}={{ $v | base64decode | printf "%q"}}{{"\n"}}{{end}}'
 }
 
-# View the containers running in kubernetes
-kube_view_containers() {
-  kubectl get pods -o jsonpath="{.items[*].spec.containers[*].image}" |
-    tr -s '[[:space:]]' '\n' |
-    sort |
-    uniq -c
+# Get service parameters $1 => servicename
+pod_config() {
+  kubectl get cm $1 -o go-template='{{range $k, $v := .data}}{{printf "%s=%q\n" $k $v}}{{end}}'
 }
+
+# Get k8s node IPs for pods $1 => servicename
+pod_ips() {
+  kubectl get po -lapp=$1 -o json | jq ".items [] .status .hostIP"
+}
+
+# Get a random pod name $1 => servicename $2 => optional grep filter
+pod_name() {
+  FILTER=${2:--}
+  kubectl get po -lapp=$1 --no-headers -o custom-columns=":metadata.name" | grep $FILTER | head -n 1
+}
+
+# Exec into bash shell of a random pod of a service $1 => servicename
+pod_exec() {
+  RANDOM_POD=$(pod_name $1)
+  echo $RANDOM_POD
+  kubectl exec --stdin --tty $RANDOM_POD -- /bin/bash
+}
+
+# Prints a pod environment variables $1 => servicename
+pod_env() {
+  RANDOM_POD=$(pod_name $1)
+  echo $RANDOM_POD
+  kubectl exec --stdin --tty $RANDOM_POD -- env
+}
+
+# Tail logs of a random pod (including canaries) of a service $1 => servicename
+pod_logs() {
+  RANDOM_POD=$(pod_name $1)
+  echo $RANDOM_POD
+  kubectl logs -f $RANDOM_POD
+}
+
+# Tail logs of a random canary pod of a service $1 => servicename
+pod_logs_canary() {
+  RANDOM_POD=$(pod_name $1 canary)
+  echo $RANDOM_POD
+  kubectl logs -f $RANDOM_POD
+}
+
+# Port forward a random pod of a service $1 => servicename $2 => port:port
+pod_forward() {
+  PORT=${2:-8001}
+  RANDOM_POD=$(pod_name $1)
+  echo $RANDOM_POD
+  kubectl port-forward $RANDOM_POD $PORT
+}
+
+# Get all of the pod names matching $1 grep filter
+pod_names() {
+  FILTER=${1:--}
+  NAMES=$(kubectl get pods -o jsonpath='{.items[*].metadata.labels.app}' |
+    tr -s '[[:space:]]' '\n' | grep $FILTER | sort | uniq)
+  echo $NAMES
+}
+
+# Get all versions of all pods matching the $1 grep filter
+pod_versions() {
+  FILTER=${1:--}
+  kubectl get po -o jsonpath='{.items[*].spec.containers[*].image}' |
+    tr -s '[[:space:]]' '\n' | sort | cut -d'/' -f3 | column -t -s':' |
+    uniq -c | grep $FILTER
+}
+
+# Get the container images of all pods matching the $1 filter
+pod_images() {
+  FILTER=${1:--}
+  kubectl get po -o jsonpath="{.items[*].spec.containers[*].image}" |
+    tr -s '[[:space:]]' '\n' | sort | uniq -c | grep $FILTER
+}
+
+# Lists the -o wide view of all pods matching the filter
+pod_details() {
+  FILTER=${1--}
+  kubectl get pods -o wide | grep $FILTER
+}
+
+### GIT FUNCTIONS ##############################################################
 
 # Sync a fork master branch
 git_sync_fork() {
