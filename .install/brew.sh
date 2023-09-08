@@ -31,7 +31,7 @@ packages=(
   curl
   docker-completion
   dust
-  exa
+  eza
   fd
   ffmpeg
   findutils

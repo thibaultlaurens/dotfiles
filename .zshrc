@@ -175,7 +175,7 @@ alias df="df -h"
 alias du="du -ach"
 alias grep='grep --color=auto'
 alias less="bat --theme=ansi --style=header,grid" # replace "less -FSRXc"
-alias ll="exa -abghlmFU --all"
+alias ll="eza -abghlmFU --all"
 alias ln='ln -i'
 alias mkdir="mkdir -pv"
 alias mv='mv -i'
