@@ -102,6 +102,9 @@
 
  ;; Don't create lockfiles
  create-lockfiles nil
+
+ ;; Increase company auto-completion popup delay
+ company-idle-delay 0.5
  )
 
 ;; Replace selection when inserting text
@@ -215,7 +218,7 @@
 
 ;; SPC-<number> to select windows
 (after! winum
-  (map! (:when (featurep! :ui window-select)
+  (map! (:when (modulep! :ui window-select)
          :leader
          :n "0" #'treemacs-select-window
          :n "1" #'winum-select-window-1
@@ -263,7 +266,7 @@
   (add-hook 'before-save-hook #'lsp-organize-imports t t))
 (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
-(setq lsp-go-library-directories-include-go-modules nil)
+(setq lsp-go-library-directories-include-go-modules t)
 
 ;;
 ;;; SH ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -280,3 +283,13 @@
 
 (use-package! protobuf-mode
   :defer-incrementally t)
+
+;;
+;;; PEG ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(add-to-list 'load-path "~/.config/doom/modules/lang/peg-mode")
+(autoload 'peg-mode "peg-mode" "Mode for editing PEG grammar files" t)
+
+(setq auto-mode-alist
+      (append '(("\\.peg$"    . peg-mode))
+              auto-mode-alist))
