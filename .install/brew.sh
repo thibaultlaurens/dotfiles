@@ -35,6 +35,7 @@ packages=(
   fd
   ffmpeg
   findutils
+  fx
   fzf
   gawk
   git
