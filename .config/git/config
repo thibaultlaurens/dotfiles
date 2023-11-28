@@ -117,6 +117,9 @@
 	# Switch to a given branch, creates it if necessary
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout -f \"$1\"; }; f"
 
+	# Jump to a branch: switch to it, set upstream to origin of the same name and pull latest changes
+	jump = "!f() { git go \"$1\" && git set-upstream \"$1\" && git pull; }; f"
+
 	# Show the commit logs with stats
 	logs = log --stat --full-history --date=format:'%H:%M:%S %d/%m/%Y' --pretty=format:'%C(bold white)%h%C(auto)%d %C(reset)by %C(bold blue)%cn%C(reset) at %C(bold yellow)%ad%C(reset)%n %s'
 
@@ -129,14 +132,17 @@
 	# Revert the last commit and put its changes in the index
 	resets = reset --soft HEAD^
 
-	# Remove all local branches except master and the current one
-	rmlbs = "!f() { git branch | grep -v "master" | grep -v "^*" | xargs git branch -d; }; f"
+	# Remove all local branches except main and the current one
+	rmlbs = "!f() { git branch | grep -v "main" | grep -v "^*" | xargs git branch -D; }; f"
 
 	# Remove a remote branch
 	rmrb = push origin -d
 
 	# Grep the given pattern in tracked files with line numbers and context
 	search = grep -n -C 1
+
+	# Set upstream to the same name as the local branch
+	set-upstream = "!f() { git branch --set-upstream-to=origin/\"$1\" \"$1\"; }; f"
 
 	# Show a short status summary with branch info
 	ss = status -sb
