@@ -58,7 +58,6 @@ packages=(
   lnav
   make
   markdown
-  monit
   moreutils
   nmap
   openssh
@@ -83,13 +82,10 @@ echo "Installing packages:"
 brew install "${packages[@]}"
 
 apps=(
-  adapter
   adobe-creative-cloud
   alacritty
-  balenaetcher
   bitwarden
   docker
-  firefox
   font-fira-code-nerd-font
   google-drive
   karabiner-elements
@@ -101,11 +97,8 @@ apps=(
   rectangle
   standard-notes
   starship
-  stats
   transmission
-  virtualbox
   vlc
-  zoom
 )
 
 echo "Installing apps:"
