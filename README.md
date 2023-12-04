@@ -1,4 +1,13 @@
-# Dotfiles
+```
+    ____        __  _____ __
+   / __ \____  / /_/ __(_) /__  _____
+  / / / / __ \/ __/ /_/ / / _ \/ ___/
+ / /_/ / /_/ / /_/ __/ / /  __(__  )
+/_____/\____/\__/_/ /_/_/\___/____/
+```
+
+[![shellcheck](https://github.com/thibaultlaurens/dotfiles/actions/workflows/shell.yml/badge.svg)](https://github.com/thibaultlaurens/dotfiles/actions/workflows/shell.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A bare git repository to store my dotfiles.
 
