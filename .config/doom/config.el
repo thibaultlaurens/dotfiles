@@ -47,7 +47,7 @@
 
 ;; Doom-vibrant theme customisation
 (custom-theme-set-faces! 'doom-vibrant
-   '(font-lock-variable-name-face :foreground "base8"))
+  '(font-lock-variable-name-face :foreground "base8"))
 
 ;; Disable the custom scroll-margin in term-mode
 (add-hook 'term-mode-hook (lambda () (setq-local scroll-margin 0)))
@@ -64,8 +64,8 @@
 ;; Add padding to the right of the modeline
 (after! doom-modeline
   (doom-modeline-def-modeline 'main
-   '(bar workspace-name window-number modals matches follow buffer-info remote-host buffer-position word-count parrot selection-info)
-   '(objed-state misc-info persp-name battery grip irc mu4e gnus github debug repl lsp minor-modes input-method indent-info buffer-encoding major-mode process vcs checker "  ")))
+    '(bar workspace-name window-number modals matches follow buffer-info remote-host buffer-position word-count parrot selection-info)
+    '(objed-state misc-info persp-name battery grip irc mu4e gnus github debug repl lsp minor-modes input-method indent-info buffer-encoding major-mode process vcs checker "  ")))
 
 ;; Mode line customization
 (after! doom-modeline
@@ -142,7 +142,7 @@
 ;;
 ;;; VC / MAGIT ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
- ;; Always follow symlinks
+;; Always follow symlinks
 (setq-default vc-follow-symlinks t)
 
 (after! magit
@@ -195,9 +195,9 @@
 
 ;; make Treemacs accessible as Window #0
 (after! (treemacs winum)
-    (setq winum-ignored-buffers-regexp
-          (delete (regexp-quote (format "%sFramebuffer-" treemacs--buffer-name-prefix))
-                  winum-ignored-buffers-regexp)))
+  (setq winum-ignored-buffers-regexp
+        (delete (regexp-quote (format "%sFramebuffer-" treemacs--buffer-name-prefix))
+                winum-ignored-buffers-regexp)))
 
 ;; refresh git status after file save
 (after! treemacs
@@ -219,14 +219,14 @@
 ;; SPC-<number> to select windows
 (after! winum
   (map! (:when (modulep! :ui window-select)
-         :leader
-         :n "0" #'treemacs-select-window
-         :n "1" #'winum-select-window-1
-         :n "2" #'winum-select-window-2
-         :n "3" #'winum-select-window-3
-         :n "4" #'winum-select-window-4
-         :n "5" #'winum-select-window-5
-         )))
+          :leader
+          :n "0" #'treemacs-select-window
+          :n "1" #'winum-select-window-1
+          :n "2" #'winum-select-window-2
+          :n "3" #'winum-select-window-3
+          :n "4" #'winum-select-window-4
+          :n "5" #'winum-select-window-5
+          )))
 
 ;;
 ;;; PYTHON ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -283,6 +283,23 @@
 
 (use-package! protobuf-mode
   :defer-incrementally t)
+
+;;
+;;; PDF ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package pdf-tools
+  :defer t
+  :commands (pdf-loader-install)
+  :mode "\\.pdf\\'"
+  :bind (:map pdf-view-mode-map
+              ("j" . pdf-view-next-line-or-next-page)
+              ("k" . pdf-view-previous-line-or-previous-page)
+              ("C-=" . pdf-view-enlarge)
+              ("C--" . pdf-view-shrink))
+  :init (pdf-loader-install)
+  :config (add-to-list 'revert-without-query ".pdf"))
+
+(add-hook 'pdf-view-mode-hook #'(lambda () (interactive) (display-line-numbers-mode -1)))
 
 ;;
 ;;; PEG ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
