@@ -1,0 +1,76 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "0x979797"
+blue = "0x51afef"
+cyan = "0x5cefff"
+green = "0x7bc275"
+magenta = "0xc57bdb"
+red = "0xff665c"
+white = "0xdfdfdf"
+yellow = "0xfcce7b"
+
+[colors.cursor]
+cursor = "0x51afef"
+text = "CellBackground"
+
+[colors.normal]
+black = "0x242730"
+blue = "0x51afef"
+cyan = "0x5cefff"
+green = "0x7bc275"
+magenta = "0xc57bdb"
+red = "0xff665c"
+white = "0xdfdfdf"
+yellow = "0xfcce7b"
+
+[colors.primary]
+background = "0x242730"
+bright_background = "0xdfdfdf"
+dim_backgrounf = "0xdfdfdf"
+foreground = "0xdfdfdf"
+
+[colors.selection]
+background = "0x3e4451"
+text = "CellForeground"
+
+[env]
+TERM = "screen-256color"
+
+[font]
+size = 13
+
+[font.normal]
+family = "FiraCode Nerd Font"
+style = "Regular"
+
+[[keyboard.bindings]]
+chars = "\u001BF"
+key = "Right"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001BB"
+key = "Left"
+mods = "Command"
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+[scrolling]
+history = 100000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true
+
+[window]
+decorations = "full"
+opacity = 1.0
+startup_mode = "Maximized"
+
+[window.padding]
+x = 10
+y = 10
