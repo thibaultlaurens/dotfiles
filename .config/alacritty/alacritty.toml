@@ -27,8 +27,6 @@ yellow = "0xfcce7b"
 
 [colors.primary]
 background = "0x242730"
-bright_background = "0xdfdfdf"
-dim_backgrounf = "0xdfdfdf"
 foreground = "0xdfdfdf"
 
 [colors.selection]
