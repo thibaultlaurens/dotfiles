@@ -11,9 +11,9 @@ else
 fi
 
 # Create the directory structure for the go workspace
-mkdir -p "$HOME/go/"{bin,src}""
+mkdir -p "$GOPATH/"{bin,src}""
 
-export GOPATH=$HOME/go
+# Add GOPATH and go bin in PATH
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin
 
