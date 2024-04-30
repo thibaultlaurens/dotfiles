@@ -52,8 +52,15 @@ DISABLE_AUTO_TITLE="true"
 # Change the command execution time stamp shown in the history command output
 HIST_STAMPS="dd.mm.yyyy"
 
-# Skip duplicates in Ctrl+r search
-setopt HIST_FIND_NO_DUPS
+# Increase the amount of command we keep in history
+HISTSIZE=10000000
+SAVEHIST=10000000
+
+# Dont save duplicates in history
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+
 
 plugins=(
   alias-finder            # check if there is an alias defined for the command
@@ -175,7 +182,7 @@ alias df="df -h"
 alias du="du -ach"
 alias grep='grep --color=auto'
 alias less="bat --theme=ansi --style=header,grid" # replace "less -FSRXc"
-alias ll="eza -abghlmFU --all"
+alias ll="eza -abghlmU --all"
 alias ln='ln -i'
 alias mkdir="mkdir -pv"
 alias mv='mv -i'
