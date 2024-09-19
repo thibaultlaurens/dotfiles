@@ -96,10 +96,10 @@
        ;;pass                      ; password manager for nerds
        pdf                         ; pdf enhancements
        ;;prodigy                   ; FIXME managing external services & code builders
-       rgb                         ; creating color strings
        ;;taskrunner                ; taskrunner for all your projects
-       ;; terraform                ; infrastructure as code
+       ;;terraform                 ; infrastructure as code
        ;;tmux                      ; an API for interacting with tmux
+       tree-sitter                 ; better syntax highlighting and structural text editing
        ;;upload                    ; map local to remote projects via ssh/ftp
 
        :os
@@ -109,7 +109,7 @@
        :lang
        ;;agda                      ; types of types of types of types...
        ;;beancount                 ; mind the GAAP
-       (cc +lsp)                   ; C/C++/Obj-C madness
+       (cc +lsp +tree-sitter)      ; C/C++/Obj-C madness
        ;;clojure                   ; java with a lisp
        ;;common-lisp               ; if you've seen one lisp, you've seen them all
        ;;coq                       ; proofs-as-programs
@@ -126,13 +126,13 @@
        ;;fsharp                    ; ML stands for Microsoft's Language
        ;;fstar                     ; (dependent) types and (monadic) effects and Z3
        ;;gdscript                  ; the language you waited for
-       (go +lsp)                   ; the hipster dialect
+       (go +lsp +tree-sitter)      ; the hipster dialect
        ;;(haskell +dante)          ; a language that's lazier than I am
        ;;hy                        ; readability of scheme w/ speed of python
        ;;idris
-       (json +lsp)                 ; At least it ain't XML
+       (json +lsp +tree-sitter)    ; At least it ain't XML
        ;; (java +meghanada)        ; the poster child for carpal tunnel syndrome
-       (javascript +lsp)           ; all(hope(abandon(ye(who(enter(here))))))
+       (javascript +lsp +tree-sitter) ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia                     ; a better, faster MATLAB
        ;;kotlin                    ; a better, slicker Java(Script)
        ;;latex                     ; writing papers in Emacs has never been so fun
@@ -148,7 +148,7 @@
        ;;php                       ; perl's insecure younger brother
        ;;plantuml                  ; diagrams for confusing people more
        ;;purescript                ; javascript, but functional
-       (python +lsp +pyright)      ; beautiful is better than ugly
+       (python +lsp +pyright +tree-sitter) ; beautiful is better than ugly
        ;;qt                        ; the 'cutest' gui framework ever
        ;;racket                    ; a DSL for DSLs
        ;;raku                      ; the artist formerly known as perl6
@@ -158,13 +158,13 @@
        ;;rust                      ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala                     ; java, but good
        ;;scheme                    ; a fully conniving family of lisps
-       (sh +lsp)                   ; she sells {ba,z,fi}sh shells on the C xor
+       (sh +lsp +tree-sitter)      ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml                       ; no, the /other/ ML
        ;;solidity                  ; do you need a blockchain? No.
        ;;swift                     ; who asked for emoji variables?
        ;;terra                     ; Earth and Moon in alignment for performance.
        web                         ; the tubes
-       (yaml +lsp)                 ; JSON, but readable
+       (yaml +lsp +tree-sitter)    ; JSON, but readable
        ;;zig                       ; C, but simpler
 
        :email

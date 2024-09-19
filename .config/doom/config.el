@@ -26,8 +26,6 @@
 
 (setq
  doom-theme 'doom-vibrant
- doom-themes-treemacs-theme "doom-colors"
-
  doom-font (font-spec :family "FiraCode Nerd Font" :size 13)
  doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font" :size 13)
  doom-big-font (font-spec :family "FiraCode Nerd Font" :size 24)
@@ -60,12 +58,6 @@
 
 ;; Blink visible cursor
 (blink-cursor-mode 'visible-cursor)
-
-;; Add padding to the right of the modeline
-(after! doom-modeline
-  (doom-modeline-def-modeline 'main
-    '(bar workspace-name window-number modals matches follow buffer-info remote-host buffer-position word-count parrot selection-info)
-    '(objed-state misc-info persp-name battery grip irc mu4e gnus github debug repl lsp minor-modes input-method indent-info buffer-encoding major-mode process vcs checker "  ")))
 
 ;; Mode line customization
 (after! doom-modeline
@@ -245,11 +237,12 @@
 ;;
 ;;; JS / JSON / YAML ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; JS Indent level
-(setq js-indent-level 2)
-
-;; Use prettier instead of yaml-lsp
-(setq-hook! 'yaml-mode-hook +format-with-lsp nil)
+(after! yaml-mode
+  (set-formatter! 'prettier '("prettier" "--stdin-filepath" filepath
+                              "--parser=yaml" "--tab-width=2") :modes '(yaml-mode)))
+(after! json-mode
+  (set-formatter! 'prettier '("prettier" "--stdin-filepath" filepath
+                              "--parser=json" "--tab-width=2") :modes '(json-mode)))
 
 ;; Add jsonnet support
 (use-package! jsonnet-mode
@@ -264,9 +257,21 @@
 (defun lsp-go-install-save-hooks ()
   (add-hook 'before-save-hook #'lsp-format-buffer t t)
   (add-hook 'before-save-hook #'lsp-organize-imports t t))
+
+(add-hook 'go-mode-hook #'lsp-deferred)
 (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
-(setq lsp-go-library-directories-include-go-modules t)
+(after! lsp-mode
+  (setq lsp-go-library-directories-include-go-modules t)
+
+  (setq  lsp-go-analyses '((fieldalignment . t)
+                           (nilness . t)
+                           (shadow . t)
+                           (unusedparams . t)
+                           (unusedwrite . t)
+                           (useany . t)
+                           (unusedvariable . t)))
+  )
 
 ;;
 ;;; SH ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
