@@ -24,10 +24,6 @@ export GPG_TTY=$(tty)
 # Set xdg home directory
 export XDG_CONFIG_HOME="$HOME/.config"
 
-# Set vim config path
-export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
-export VIMDOTDIR="$XDG_CONFIG_HOME/vim"
-
 # Set brew options
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_INSECURE_REDIRECT=1

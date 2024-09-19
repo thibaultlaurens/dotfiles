@@ -78,6 +78,9 @@ packages=(
   zsh
 )
 
+# link vim config
+ln -sfn "${HOME}/.config/vim/vimrc ${HOME}/.vimrc"
+
 echo "Installing packages:"
 brew install "${packages[@]}"
 
