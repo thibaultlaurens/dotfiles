@@ -4,9 +4,10 @@ echo "Installing emacs:"
 brew install git ripgrep coreutils fd
 xcode-select --install
 
-brew tap railwaycat/emacsmacport
-brew install emacs-mac --with-modules
-ln -fs /usr/local/opt/emacs-mac/Emacs.app /Applications/Emacs.app
+brew tap d12frosted/emacs-plus
+brew install emacs-plus --with-native-comp
+
+osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@29/Emacs.app" at POSIX file "/Applications" with properties {name:"Emacs.app"}'
 
 # Clone doom emacs repo
 git clone https://github.com/hlissner/doom-emacs ~/.emacs.d

@@ -15,7 +15,6 @@ mkdir -p "$GOPATH/"{bin,src}""
 
 # Add GOPATH and go bin in PATH
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:/usr/local/go/bin
 
 echo "Installing go packages:"
 

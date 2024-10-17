@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-# Apply os hardening
-source "$HOME/.install/harden.sh"
-
 # Install xcode cli
 xcode-select --install
+
+# Apply os hardening
+source "$HOME/.install/harden.sh"
 
 # Install packages
 source "$HOME/.install/brew.sh"
