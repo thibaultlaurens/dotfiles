@@ -3,10 +3,8 @@
 # Install homebrew if it's missing
 if test ! "$(which brew)"; then
   echo "Installing brew:"
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
-
-sudo chown -R "$(whoami)" "$(brew --prefix)"/*
 
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_INSECURE_REDIRECT=1
@@ -16,7 +14,6 @@ brew update && brew upgrade
 
 # Add more sources
 brew tap Homebrew/bundle
-brew tap homebrew/cask-fonts
 
 packages=(
   ag
@@ -24,19 +21,18 @@ packages=(
   aspell
   bandwhich
   bash
+  bash-language-server
   bat
   cmake
   coreutils
   ctop
   curl
-  docker-completion
+  diff-so-fancy
   dust
   eza
   fd
-  ffmpeg
   findutils
   fx
-  fzf
   gawk
   git
   gnu-indent
@@ -46,30 +42,24 @@ packages=(
   gping
   graphviz
   grep
-  grip
   gzip
   hadolint
   htop
-  httpie
-  hugo
   jq
   kubectl
   less
-  lnav
   make
   markdown
   moreutils
   nmap
   openssh
   openssl
-  pinentry-mac
   procs
   rar
   ripgrep
   ruby
   shellcheck
-  tealdeer
-  tig
+  starship
   tmux
   tree
   vim
@@ -105,20 +95,7 @@ apps=(
 )
 
 echo "Installing apps:"
-brew install --cask "${apps[@]}"
-
-ql_packages=(
-  qlimagesize
-  qlmarkdown
-  qlprettypatch
-  qlvideo
-  quicklook-csv
-  quicklook-json
-  suspicious-package
-)
-
-echo "Installing quick look packages:"
-brew install "${ql_packages[@]}"
+brew install "${apps[@]}"
 
 echo "Cleaning up and checking for problems:"
 brew cleanup -s && brew doctor
