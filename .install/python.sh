@@ -9,7 +9,6 @@ packages=(
   'mypy'              # optional static typing checker
   'pipenv'            # python development workflow for humans
   'poetry'            # packaging and dependency management
-  'pyright'           # static type checker for Python
   'virtualenv'        # create isolated python environments
   'virtualenvwrapper' # extensions for virtualenv
   'yamllint'          # linter for YAML files

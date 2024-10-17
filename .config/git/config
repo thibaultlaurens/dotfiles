@@ -4,7 +4,7 @@
 	signingKey = 58EFB347
 
 [commit]
-	gpgsign = true
+	# gpgsign = true
 
 # Include dedicated config related to work
 [include]

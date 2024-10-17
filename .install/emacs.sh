@@ -2,7 +2,12 @@
 
 echo "Installing emacs:"
 brew install git ripgrep coreutils fd
-xcode-select --install
+
+# For cc lang layer
+brew install clang-format ccls glslang
+
+# For mardown layer
+brew install grip
 
 brew tap d12frosted/emacs-plus
 brew install emacs-plus --with-native-comp

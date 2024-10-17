@@ -57,7 +57,6 @@ packages=(
   procs
   rar
   ripgrep
-  ruby
   shellcheck
   starship
   tmux

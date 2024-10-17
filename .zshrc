@@ -6,11 +6,11 @@
 ### EXPORT #####################################################################
 
 # Proper locale
-: "$LANG:=\"en_US.UTF-8\""
-: "$LANGUAGE:=\"en\""
-: "$LC_CTYPE:=\"en_US.UTF-8\""
-: "$LC_ALL:=\"en_US.UTF-8\""
-export LANG LANGUAGE LC_CTYPE LC_ALL
+# : "$LANG:=\"en_US.UTF-8\""
+# : "$LANGUAGE:=\"en\""
+# : "$LC_CTYPE:=\"en_US.UTF-8\""
+# : "$LC_ALL:=\"en_US.UTF-8\""
+# export LANG LANGUAGE LC_CTYPE LC_ALL
 
 # Make vim the default editor
 export EDITOR="vim"
@@ -106,7 +106,7 @@ autoload zmv
 # Reload zsh completion
 autoload -U compinit && compinit
 
-if [ -f "/usr/local/bin/starship" ]; then
+if [ -f "/opt/homebrew/bin/starship" ]; then
   # Hide warnings (i.e git timeout)
   export STARSHIP_LOG=error
 
@@ -123,15 +123,9 @@ fi
 # Complete hostnames from this file
 : "${HOSTFILE=~/.ssh/known_hosts}"
 
-# Base Path
-PATH="/usr/bin:/bin:/usr/sbin:/sbin"
-PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-
-# Ruby
-[ -d "/usr/local/opt/ruby/bin" ] && PATH="/usr/local/opt/ruby/bin:$PATH"
-
 # Replace BSD with GNU core utils
-PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
+# PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+# PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 
 # Add ~/bin to the PATH if it exists
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
@@ -139,7 +133,9 @@ PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 # Golang
 GOPATH="$HOME/go"
 [ -d "$GOPATH/bin" ] && PATH="$GOPATH/bin:$PATH"
-[ -d "/usr/local/go/bin" ] && PATH="/usr/local/go/bin:$PATH"
+
+# Python
+[ -d "$HOME/Library/Python/3.13/lib/python/site-packages" ] && PATH="$HOME/Library/Python/3.13/lib/python/site-packages:$PATH"
 
 # Doom emacs
 [ -d "$HOME/.emacs.d/bin" ] && PATH="$HOME/.emacs.d/bin:$PATH"
@@ -149,7 +145,9 @@ if [ -f "$HOME/work/.zshrc" ]; then
   source "$HOME/work/.zshrc"
 fi
 
-export PATH
+# export PATH
+
+# eval "$(/opt/homebrew/bin/brew shellenv)"
 
 ### ALIASES ####################################################################
 
@@ -297,17 +295,6 @@ brew_updater() {
     brew autoremove &&
     brew cleanup -s &&
     brew doctor
-}
-
-# Upgrade packages installed without package management
-custom_updater() {
-  [ -s "$HOME/.install/node.sh" ] && \. "$HOME/.install/node.sh"
-  [ -s "$HOME/.install/python.sh" ] && \. "$HOME/.install/python.sh"
-  [ -s "$HOME/.install/go.sh" ] && \. "$HOME/.install/go.sh"
-
-  if typeset -f omz >/dev/null; then
-    omz update
-  fi
 }
 
 ### DOCKER FUNCTIONS ###########################################################
