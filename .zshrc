@@ -90,7 +90,9 @@ ZSH_ALIAS_FINDER_AUTOMATIC=true
 zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
-source $ZSH/oh-my-zsh.sh
+if [ -f "$ZSH/oh-my-zsh.sh" ]; then
+  source $ZSH/oh-my-zsh.sh
+fi
 
 # zsh-syntax-highlighting configuration
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=green,fg=white,bold'
@@ -148,6 +150,25 @@ fi
 # export PATH
 
 # eval "$(/opt/homebrew/bin/brew shellenv)"
+
+### SSH ########################################################################
+
+# Check for a currently running instance of ssh-agent
+RUNNING_AGENT="$(ps -ax | grep 'ssh-agent' | grep -v grep | wc -l | tr -d '[:space:]')"
+if [ "${RUNNING_AGENT}" = "0" ]; then
+    # Launch a new instance of ssh-agent
+    eval "$(ssh-agent)"
+else
+    # Connect to the existing ssh-agent instance
+    export SSH_AUTH_SOCK="$(find /var/folders/*/*/*/ssh-* -name 'agent.*' -user "$(whoami)" 2> /dev/null | head -n 1)"
+fi
+ 
+# Check that ssh keys are loaded
+ssh-add -l > /dev/null
+if [ "${?}" != "0" ]; then
+    # No ssh keys are loaded; add the default key
+    ssh-add -q --apple-load-keychain
+fi
 
 ### ALIASES ####################################################################
 
