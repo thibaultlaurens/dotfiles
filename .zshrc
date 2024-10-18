@@ -137,7 +137,7 @@ GOPATH="$HOME/go"
 [ -d "$GOPATH/bin" ] && PATH="$GOPATH/bin:$PATH"
 
 # Python
-[ -d "$HOME/Library/Python/3.13/lib/python/site-packages" ] && PATH="$HOME/Library/Python/3.13/lib/python/site-packages:$PATH"
+[ -d "$HOME/Library/Python/3.13/bin" ] && PATH="$HOME/Library/Python/3.13/bin:$PATH"
 
 # Doom emacs
 [ -d "$HOME/.emacs.d/bin" ] && PATH="$HOME/.emacs.d/bin:$PATH"
@@ -167,7 +167,7 @@ fi
 ssh-add -l > /dev/null
 if [ "${?}" != "0" ]; then
     # No ssh keys are loaded; add the default key
-    ssh-add -q --apple-load-keychain
+    /usr/bin/ssh-add -q --apple-load-keychain
 fi
 
 ### ALIASES ####################################################################
