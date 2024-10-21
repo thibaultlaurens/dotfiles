@@ -18,7 +18,9 @@ echo "Installing python packages via brew:"
 brew install "${packages[@]}"
 
 python_packages=(
+  'nose'              # extends the test loading and running features of unittest
   'pyflakes'          # checks python source files for errors
+  'pyright'           # static type checker for python
   'pytest'            # test python code
 )
 

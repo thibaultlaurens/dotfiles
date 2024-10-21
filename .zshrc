@@ -5,13 +5,6 @@
 
 ### EXPORT #####################################################################
 
-# Proper locale
-# : "$LANG:=\"en_US.UTF-8\""
-# : "$LANGUAGE:=\"en\""
-# : "$LC_CTYPE:=\"en_US.UTF-8\""
-# : "$LC_ALL:=\"en_US.UTF-8\""
-# export LANG LANGUAGE LC_CTYPE LC_ALL
-
 # Make vim the default editor
 export EDITOR="vim"
 
@@ -126,8 +119,9 @@ fi
 : "${HOSTFILE=~/.ssh/known_hosts}"
 
 # Replace BSD with GNU core utils
-# PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
-# PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 # Add ~/bin to the PATH if it exists
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
@@ -145,29 +139,6 @@ GOPATH="$HOME/go"
 # Source .zshrc dedicated to work environment
 if [ -f "$HOME/work/.zshrc" ]; then
   source "$HOME/work/.zshrc"
-fi
-
-# export PATH
-
-# eval "$(/opt/homebrew/bin/brew shellenv)"
-
-### SSH ########################################################################
-
-# Check for a currently running instance of ssh-agent
-RUNNING_AGENT="$(ps -ax | grep 'ssh-agent' | grep -v grep | wc -l | tr -d '[:space:]')"
-if [ "${RUNNING_AGENT}" = "0" ]; then
-    # Launch a new instance of ssh-agent
-    eval "$(ssh-agent)"
-else
-    # Connect to the existing ssh-agent instance
-    export SSH_AUTH_SOCK="$(find /var/folders/*/*/*/ssh-* -name 'agent.*' -user "$(whoami)" 2> /dev/null | head -n 1)"
-fi
- 
-# Check that ssh keys are loaded
-ssh-add -l > /dev/null
-if [ "${?}" != "0" ]; then
-    # No ssh keys are loaded; add the default key
-    /usr/bin/ssh-add -q --apple-load-keychain
 fi
 
 ### ALIASES ####################################################################
@@ -218,8 +189,8 @@ alias gopath="cd $GOPATH"
 alias gotest="go test -v -coverprofile='coverage.out' -race -failfast ./..."
 
 # Python
-alias python="/usr/local/bin/python3.11"
-alias pip="/usr/local/bin/pip3"
+alias python="/opt/homebrew/bin/python3"
+alias pip="/opt/homebrew/bin/pip3"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
