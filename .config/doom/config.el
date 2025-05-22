@@ -263,7 +263,7 @@
 
 (after! lsp-mode
   (setq lsp-go-library-directories-include-go-modules t)
-
+  (setq  lsp-go-use-gofumpt t)
   (setq  lsp-go-analyses '((fieldalignment . t)
                            (nilness . t)
                            (shadow . t)
