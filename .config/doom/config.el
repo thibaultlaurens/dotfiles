@@ -33,9 +33,6 @@
  ;; Style of line numbers in effect: `nil' | `t' | `relative'.
  display-line-numbers-type t
 
- ;; Enable mouse / trackpad progressive scrolling
- mouse-wheel-progressive-speed t
-
  ;; Add a margin when scrolling vertically
  scroll-margin 5
 
@@ -45,7 +42,10 @@
 
 ;; Doom-vibrant theme customisation
 (custom-theme-set-faces! 'doom-vibrant
-  '(font-lock-variable-name-face :foreground "base8"))
+  ;; press SPC u g a to know the current face under cursor
+  '(font-lock-variable-name-face :foreground "dim white")
+  '(font-lock-variable-use-face :foreground "dim white")
+  )
 
 ;; Disable the custom scroll-margin in term-mode
 (add-hook 'term-mode-hook (lambda () (setq-local scroll-margin 0)))
@@ -112,6 +112,13 @@
 (map! :leader
       (:prefix ("t" . "Toggle")
        :desc "Toggle imenu shown in a sidebar" "i" #'imenu-list-smart-toggle))
+
+;; kill the minibuffer when using the mouse
+(defun stop-using-minibuffer ()
+  (when (and (>= (recursion-depth) 1) (active-minibuffer-window))
+    (abort-recursive-edit)))
+
+(add-hook 'mouse-leave-buffer-hook 'stop-using-minibuffer)
 
 ;;
 ;;; EVIL ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -184,13 +191,6 @@
         treemacs-show-hidden-files t
         treemacs-is-never-other-window t))
 
-
-;; make Treemacs accessible as Window #0
-(after! (treemacs winum)
-  (setq winum-ignored-buffers-regexp
-        (delete (regexp-quote (format "%sFramebuffer-" treemacs--buffer-name-prefix))
-                winum-ignored-buffers-regexp)))
-
 ;; refresh git status after file save
 (after! treemacs
   (defun treemacs--force-git-update-current-file ()
@@ -237,12 +237,14 @@
 ;;
 ;;; JS / JSON / YAML ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; use doom/set-indent-width if you have issues with prettier formatting
+
 (after! yaml-mode
   (set-formatter! 'prettier '("prettier" "--stdin-filepath" filepath
-                              "--parser=yaml" "--tab-width=2") :modes '(yaml-mode)))
+                              "--parser=yaml" "--tab-width=4") :modes '(yaml-mode)))
 (after! json-mode
   (set-formatter! 'prettier '("prettier" "--stdin-filepath" filepath
-                              "--parser=json" "--tab-width=2") :modes '(json-mode)))
+                              "--parser=json" "--tab-width=4") :modes '(json-mode)))
 
 ;; Add jsonnet support
 (use-package! jsonnet-mode
@@ -258,19 +260,18 @@
   (add-hook 'before-save-hook #'lsp-format-buffer t t)
   (add-hook 'before-save-hook #'lsp-organize-imports t t))
 
-(add-hook 'go-mode-hook #'lsp-deferred)
-(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+(add-hook 'go-ts-mode-hook #'lsp-deferred)
+(add-hook 'go-ts-mode-hook #'lsp-go-install-save-hooks)
 
 (after! lsp-mode
   (setq lsp-go-library-directories-include-go-modules t)
-  (setq  lsp-go-use-gofumpt t)
-  (setq  lsp-go-analyses '((fieldalignment . t)
-                           (nilness . t)
-                           (shadow . t)
-                           (unusedparams . t)
-                           (unusedwrite . t)
-                           (useany . t)
-                           (unusedvariable . t)))
+  (setq lsp-go-use-gofumpt t)
+  (setq lsp-go-analyses '((nilness . t)
+                          (shadow . t)
+                          (unusedparams . t)
+                          (unusedwrite . t)
+                          (useany . t)
+                          (unusedvariable . t)))
   )
 
 ;;
@@ -315,3 +316,4 @@
 (setq auto-mode-alist
       (append '(("\\.peg$"    . peg-mode))
               auto-mode-alist))
+
